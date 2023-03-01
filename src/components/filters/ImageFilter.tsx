@@ -11,13 +11,13 @@ import CodepenIcon from '../../components/icons/CodepenIcon';
 import FileIcon from '../icons/FileIcon';
 
 const options: UrlOption[] = [
-  { type: 'url', value: 'Lenna.png', label: 'Lenna' },
-  { type: 'url', value: 'barbara.jpg', label: 'Barbara' },
-  { type: 'url', value: 'boat.png', label: 'Standard boat' },
-  { type: 'url', value: 'cameraman.png', label: 'Cameraman' },
-  { type: 'url', value: 'mandrill.png', label: 'Mandrill' },
-  { type: 'url', value: 'peppers.png', label: 'Peppers' },
-  { type: 'url', value: 'house.png', label: 'House' },
+  { type: 'url', value: '/img/standard/Lenna.png', label: 'Lenna' },
+  { type: 'url', value: '/img/standard/barbara.jpg', label: 'Barbara' },
+  { type: 'url', value: '/img/standard/boat.png', label: 'Standard boat' },
+  { type: 'url', value: '/img/standard/cameraman.png', label: 'Cameraman' },
+  { type: 'url', value: '/img/standard/mandrill.png', label: 'Mandrill' },
+  { type: 'url', value: '/img/standard/peppers.png', label: 'Peppers' },
+  { type: 'url', value: '/img/standard/house.png', label: 'House' },
 ];
 
 type UrlOption = {
@@ -65,7 +65,7 @@ export default function ImageFilter() {
 
   useEffect(() => {
     if (imageOption.type === 'url') {
-      fetch(`/img/standard/${imageOption.value}`).then((response) => {
+      fetch(imageOption.value).then((response) => {
         response.arrayBuffer().then((buffer) => {
           setFilteredImage(processImage(decode(new Uint8Array(buffer))));
         });
@@ -98,10 +98,7 @@ export default function ImageFilter() {
           {filteredImage ? (
             <>
               {imageOption.type === 'url' ? (
-                <ExpandableImage
-                  src={`/img/standard/${imageOption.value}`}
-                  alt="original image"
-                />
+                <ExpandableImage src={imageOption.value} alt="original image" />
               ) : (
                 <ExpandableCanvas image={imageOption.image} />
               )}
@@ -230,7 +227,7 @@ function Zoomable(props: {
       role="button"
       tabIndex={1}
       onKeyDown={(event) => {
-        if (event.key === 'Escape') {
+        if (event.key === 'Escape' && isOpen) {
           toggle();
         }
       }}
@@ -285,19 +282,16 @@ function ImageInputButton(props: { onImages: (images: ImageFile[]) => void }) {
         style={{ display: 'none' }}
         onChange={(event) => {
           const images: ImageFile[] = [];
+          let loaded = 0;
           for (let idx = 0; idx < event.target.files.length; idx++) {
             const file = event.target.files[idx];
             const reader = new FileReader();
             reader.onload = (e) => {
+              loaded++;
               if (e.target) {
                 const buffer = e.target.result as ArrayBuffer;
                 try {
-                  const image = decode(new Uint8Array(buffer));
-                  const newOption: ImageOption = {
-                    type: 'image',
-                    value: file.name,
-                    image: image,
-                  };
+                  const image = decode(new DataView(buffer));
                   images.push({
                     image,
                     file,
@@ -305,7 +299,9 @@ function ImageInputButton(props: { onImages: (images: ImageFile[]) => void }) {
                 } catch (e) {
                   reportError(e);
                 }
-                props.onImages(images);
+                if (loaded === event.target.files.length) {
+                  props.onImages(images);
+                }
               }
             };
             reader.readAsArrayBuffer(file);
