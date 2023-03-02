@@ -146,6 +146,7 @@ function ZoomableCanvas(props: {
 }) {
   const { image, height, index } = props;
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const toggle = useToggleImage(props.index);
 
   useLayoutEffect(() => {
     if (image && canvasRef.current) {
@@ -158,9 +159,12 @@ function ZoomableCanvas(props: {
   }
 
   return (
-    <Zoomable
-      content={<canvas style={{ height }} ref={canvasRef} />}
-      index={index}
+    <canvas
+      style={{ maxHeight: height, maxWidth: '50%', cursor: 'zoom-in' }}
+      ref={canvasRef}
+      role="button"
+      tabIndex={1}
+      onClick={toggle}
     />
   );
 }
@@ -172,22 +176,16 @@ function ZoomableImage(props: {
   index: number;
 }) {
   const { src, height, alt, index } = props;
-
-  return (
-    <Zoomable
-      content={<img src={src} height={height} alt={alt} />}
-      index={index}
-    />
-  );
-}
-
-function Zoomable(props: { index: number; content: ReactNode }) {
   const toggle = useToggleImage(props.index);
-  const { content } = props;
   return (
-    <div role="button" tabIndex={1} onClick={toggle}>
-      <div style={{ cursor: 'zoom-in', display: 'flex' }}>{content}</div>
-    </div>
+    <img
+      src={src}
+      alt={alt}
+      style={{ maxHeight: height, maxWidth: '50%', cursor: 'zoom-in' }}
+      role="button"
+      tabIndex={1}
+      onClick={toggle}
+    />
   );
 }
 
