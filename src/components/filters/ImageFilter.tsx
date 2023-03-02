@@ -147,9 +147,9 @@ function ExpandableCanvas(props: { image: Image | null; height?: number }) {
 
   useLayoutEffect(() => {
     if (image && canvasRef.current) {
-      writeCanvas(image.resize({ height }), canvasRef.current);
+      writeCanvas(image, canvasRef.current);
     }
-  }, [image, canvasRef, canvasRef]);
+  }, [image, canvasRef]);
 
   useLayoutEffect(() => {
     if (image && canvasZoomRef.current) {
@@ -159,7 +159,7 @@ function ExpandableCanvas(props: { image: Image | null; height?: number }) {
 
   return (
     <Zoomable
-      content={<canvas ref={canvasRef} />}
+      content={<canvas style={{ height }} ref={canvasRef} />}
       isOpen={zooming}
       toggle={toggle}
     >
