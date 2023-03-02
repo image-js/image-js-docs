@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
-export default function CodeIcon(props: { style: React.CSSProperties }) {
+export default function CodeIcon(props: { style: CSSProperties }) {
   return (
     <svg
       style={props.style}

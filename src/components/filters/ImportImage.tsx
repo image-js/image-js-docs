@@ -1,5 +1,5 @@
 import { Image } from 'image-js';
-import React, { useCallback, useReducer } from 'react';
+import React, { createContext, ReactNode, useContext, useReducer } from 'react';
 
 const defaultImages: UrlOption[] = [
   { type: 'url', value: '/img/standard/Lenna.png', label: 'Lenna' },
@@ -30,17 +30,17 @@ interface ImportImageContext {
   addImages: (images: FilterImageOption[]) => void;
 }
 
-const imageContext = React.createContext<ImportImageContext | null>(null);
+const imageContext = createContext<ImportImageContext | null>(null);
 
 export function useImportImageProvider() {
-  const context = React.useContext(imageContext);
+  const context = useContext(imageContext);
   if (!context) {
     throw new Error('expected context to be defined');
   }
   return context;
 }
 
-export function ImportImageProvider(props: { children: React.ReactNode }) {
+export function ImportImageProvider(props: { children: ReactNode }) {
   const [images, addImages] = useReducer<
     (
       state: ImageOption[],
