@@ -9,30 +9,11 @@ import { decode, Image, writeCanvas } from 'image-js';
 import CodeIcon from '../../components/icons/CodeIcon';
 import CodepenIcon from '../../components/icons/CodepenIcon';
 import FileIcon from '../icons/FileIcon';
-
-const options: UrlOption[] = [
-  { type: 'url', value: '/img/standard/Lenna.png', label: 'Lenna' },
-  { type: 'url', value: '/img/standard/barbara.jpg', label: 'Barbara' },
-  { type: 'url', value: '/img/standard/boat.png', label: 'Standard boat' },
-  { type: 'url', value: '/img/standard/cameraman.png', label: 'Cameraman' },
-  { type: 'url', value: '/img/standard/mandrill.png', label: 'Mandrill' },
-  { type: 'url', value: '/img/standard/peppers.png', label: 'Peppers' },
-  { type: 'url', value: '/img/standard/house.png', label: 'House' },
-];
-
-type UrlOption = {
-  type: 'url';
-  value: string;
-  label: string;
-};
-
-interface ImageOption {
-  type: 'image';
-  value: string;
-  image: Image;
-}
-
-type FilterImageOption = UrlOption | ImageOption;
+import {
+  FilterImageOption,
+  ImageOption,
+  useImportImageProvider,
+} from './ImportImage';
 
 const iconStyle: React.CSSProperties = {
   width: 20,
@@ -49,18 +30,9 @@ function processImage(img: Image) {
 }
 
 export default function ImageFilter() {
-  const [imageOptions, addOption] = useReducer<
-    (state: ImageOption[], newOption: ImageOption[]) => FilterImageOption[],
-    FilterImageOption[]
-  >(
-    (state, newOption) => {
-      const newOptions = [...state, ...newOption];
-      return newOptions;
-    },
-    options,
-    () => options,
-  );
-  const [imageOption, setImageOption] = useState<FilterImageOption>(options[0]);
+  const { images, addImages } = useImportImageProvider();
+
+  const [imageOption, setImageOption] = useState<FilterImageOption>(images[0]);
   const [filteredImage, setFilteredImage] = useState<Image | null>(null);
 
   useEffect(() => {
@@ -128,13 +100,13 @@ export default function ImageFilter() {
             style={{ width: 150, display: 'block' }}
             value={imageOption.value}
             onChange={(event) => {
-              const value = imageOptions.find(
+              const value = images.find(
                 (opt) => opt.value === event.target.value,
               );
               setImageOption(value);
             }}
           >
-            {imageOptions.map((option) => (
+            {images.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.type === 'url' ? option.label : option.value}
               </option>
@@ -148,7 +120,7 @@ export default function ImageFilter() {
                   value: image.file.name,
                   image: image.image,
                 }));
-                addOption(newOptions);
+                addImages(newOptions);
                 if (newOptions.length) {
                   setImageOption(newOptions[newOptions.length - 1]);
                 }
