@@ -38,3 +38,16 @@ button {
   cursor: pointer;
   outline: inherit;
 }
+
+.filter-demo {
+  /* --ifm-alert-background-color: var(--ifm-color-success-contrast-background);
+  --ifm-alert-background-color-highlight: rgba(0, 164, 0, 0.15);
+  --ifm-alert-foreground-color: var(--ifm-color-success-contrast-foreground);
+  --ifm-alert-border-color: var(--ifm-color-success-dark); */
+  background-color: var(--ifm-alert-background-color);
+  border: var(--ifm-alert-border-width) solid var(--ifm-alert-border-color);
+  border-radius: var(--ifm-alert-border-radius);
+  box-shadow: var(--ifm-alert-shadow);
+  color: var(--ifm-alert-foreground-color);
+  padding: var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal);
+}

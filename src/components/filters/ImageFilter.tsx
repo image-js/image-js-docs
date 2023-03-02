@@ -16,9 +16,8 @@ import {
 } from './ImportImage';
 
 const iconStyle: React.CSSProperties = {
-  width: 20,
-  height: 20,
-  color: '#686',
+  width: 18,
+  height: 18,
 };
 
 const basePadding: React.CSSProperties = {
@@ -50,14 +49,15 @@ export default function ImageFilter() {
   return (
     <div>
       <div
+        className="filter-demo alert--success"
         style={{
-          border: '1px solid #ccc',
-          backgroundColor: '#efe',
+          // border: '1px solid #ccc',
+          // backgroundColor: '#efe',
           margin: 4,
           borderRadius: 4,
           display: 'inline-flex',
           flexDirection: 'column',
-          gap: 4,
+          gap: 8,
           ...basePadding,
         }}
       >
@@ -157,6 +157,10 @@ function ExpandableCanvas(props: { image: Image | null; height?: number }) {
     }
   }, [canvasZoomRef, image]);
 
+  if (!image) {
+    return null;
+  }
+
   return (
     <Zoomable
       content={<canvas style={{ height }} ref={canvasRef} />}
@@ -205,7 +209,7 @@ function Zoomable(props: {
       }}
       onClick={toggle}
     >
-      <div style={{ cursor: 'zoom-in' }}>{content}</div>
+      <div style={{ cursor: 'zoom-in', display: 'flex' }}>{content}</div>
       <div
         style={{
           cursor: 'zoom-out',
