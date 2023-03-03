@@ -1,7 +1,6 @@
 import React, { useEffect, useState, CSSProperties, useRef } from 'react';
 import { decode, Image } from 'image-js';
-import CodeIcon from '../../components/icons/CodeIcon';
-import CodepenIcon from '../../components/icons/CodepenIcon';
+import { RxCodesandboxLogo } from 'react-icons/rx';
 import {
   FilterImageOption,
   ImageOption,
@@ -10,6 +9,8 @@ import {
 import { ExpandableImages, ImageSrc } from './ExpandableImages';
 import { iconStyle } from '../styles/icon';
 import { ImageInputButton } from './ImageInputButton';
+import CameraImageButton from '../camera/CameraImageButton';
+import { HiOutlineCodeBracket } from 'react-icons/hi2';
 
 const basePadding: CSSProperties = {
   padding: 8,
@@ -119,11 +120,24 @@ export default function ImageFilter() {
                 }
               }}
             />
+            <CameraImageButton
+              onSnapshot={({ image, name }) => {
+                const newOptions: ImageOption[] = [
+                  {
+                    type: 'image',
+                    value: name,
+                    image,
+                  },
+                ];
+                addImages(newOptions);
+                setSelectedImage(newOptions[0]);
+              }}
+            />
             <button style={{ height: '1em' }}>
-              <CodeIcon style={iconStyle} />
+              <HiOutlineCodeBracket style={iconStyle} />
             </button>
             <button style={{ height: '1em' }}>
-              <CodepenIcon style={iconStyle} />
+              <RxCodesandboxLogo style={iconStyle} />
             </button>
           </div>
         </div>

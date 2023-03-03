@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 
 export const iconStyle: CSSProperties = {
-  width: 18,
-  height: 18,
+  width: 22,
+  height: 22,
 };

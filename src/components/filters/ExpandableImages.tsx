@@ -2,7 +2,6 @@ import { Image, writeCanvas } from 'image-js';
 import React, {
   createContext,
   Dispatch,
-  ReactNode,
   SetStateAction,
   useCallback,
   useContext,
@@ -175,7 +174,7 @@ function ZoomableImage(props: {
   alt?: string;
   index: number;
 }) {
-  const { src, height, alt, index } = props;
+  const { src, height, alt } = props;
   const toggle = useToggleImage(props.index);
   return (
     <img
