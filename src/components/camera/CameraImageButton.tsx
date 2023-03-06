@@ -1,5 +1,5 @@
 import { Image } from 'image-js';
-import React, { Dispatch, SetStateAction, useRef } from 'react';
+import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import { HiOutlineCamera } from 'react-icons/hi2';
 import Input from '../form/Input';
 import { iconStyle } from '../styles/icon';
@@ -18,7 +18,7 @@ export default function CameraImageButton({
 }: {
   onSnapshot: (snapshot: Snapshot) => void;
 }) {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -44,7 +44,7 @@ function CameraSnapshotModal(props: {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   onSnapshot: (snapshot: Snapshot) => void;
 }) {
-  const [snapshotName, setSnapshotName] = React.useState('');
+  const [snapshotName, setSnapshotName] = useState('');
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -79,8 +79,8 @@ function CameraSnapshotModal(props: {
           justifyContent: 'space-around',
           width: '90%',
           height: '90%',
-          maxWidth: 800,
-          maxHeight: 600,
+          maxWidth: 1200,
+          maxHeight: 900,
           backgroundColor: 'white',
         }}
       >
