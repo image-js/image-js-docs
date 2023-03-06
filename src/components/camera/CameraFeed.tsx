@@ -16,7 +16,13 @@ export default function CameraFeed({
     if (!selectedCamera || !video) return;
     let stream: MediaStream | null = null;
     navigator.mediaDevices
-      .getUserMedia({ video: { deviceId: selectedCamera.device.deviceId } })
+      .getUserMedia({
+        video: {
+          deviceId: selectedCamera.device.deviceId,
+          height: { ideal: 1080, min: 480, max: 1080 },
+          width: { ideal: 1920 },
+        },
+      })
       .then((mediaStream) => {
         stream = mediaStream;
         video.srcObject = stream;
@@ -38,5 +44,5 @@ export default function CameraFeed({
     return <UnavailableCamera />;
   }
 
-  return <video ref={videoRef} />;
+  return <video style={{ maxHeight: 480 }} ref={videoRef} />;
 }
