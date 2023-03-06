@@ -32,15 +32,10 @@ export default function CameraSelector() {
             (cam) => cam.label === event.currentTarget.value,
           );
           if (device) {
-            navigator.mediaDevices
-              .getUserMedia({ video: { deviceId: device.deviceId } })
-              .then((stream) => {
-                dispatch({
-                  type: 'SELECT_CAMERA',
-                  camera: { device, stream },
-                });
-              })
-              .catch(console.error);
+            dispatch({
+              type: 'SELECT_CAMERA',
+              camera: { device },
+            });
           }
         }}
       >

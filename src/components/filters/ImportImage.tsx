@@ -41,19 +41,12 @@ export function useImportImageProvider() {
 }
 
 export function ImportImageProvider(props: { children: ReactNode }) {
-  const [images, addImages] = useReducer<
-    (
-      state: ImageOption[],
-      newOptions: FilterImageOption[],
-    ) => FilterImageOption[],
-    FilterImageOption[]
-  >(
-    (state, newOptions) => {
+  const [images, addImages] = useReducer(
+    (state: FilterImageOption[], newOptions: FilterImageOption[]) => {
       const newState = [...state, ...newOptions];
       return newState;
     },
     defaultImages,
-    () => defaultImages,
   );
 
   return (

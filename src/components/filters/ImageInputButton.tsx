@@ -30,8 +30,9 @@ export function ImageInputButton(props: {
         onChange={(event) => {
           const images: ImageFile[] = [];
           let loaded = 0;
-          for (let idx = 0; idx < event.target.files.length; idx++) {
-            const file = event.target.files[idx];
+          const files = event.target.files || [];
+          for (let idx = 0; idx < files.length; idx++) {
+            const file = files[idx];
             const reader = new FileReader();
             reader.onload = (e) => {
               loaded++;
@@ -46,7 +47,7 @@ export function ImageInputButton(props: {
                 } catch (e) {
                   reportError(e);
                 }
-                if (loaded === event.target.files.length) {
+                if (loaded === files.length) {
                   props.onImages(images);
                 }
               }

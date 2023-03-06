@@ -97,7 +97,9 @@ export default function ImageFilter() {
               const value = images.find(
                 (opt) => opt.value === event.target.value,
               );
-              setSelectedImage(value);
+              if (value) {
+                setSelectedImage(value);
+              }
             }}
           >
             {images.map((option) => (

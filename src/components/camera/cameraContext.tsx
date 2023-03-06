@@ -11,7 +11,6 @@ import React, {
 
 interface Camera {
   device: MediaDeviceInfo;
-  stream: MediaStream;
 }
 
 interface CameraState {
@@ -104,14 +103,10 @@ export function CameraProvider(props: { children: ReactNode }) {
       const devices = await navigator.mediaDevices.enumerateDevices();
       const cameras = devices.filter((device) => device.kind === 'videoinput');
       if (cameras.length > 0) {
-        // TODO: handle denied permission
-        const firstCameraStream = await navigator.mediaDevices.getUserMedia({
-          video: { deviceId: cameras[0].deviceId },
-        });
         dispatch({
           type: 'SET_CAMERAS',
           cameras,
-          firstCamera: { device: cameras[0], stream: firstCameraStream },
+          firstCamera: { device: cameras[0] },
         });
       }
     }

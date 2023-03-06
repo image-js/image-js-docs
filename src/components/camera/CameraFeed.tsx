@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, RefObject } from 'react';
+import React, { useEffect, RefObject } from 'react';
 import { useCameraContext } from './cameraContext';
 
 import UnavailableCamera from './UnavailableCamera';
@@ -13,10 +13,25 @@ export default function CameraFeed({
   } = useCameraContext();
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !selectedCamera) return;
-    video.srcObject = selectedCamera.stream;
-    video.onloadedmetadata = () => {
-      video.play().catch(console.error);
+    if (!selectedCamera || !video) return;
+    let stream: MediaStream | null = null;
+    navigator.mediaDevices
+      .getUserMedia({ video: { deviceId: selectedCamera.device.deviceId } })
+      .then((mediaStream) => {
+        stream = mediaStream;
+        video.srcObject = stream;
+        video.onloadedmetadata = () => {
+          video.play().catch(console.error);
+        };
+      })
+      .catch(console.error);
+
+    return () => {
+      if (stream) {
+        stream.getVideoTracks().forEach((track) => {
+          track.stop();
+        });
+      }
     };
   }, [selectedCamera]);
   if (!selectedCamera) {
