@@ -11,6 +11,8 @@ import { iconStyle } from '../styles/icon';
 import { ImageInputButton } from './ImageInputButton';
 import CameraImageButton from '../camera/CameraImageButton';
 import { HiOutlineCodeBracket } from 'react-icons/hi2';
+import CameraStreamButton from '../camera/CameraStreamButton';
+import { rowStyle } from '../styles/flex';
 
 const basePadding: CSSProperties = {
   padding: 8,
@@ -90,25 +92,35 @@ export default function ImageFilter() {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <select
-            style={{ width: 150, display: 'block' }}
-            value={selectedImage.value}
-            onChange={(event) => {
-              const value = images.find(
-                (opt) => opt.value === event.target.value,
-              );
-              if (value) {
-                setSelectedImage(value);
-              }
-            }}
-          >
-            {images.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.type === 'url' ? option.label : option.value}
-              </option>
-            ))}
-          </select>
+          <div style={rowStyle}>
+            <label
+              style={{ fontSize: '0.875em' }}
+              htmlFor="image-filter-select"
+            >
+              Source:
+            </label>
+            <select
+              id="image-filter-select"
+              style={{ width: 150, display: 'block' }}
+              value={selectedImage.value}
+              onChange={(event) => {
+                const value = images.find(
+                  (opt) => opt.value === event.target.value,
+                );
+                if (value) {
+                  setSelectedImage(value);
+                }
+              }}
+            >
+              {images.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.type === 'url' ? option.label : option.value}
+                </option>
+              ))}
+            </select>
+          </div>
           <div style={{ display: 'flex', gap: 8 }}>
+            <CameraStreamButton />
             <ImageInputButton
               onImages={(images) => {
                 const newOptions: ImageOption[] = images.map((image) => ({

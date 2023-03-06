@@ -15,14 +15,26 @@ export default function CameraFeed({
     const video = videoRef.current;
     if (!selectedCamera || !video) return;
     let stream: MediaStream | null = null;
+    const constraints: MediaStreamConstraints = {
+      video: {
+        groupId: selectedCamera.device.groupId
+          ? {
+              exact: selectedCamera.device.groupId,
+            }
+          : undefined,
+        deviceId: selectedCamera.device.deviceId
+          ? {
+              exact: selectedCamera.device.deviceId,
+            }
+          : undefined,
+
+        height: { ideal: 1080, min: 480, max: 1080 },
+        width: { ideal: 1920 },
+      },
+    };
+
     navigator.mediaDevices
-      .getUserMedia({
-        video: {
-          deviceId: selectedCamera.device.deviceId,
-          height: { ideal: 1080, min: 480, max: 1080 },
-          width: { ideal: 1920 },
-        },
-      })
+      .getUserMedia(constraints)
       .then((mediaStream) => {
         stream = mediaStream;
         video.srcObject = stream;

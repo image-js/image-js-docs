@@ -22,11 +22,7 @@ export default function CameraSnapshotButton(props: CameraSnapshotButtonProps) {
       ) as CanvasRenderingContext2D;
       inputContext.drawImage(video, 0, 0);
       const image = readCanvas(canvasInput);
-      // const srcObject = videoRef.current.srcObject as MediaStream;
       onSnapshot(image);
-      // srcObject.getVideoTracks().forEach((track) => {
-      //   track.stop();
-      // });
     }
   }
   return (

@@ -53,7 +53,7 @@ type CameraAction =
     }
   | {
       type: 'SELECT_CAMERA';
-      camera: Camera;
+      camera: Camera | null;
     }
   | {
       type: 'HANDLE_DEVICES';
@@ -61,20 +61,24 @@ type CameraAction =
 
 const cameraStateReducer = produce(
   (state: CameraState, action: CameraAction) => {
+    const selectedCamera = state.selectedCamera;
     switch (action.type) {
       case 'SET_CAMERAS': {
         state.cameras = action.cameras;
         if (action.cameras.length === 0) {
           state.selectedCamera = null;
-        } else if (state.selectedCamera === null) {
+        } else if (selectedCamera === null) {
           state.selectedCamera = action.firstCamera;
         } else if (
-          !state.cameras.find(
-            (camera) => camera.deviceId === action.firstCamera.device.deviceId,
+          !state.cameras.find((camera) =>
+            isSameCamera(camera, selectedCamera.device),
           )
         ) {
           // The selected camera disappeared. Use another one.
           state.selectedCamera = action.firstCamera;
+        } else {
+          // The new camera to select is already selected
+          // Do nothing
         }
         break;
       }
@@ -90,6 +94,19 @@ const cameraStateReducer = produce(
     }
   },
 );
+
+export function isSameCamera(
+  cameraA: MediaDeviceInfo,
+  cameraB: MediaDeviceInfo,
+) {
+  if (cameraA.deviceId && cameraB.deviceId) {
+    return cameraA.deviceId === cameraB.deviceId;
+  }
+  if (cameraA.groupId && cameraB.groupId) {
+    return cameraA.groupId === cameraB.groupId;
+  }
+  return false;
+}
 
 export function CameraProvider(props: { children: ReactNode }) {
   const [cameraState, dispatch] = useReducer(
