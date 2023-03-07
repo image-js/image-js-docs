@@ -1,19 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { rowStyle } from '../styles/flex';
 import { useCameraContext } from './cameraContext';
 
 export default function CameraSelector() {
   const {
-    cameraState: { cameras, selectedCamera, devicesHandled },
+    cameraState: { cameras, selectedCamera },
     dispatch,
-    handleDevices,
   } = useCameraContext();
 
-  useEffect(() => {
-    if (!devicesHandled) {
-      handleDevices();
-    }
-  }, [devicesHandled]);
   if (cameras.length === 0) return null;
   return (
     <div style={rowStyle}>

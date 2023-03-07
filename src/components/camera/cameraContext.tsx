@@ -3,8 +3,8 @@ import React, {
   createContext,
   Dispatch,
   ReactNode,
-  useCallback,
   useContext,
+  useEffect,
   useMemo,
   useReducer,
 } from 'react';
@@ -15,28 +15,22 @@ interface Camera {
 
 interface CameraState {
   cameras: MediaDeviceInfo[];
-  selectedCamera: Camera | null;
-  devicesHandled: boolean;
+  selectedCamera: Camera | null | undefined;
 }
 
 const defaultCameraState: CameraState = {
   cameras: [],
-  selectedCamera: null,
-  devicesHandled: false,
+  selectedCamera: undefined,
 };
 
 type CameraContext = {
   cameraState: CameraState;
   dispatch: Dispatch<CameraAction>;
-  handleDevices: () => void;
 };
 
 const cameraContext = createContext<CameraContext>({
   cameraState: defaultCameraState,
   dispatch: () => {
-    // Empty
-  },
-  handleDevices: () => {
     // Empty
   },
 });
@@ -54,9 +48,6 @@ type CameraAction =
   | {
       type: 'SELECT_CAMERA';
       camera: Camera | null;
-    }
-  | {
-      type: 'HANDLE_DEVICES';
     };
 
 const cameraStateReducer = produce(
@@ -67,7 +58,7 @@ const cameraStateReducer = produce(
         state.cameras = action.cameras;
         if (action.cameras.length === 0) {
           state.selectedCamera = null;
-        } else if (selectedCamera === null) {
+        } else if (!selectedCamera) {
           state.selectedCamera = action.firstCamera;
         } else if (
           !state.cameras.find((camera) =>
@@ -86,9 +77,6 @@ const cameraStateReducer = produce(
         state.selectedCamera = action.camera;
         break;
       }
-      case 'HANDLE_DEVICES':
-        state.devicesHandled = true;
-        break;
       default:
         throw new Error('unknown action');
     }
@@ -114,8 +102,7 @@ export function CameraProvider(props: { children: ReactNode }) {
     defaultCameraState,
   );
 
-  const handleDevices = useCallback(() => {
-    dispatch({ type: 'HANDLE_DEVICES' });
+  useEffect(() => {
     async function getCameras() {
       const devices = await navigator.mediaDevices.enumerateDevices();
       const cameras = devices.filter((device) => device.kind === 'videoinput');
@@ -129,11 +116,10 @@ export function CameraProvider(props: { children: ReactNode }) {
     }
 
     function handleDeviceChange() {
-      getCameras().catch(console.error);
+      getCameras().catch(reportError);
     }
 
     navigator.mediaDevices.addEventListener('devicechange', handleDeviceChange);
-    handleDeviceChange();
     return () =>
       navigator.mediaDevices.removeEventListener(
         'devicechange',
@@ -145,7 +131,6 @@ export function CameraProvider(props: { children: ReactNode }) {
     () => ({
       cameraState,
       dispatch,
-      handleDevices,
     }),
     [cameraState],
   );
@@ -155,4 +140,72 @@ export function CameraProvider(props: { children: ReactNode }) {
       {props.children}
     </cameraContext.Provider>
   );
+}
+
+export function useVideoStream(videoRef: React.RefObject<HTMLVideoElement>) {
+  const {
+    cameraState: { selectedCamera },
+    dispatch,
+  } = useCameraContext();
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (selectedCamera === null) return;
+    // if selectedCamera is undefined, we make a first call to getUserMedia
+    // after which we can get the proper list of devices
+
+    let stream: MediaStream | null = null;
+
+    const constraints: MediaStreamConstraints = {
+      video: {
+        groupId: selectedCamera?.device.groupId
+          ? {
+              exact: selectedCamera.device.groupId,
+            }
+          : undefined,
+        deviceId: selectedCamera?.device.deviceId
+          ? {
+              exact: selectedCamera.device.deviceId,
+            }
+          : undefined,
+
+        height: { ideal: 1080, min: 480, max: 1080 },
+        width: { ideal: 1920 },
+      },
+    };
+
+    navigator.mediaDevices
+      .getUserMedia(constraints)
+      .then((mediaStream) => {
+        stream = mediaStream;
+        video.srcObject = stream;
+        video.onloadedmetadata = () => {
+          video.play().catch(console.error);
+        };
+
+        return navigator.mediaDevices
+          .enumerateDevices()
+          .then((devices) => {
+            const cameras = devices.filter(
+              (device) => device.kind === 'videoinput',
+            );
+            dispatch({
+              type: 'SET_CAMERAS',
+              cameras,
+              firstCamera: { device: cameras[0] },
+            });
+          })
+          .catch(reportError);
+      })
+      .catch(reportError);
+
+    return () => {
+      if (stream) {
+        stream.getVideoTracks().forEach((track) => {
+          track.stop();
+        });
+      }
+    };
+  }, [selectedCamera]);
 }
