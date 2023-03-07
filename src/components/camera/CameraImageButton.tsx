@@ -1,6 +1,7 @@
 import { Image } from 'image-js';
 import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import { HiOutlineCamera } from 'react-icons/hi2';
+import { useImportImageProvider } from '../filters/ImportImage';
 import Input from '../form/Input';
 import { iconStyle } from '../styles/icon';
 
@@ -44,7 +45,18 @@ function CameraSnapshotModal(props: {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   onSnapshot: (snapshot: Snapshot) => void;
 }) {
-  const [snapshotName, setSnapshotName] = useState('');
+  const { images } = useImportImageProvider();
+  const currentCount = Math.max(
+    ...images.map((image) => {
+      const reg = /^Snapshot #(\d+)$/.exec(image.value);
+      if (reg) {
+        return +reg[1];
+      }
+      return 0;
+    }),
+  );
+  const defaultName = `Snapshot #${currentCount + 1}`;
+  const [snapshotName, setSnapshotName] = useState(defaultName);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
