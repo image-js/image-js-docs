@@ -27,12 +27,12 @@ const basePadding: CSSProperties = {
   padding: 8,
 };
 
-function processImage(img: Image) {
-  return img.grey({ algorithm: 'luma601' });
-}
-
-export default function ImageFilter() {
-  const { images, addImages, allowVideoStream } = useImportImageProvider();
+export default function ImageFilter({
+  processImage,
+}: {
+  processImage: (img: Image) => Image;
+}) {
+  const { images, addImages } = useImportImageProvider();
 
   const [selectedImage, setSelectedImage] = useState<FilterImageOption>(
     images[0],

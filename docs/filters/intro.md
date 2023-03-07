@@ -2,10 +2,15 @@
 sidebar_position: 1
 ---
 
-import ImageFilter from '../../src/components/filters/ImageFilter'
+import GreyFilter from '../../src/components/filters/GreyFilter'
+import BlurFilter from '../../src/components/filters/BlurFilter'
 
 # Filters
 
 ## Grey
 
-<ImageFilter />
+<GreyFilter />
+
+## Blur
+
+<BlurFilter />
