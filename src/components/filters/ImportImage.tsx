@@ -71,3 +71,13 @@ export function ImportImageProvider(props: { children: ReactNode }) {
     </imageContext.Provider>
   );
 }
+
+export function isUrlOption(option: FilterImageOption): option is UrlOption {
+  return option.type === 'url';
+}
+
+export function isImageOption(
+  option: FilterImageOption,
+): option is ImageOption {
+  return option.type === 'image';
+}

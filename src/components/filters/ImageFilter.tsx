@@ -4,6 +4,8 @@ import { RxCodesandboxLogo } from 'react-icons/rx';
 import {
   FilterImageOption,
   ImageOption,
+  isImageOption,
+  isUrlOption,
   useImportImageProvider,
 } from './ImportImage';
 import { ExpandableImages, ImageSrc } from './ExpandableImages';
@@ -51,6 +53,9 @@ export default function ImageFilter() {
   } else {
     expandableImages.unshift(selectedImage.image);
   }
+
+  const standardImages = images.filter(isUrlOption);
+  const customImages = images.filter((img) => isImageOption(img));
 
   return (
     <div>
@@ -112,11 +117,22 @@ export default function ImageFilter() {
                 }
               }}
             >
-              {images.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.type === 'url' ? option.label : option.value}
-                </option>
-              ))}
+              {customImages.length > 0 && (
+                <optgroup label="Custom images">
+                  {customImages.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.value}
+                    </option>
+                  ))}
+                </optgroup>
+              )}
+              <optgroup label="Standard images">
+                {standardImages.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </optgroup>
             </select>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
