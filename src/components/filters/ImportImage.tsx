@@ -1,5 +1,11 @@
 import { Image } from 'image-js';
-import React, { createContext, ReactNode, useContext, useReducer } from 'react';
+import React, {
+  createContext,
+  DispatchWithoutAction,
+  ReactNode,
+  useContext,
+  useReducer,
+} from 'react';
 
 const defaultImages: UrlOption[] = [
   { type: 'url', value: '/img/standard/Lenna.png', label: 'Lenna' },
@@ -28,6 +34,8 @@ export type FilterImageOption = UrlOption | ImageOption;
 interface ImportImageContext {
   images: FilterImageOption[];
   addImages: (images: FilterImageOption[]) => void;
+  isVideoStreamAllowed: boolean;
+  allowVideoStream: DispatchWithoutAction;
 }
 
 const imageContext = createContext<ImportImageContext | null>(null);
@@ -65,8 +73,15 @@ export function ImportImageProvider(props: { children: ReactNode }) {
     defaultImages,
   );
 
+  const [isVideoStreamAllowed, allowVideoStream] = useReducer(
+    (state: boolean) => true,
+    false,
+  );
+
   return (
-    <imageContext.Provider value={{ images, addImages }}>
+    <imageContext.Provider
+      value={{ images, addImages, isVideoStreamAllowed, allowVideoStream }}
+    >
       {props.children}
     </imageContext.Provider>
   );

@@ -1,6 +1,11 @@
 import React from 'react';
 import { rowStyle } from '../styles/flex';
-import { useCameraContext } from './cameraContext';
+import {
+  findCameraById,
+  getCameraId,
+  getCameraLabel,
+  useCameraContext,
+} from './cameraContext';
 
 export default function CameraSelector() {
   const {
@@ -20,7 +25,7 @@ export default function CameraSelector() {
       <select
         id="camera"
         name="camera"
-        value={getCameraValue(selectedCamera)}
+        value={getCameraId(selectedCamera)}
         onChange={(event) => {
           if (event.target.value === 'none') {
             dispatch({
@@ -29,13 +34,8 @@ export default function CameraSelector() {
             });
             return;
           }
-          const device = cameras.find((cam) => {
-            if (cam.deviceId) {
-              return cam.deviceId === event.target.value;
-            } else {
-              return cam.groupId === event.target.value;
-            }
-          });
+          const device = findCameraById(cameras, event.target.value);
+
           if (device) {
             dispatch({
               type: 'SELECT_CAMERA',
@@ -46,26 +46,11 @@ export default function CameraSelector() {
       >
         <option key="none" value="none" disabled />
         {cameras.map((camera, idx) => (
-          <option key={getCameraValue(camera)} value={getCameraValue(camera)}>
+          <option key={getCameraId(camera)} value={getCameraId(camera)}>
             {getCameraLabel(camera, idx)}
           </option>
         ))}
       </select>
     </div>
   );
-}
-
-function getCameraLabel(camera: MediaDeviceInfo, idx: number) {
-  if (!camera) {
-    return 'None';
-  }
-  if (camera.label) {
-    return camera.label;
-  } else {
-    return `Camera ${idx + 1}`;
-  }
-}
-function getCameraValue(camera: MediaDeviceInfo | null | undefined) {
-  if (!camera) return 'none';
-  return camera.deviceId || camera.groupId;
 }

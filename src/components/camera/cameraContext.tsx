@@ -1,12 +1,16 @@
+import { Image, readCanvas, writeCanvas } from 'image-js';
 import { produce } from 'immer';
 import React, {
   createContext,
   Dispatch,
   ReactNode,
+  RefObject,
   useContext,
   useEffect,
   useMemo,
   useReducer,
+  useRef,
+  useState,
 } from 'react';
 
 interface CameraState {
@@ -196,6 +200,108 @@ export function useVideoStream(videoRef: React.RefObject<HTMLVideoElement>) {
   }, [selectedCamera]);
 }
 
+export function useVideoTransform(
+  selectedDevice: MediaDeviceInfo,
+  processImage: (image: Image) => Image,
+  onFrame?: (inputImage: Image, outputImage: Image) => void,
+) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasOutputRef = useRef<HTMLCanvasElement>(null);
+  const canvasInputRef = useRef<HTMLCanvasElement>(null);
+  const { dispatch } = useCameraContext();
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const video = videoRef.current;
+    let nextFrameRequest: number;
+    if (!video) return;
+    if (selectedDevice === null) return;
+    // if selectedDevice is undefined, we make a first call to getUserMedia
+    // after which we can get the proper list of devices
+
+    let stream: MediaStream | null = null;
+
+    const constraints: MediaStreamConstraints = {
+      video: {
+        groupId: selectedDevice?.groupId
+          ? {
+              exact: selectedDevice.groupId,
+            }
+          : undefined,
+        deviceId: selectedDevice?.deviceId
+          ? {
+              exact: selectedDevice.deviceId,
+            }
+          : undefined,
+
+        height: { ideal: 1080, min: 480, max: 1080 },
+        width: { ideal: 1920 },
+      },
+    };
+
+    navigator.mediaDevices
+      .getUserMedia(constraints)
+      .then((mediaStream) => {
+        stream = mediaStream;
+        video.srcObject = stream;
+        video.onloadedmetadata = () => {
+          video
+            .play()
+            .then(() => {
+              const canvasInput = canvasInputRef.current as HTMLCanvasElement;
+              const canvasOutput = canvasOutputRef.current as HTMLCanvasElement;
+              if (!canvasInput || !canvasOutput) return;
+              canvasInput.height = video.videoHeight;
+              canvasInput.width = video.videoWidth;
+              const inputContext = canvasInput.getContext(
+                '2d',
+              ) as CanvasRenderingContext2D;
+              function nextFrame() {
+                if (!video) return;
+                inputContext.drawImage(video, 0, 0);
+                const image = readCanvas(canvasInput);
+                try {
+                  const outputImage = processImage(image);
+                  writeCanvas(outputImage, canvasOutput);
+                  onFrame?.(image, outputImage);
+                } catch (err: any) {
+                  setError(err.stack);
+                  console.error(err);
+                }
+                nextFrameRequest = requestAnimationFrame(nextFrame);
+              }
+              nextFrameRequest = requestAnimationFrame(nextFrame);
+            })
+            .catch(reportError);
+        };
+
+        return navigator.mediaDevices
+          .enumerateDevices()
+          .then((devices) => {
+            dispatch({
+              type: 'SET_CAMERAS',
+              devices,
+            });
+          })
+          .catch(reportError);
+      })
+      .catch(reportError);
+
+    return () => {
+      if (stream) {
+        stream.getVideoTracks().forEach((track) => {
+          track.stop();
+        });
+      }
+      if (nextFrameRequest) {
+        cancelAnimationFrame(nextFrameRequest);
+      }
+    };
+  }, [selectedDevice]);
+
+  return { videoRef, canvasInputRef, canvasOutputRef, error };
+}
+
 function filterAndSortDevices(devices: MediaDeviceInfo[]) {
   return devices
     .filter((device) => device.kind === 'videoinput')
@@ -204,4 +310,30 @@ function filterAndSortDevices(devices: MediaDeviceInfo[]) {
       const bIsIphone = b.label.includes('iPhone') ? 1 : 0;
       return aIsIphone - bIsIphone;
     });
+}
+
+export function getCameraLabel(camera: MediaDeviceInfo, idx: number) {
+  if (!camera) {
+    return 'None';
+  }
+  if (camera.label) {
+    return camera.label;
+  } else {
+    return `Camera ${idx + 1}`;
+  }
+}
+
+export function getCameraId(camera: MediaDeviceInfo | null | undefined) {
+  if (!camera) return 'none';
+  return camera.deviceId || camera.groupId;
+}
+
+export function findCameraById(cameras: MediaDeviceInfo[], id: string) {
+  return cameras.find((cam) => {
+    if (cam.deviceId) {
+      return cam.deviceId === id;
+    } else {
+      return cam.groupId === id;
+    }
+  });
 }

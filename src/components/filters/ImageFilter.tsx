@@ -1,5 +1,5 @@
-import React, { useEffect, useState, CSSProperties, useRef } from 'react';
-import { decode, Image } from 'image-js';
+import React, { useState, CSSProperties } from 'react';
+import { Image } from 'image-js';
 import { RxCodesandboxLogo } from 'react-icons/rx';
 import {
   FilterImageOption,
@@ -8,13 +8,20 @@ import {
   isUrlOption,
   useImportImageProvider,
 } from './ImportImage';
-import { ExpandableImages, ImageSrc } from './ExpandableImages';
 import { iconStyle } from '../styles/icon';
 import { ImageInputButton } from './ImageInputButton';
 import CameraImageButton from '../camera/CameraImageButton';
 import { HiOutlineCodeBracket } from 'react-icons/hi2';
 import CameraStreamButton from '../camera/CameraStreamButton';
 import { rowStyle } from '../styles/flex';
+import {
+  findCameraById,
+  getCameraId,
+  getCameraLabel,
+  useCameraContext,
+} from '../camera/cameraContext';
+import ExpandableImageDuo from './ExpandableImageDuo';
+import ExpandableVideoDuo from './ExpandableVideoDuo';
 
 const basePadding: CSSProperties = {
   padding: 8,
@@ -25,37 +32,25 @@ function processImage(img: Image) {
 }
 
 export default function ImageFilter() {
-  const { images, addImages } = useImportImageProvider();
+  const { images, addImages, allowVideoStream } = useImportImageProvider();
 
   const [selectedImage, setSelectedImage] = useState<FilterImageOption>(
     images[0],
   );
-  const [filteredImage, setFilteredImage] = useState<Image | null>(null);
+  const [selectedDevice, setSelectedDevice] = useState<MediaDeviceInfo | null>(
+    null,
+  );
 
-  useEffect(() => {
-    if (selectedImage.type === 'url') {
-      fetch(selectedImage.value).then((response) => {
-        response.arrayBuffer().then((buffer) => {
-          setFilteredImage(processImage(decode(new Uint8Array(buffer))));
-        });
-      });
-    } else {
-      setFilteredImage(processImage(selectedImage.image));
-    }
-  }, [selectedImage]);
-
-  const expandableImages: ImageSrc[] = [];
-  if (filteredImage) {
-    expandableImages.push(filteredImage);
-  }
-  if (selectedImage.type === 'url') {
-    expandableImages.unshift(selectedImage.value);
-  } else {
-    expandableImages.unshift(selectedImage.image);
-  }
+  const {
+    cameraState: { cameras },
+  } = useCameraContext();
 
   const standardImages = images.filter(isUrlOption);
   const customImages = images.filter((img) => isImageOption(img));
+
+  const selectedOption = selectedDevice
+    ? getCameraId(selectedDevice)
+    : selectedImage.value;
 
   return (
     <div>
@@ -76,23 +71,16 @@ export default function ImageFilter() {
             gap: 4,
           }}
         >
-          {filteredImage ? (
-            <ExpandableImages images={expandableImages} />
+          {selectedDevice ? (
+            <ExpandableVideoDuo
+              selectedDevice={selectedDevice}
+              processImage={processImage}
+            />
           ) : (
-            <>
-              <img
-                src="/img/placeholder-image.png"
-                alt="placeholder"
-                width="256"
-                height="256"
-              />
-              <img
-                src="/img/placeholder-image.png"
-                alt="placeholder"
-                width="256"
-                height="256"
-              />
-            </>
+            <ExpandableImageDuo
+              selectedImage={selectedImage}
+              processImage={processImage}
+            />
           )}
         </div>
 
@@ -107,16 +95,34 @@ export default function ImageFilter() {
             <select
               id="image-filter-select"
               style={{ width: 150, display: 'block' }}
-              value={selectedImage.value}
+              value={selectedOption}
               onChange={(event) => {
-                const value = images.find(
+                const device = findCameraById(cameras, event.target.value);
+                const image = images.find(
                   (opt) => opt.value === event.target.value,
                 );
-                if (value) {
-                  setSelectedImage(value);
+                if (device) {
+                  setSelectedDevice(device);
+                } else if (image) {
+                  if (image) {
+                    setSelectedImage(image);
+                    setSelectedDevice(null);
+                  }
                 }
               }}
             >
+              {cameras.length > 0 && (
+                <optgroup label="Video streams">
+                  {cameras.map((camera, idx) => (
+                    <option
+                      key={getCameraId(camera)}
+                      value={getCameraId(camera)}
+                    >
+                      {getCameraLabel(camera, idx)}
+                    </option>
+                  ))}
+                </optgroup>
+              )}
               {customImages.length > 0 && (
                 <optgroup label="Custom images">
                   {customImages.map((option) => (
@@ -147,6 +153,7 @@ export default function ImageFilter() {
                 addImages(newOptions);
                 if (newOptions.length) {
                   setSelectedImage(newOptions[newOptions.length - 1]);
+                  setSelectedDevice(null);
                 }
               }}
             />
@@ -161,6 +168,7 @@ export default function ImageFilter() {
                 ];
                 addImages(newOptions);
                 setSelectedImage(newOptions[0]);
+                setSelectedDevice(null);
               }}
             />
             <button style={{ height: '1em' }}>
