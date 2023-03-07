@@ -43,6 +43,22 @@ export function useImportImageProvider() {
 export function ImportImageProvider(props: { children: ReactNode }) {
   const [images, addImages] = useReducer(
     (state: FilterImageOption[], newOptions: FilterImageOption[]) => {
+      newOptions.forEach((newOption) => {
+        while (state.find((option) => option.value === newOption.value)) {
+          if (state.find((option) => option.value === newOption.value)) {
+            const reg = /.+\((\d+)\)$/.exec(newOption.value);
+            if (reg) {
+              const count = +reg[1];
+              newOption.value = newOption.value.replace(
+                /\(\d+\)$/,
+                `(${count + 1})`,
+              );
+            } else {
+              newOption.value = `${newOption.value} (1)`;
+            }
+          }
+        }
+      });
       const newState = [...state, ...newOptions];
       return newState;
     },
