@@ -20,7 +20,7 @@ export default function CameraSelector() {
       <select
         id="camera"
         name="camera"
-        value={getCameraValue(selectedCamera?.device)}
+        value={getCameraValue(selectedCamera)}
         onChange={(event) => {
           if (event.target.value === 'none') {
             dispatch({
@@ -39,7 +39,7 @@ export default function CameraSelector() {
           if (device) {
             dispatch({
               type: 'SELECT_CAMERA',
-              camera: { device },
+              camera: device,
             });
           }
         }}

@@ -9,13 +9,9 @@ import React, {
   useReducer,
 } from 'react';
 
-interface Camera {
-  device: MediaDeviceInfo;
-}
-
 interface CameraState {
   cameras: MediaDeviceInfo[];
-  selectedCamera: Camera | null | undefined;
+  selectedCamera: MediaDeviceInfo | null | undefined;
 }
 
 const defaultCameraState: CameraState = {
@@ -42,12 +38,11 @@ export function useCameraContext(): CameraContext {
 type CameraAction =
   | {
       type: 'SET_CAMERAS';
-      cameras: MediaDeviceInfo[];
-      firstCamera: Camera;
+      devices: MediaDeviceInfo[];
     }
   | {
       type: 'SELECT_CAMERA';
-      camera: Camera | null;
+      camera: MediaDeviceInfo | null;
     };
 
 const cameraStateReducer = produce(
@@ -55,18 +50,16 @@ const cameraStateReducer = produce(
     const selectedCamera = state.selectedCamera;
     switch (action.type) {
       case 'SET_CAMERAS': {
-        state.cameras = action.cameras;
-        if (action.cameras.length === 0) {
+        state.cameras = filterAndSortDevices(action.devices);
+        if (state.cameras.length === 0) {
           state.selectedCamera = null;
         } else if (!selectedCamera) {
-          state.selectedCamera = action.firstCamera;
+          state.selectedCamera = state.cameras[0];
         } else if (
-          !state.cameras.find((camera) =>
-            isSameCamera(camera, selectedCamera.device),
-          )
+          !state.cameras.find((camera) => isSameCamera(camera, selectedCamera))
         ) {
           // The selected camera disappeared. Use another one.
-          state.selectedCamera = action.firstCamera;
+          state.selectedCamera = state.cameras[0];
         } else {
           // The new camera to select is already selected
           // Do nothing
@@ -105,14 +98,11 @@ export function CameraProvider(props: { children: ReactNode }) {
   useEffect(() => {
     async function getCameras() {
       const devices = await navigator.mediaDevices.enumerateDevices();
-      const cameras = devices.filter((device) => device.kind === 'videoinput');
-      if (cameras.length > 0) {
-        dispatch({
-          type: 'SET_CAMERAS',
-          cameras,
-          firstCamera: { device: cameras[0] },
-        });
-      }
+
+      dispatch({
+        type: 'SET_CAMERAS',
+        devices,
+      });
     }
 
     function handleDeviceChange() {
@@ -159,14 +149,14 @@ export function useVideoStream(videoRef: React.RefObject<HTMLVideoElement>) {
 
     const constraints: MediaStreamConstraints = {
       video: {
-        groupId: selectedCamera?.device.groupId
+        groupId: selectedCamera?.groupId
           ? {
-              exact: selectedCamera.device.groupId,
+              exact: selectedCamera.groupId,
             }
           : undefined,
-        deviceId: selectedCamera?.device.deviceId
+        deviceId: selectedCamera?.deviceId
           ? {
-              exact: selectedCamera.device.deviceId,
+              exact: selectedCamera.deviceId,
             }
           : undefined,
 
@@ -187,13 +177,9 @@ export function useVideoStream(videoRef: React.RefObject<HTMLVideoElement>) {
         return navigator.mediaDevices
           .enumerateDevices()
           .then((devices) => {
-            const cameras = devices.filter(
-              (device) => device.kind === 'videoinput',
-            );
             dispatch({
               type: 'SET_CAMERAS',
-              cameras,
-              firstCamera: { device: cameras[0] },
+              devices,
             });
           })
           .catch(reportError);
@@ -208,4 +194,14 @@ export function useVideoStream(videoRef: React.RefObject<HTMLVideoElement>) {
       }
     };
   }, [selectedCamera]);
+}
+
+function filterAndSortDevices(devices: MediaDeviceInfo[]) {
+  return devices
+    .filter((device) => device.kind === 'videoinput')
+    .sort((a, b) => {
+      const aIsIphone = a.label.includes('iPhone') ? 1 : 0;
+      const bIsIphone = b.label.includes('iPhone') ? 1 : 0;
+      return aIsIphone - bIsIphone;
+    });
 }
