@@ -17,8 +17,16 @@ export default function CameraFeed({
   return (
     <>
       {selectedCamera === null && <UnavailableCamera />}
+
       <video
-        style={{ maxHeight: 480, display: selectedCamera ? 'block' : 'none' }}
+        style={{
+          height: 360,
+          width: 640,
+          backgroundColor: '#eee',
+          borderRadius: 8,
+          objectFit: 'contain',
+          objectPosition: '50% 50%',
+        }}
         ref={videoRef}
       />
     </>

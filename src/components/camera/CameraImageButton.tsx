@@ -74,13 +74,8 @@ function CameraSnapshotModal(props: {
           display: 'flex',
           flexDirection: 'column',
           gap: 4,
-          alignItems: 'center',
           alignSelf: 'center',
-          justifyContent: 'space-around',
-          width: '90%',
-          height: '90%',
-          maxWidth: 1200,
-          maxHeight: 900,
+          justifyContent: 'space-between',
           backgroundColor: 'white',
         }}
       >

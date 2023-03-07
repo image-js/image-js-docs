@@ -27,7 +27,12 @@ export default function CameraSnapshotButton(props: CameraSnapshotButtonProps) {
   }
   return (
     <div>
-      <button type="button" onClick={handleClick} disabled={disabled}>
+      <button
+        type="button"
+        onClick={handleClick}
+        disabled={disabled}
+        className="button button--primary"
+      >
         Take snapshot
       </button>
     </div>
