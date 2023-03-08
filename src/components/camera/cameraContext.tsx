@@ -1,10 +1,9 @@
-import { Image, readCanvas, writeCanvas } from 'image-js';
+import { Image, readCanvas } from 'image-js';
 import { produce } from 'immer';
 import React, {
   createContext,
   Dispatch,
   ReactNode,
-  RefObject,
   useContext,
   useEffect,
   useMemo,

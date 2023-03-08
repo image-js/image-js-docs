@@ -1,5 +1,6 @@
 import React, { useState, CSSProperties } from 'react';
 import { Image } from 'image-js';
+import CodeBlock from '@theme/CodeBlock';
 import { RxCodesandboxLogo } from 'react-icons/rx';
 import {
   FilterImageOption,
@@ -14,6 +15,7 @@ import CameraImageButton from '../camera/CameraImageButton';
 import { HiOutlineCodeBracket } from 'react-icons/hi2';
 import CameraStreamButton from '../camera/CameraStreamButton';
 import { rowStyle } from '../styles/flex';
+import { useOnOff } from '../utils/useOnOff';
 import {
   findCameraById,
   getCameraId,
@@ -29,10 +31,13 @@ const basePadding: CSSProperties = {
 
 export default function ImageFilter({
   processImage,
+  code,
 }: {
   processImage: (img: Image) => Image;
+  code: string;
 }) {
   const { images, addImages } = useImportImageProvider();
+  const [isShowingCode, , , toggleCode] = useOnOff(true);
 
   const [selectedImage, setSelectedImage] = useState<FilterImageOption>(
     images[0],
@@ -53,7 +58,7 @@ export default function ImageFilter({
     : selectedImage.value;
 
   return (
-    <div>
+    <div style={{ display: 'inline-flex', flexDirection: 'column', gap: 4 }}>
       <div
         className="filter-demo alert--success"
         style={{
@@ -171,7 +176,7 @@ export default function ImageFilter({
                 setSelectedDevice(null);
               }}
             />
-            <button style={{ height: '1em' }}>
+            <button style={{ height: '1em' }} onClick={toggleCode}>
               <HiOutlineCodeBracket style={iconStyle} />
             </button>
             <button style={{ height: '1em' }}>
@@ -180,6 +185,7 @@ export default function ImageFilter({
           </div>
         </div>
       </div>
+      {isShowingCode && <CodeBlock className="language-ts">{code}</CodeBlock>}
     </div>
   );
 }
