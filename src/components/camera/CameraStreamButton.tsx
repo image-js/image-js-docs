@@ -12,7 +12,7 @@ export default function CameraStreamButton() {
 
   const debouncedIsVideoStreamAllowed = useDebounce(isVideoStreamAllowed, 5000);
 
-  if (selectedCamera === undefined) {
+  if (selectedCamera === undefined || !isVideoStreamAllowed) {
     return (
       <>
         <button
@@ -28,9 +28,7 @@ export default function CameraStreamButton() {
     );
   }
   if (isVideoStreamAllowed !== debouncedIsVideoStreamAllowed) {
-    return (
-      <span style={{ fontSize: '0.875em' }}>Video stream sources added</span>
-    );
+    return <div style={{ fontSize: '0.875em' }}>Video sources added</div>;
   }
   return null;
 }

@@ -35,7 +35,7 @@ export default function ImageFilter({
   processImage: (img: Image) => Image;
   code: string;
 }) {
-  const { images, addImages } = useImportImageProvider();
+  const { images, addImages, isVideoStreamAllowed } = useImportImageProvider();
   const [isShowingCode, , , toggleCode] = useOnOff(true);
 
   const [selectedImage, setSelectedImage] = useState<FilterImageOption>(
@@ -48,6 +48,8 @@ export default function ImageFilter({
   const {
     cameraState: { cameras },
   } = useCameraContext();
+
+  const shownCameras = isVideoStreamAllowed ? cameras : [];
 
   const standardImages = images.filter(isUrlOption);
   const customImages = images.filter((img) => isImageOption(img));
@@ -115,9 +117,9 @@ export default function ImageFilter({
                 }
               }}
             >
-              {cameras.length > 0 && (
+              {shownCameras.length > 0 && (
                 <optgroup label="Video streams">
-                  {cameras.map((camera, idx) => (
+                  {shownCameras.map((camera, idx) => (
                     <option
                       key={getCameraId(camera)}
                       value={getCameraId(camera)}
