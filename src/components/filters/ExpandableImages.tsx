@@ -11,6 +11,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { useKbs } from 'react-kbs';
 
 export type ImageSrc = Image | string;
 
@@ -31,29 +32,27 @@ export function ExpandableImages(props: { images: ImageSrc[] }) {
     return { next, previous, set: setCurrent, isOpen, toggleOpen };
   }, [current, setCurrent, images, isOpen, toggleOpen]);
 
+  const shortcuts = useKbs([
+    {
+      handler: toggleOpen,
+      shortcut: 'Escape',
+    },
+    {
+      handler: next,
+      shortcut: 'ArrowRight',
+    },
+    {
+      handler: previous,
+      shortcut: 'ArrowLeft',
+    },
+  ]);
+
   if (images.length === 0) return null;
   const currentImage = images[current];
 
   return (
     <expandableImagesContext.Provider value={value}>
-      <div
-        style={{ display: 'flex', gap: 4 }}
-        onKeyDown={(event) => {
-          if (isOpen) {
-            switch (event.key) {
-              case 'Escape':
-                toggleOpen();
-                break;
-              case 'ArrowRight':
-                next();
-                break;
-              case 'ArrowLeft':
-                previous();
-                break;
-            }
-          }
-        }}
-      >
+      <div style={{ display: 'flex', gap: 4 }} {...shortcuts}>
         {images.map((image, idx) => (
           <ZoomableImageOrCanvas key={idx} image={image} index={idx} />
         ))}

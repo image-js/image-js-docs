@@ -1,9 +1,11 @@
 import { Image } from 'image-js';
-import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { HiOutlineCamera } from 'react-icons/hi2';
+import { useKbs } from 'react-kbs';
 import { useImportImageProvider } from '../filters/ImportImage';
 import Input from '../form/Input';
 import { iconStyle } from '../styles/icon';
+import { useOnOff } from '../utils/useOnOff';
 
 import CameraFeed from './CameraFeed';
 import CameraSelector from './CameraSelector';
@@ -19,33 +21,42 @@ export default function CameraImageButton({
 }: {
   onSnapshot: (snapshot: Snapshot) => void;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
-
+  const [isOpen, open, close] = useOnOff(false);
+  const shortcut = useKbs([
+    {
+      handler: () => open(),
+      shortcut: 'Escape',
+    },
+  ]);
   return (
     <>
       <button
         style={{ height: '1em' }}
-        onClick={() => setIsOpen(true)}
+        onClick={open}
         onKeyDown={(event) => {
           if (event.key === 'Escape') {
-            setIsOpen(false);
+            close();
           }
         }}
       >
         <HiOutlineCamera style={iconStyle} />
       </button>
-      {isOpen && (
-        <CameraSnapshotModal setIsOpen={setIsOpen} onSnapshot={onSnapshot} />
-      )}
+      {isOpen && <CameraSnapshotModal close={close} onSnapshot={onSnapshot} />}
     </>
   );
 }
 
 function CameraSnapshotModal(props: {
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  close: () => void;
   onSnapshot: (snapshot: Snapshot) => void;
 }) {
   const { images } = useImportImageProvider();
+  const shortcutProps = useKbs([
+    {
+      handler: () => props.close(),
+      shortcut: 'Escape',
+    },
+  ]);
   const currentCount = Math.max(
     ...images.map((image) => {
       const reg = /^Snapshot #(\d+)$/.exec(image.value);
@@ -62,7 +73,7 @@ function CameraSnapshotModal(props: {
 
   return (
     <div
-      onClick={() => props.setIsOpen(false)}
+      onClick={() => props.close()}
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -77,6 +88,7 @@ function CameraSnapshotModal(props: {
       }}
     >
       <div
+        {...shortcutProps}
         className="filter-demo alert--note"
         onClick={(event) => {
           event.preventDefault();
@@ -101,7 +113,7 @@ function CameraSnapshotModal(props: {
         <CameraFeed videoRef={videoRef} />
         <CameraSnapshotButton
           onSnapshot={(snapshot) => {
-            props.setIsOpen(false);
+            props.close();
             props.onSnapshot({
               image: snapshot,
               name: snapshotName,
