@@ -1,5 +1,4 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { rowStyle } from '../styles/flex';
 
 export default function Input(props: {
   name: string;
@@ -9,7 +8,7 @@ export default function Input(props: {
 }) {
   const { name, value, setValue, label } = props;
   return (
-    <div style={rowStyle}>
+    <div className="flex-row">
       <label htmlFor={name}>{label}</label>
       <input
         type="text"

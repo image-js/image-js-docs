@@ -9,12 +9,10 @@ import {
   isUrlOption,
   useImportImageProvider,
 } from './ImportImage';
-import { iconStyle } from '../styles/icon';
 import { ImageInputButton } from './ImageInputButton';
 import CameraImageButton from '../camera/CameraImageButton';
 import { HiOutlineCodeBracket } from 'react-icons/hi2';
 import CameraStreamButton from '../camera/CameraStreamButton';
-import { rowStyle } from '../styles/flex';
 import { useOnOff } from '../utils/useOnOff';
 import {
   findCameraById,
@@ -24,6 +22,7 @@ import {
 } from '../camera/cameraContext';
 import ExpandableImageDuo from './ExpandableImageDuo';
 import ExpandableVideoDuo from './ExpandableVideoDuo';
+import clsx from 'clsx';
 
 const basePadding: CSSProperties = {
   padding: 8,
@@ -90,7 +89,7 @@ export default function ImageFilter({
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <div style={rowStyle}>
+          <div className="flex-row">
             <label
               style={{ fontSize: '0.875em' }}
               htmlFor="image-filter-select"
@@ -146,7 +145,7 @@ export default function ImageFilter({
               </optgroup>
             </select>
           </div>
-          <div style={{ display: 'flex', gap: 8 }}>
+          <div style={{ display: 'flex', gap: 4 }}>
             <CameraStreamButton />
             <ImageInputButton
               onImages={(images) => {
@@ -176,11 +175,16 @@ export default function ImageFilter({
                 setSelectedDevice(null);
               }}
             />
-            <button style={{ height: '1em' }} onClick={toggleCode}>
-              <HiOutlineCodeBracket style={iconStyle} />
+            <button
+              className={clsx('button-icon button--success', {
+                'button-icon-selected': isShowingCode,
+              })}
+              onClick={toggleCode}
+            >
+              <HiOutlineCodeBracket />
             </button>
-            <button style={{ height: '1em' }}>
-              <RxCodesandboxLogo style={iconStyle} />
+            <button className="button-icon">
+              <RxCodesandboxLogo />
             </button>
           </div>
         </div>

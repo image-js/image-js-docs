@@ -1,10 +1,10 @@
+import clsx from 'clsx';
 import { Image } from 'image-js';
 import React, { useRef, useState } from 'react';
 import { HiOutlineCamera } from 'react-icons/hi2';
 import { useKbs } from 'react-kbs';
 import { useImportImageProvider } from '../filters/ImportImage';
 import Input from '../form/Input';
-import { iconStyle } from '../styles/icon';
 import { useOnOff } from '../utils/useOnOff';
 
 import CameraFeed from './CameraFeed';
@@ -22,16 +22,11 @@ export default function CameraImageButton({
   onSnapshot: (snapshot: Snapshot) => void;
 }) {
   const [isOpen, open, close] = useOnOff(false);
-  const shortcut = useKbs([
-    {
-      handler: () => open(),
-      shortcut: 'Escape',
-    },
-  ]);
+
   return (
     <>
       <button
-        style={{ height: '1em' }}
+        className="button-icon"
         onClick={open}
         onKeyDown={(event) => {
           if (event.key === 'Escape') {
@@ -39,7 +34,7 @@ export default function CameraImageButton({
           }
         }}
       >
-        <HiOutlineCamera style={iconStyle} />
+        <HiOutlineCamera />
       </button>
       {isOpen && <CameraSnapshotModal close={close} onSnapshot={onSnapshot} />}
     </>

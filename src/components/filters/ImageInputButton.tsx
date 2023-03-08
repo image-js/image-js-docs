@@ -1,8 +1,6 @@
 import { decode, Image } from 'image-js';
 import React, { useRef } from 'react';
 import { HiOutlineDocument } from 'react-icons/hi2';
-import FileIcon from '../icons/FileIcon';
-import { iconStyle } from '../styles/icon';
 
 interface ImageFile {
   image: Image;
@@ -16,11 +14,11 @@ export function ImageInputButton(props: {
 
   return (
     <button
-      style={{ height: '1em' }}
+      className="button-icon"
       title="Import file"
       onClick={() => inputRef.current?.click()}
     >
-      <HiOutlineDocument style={iconStyle} />
+      <HiOutlineDocument />
       <input
         ref={inputRef}
         accept="image/*"

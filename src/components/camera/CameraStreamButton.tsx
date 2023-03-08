@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { HiOutlineVideoCamera } from 'react-icons/hi2';
 import { useImportImageProvider } from '../filters/ImportImage';
-import { iconStyle } from '../styles/icon';
 import { useDebounce } from '../utils/useDebounce';
 import { useCameraContext, useVideoStream } from './cameraContext';
 
@@ -18,11 +17,11 @@ export default function CameraStreamButton() {
       <>
         <button
           title="Stream from camera"
-          style={{ height: '1em' }}
+          className="button-icon"
           onClick={allowVideoStream}
           disabled={isVideoStreamAllowed}
         >
-          <HiOutlineVideoCamera style={iconStyle} />
+          <HiOutlineVideoCamera />
         </button>
         {isVideoStreamAllowed && <HiddenVideoStream />}
       </>

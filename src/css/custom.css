@@ -40,14 +40,39 @@ button {
 }
 
 .filter-demo {
-  /* --ifm-alert-background-color: var(--ifm-color-success-contrast-background);
-  --ifm-alert-background-color-highlight: rgba(0, 164, 0, 0.15);
-  --ifm-alert-foreground-color: var(--ifm-color-success-contrast-foreground);
-  --ifm-alert-border-color: var(--ifm-color-success-dark); */
   background-color: var(--ifm-alert-background-color);
   border: var(--ifm-alert-border-width) solid var(--ifm-alert-border-color);
   border-radius: var(--ifm-alert-border-radius);
   box-shadow: var(--ifm-alert-shadow);
   color: var(--ifm-alert-foreground-color);
   padding: var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal);
+}
+
+/* ====== button ====== */
+
+.button-icon {
+  display: inline-flex;
+  border-radius: var(--ifm-button-border-radius);
+  border-color: transparent;
+  border-width: calc(var(--ifm-button-border-width) * 2);
+  border-style: solid;
+  padding: 2px 2px 0px 2px;
+  box-sizing: border-box;
+}
+
+.button-icon svg {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.button-icon-selected {
+  border-color: var(--ifm-button-border-color);
+}
+
+/* ===== Flex utilities ===== */
+
+.flex-row {
+  display: flex;
+  gap: 4;
+  align-items: center;
 }

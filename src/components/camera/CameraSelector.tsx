@@ -1,5 +1,4 @@
 import React from 'react';
-import { rowStyle } from '../styles/flex';
 import {
   findCameraById,
   getCameraId,
@@ -15,7 +14,7 @@ export default function CameraSelector() {
 
   if (cameras.length === 0) return null;
   return (
-    <div style={rowStyle}>
+    <div className="flex-row">
       <label
         htmlFor="camera"
         className="block text-sm font-medium text-gray-700"
