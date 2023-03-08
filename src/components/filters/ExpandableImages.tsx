@@ -66,7 +66,7 @@ export function ExpandableImages(props: { images: ImageSrc[] }) {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            position: 'absolute',
+            position: 'fixed',
             top: 0,
             left: 0,
             right: 0,

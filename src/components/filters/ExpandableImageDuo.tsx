@@ -44,12 +44,18 @@ export default function ExpandableImageDuo({
           alt="placeholder"
           width="256"
           height="256"
+          style={{
+            objectFit: 'contain',
+          }}
         />
         <img
           src="/img/picture-placeholder.png"
           alt="placeholder"
           width="256"
           height="256"
+          style={{
+            objectFit: 'contain',
+          }}
         />
       </>
     );

@@ -28,11 +28,15 @@ export default function ExpandableVideoDuo({
             src="/img/video-placeholder.png"
             alt="placeholder"
             height="256"
+            width="256"
+            style={{ objectFit: 'cover' }}
           />
           <img
             src="/img/video-placeholder.png"
             alt="placeholder"
             height="256"
+            width="256"
+            style={{ objectFit: 'cover' }}
           />
         </>
       ) : (
