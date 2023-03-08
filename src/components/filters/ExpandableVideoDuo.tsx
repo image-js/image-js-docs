@@ -11,7 +11,7 @@ export default function ExpandableVideoDuo({
   processImage: (img: Image) => Image;
 }) {
   const [images, setImages] = useState<Image[]>([]);
-  const { videoRef, canvasOutputRef, canvasInputRef } = useVideoTransform(
+  const { videoRef, canvasInputRef } = useVideoTransform(
     selectedDevice,
     processImage,
     (inputImage, outputImage) => setImages([inputImage, outputImage]),
@@ -21,7 +21,6 @@ export default function ExpandableVideoDuo({
     <>
       <video ref={videoRef} style={{ display: 'none' }} />
       <canvas ref={canvasInputRef} style={{ display: 'none' }} />
-      <canvas ref={canvasOutputRef} style={{ display: 'none' }} />
       {images.length === 0 ? (
         <>
           <img

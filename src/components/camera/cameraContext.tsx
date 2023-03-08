@@ -143,13 +143,20 @@ export function useVideoStream(videoRef: React.RefObject<HTMLVideoElement>) {
   } = useCameraContext();
 
   useEffect(() => {
+    const abortController = new AbortController();
+    let stream: MediaStream | null = null;
+    abortController.signal.addEventListener('abort', () => {
+      if (stream) {
+        stream.getVideoTracks().forEach((track) => {
+          track.stop();
+        });
+      }
+    });
     const video = videoRef.current;
     if (!video) return;
     if (selectedCamera === null) return;
     // if selectedCamera is undefined, we make a first call to getUserMedia
     // after which we can get the proper list of devices
-
-    let stream: MediaStream | null = null;
 
     const constraints: MediaStreamConstraints = {
       video: {
@@ -172,6 +179,12 @@ export function useVideoStream(videoRef: React.RefObject<HTMLVideoElement>) {
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then((mediaStream) => {
+        if (abortController.signal.aborted) {
+          mediaStream.getTracks().forEach((track) => {
+            track.stop();
+          });
+          return;
+        }
         stream = mediaStream;
         video.srcObject = stream;
         video.onloadedmetadata = () => {
@@ -191,11 +204,7 @@ export function useVideoStream(videoRef: React.RefObject<HTMLVideoElement>) {
       .catch(reportError);
 
     return () => {
-      if (stream) {
-        stream.getVideoTracks().forEach((track) => {
-          track.stop();
-        });
-      }
+      abortController.abort();
     };
   }, [selectedCamera]);
 }
@@ -206,7 +215,6 @@ export function useVideoTransform(
   onFrame?: (inputImage: Image, outputImage: Image) => void,
 ) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const canvasOutputRef = useRef<HTMLCanvasElement>(null);
   const canvasInputRef = useRef<HTMLCanvasElement>(null);
   const { dispatch } = useCameraContext();
   const [error, setError] = useState('');
@@ -214,12 +222,22 @@ export function useVideoTransform(
   useEffect(() => {
     const video = videoRef.current;
     let nextFrameRequest: number;
+    let stream: MediaStream | null = null;
+    const abortController = new AbortController();
+    abortController.signal.addEventListener('abort', () => {
+      if (stream) {
+        stream.getVideoTracks().forEach((track) => {
+          track.stop();
+        });
+      }
+      if (nextFrameRequest) {
+        cancelAnimationFrame(nextFrameRequest);
+      }
+    });
     if (!video) return;
     if (selectedDevice === null) return;
     // if selectedDevice is undefined, we make a first call to getUserMedia
     // after which we can get the proper list of devices
-
-    let stream: MediaStream | null = null;
 
     const constraints: MediaStreamConstraints = {
       video: {
@@ -242,6 +260,12 @@ export function useVideoTransform(
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then((mediaStream) => {
+        if (abortController.signal.aborted) {
+          mediaStream.getTracks().forEach((track) => {
+            track.stop();
+          });
+          return;
+        }
         stream = mediaStream;
         video.srcObject = stream;
         video.onloadedmetadata = () => {
@@ -249,20 +273,18 @@ export function useVideoTransform(
             .play()
             .then(() => {
               const canvasInput = canvasInputRef.current as HTMLCanvasElement;
-              const canvasOutput = canvasOutputRef.current as HTMLCanvasElement;
-              if (!canvasInput || !canvasOutput) return;
+              if (!canvasInput) return;
               canvasInput.height = video.videoHeight;
               canvasInput.width = video.videoWidth;
-              const inputContext = canvasInput.getContext(
-                '2d',
-              ) as CanvasRenderingContext2D;
+              const inputContext = canvasInput.getContext('2d', {
+                willReadFrequently: true,
+              }) as CanvasRenderingContext2D;
               function nextFrame() {
                 if (!video) return;
                 inputContext.drawImage(video, 0, 0);
                 const image = readCanvas(canvasInput);
                 try {
                   const outputImage = processImage(image);
-                  writeCanvas(outputImage, canvasOutput);
                   onFrame?.(image, outputImage);
                 } catch (err: any) {
                   setError(err.stack);
@@ -288,18 +310,11 @@ export function useVideoTransform(
       .catch(reportError);
 
     return () => {
-      if (stream) {
-        stream.getVideoTracks().forEach((track) => {
-          track.stop();
-        });
-      }
-      if (nextFrameRequest) {
-        cancelAnimationFrame(nextFrameRequest);
-      }
+      abortController.abort();
     };
   }, [selectedDevice]);
 
-  return { videoRef, canvasInputRef, canvasOutputRef, error };
+  return { videoRef, canvasInputRef, error };
 }
 
 function filterAndSortDevices(devices: MediaDeviceInfo[]) {
