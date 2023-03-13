@@ -14,6 +14,7 @@ export function ImageInputButton(props: {
 
   return (
     <button
+      type="button"
       className="button-icon"
       title="Import file"
       onClick={() => inputRef.current?.click()}
@@ -28,27 +29,33 @@ export function ImageInputButton(props: {
         onChange={(event) => {
           const images: ImageFile[] = [];
           let loaded = 0;
+
+          function processFile(e: ProgressEvent<FileReader>, file: File) {
+            loaded++;
+            if (e.target) {
+              const buffer = e.target.result as ArrayBuffer;
+              try {
+                const image = decode(new DataView(buffer));
+                images.push({
+                  image,
+                  file,
+                });
+              } catch (e) {
+                reportError(e);
+              }
+              if (loaded === files.length) {
+                props.onImages(images);
+              }
+            }
+          }
+
           const files = event.target.files || [];
+          // eslint-disable-next-line @typescript-eslint/prefer-for-of
           for (let idx = 0; idx < files.length; idx++) {
             const file = files[idx];
             const reader = new FileReader();
             reader.onload = (e) => {
-              loaded++;
-              if (e.target) {
-                const buffer = e.target.result as ArrayBuffer;
-                try {
-                  const image = decode(new DataView(buffer));
-                  images.push({
-                    image,
-                    file,
-                  });
-                } catch (e) {
-                  reportError(e);
-                }
-                if (loaded === files.length) {
-                  props.onImages(images);
-                }
-              }
+              processFile(e, file);
             };
             reader.readAsArrayBuffer(file);
           }

@@ -13,7 +13,7 @@ export default function CameraSnapshotButton(props: CameraSnapshotButtonProps) {
   function handleClick() {
     if (videoRef.current) {
       const canvasInput = canvasRef.current as HTMLCanvasElement;
-      const video = videoRef.current as HTMLVideoElement;
+      const video = videoRef.current ;
 
       canvasInput.height = video.videoHeight;
       canvasInput.width = video.videoWidth;

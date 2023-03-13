@@ -1,7 +1,8 @@
 import { decode, Image } from 'image-js';
 import React, { useEffect, useState } from 'react';
+
 import { ExpandableImages, ImageSrc } from './ExpandableImages';
-import { FilterImageOption } from './ImportImage';
+import { FilterImageOption } from './importImageContext';
 
 export default function ExpandableImageDuo({
   selectedImage,
@@ -14,15 +15,17 @@ export default function ExpandableImageDuo({
 
   useEffect(() => {
     if (selectedImage.type === 'url') {
-      fetch(selectedImage.value).then((response) => {
-        response.arrayBuffer().then((buffer) => {
-          setFilteredImage(processImage(decode(new Uint8Array(buffer))));
-        });
-      });
+      fetch(selectedImage.value)
+        .then((response) => {
+          return response.arrayBuffer().then((buffer) => {
+            setFilteredImage(processImage(decode(new Uint8Array(buffer))));
+          });
+        })
+        .catch(reportError);
     } else {
       setFilteredImage(processImage(selectedImage.image));
     }
-  }, [selectedImage]);
+  }, [selectedImage, processImage]);
 
   const expandableImages: ImageSrc[] = [];
   if (filteredImage) {

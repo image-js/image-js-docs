@@ -1,11 +1,10 @@
-import { Image } from 'image-js';
-import React, {
-  createContext,
-  DispatchWithoutAction,
-  ReactNode,
-  useContext,
-  useReducer,
-} from 'react';
+import React, { ReactNode, useMemo, useReducer } from 'react';
+
+import {
+  FilterImageOption,
+  UrlOption,
+  imageContext,
+} from './importImageContext';
 
 const defaultImages: UrlOption[] = [
   { type: 'url', value: '/img/standard/Lenna.png', label: 'Lenna' },
@@ -17,46 +16,15 @@ const defaultImages: UrlOption[] = [
   { type: 'url', value: '/img/standard/house.png', label: 'House' },
 ];
 
-export type UrlOption = {
-  type: 'url';
-  value: string;
-  label: string;
-};
-
-export interface ImageOption {
-  type: 'image';
-  value: string;
-  image: Image;
-}
-
-export type FilterImageOption = UrlOption | ImageOption;
-
-interface ImportImageContext {
-  images: FilterImageOption[];
-  addImages: (images: FilterImageOption[]) => void;
-  isVideoStreamAllowed: boolean;
-  allowVideoStream: DispatchWithoutAction;
-}
-
-const imageContext = createContext<ImportImageContext | null>(null);
-
-export function useImportImageProvider() {
-  const context = useContext(imageContext);
-  if (!context) {
-    throw new Error('expected context to be defined');
-  }
-  return context;
-}
-
 export function ImportImageProvider(props: { children: ReactNode }) {
   const [images, addImages] = useReducer(
     (state: FilterImageOption[], newOptions: FilterImageOption[]) => {
       newOptions.forEach((newOption) => {
         while (state.find((option) => option.value === newOption.value)) {
           if (state.find((option) => option.value === newOption.value)) {
-            const reg = /.+\((\d+)\)$/.exec(newOption.value);
-            if (reg) {
-              const count = +reg[1];
+            const reg = /.+\((?<version>\d+)\)$/.exec(newOption.value);
+            if (reg?.groups) {
+              const count = +reg.groups.version;
               newOption.value = newOption.value.replace(
                 /\(\d+\)$/,
                 `(${count + 1})`,
@@ -74,25 +42,17 @@ export function ImportImageProvider(props: { children: ReactNode }) {
   );
 
   const [isVideoStreamAllowed, allowVideoStream] = useReducer(
-    (state: boolean) => true,
+    () => true,
     false,
   );
 
+  const contextValue = useMemo(() => {
+    return { images, addImages, isVideoStreamAllowed, allowVideoStream };
+  }, [images, addImages, isVideoStreamAllowed, allowVideoStream]);
+
   return (
-    <imageContext.Provider
-      value={{ images, addImages, isVideoStreamAllowed, allowVideoStream }}
-    >
+    <imageContext.Provider value={contextValue}>
       {props.children}
     </imageContext.Provider>
   );
-}
-
-export function isUrlOption(option: FilterImageOption): option is UrlOption {
-  return option.type === 'url';
-}
-
-export function isImageOption(
-  option: FilterImageOption,
-): option is ImageOption {
-  return option.type === 'image';
 }

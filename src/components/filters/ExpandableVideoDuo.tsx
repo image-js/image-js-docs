@@ -1,6 +1,8 @@
 import { Image } from 'image-js';
 import React, { useState } from 'react';
+
 import { useVideoTransform } from '../camera/cameraContext';
+
 import { ExpandableImages } from './ExpandableImages';
 
 export default function ExpandableVideoDuo({

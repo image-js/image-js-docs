@@ -1,6 +1,7 @@
 import React from 'react';
-import greyFilter from './grey.filter';
+
 import ImageFilter from './ImageFilter';
+import greyFilter from './grey.filter';
 
 const code = 'image.grey();';
 

@@ -1,44 +1,24 @@
 import { Image, readCanvas } from 'image-js';
-import { produce } from 'immer';
-import React, {
+import {
   createContext,
   Dispatch,
-  ReactNode,
   useContext,
   useEffect,
-  useMemo,
-  useReducer,
   useRef,
   useState,
 } from 'react';
 
-interface CameraState {
+export interface CameraState {
   cameras: MediaDeviceInfo[];
   selectedCamera: MediaDeviceInfo | null | undefined;
 }
 
-const defaultCameraState: CameraState = {
+export const defaultCameraState: CameraState = {
   cameras: [],
   selectedCamera: undefined,
 };
 
-type CameraContext = {
-  cameraState: CameraState;
-  dispatch: Dispatch<CameraAction>;
-};
-
-const cameraContext = createContext<CameraContext>({
-  cameraState: defaultCameraState,
-  dispatch: () => {
-    // Empty
-  },
-});
-
-export function useCameraContext(): CameraContext {
-  return useContext(cameraContext);
-}
-
-type CameraAction =
+export type CameraAction =
   | {
       type: 'SET_CAMERAS';
       devices: MediaDeviceInfo[];
@@ -48,36 +28,21 @@ type CameraAction =
       camera: MediaDeviceInfo | null;
     };
 
-const cameraStateReducer = produce(
-  (state: CameraState, action: CameraAction) => {
-    const selectedCamera = state.selectedCamera;
-    switch (action.type) {
-      case 'SET_CAMERAS': {
-        state.cameras = filterAndSortDevices(action.devices);
-        if (state.cameras.length === 0) {
-          state.selectedCamera = null;
-        } else if (!selectedCamera) {
-          state.selectedCamera = state.cameras[0];
-        } else if (
-          !state.cameras.find((camera) => isSameCamera(camera, selectedCamera))
-        ) {
-          // The selected camera disappeared. Use another one.
-          state.selectedCamera = state.cameras[0];
-        } else {
-          // The new camera to select is already selected
-          // Do nothing
-        }
-        break;
-      }
-      case 'SELECT_CAMERA': {
-        state.selectedCamera = action.camera;
-        break;
-      }
-      default:
-        throw new Error('unknown action');
-    }
+export interface CameraContext {
+  cameraState: CameraState;
+  dispatch: Dispatch<CameraAction>;
+}
+
+export const cameraContext = createContext<CameraContext>({
+  cameraState: defaultCameraState,
+  dispatch: () => {
+    // Empty
   },
-);
+});
+
+export function useCameraContext(): CameraContext {
+  return useContext(cameraContext);
+}
 
 export function isSameCamera(
   cameraA: MediaDeviceInfo,
@@ -90,49 +55,6 @@ export function isSameCamera(
     return cameraA.groupId === cameraB.groupId;
   }
   return false;
-}
-
-export function CameraProvider(props: { children: ReactNode }) {
-  const [cameraState, dispatch] = useReducer(
-    cameraStateReducer,
-    defaultCameraState,
-  );
-
-  useEffect(() => {
-    async function getCameras() {
-      const devices = await navigator.mediaDevices.enumerateDevices();
-
-      dispatch({
-        type: 'SET_CAMERAS',
-        devices,
-      });
-    }
-
-    function handleDeviceChange() {
-      getCameras().catch(reportError);
-    }
-
-    navigator.mediaDevices.addEventListener('devicechange', handleDeviceChange);
-    return () =>
-      navigator.mediaDevices.removeEventListener(
-        'devicechange',
-        handleDeviceChange,
-      );
-  }, []);
-
-  const value = useMemo<CameraContext>(
-    () => ({
-      cameraState,
-      dispatch,
-    }),
-    [cameraState],
-  );
-
-  return (
-    <cameraContext.Provider value={value}>
-      {props.children}
-    </cameraContext.Provider>
-  );
 }
 
 export function useVideoStream(videoRef: React.RefObject<HTMLVideoElement>) {
@@ -187,7 +109,7 @@ export function useVideoStream(videoRef: React.RefObject<HTMLVideoElement>) {
         stream = mediaStream;
         video.srcObject = stream;
         video.onloadedmetadata = () => {
-          video.play().catch(console.error);
+          video.play().catch(reportError);
         };
 
         return navigator.mediaDevices
@@ -205,7 +127,7 @@ export function useVideoStream(videoRef: React.RefObject<HTMLVideoElement>) {
     return () => {
       abortController.abort();
     };
-  }, [selectedCamera]);
+  }, [selectedCamera, dispatch, videoRef]);
 }
 
 export function useVideoTransform(
@@ -217,6 +139,11 @@ export function useVideoTransform(
   const canvasInputRef = useRef<HTMLCanvasElement>(null);
   const { dispatch } = useCameraContext();
   const [error, setError] = useState('');
+  const onFrameRef = useRef(onFrame);
+
+  useEffect(() => {
+    onFrameRef.current = onFrame;
+  }, [onFrame]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -284,10 +211,11 @@ export function useVideoTransform(
                 const image = readCanvas(canvasInput);
                 try {
                   const outputImage = processImage(image);
-                  onFrame?.(image, outputImage);
+                  onFrameRef.current?.(image, outputImage);
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 } catch (err: any) {
                   setError(err.stack);
-                  console.error(err);
+                  reportError(err);
                 }
                 nextFrameRequest = requestAnimationFrame(nextFrame);
               }
@@ -311,12 +239,12 @@ export function useVideoTransform(
     return () => {
       abortController.abort();
     };
-  }, [selectedDevice]);
+  }, [selectedDevice, dispatch, onFrameRef, processImage]);
 
   return { videoRef, canvasInputRef, error };
 }
 
-function filterAndSortDevices(devices: MediaDeviceInfo[]) {
+export function filterAndSortDevices(devices: MediaDeviceInfo[]) {
   return devices
     .filter((device) => device.kind === 'videoinput')
     .sort((a, b) => {

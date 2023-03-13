@@ -1,28 +1,30 @@
-import React, { useState, CSSProperties } from 'react';
-import { Image } from 'image-js';
 import CodeBlock from '@theme/CodeBlock';
-import { RxCodesandboxLogo } from 'react-icons/rx';
-import {
-  FilterImageOption,
-  ImageOption,
-  isImageOption,
-  isUrlOption,
-  useImportImageProvider,
-} from './ImportImage';
-import { ImageInputButton } from './ImageInputButton';
-import CameraImageButton from '../camera/CameraImageButton';
+import clsx from 'clsx';
+import { Image } from 'image-js';
+import React, { useState, CSSProperties } from 'react';
 import { HiOutlineCodeBracket } from 'react-icons/hi2';
+import { RxCodesandboxLogo } from 'react-icons/rx';
+
+import CameraImageButton from '../camera/CameraImageButton';
 import CameraStreamButton from '../camera/CameraStreamButton';
-import { useOnOff } from '../utils/useOnOff';
 import {
   findCameraById,
   getCameraId,
   getCameraLabel,
   useCameraContext,
 } from '../camera/cameraContext';
+import { useOnOff } from '../utils/useOnOff';
+
 import ExpandableImageDuo from './ExpandableImageDuo';
 import ExpandableVideoDuo from './ExpandableVideoDuo';
-import clsx from 'clsx';
+import { ImageInputButton } from './ImageInputButton';
+import {
+  FilterImageOption,
+  ImageOption,
+  isImageOption,
+  isUrlOption,
+  useImportImageProvider,
+} from './importImageContext';
 
 const basePadding: CSSProperties = {
   padding: 8,
@@ -31,12 +33,14 @@ const basePadding: CSSProperties = {
 export default function ImageFilter({
   processImage,
   code,
+  hideCode,
 }: {
   processImage: (img: Image) => Image;
   code: string;
+  hideCode?: boolean;
 }) {
   const { images, addImages, isVideoStreamAllowed } = useImportImageProvider();
-  const [isShowingCode, , , toggleCode] = useOnOff(true);
+  const [isShowingCode, , , toggleCode] = useOnOff(!hideCode);
 
   const [selectedImage, setSelectedImage] = useState<FilterImageOption>(
     images[0],
@@ -178,6 +182,7 @@ export default function ImageFilter({
               }}
             />
             <button
+              type="button"
               className={clsx('button-icon button--success', {
                 'button-icon-selected': isShowingCode,
               })}
@@ -185,7 +190,7 @@ export default function ImageFilter({
             >
               <HiOutlineCodeBracket />
             </button>
-            <button className="button-icon">
+            <button type="button" className="button-icon">
               <RxCodesandboxLogo />
             </button>
           </div>

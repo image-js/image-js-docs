@@ -24,13 +24,13 @@ export function ExpandableImages(props: { images: ImageSrc[] }) {
 
   const previous = useCallback(() => {
     setCurrent((current) => Math.max(current - 1, 0));
-  }, [setCurrent, images]);
+  }, [setCurrent]);
 
   const [isOpen, toggleOpen] = useReducer((state) => !state, false);
 
   const value = useMemo(() => {
     return { next, previous, set: setCurrent, isOpen, toggleOpen };
-  }, [current, setCurrent, images, isOpen, toggleOpen]);
+  }, [next, previous, setCurrent, isOpen, toggleOpen]);
 
   const shortcuts = useKbs([
     {
@@ -54,6 +54,7 @@ export function ExpandableImages(props: { images: ImageSrc[] }) {
     <expandableImagesContext.Provider value={value}>
       <div style={{ display: 'flex', gap: 4 }} {...shortcuts}>
         {images.map((image, idx) => (
+          // eslint-disable-next-line react/no-array-index-key
           <ZoomableImageOrCanvas key={idx} image={image} index={idx} />
         ))}
       </div>
@@ -115,7 +116,7 @@ function useExpandableImages() {
 }
 
 function useToggleImage(index: number) {
-  const { set, toggleOpen, isOpen } = useExpandableImages();
+  const { set, toggleOpen } = useExpandableImages();
   const showImage = useCallback(() => {
     toggleOpen();
     set(index);
@@ -142,7 +143,7 @@ function ZoomableCanvas(props: {
   height: number;
   index: number;
 }) {
-  const { image, height, index } = props;
+  const { image, height } = props;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const toggle = useToggleImage(props.index);
 

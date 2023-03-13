@@ -1,9 +1,9 @@
-import clsx from 'clsx';
 import { Image } from 'image-js';
 import React, { useRef, useState } from 'react';
 import { HiOutlineCamera } from 'react-icons/hi2';
 import { useKbs } from 'react-kbs';
-import { useImportImageProvider } from '../filters/ImportImage';
+
+import { useImportImageProvider } from '../filters/importImageContext';
 import Input from '../form/Input';
 import { useOnOff } from '../utils/useOnOff';
 
@@ -26,6 +26,7 @@ export default function CameraImageButton({
   return (
     <>
       <button
+        type="button"
         className="button-icon"
         onClick={open}
         onKeyDown={(event) => {
@@ -54,9 +55,9 @@ function CameraSnapshotModal(props: {
   ]);
   const currentCount = Math.max(
     ...images.map((image) => {
-      const reg = /^Snapshot #(\d+)$/.exec(image.value);
-      if (reg) {
-        return +reg[1];
+      const reg = /^Snapshot #(?<version>\d+)$/.exec(image.value);
+      if (reg?.groups) {
+        return +reg.groups.version;
       }
       return 0;
     }),

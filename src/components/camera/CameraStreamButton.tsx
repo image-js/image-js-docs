@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
 import { HiOutlineVideoCamera } from 'react-icons/hi2';
-import { useImportImageProvider } from '../filters/ImportImage';
+
+import { useImportImageProvider } from '../filters/importImageContext';
 import { useDebounce } from '../utils/useDebounce';
+
 import { useCameraContext, useVideoStream } from './cameraContext';
 
 export default function CameraStreamButton() {
@@ -16,6 +18,7 @@ export default function CameraStreamButton() {
     return (
       <>
         <button
+          type="button"
           title="Stream from camera"
           className="button-icon"
           onClick={allowVideoStream}

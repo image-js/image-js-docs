@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { KbsProvider } from 'react-kbs';
-import { CameraProvider } from '../components/camera/cameraContext';
+
+import { CameraProvider } from '../components/camera/CameraProvider';
 import { ImportImageProvider } from '../components/filters/ImportImage';
 
 // Default implementation, that you can customize
