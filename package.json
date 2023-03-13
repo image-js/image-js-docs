@@ -31,7 +31,6 @@
     "remove": "^0.1.5"
   },
   "devDependencies": {
-    "@docusaurus/eslint-plugin": "^2.3.1",
     "@docusaurus/module-type-aliases": "2.3.1",
     "@tsconfig/docusaurus": "^1.0.5",
     "eslint": "^8.36.0",
