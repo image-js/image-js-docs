@@ -5,6 +5,7 @@ import { useKbs } from 'react-kbs';
 
 import { useImportImageProvider } from '../filters/importImageContext';
 import Input from '../form/Input';
+import { useLockBodyScroll } from '../utils/useBodyScrollLock';
 import { useOnOff } from '../utils/useOnOff';
 
 import CameraFeed from './CameraFeed';
@@ -66,7 +67,7 @@ function CameraSnapshotModal(props: {
   const [snapshotName, setSnapshotName] = useState(defaultName);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
+  useLockBodyScroll();
   return (
     <div
       onClick={() => props.close()}
@@ -74,7 +75,7 @@ function CameraSnapshotModal(props: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        position: 'absolute',
+        position: 'fixed',
         top: 0,
         left: 0,
         right: 0,
