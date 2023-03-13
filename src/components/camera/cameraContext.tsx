@@ -170,8 +170,8 @@ export function useVideoStream(videoRef: React.RefObject<HTMLVideoElement>) {
             }
           : undefined,
 
-        height: { ideal: 480, min: 480, max: 720 },
-        width: { ideal: 640, min: 640, max: 1280 },
+        height: { ideal: 1080, min: 480, max: 1080 },
+        width: { ideal: 1920 },
       },
     };
 
@@ -251,8 +251,8 @@ export function useVideoTransform(
             }
           : undefined,
 
-        height: { ideal: 1080, min: 480, max: 1080 },
-        width: { ideal: 1920 },
+        height: { ideal: 480, min: 480, max: 720 },
+        width: { ideal: 640, min: 640, max: 1280 },
       },
     };
 
