@@ -13,7 +13,7 @@ import React, {
 } from 'react';
 import { useKbs } from 'react-kbs';
 
-export type ImageSrc = Image | string;
+export type ImageSrc = Image | string | Error;
 
 export function ExpandableImages(props: { images: ImageSrc[] }) {
   const { images } = props;
@@ -53,10 +53,21 @@ export function ExpandableImages(props: { images: ImageSrc[] }) {
   return (
     <expandableImagesContext.Provider value={value}>
       <div style={{ display: 'flex', gap: 4 }} {...shortcuts}>
-        {images.map((image, idx) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <ZoomableImageOrCanvas key={idx} image={image} index={idx} />
-        ))}
+        {images.map((image, idx) => {
+          if (image instanceof Error) {
+            return (
+              // eslint-disable-next-line react/no-array-index-key
+              <div key={idx} style={{ color: 'red' }}>
+                {image.message}
+              </div>
+            );
+          } else {
+            return (
+              // eslint-disable-next-line react/no-array-index-key
+              <ZoomableImageOrCanvas key={idx} image={image} index={idx} />
+            );
+          }
+        })}
       </div>
       {isOpen && (
         <div

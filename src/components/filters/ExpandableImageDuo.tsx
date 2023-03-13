@@ -11,7 +11,9 @@ export default function ExpandableImageDuo({
   selectedImage: FilterImageOption;
   processImage: (img: Image) => Image;
 }) {
-  const [filteredImage, setFilteredImage] = useState<Image | null>(null);
+  const [filteredImage, setFilteredImage] = useState<Image | null | Error>(
+    null,
+  );
 
   useEffect(() => {
     if (selectedImage.type === 'url') {
@@ -21,7 +23,10 @@ export default function ExpandableImageDuo({
             setFilteredImage(processImage(decode(new Uint8Array(buffer))));
           });
         })
-        .catch(reportError);
+        .catch((e: Error) => {
+          reportError(e);
+          setFilteredImage(e);
+        });
     } else {
       setFilteredImage(processImage(selectedImage.image));
     }
