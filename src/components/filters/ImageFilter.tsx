@@ -1,7 +1,8 @@
 import CodeBlock from '@theme/CodeBlock';
 import clsx from 'clsx';
 import { Image } from 'image-js';
-import React, { useState, CSSProperties } from 'react';
+import * as IJS from 'image-js';
+import React, { useState, CSSProperties, useMemo } from 'react';
 import { HiOutlineCodeBracket } from 'react-icons/hi2';
 import { RxCodesandboxLogo } from 'react-icons/rx';
 
@@ -41,6 +42,9 @@ export default function ImageFilter({
 }) {
   const { images, addImages, isVideoStreamAllowed } = useImportImageProvider();
   const [isShowingCode, , , toggleCode] = useOnOff(!hideCode);
+  const processAndCheck = useMemo(() => {
+    return processImageWithCheck(processImage);
+  }, [processImage]);
 
   const [selectedImage, setSelectedImage] = useState<FilterImageOption>(
     images[0],
@@ -84,12 +88,12 @@ export default function ImageFilter({
           {selectedDevice ? (
             <ExpandableVideoDuo
               selectedDevice={selectedDevice}
-              processImage={processImage}
+              processImage={processAndCheck}
             />
           ) : (
             <ExpandableImageDuo
               selectedImage={selectedImage}
-              processImage={processImage}
+              processImage={processAndCheck}
             />
           )}
         </div>
@@ -199,4 +203,15 @@ export default function ImageFilter({
       {isShowingCode && <CodeBlock className="language-ts">{code}</CodeBlock>}
     </div>
   );
+}
+
+function processImageWithCheck(fn: (image: Image) => Image) {
+  return (image: Image) => {
+    // @ts-expect-error when using code editor
+    const img = fn(image, IJS);
+    if (!(img instanceof Image)) {
+      throw new Error('the function should return an image');
+    }
+    return img;
+  };
 }
