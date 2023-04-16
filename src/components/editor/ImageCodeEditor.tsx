@@ -65,7 +65,16 @@ function MonacoEditor(props: {
 }) {
   const editorRef = useRef<any>(null);
 
-  function handleEditorDidMount(editor: EditorInstance) {
+  function handleEditorDidMount(editor: EditorInstance, monaco: Monaco) {
+    editor.addCommand(
+      monaco.KeyMod.Alt | monaco.KeyCode.Space,
+      () => {
+        editor.trigger('', 'editor.action.triggerSuggest', '');
+      },
+      'editorTextFocus && !editorHasSelection && ' +
+        '!editorHasMultipleSelections && !editorTabMovesFocus && ' +
+        '!hasQuickSuggest',
+    );
     editorRef.current = editor;
   }
 
