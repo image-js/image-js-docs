@@ -1,3 +1,6 @@
+// @ts-expect-error processed by webpack
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import imageJSTypes from '!!raw-loader!../../../node_modules/image-js/dist-types/image-js.d.ts';
 import Editor, { Monaco, OnMount } from '@monaco-editor/react';
 import React, {
   Dispatch,
@@ -6,10 +9,6 @@ import React, {
   useRef,
   useState,
 } from 'react';
-
-// @ts-expect-error exceptional import
-// eslint-disable-next-line import/no-webpack-loader-syntax
-import imageJSTypes from '!!raw-loader!../../../image-js.dts';
 
 import ImageFilter from '../filters/ImageFilter';
 import { convertCodeToFunction } from '../filters/convertCodeToFunction';
@@ -71,10 +70,23 @@ function MonacoEditor(props: {
   }
 
   function handleBeforeMount(monaco: Monaco) {
-    monaco.languages.typescript.javascriptDefaults.addExtraLib(
-      imageJSTypes,
-      'image-js.d.ts',
-    );
+    const javascript = monaco.languages.typescript.javascriptDefaults;
+    // @ts-expect-error raw-loader loads a string
+    javascript.addExtraLib(imageJSTypes, 'image-js.d.ts');
+
+    javascript.setDiagnosticsOptions({
+      // Makes sur typescript errors get reported in the editor
+      noSemanticValidation: false,
+    });
+
+    javascript.setCompilerOptions({
+      ...javascript.getCompilerOptions(),
+      strict: true,
+      checkJs: true,
+      paths: {
+        'image-js': ['./image-js'],
+      },
+    });
   }
   return (
     <Editor
