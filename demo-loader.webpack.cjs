@@ -58,21 +58,21 @@ export function process(image) {
 }
   `;
 
-  let imageFilterImportPath = path
+  let imageDemoImportPath = path
     .relative(
       this.context,
-      path.join('src', 'components', 'filters', 'ImageFilter.tsx'),
+      path.join('src', 'components', 'filters', 'ImageDemo.tsx'),
     )
     .replaceAll(path.sep, path.posix.sep);
 
-  const depth = imageFilterImportPath.split('/').length - 1;
+  const depth = imageDemoImportPath.split('/').length - 1;
   if (depth === 0) {
-    imageFilterImportPath = `./${imageFilterImportPath}`;
+    imageDemoImportPath = `./${imageDemoImportPath}`;
   }
 
   const modifiedSource = `
   import React from 'react';
-  import ImageFilter from '${imageFilterImportPath}';
+  import ImageDemo from '${imageDemoImportPath}';
 
   function process(image, IJS) {
     ${processBody}
@@ -81,7 +81,7 @@ export function process(image) {
   const defaultEditorCode= \`${editorCode}\`;
   export default function Demo() {
     return (
-      <ImageFilter code={code} defaultEditorCode={defaultEditorCode} processImage={process} />
+      <ImageDemo code={code} defaultEditorCode={defaultEditorCode} processImage={process} />
     );
   }
   `;

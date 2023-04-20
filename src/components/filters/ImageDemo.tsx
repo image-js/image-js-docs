@@ -42,7 +42,7 @@ function identity(img: Image) {
 }
 
 type Addon = 'code' | 'editor';
-export default function ImageFilter({
+export default function ImageDemo({
   processImage,
   code,
   defaultEditorCode,
