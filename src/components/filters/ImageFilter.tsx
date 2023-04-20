@@ -6,7 +6,6 @@ import { Image } from 'image-js';
 import * as IJS from 'image-js';
 import React, {
   useState,
-  CSSProperties,
   useMemo,
   Dispatch,
   SetStateAction,

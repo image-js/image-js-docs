@@ -1,8 +1,30 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
+const path = require('path');
+
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer/themes/github');
+
+async function demoLoaderPlugin() {
+  return {
+    name: 'demo-loader',
+    configureWebpack() {
+      return {
+        module: {
+          rules: [
+            {
+              test: /\.demo.tsx$/,
+              use: {
+                loader: path.resolve(__dirname, 'demo-loader.webpack.cjs'),
+              },
+            },
+          ],
+        },
+      };
+    },
+  };
+}
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -20,6 +42,8 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Zakodium', // Usually your GitHub org/user name.
   projectName: 'image-js', // Usually your repo name.
+
+  plugins: [demoLoaderPlugin],
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
