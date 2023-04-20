@@ -65,7 +65,7 @@ export function process(image) {
   let imageDemoImportPath = path
     .relative(
       this.context,
-      path.join('src', 'components', 'filters', 'ImageDemo.tsx'),
+      path.join('src', 'components', 'demo', 'ImageDemo.tsx'),
     )
     .replaceAll(path.sep, path.posix.sep);
 

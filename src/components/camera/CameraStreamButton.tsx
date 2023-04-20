@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { HiOutlineVideoCamera } from 'react-icons/hi2';
 
-import { useImportImageProvider } from '../filters/importImageContext';
+import { useImportImageProvider } from '../demo/importImageContext';
 import { useDebounce } from '../utils/useDebounce';
 
 import { useCameraContext, useVideoStream } from './cameraContext';
