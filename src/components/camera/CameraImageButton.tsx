@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import { HiOutlineCamera } from 'react-icons/hi2';
 import { useKbs } from 'react-kbs';
 
-import { useImportImageProvider } from '../filters/importImageContext';
+import { useImportImageProvider } from '../demo/importImageContext';
 import Input from '../form/Input';
 import { useLockBodyScroll } from '../utils/useBodyScrollLock';
 import { useOnOff } from '../utils/useOnOff';

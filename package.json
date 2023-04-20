@@ -3,25 +3,26 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "docusaurus build",
+    "clear": "docusaurus clear",
+    "deploy": "docusaurus deploy",
     "docusaurus": "docusaurus",
     "eslint": "eslint ./src",
     "eslint-fix": "npm run eslint -- --fix",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
     "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
+    "start": "docusaurus start",
+    "swizzle": "docusaurus swizzle",
+    "typecheck": "tsc",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "write-translations": "docusaurus write-translations"
   },
   "dependencies": {
     "@docusaurus/core": "2.3.1",
     "@docusaurus/preset-classic": "2.3.1",
     "@mdx-js/react": "^1.6.22",
+    "@monaco-editor/react": "^4.5.0",
     "clsx": "^1.2.1",
-    "image-js": "0.0.0-next-b91ecb6f31",
+    "image-js": "^0.0.0-next-5076c621a0",
     "immer": "^9.0.19",
     "prism-react-renderer": "^1.3.5",
     "react": "^17.0.2",
@@ -33,8 +34,10 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "2.3.1",
     "@tsconfig/docusaurus": "^1.0.5",
-    "eslint": "^8.36.0",
+    "dts-bundle": "^0.7.3",
+    "eslint": "^8.38.0",
     "eslint-config-zakodium": "^7.1.0",
+    "raw-loader": "^4.0.2",
     "typescript": "^4.7.4"
   },
   "browserslist": {

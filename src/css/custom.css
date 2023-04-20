@@ -43,9 +43,12 @@ button {
   background-color: var(--ifm-alert-background-color);
   border: var(--ifm-alert-border-width) solid var(--ifm-alert-border-color);
   border-radius: var(--ifm-alert-border-radius);
-  box-shadow: var(--ifm-alert-shadow);
+  box-shadow: 0;
   color: var(--ifm-alert-foreground-color);
   padding: var(--ifm-alert-padding-vertical) var(--ifm-alert-padding-horizontal);
+  --ifm-pre-border-radius: 0;
+  --ifm-global-shadow-lw: 0;
+  --ifm-leading: 0;
 }
 
 /* ====== button ====== */

@@ -28,7 +28,12 @@ export default function ExpandableImageDuo({
           setFilteredImage(e);
         });
     } else {
-      setFilteredImage(processImage(selectedImage.image));
+      try {
+        setFilteredImage(processImage(selectedImage.image));
+      } catch (e: any) {
+        reportError(e);
+        setFilteredImage(e);
+      }
     }
   }, [selectedImage, processImage]);
 
