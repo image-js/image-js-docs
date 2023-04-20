@@ -2,15 +2,15 @@
 sidebar_position: 1
 ---
 
-import GreyFilter from './grey.demo.tsx'
-import BlurFilter from './blur.demo.tsx'
+import GreyDemo from './grey.demo.tsx'
+import BlurDemo from './blur.demo.tsx'
 
 # Filters
 
 ## Grey
 
-<GreyFilter />
+<GreyDemo />
 
 ## Blur
 
-<BlurFilter />
+<BlurDemo />
