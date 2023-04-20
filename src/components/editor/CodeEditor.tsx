@@ -1,8 +1,9 @@
 // @ts-expect-error processed by webpack
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import imageJSTypes from '!!raw-loader!../../../node_modules/image-js/dist-types/image-js.d.ts';
+import { useColorMode } from '@docusaurus/theme-common';
 import { Editor, Monaco, OnMount } from '@monaco-editor/react';
-import React, { Dispatch, SetStateAction, useRef } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 
 type EditorInstance = Parameters<OnMount>[0];
 
@@ -27,8 +28,18 @@ function MonacoEditor({
   setValue: Dispatch<SetStateAction<string>>;
 }) {
   const editorRef = useRef<any>(null);
+  const monacoRef = useRef<Monaco | null>(null);
+  const { colorMode } = useColorMode();
 
+  useEffect(() => {
+    if (monacoRef.current) {
+      monacoRef.current.editor.setTheme(
+        colorMode === 'dark' ? 'vs-dark' : 'vs-light',
+      );
+    }
+  }, [colorMode]);
   function handleEditorDidMount(editor: EditorInstance, monaco: Monaco) {
+    monaco.editor.setTheme(colorMode === 'dark' ? 'vs-dark' : 'vs-light');
     editor.addCommand(
       monaco.KeyMod.Alt | monaco.KeyCode.Space,
       () => {
@@ -58,6 +69,7 @@ function MonacoEditor({
         'image-js': ['./image-js'],
       },
     });
+    monacoRef.current = monaco;
   }
   return (
     <Editor
