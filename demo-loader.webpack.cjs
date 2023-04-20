@@ -32,6 +32,10 @@ module.exports = function demoLoader(source) {
     (node) => node.type === 'ExportDefaultDeclaration',
   );
 
+  if (!defaultExport) {
+    throw new Error('demos must export a default function');
+  }
+
   const declarationBody = defaultExport.declaration.body;
   let processBody = source.slice(
     declarationBody.body[0].start,
@@ -40,9 +44,9 @@ module.exports = function demoLoader(source) {
 
   for (let key of Object.keys(IJSImport)) {
     processBody = processBody.replaceAll(
-      new RegExp(`(^|[^a-zA-Z0-9])(${key})([^a-zA-Z0-9])`, 'g'),
+      new RegExp(`(^|[^a-zA-Z0-9])(${key})([^a-zA-Z0-9]|$)`, 'g'),
       (...m) => {
-        return `${m[1]}IJS.${key}${m[3]}`;
+        return `${m[1]}IJS.${IJSImport[key]}${m[3]}`;
       },
     );
   }
