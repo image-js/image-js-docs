@@ -34,12 +34,22 @@ function MonacoEditor({
   useEffect(() => {
     if (monacoRef.current) {
       monacoRef.current.editor.setTheme(
-        colorMode === 'dark' ? 'vs-dark' : 'vs-light',
+        colorMode === 'dark' ? 'vs-dark' : 'vs-light-modified',
       );
     }
   }, [colorMode]);
   function handleEditorDidMount(editor: EditorInstance, monaco: Monaco) {
-    monaco.editor.setTheme(colorMode === 'dark' ? 'vs-dark' : 'vs-light');
+    monaco.editor.defineTheme('vs-light-modified', {
+      base: 'vs',
+      inherit: true,
+      rules: [{ token: '', background: '#FBFBFB' }],
+      colors: {
+        'editor.background': '#FBFBFB',
+      },
+    });
+    monaco.editor.setTheme(
+      colorMode === 'dark' ? 'vs-dark' : 'vs-light-modified',
+    );
     editor.addCommand(
       monaco.KeyMod.Alt | monaco.KeyCode.Space,
       () => {
