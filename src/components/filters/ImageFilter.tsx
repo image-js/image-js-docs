@@ -1,8 +1,18 @@
+import { useDebounce } from '@site/src/hooks/useDebounce';
+import { ProcessImage } from '@site/src/types/IJS';
 import CodeBlock from '@theme/CodeBlock';
 import clsx from 'clsx';
 import { Image } from 'image-js';
 import * as IJS from 'image-js';
-import React, { useState, CSSProperties, useMemo } from 'react';
+import React, {
+  useState,
+  CSSProperties,
+  useMemo,
+  Dispatch,
+  SetStateAction,
+  ReactNode,
+  useEffect,
+} from 'react';
 import { HiOutlineCodeBracket } from 'react-icons/hi2';
 import { RxCodesandboxLogo } from 'react-icons/rx';
 
@@ -14,11 +24,12 @@ import {
   getCameraLabel,
   useCameraContext,
 } from '../camera/cameraContext';
-import { useOnOff } from '../utils/useOnOff';
+import CodeEditor from '../editor/CodeEditor';
 
 import ExpandableImageDuo from './ExpandableImageDuo';
 import ExpandableVideoDuo from './ExpandableVideoDuo';
 import { ImageInputButton } from './ImageInputButton';
+import { convertCodeToFunction } from './convertCodeToFunction';
 import {
   FilterImageOption,
   ImageOption,
@@ -27,24 +38,43 @@ import {
   useImportImageProvider,
 } from './importImageContext';
 
-const basePadding: CSSProperties = {
-  padding: 8,
-};
+function identity(img: Image) {
+  return img;
+}
 
+type Addon = 'code' | 'editor';
 export default function ImageFilter({
   processImage,
   code,
-  hideCode,
+  defaultEditorCode,
 }: {
   processImage: (img: Image) => Image;
   code: string;
-  hideCode?: boolean;
+  defaultEditorCode: string;
 }) {
+  const [editorValue, setEditorValue] = useState(defaultEditorCode);
+  const [customFunction, setCustomFunction] = useState<ProcessImage>(identity);
+  const debouncedEditorValue = useDebounce(editorValue, 1000);
   const { images, addImages, isVideoStreamAllowed } = useImportImageProvider();
-  const [isShowingCode, , , toggleCode] = useOnOff(!hideCode);
+  const [addon, setAddon] = useState<Addon | null>(null);
   const processAndCheck = useMemo(() => {
-    return processImageWithCheck(processImage);
-  }, [processImage]);
+    if (addon === 'editor') {
+      return processImageWithCheck(customFunction);
+    } else {
+      return processImageWithCheck(processImage);
+    }
+  }, [processImage, addon, customFunction]);
+
+  useEffect(() => {
+    try {
+      const fn = convertCodeToFunction(debouncedEditorValue || '');
+      setCustomFunction(() => fn);
+    } catch (err: any) {
+      setCustomFunction(() => () => {
+        throw err;
+      });
+    }
+  }, [debouncedEditorValue]);
 
   const [selectedImage, setSelectedImage] = useState<FilterImageOption>(
     images[0],
@@ -76,13 +106,12 @@ export default function ImageFilter({
           display: 'inline-flex',
           flexDirection: 'column',
           gap: 8,
-          ...basePadding,
+          padding: 0,
         }}
       >
         <div
           style={{
             display: 'flex',
-            gap: 4,
           }}
         >
           {selectedDevice ? (
@@ -98,7 +127,13 @@ export default function ImageFilter({
           )}
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            padding: '4px 8px',
+          }}
+        >
           <div className="flex-row">
             <label
               style={{ fontSize: '0.875em' }}
@@ -185,29 +220,59 @@ export default function ImageFilter({
                 setSelectedDevice(null);
               }}
             />
-            <button
-              type="button"
-              className={clsx('button-icon button--success', {
-                'button-icon-selected': isShowingCode,
-              })}
-              onClick={toggleCode}
+            <AddonButton
+              addon="code"
+              selectedAddon={addon}
+              setSelectedAddon={setAddon}
             >
               <HiOutlineCodeBracket />
-            </button>
-            <button type="button" className="button-icon">
+            </AddonButton>
+            <AddonButton
+              addon="editor"
+              selectedAddon={addon}
+              setSelectedAddon={setAddon}
+            >
               <RxCodesandboxLogo />
-            </button>
+            </AddonButton>
           </div>
         </div>
+        <div className="filter-demo-addon">
+          {addon === 'code' && (
+            <CodeBlock className="language-ts">{code}</CodeBlock>
+          )}
+          <CodeEditor
+            setEditorValue={setEditorValue}
+            editorValue={editorValue}
+            visible={addon === 'editor'}
+          />
+        </div>
       </div>
-      {isShowingCode && <CodeBlock className="language-ts">{code}</CodeBlock>}
     </div>
   );
 }
 
-function processImageWithCheck(fn: (image: Image) => Image) {
+function AddonButton(props: {
+  addon: Addon;
+  selectedAddon: Addon | null;
+  setSelectedAddon: Dispatch<SetStateAction<Addon | null>>;
+  children: ReactNode;
+}) {
+  const { addon, selectedAddon, setSelectedAddon, children } = props;
+  return (
+    <button
+      type="button"
+      className={clsx('button-icon button--success', {
+        'button-icon-selected': addon === selectedAddon,
+      })}
+      onClick={() => setSelectedAddon(addon)}
+    >
+      {children}
+    </button>
+  );
+}
+
+function processImageWithCheck(fn: ProcessImage) {
   return (image: Image) => {
-    // @ts-expect-error when using code editor
     const img = fn(image, IJS);
     if (!(img instanceof Image)) {
       throw new Error('the function should return an image');

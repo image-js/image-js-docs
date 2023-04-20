@@ -52,7 +52,7 @@ export function ExpandableImages(props: { images: ImageSrc[] }) {
 
   return (
     <expandableImagesContext.Provider value={value}>
-      <div style={{ display: 'flex', gap: 4 }} {...shortcuts}>
+      <div style={{ display: 'flex' }} {...shortcuts}>
         {images.map((image, idx) => {
           if (image instanceof Error) {
             return (
