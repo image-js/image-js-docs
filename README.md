@@ -1,25 +1,7 @@
 # image-js-docs
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This is the source code repository for the documentation of [image-js](https://github.com/image-js/image-js-typescript)
 
-### Installation
+The documentation is available on [https://image-js-docs.pages.dev/](https://image-js-docs.pages.dev/)
 
-```
-$ npm i
-```
 
-### Local Development
-
-```
-$ npm start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ npm build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
