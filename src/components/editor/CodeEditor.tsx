@@ -50,15 +50,25 @@ function MonacoEditor({
     monaco.editor.setTheme(
       colorMode === 'dark' ? 'vs-dark' : 'vs-light-modified',
     );
-    editor.addCommand(
-      monaco.KeyMod.Alt | monaco.KeyCode.Space,
-      () => {
-        editor.trigger('', 'editor.action.triggerSuggest', '');
-      },
-      'editorTextFocus && !editorHasSelection && ' +
-        '!editorHasMultipleSelections && !editorTabMovesFocus && ' +
-        '!hasQuickSuggest',
-    );
+    function addCommand() {
+      editor.addCommand(
+        monaco.KeyMod.Alt | monaco.KeyCode.Space,
+        () => {
+          editor.trigger('', 'editor.action.triggerSuggest', '');
+        },
+        'editorTextFocus && !editorHasSelection && ' +
+          '!editorHasMultipleSelections && !editorTabMovesFocus && ' +
+          '!hasQuickSuggest',
+      );
+    }
+
+    // This is a trick to prevent the command from being triggered on the wrong
+    // editor when multiple editors are present on the page.
+    // https://github.com/microsoft/monaco-editor/issues/2947
+    editor.onDidFocusEditorText(() => {
+      addCommand();
+    });
+
     editorRef.current = editor;
   }
   function handleBeforeMount(monaco: Monaco) {
