@@ -7,7 +7,7 @@ import CameraFeed from '../../../components/camera/CameraFeed';
 import CameraSelector from '../../../components/camera/CameraSelector';
 import CameraSnapshotButton from '../../../components/camera/CameraSnapshotButton';
 import Input from '../../../components/form/Input';
-import { useLockBodyScroll } from '../../../components/utils/useBodyScrollLock';
+import { useLockBodyScroll } from '../../../hooks/useBodyScrollLock';
 
 export interface Snapshot {
   image: Image;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { HiOutlineCamera } from 'react-icons/hi2';
 
-import { useOnOff } from '../../../components/utils/useOnOff';
+import { useOnOff } from '../../../hooks/useOnOff';
 
 import CameraSnapshotModal, { Snapshot } from './CameraSnapshotModal';
 

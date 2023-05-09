@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useThrottle from '../../../components/utils/useThrottle';
+import useThrottle from '../../../hooks/useThrottle';
 import { useDemoStateContext } from '../../contexts/demo/demoContext';
 import { useImageRunState } from '../../contexts/run/imageRunContext';
 import useDebouncedStatus from '../../hooks/useDebouncedStatus';
