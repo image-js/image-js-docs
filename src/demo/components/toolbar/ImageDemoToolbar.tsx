@@ -53,6 +53,7 @@ export default function ImageDemoToolbar() {
       style={{
         display: 'flex',
         justifyContent: 'space-between',
+        alignItems: 'center',
         padding: '0px 8px',
       }}
     >
