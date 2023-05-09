@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { useCameraContext } from '../../components/camera/cameraContext';
 import { useImageRunDispatch } from '../contexts/run/imageRunContext';
 import runAndDispatch from '../contexts/run/runAndDispatch';
-import workerHelper from '../worker/workerHelper';
+import getJobManager from '../worker/jobManager';
 
 export function useVideoTransform(
   selectedDevice: MediaDeviceInfo,
@@ -17,6 +17,7 @@ export function useVideoTransform(
   const runDispatch = useImageRunDispatch();
 
   useEffect(() => {
+    const jobManager = getJobManager();
     const video = videoRef.current;
     let nextFrameRequest: number;
     let stream: MediaStream | null = null;
@@ -25,7 +26,7 @@ export function useVideoTransform(
       if (nextFrameRequest) {
         cancelAnimationFrame(nextFrameRequest);
       }
-      workerHelper.abortJob(name);
+      jobManager.abortJob(name);
       if (stream) {
         stream.getVideoTracks().forEach((track) => {
           track.stop();
@@ -102,6 +103,7 @@ export function useVideoTransform(
                     image,
                     value: name,
                   },
+                  jobManager,
                 ).then((status) => {
                   if (status === 'success') {
                     nextFrameRequest = requestAnimationFrame(nextFrame);

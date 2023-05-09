@@ -6,6 +6,7 @@ import {
   useImageRunState,
 } from '../../contexts/run/imageRunContext';
 import runAndDispatch from '../../contexts/run/runAndDispatch';
+import getJobManager from '../../worker/jobManager';
 
 import { ExpandableImages, ImageSrc } from './ExpandableImages';
 
@@ -27,6 +28,7 @@ export default function ExpandableImageDuo({
     if (!selectedImage) {
       return;
     }
+    const jobManager = getJobManager();
     let imageOption = selectedImage;
     if (imageOption.type === 'url') {
       fetch(imageOption.value)
@@ -41,6 +43,7 @@ export default function ExpandableImageDuo({
                 name,
               },
               imageOption,
+              jobManager,
             );
           });
         })
@@ -64,6 +67,7 @@ export default function ExpandableImageDuo({
           name,
         },
         imageOption,
+        jobManager,
       );
     }
   }, [selectedImage, code, name, runDispatch]);
