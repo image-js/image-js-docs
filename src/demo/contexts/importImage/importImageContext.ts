@@ -13,18 +13,18 @@ export interface ImageOption {
   image: Image;
 }
 
-export type FilterImageOption = UrlOption | ImageOption;
+export type ImageDemoInputOption = UrlOption | ImageOption;
 
 export interface ImportImageContext {
-  images: FilterImageOption[];
-  addImages: (images: FilterImageOption[]) => void;
+  images: ImageDemoInputOption[];
+  addImages: (images: ImageDemoInputOption[]) => void;
   isVideoStreamAllowed: boolean;
   allowVideoStream: DispatchWithoutAction;
 }
 
 export const imageContext = createContext<ImportImageContext | null>(null);
 
-export function useImportImageProvider() {
+export function useImportImageContext() {
   const context = useContext(imageContext);
   if (!context) {
     throw new Error('expected context to be defined');
@@ -32,12 +32,12 @@ export function useImportImageProvider() {
   return context;
 }
 
-export function isUrlOption(option: FilterImageOption): option is UrlOption {
+export function isUrlOption(option: ImageDemoInputOption): option is UrlOption {
   return option.type === 'url';
 }
 
 export function isImageOption(
-  option: FilterImageOption,
+  option: ImageDemoInputOption,
 ): option is ImageOption {
   return option.type === 'image';
 }

@@ -68,8 +68,17 @@ button {
   height: 1.5em;
 }
 
+.button-icon-lg svg {
+  width: 2em;
+  height: 2em;
+}
+
 .button-icon-selected {
   border-color: var(--ifm-button-border-color);
+}
+
+.button-icon-disabled {
+  opacity: 0.5;
 }
 
 /* ===== Flex utilities ===== */
@@ -78,4 +87,10 @@ button {
   display: flex;
   gap: 4;
   align-items: center;
+}
+
+.image-demo-toolbar-info {
+  color: var(--ifm-color-primary-lightest);
+  font-size: 0.75em;
+  line-height: 1em;
 }

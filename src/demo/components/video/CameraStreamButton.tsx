@@ -1,16 +1,18 @@
+import { useDebounce } from '@site/src/hooks/useDebounce';
 import React, { useRef } from 'react';
 import { HiOutlineVideoCamera } from 'react-icons/hi2';
 
-import { useImportImageProvider } from '../demo/importImageContext';
-import { useDebounce } from '../utils/useDebounce';
-
-import { useCameraContext, useVideoStream } from './cameraContext';
+import {
+  useCameraContext,
+  useVideoStream,
+} from '../../../components/camera/cameraContext';
+import { useImportImageContext } from '../../contexts/importImage/importImageContext';
 
 export default function CameraStreamButton() {
   const {
     cameraState: { selectedCamera },
   } = useCameraContext();
-  const { isVideoStreamAllowed, allowVideoStream } = useImportImageProvider();
+  const { isVideoStreamAllowed, allowVideoStream } = useImportImageContext();
 
   const debouncedIsVideoStreamAllowed = useDebounce(isVideoStreamAllowed, 5000);
 
