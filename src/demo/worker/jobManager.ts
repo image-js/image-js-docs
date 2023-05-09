@@ -14,7 +14,7 @@ interface SuccessData {
   time: number;
 }
 
-class WorkerHelper {
+export class JobManager {
   private _callback: WorkerMessageHandler;
   private _worker: Worker;
   private _runningJobs = new Map<string, Job>();
@@ -99,4 +99,10 @@ class WorkerHelper {
   }
 }
 
-export default new WorkerHelper();
+let jobManager: JobManager | null = null;
+export default function getJobManager() {
+  if (!jobManager) {
+    jobManager = new JobManager();
+  }
+  return jobManager;
+}

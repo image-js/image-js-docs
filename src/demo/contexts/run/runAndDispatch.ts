@@ -1,7 +1,7 @@
 import { ComputeData } from '@site/src/types/IJS';
 import { Dispatch } from 'react';
 
-import workerHelper from '../../worker/workerHelper';
+import { JobManager } from '../../worker/jobManager';
 import { ImageDemoInputOption } from '../importImage/importImageContext';
 
 import { RunAction } from './runReducer';
@@ -10,11 +10,12 @@ export default function runAndDispatch(
   runDispatch: Dispatch<RunAction>,
   data: ComputeData,
   imageOption: ImageDemoInputOption,
+  jobManager: JobManager,
 ) {
   runDispatch({
     type: 'RUN_START',
   });
-  return workerHelper
+  return jobManager
     .runJob(data)
     .then((result) => {
       runDispatch({
