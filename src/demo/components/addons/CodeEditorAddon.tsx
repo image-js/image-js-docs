@@ -9,6 +9,7 @@ import {
   useDemoStateContext,
 } from '../../contexts/demo/demoContext';
 import { useImageRunState } from '../../contexts/run/imageRunContext';
+import { convertCodeToFunction } from '../../utils/convertCodeToFunction';
 
 export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
   const runState = useImageRunState();
@@ -19,7 +20,14 @@ export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
 
   useEffect(() => {
     if (!noAutoRun) {
-      demoDispatch({ type: 'SET_CODE', payload: debouncedEditorValue });
+      // Check for syntax errors before dispatching the code
+      try {
+        convertCodeToFunction(debouncedEditorValue);
+        demoDispatch({ type: 'SET_CODE', payload: debouncedEditorValue });
+      } catch (e) {
+        // Ignore
+        // The code editor should highlight the syntax error
+      }
     }
   }, [debouncedEditorValue, demoDispatch, noAutoRun]);
   return (
