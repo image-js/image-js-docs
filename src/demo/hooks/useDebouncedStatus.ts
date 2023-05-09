@@ -1,0 +1,10 @@
+import { useDebounce } from '@site/src/hooks/useDebounce';
+
+import { RunStatus } from '../contexts/run/runReducer';
+
+export default function useDebouncedStatus(status: RunStatus) {
+  const debouncedStatus = useDebounce(status, 300);
+
+  const isRunning = debouncedStatus === 'running' && status === 'running';
+  return isRunning ? 'running' : debouncedStatus;
+}

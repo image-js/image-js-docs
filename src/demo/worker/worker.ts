@@ -1,0 +1,56 @@
+// This file must have worker types, but not DOM types.
+// The global should be that of a dedicated worker.
+import { convertCodeToFunction } from '@site/src/demo/utils/convertCodeToFunction';
+import { ComputeData, ProcessImage, WorkerResponse } from '@site/src/types/IJS';
+import * as IJS from 'image-js';
+
+onmessage = (event: MessageEvent<ComputeData>) => {
+  const data = event.data;
+  const image =
+    data.type === 'encoded'
+      ? IJS.decode(data.data)
+      : new IJS.Image(data.image.width, data.image.height, {
+          colorModel: data.image.colorModel,
+          depth: data.image.depth,
+          data: data.image.data,
+        });
+
+  let processImage: ProcessImage = () => image;
+  try {
+    processImage = convertCodeToFunction(event.data.code || '');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err: any) {
+    postResponse({ type: 'error', error: err.message, name: event.data.name });
+    return;
+  }
+  try {
+    const start = performance.now();
+    const newImage = processImage(image, IJS);
+    const end = performance.now();
+    const imageRaw = newImage.getRawImage();
+    postResponse({
+      type: 'success',
+      data: {
+        data: imageRaw.data,
+        width: newImage.width,
+        height: newImage.height,
+        depth: imageRaw.depth,
+        colorModel: newImage.colorModel,
+      },
+      time: end - start,
+      name: event.data.name,
+    });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err: any) {
+    postResponse({ type: 'error', error: err.message, name: event.data.name });
+  }
+};
+
+function postResponse(response: WorkerResponse) {
+  if (response.type === 'error') {
+    postMessage(response);
+  } else {
+    // @ts-expect-error - this is actually how it is supposed to be sent
+    postMessage(response, [response.data.data.buffer]);
+  }
+}

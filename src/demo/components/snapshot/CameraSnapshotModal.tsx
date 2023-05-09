@@ -1,53 +1,24 @@
+import { useImportImageContext } from '@site/src/demo/contexts/importImage/importImageContext';
 import { Image } from 'image-js';
 import React, { useRef, useState } from 'react';
-import { HiOutlineCamera } from 'react-icons/hi2';
 import { useKbs } from 'react-kbs';
 
-import { useImportImageProvider } from '../demo/importImageContext';
-import Input from '../form/Input';
-import { useLockBodyScroll } from '../utils/useBodyScrollLock';
-import { useOnOff } from '../utils/useOnOff';
+import CameraFeed from '../../../components/camera/CameraFeed';
+import CameraSelector from '../../../components/camera/CameraSelector';
+import CameraSnapshotButton from '../../../components/camera/CameraSnapshotButton';
+import Input from '../../../components/form/Input';
+import { useLockBodyScroll } from '../../../components/utils/useBodyScrollLock';
 
-import CameraFeed from './CameraFeed';
-import CameraSelector from './CameraSelector';
-import CameraSnapshotButton from './CameraSnapshotButton';
-
-interface Snapshot {
+export interface Snapshot {
   image: Image;
   name: string;
 }
 
-export default function CameraImageButton({
-  onSnapshot,
-}: {
-  onSnapshot: (snapshot: Snapshot) => void;
-}) {
-  const [isOpen, open, close] = useOnOff(false);
-
-  return (
-    <>
-      <button
-        type="button"
-        className="button-icon"
-        onClick={open}
-        onKeyDown={(event) => {
-          if (event.key === 'Escape') {
-            close();
-          }
-        }}
-      >
-        <HiOutlineCamera />
-      </button>
-      {isOpen && <CameraSnapshotModal close={close} onSnapshot={onSnapshot} />}
-    </>
-  );
-}
-
-function CameraSnapshotModal(props: {
+export default function CameraSnapshotModal(props: {
   close: () => void;
   onSnapshot: (snapshot: Snapshot) => void;
 }) {
-  const { images } = useImportImageProvider();
+  const { images } = useImportImageContext();
   const shortcutProps = useKbs([
     {
       handler: () => props.close(),

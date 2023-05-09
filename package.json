@@ -10,9 +10,9 @@
     "eslint": "eslint ./src",
     "eslint-fix": "npm run eslint -- --fix",
     "serve": "docusaurus serve",
-    "start": "docusaurus start",
+    "dev": "docusaurus start",
     "swizzle": "docusaurus swizzle",
-    "typecheck": "tsc",
+    "check-types": "tsc",
     "write-heading-ids": "docusaurus write-heading-ids",
     "write-translations": "docusaurus write-translations"
   },

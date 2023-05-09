@@ -1,29 +1,40 @@
-import { Image } from 'image-js';
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 
-import { useVideoTransform } from '../camera/cameraContext';
-
-import { ExpandableImages } from './ExpandableImages';
+import { useImageRunState } from '../../contexts/run/imageRunContext';
+import { useVideoTransform } from '../../hooks/useVideoTransform';
+import { ExpandableImages } from '../image/ExpandableImages';
 
 export default function ExpandableVideoDuo({
   selectedDevice,
-  processImage,
+  code,
+  name,
 }: {
   selectedDevice: MediaDeviceInfo;
-  processImage: (img: Image) => Image;
+  code: string;
+  name: string;
 }) {
-  const [images, setImages] = useState<Image[]>([]);
+  const runState = useImageRunState();
   const { videoRef, canvasInputRef } = useVideoTransform(
     selectedDevice,
-    processImage,
-    (inputImage, outputImage) => setImages([inputImage, outputImage]),
+    name,
+    code,
   );
+
+  const images = useMemo(() => {
+    if (!runState.image) {
+      return null;
+    }
+    if (runState.image.sourceImage.type !== 'image') {
+      return null;
+    }
+    return [runState.image.sourceImage.image, runState.image.filteredImage];
+  }, [runState.image]);
 
   return (
     <>
       <video ref={videoRef} style={{ display: 'none' }} />
       <canvas ref={canvasInputRef} style={{ display: 'none' }} />
-      {images.length === 0 ? (
+      {images === null ? (
         <>
           <img
             src="/img/video-placeholder.png"
@@ -41,7 +52,7 @@ export default function ExpandableVideoDuo({
           />
         </>
       ) : (
-        <ExpandableImages images={images} />
+        <ExpandableImages images={images} status="success" />
       )}
     </>
   );

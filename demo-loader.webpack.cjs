@@ -65,7 +65,7 @@ export function process(image) {
   let imageDemoImportPath = path
     .relative(
       this.context,
-      path.join('src', 'components', 'demo', 'ImageDemo.tsx'),
+      path.join('src', 'demo', 'components', 'ImageDemo.tsx'),
     )
     .replaceAll(path.sep, path.posix.sep);
 
@@ -81,11 +81,12 @@ export function process(image) {
   function process(image, IJS) {
     ${processBody}
   }
-  const code= \`${source}\`;
+  const name = '${this.resourcePath}';
+  const code = \`${source}\`;
   const defaultEditorCode= \`${editorCode}\`;
-  export default function Demo() {
+  export default function Demo(props) {
     return (
-      <ImageDemo code={code} defaultEditorCode={defaultEditorCode} processImage={process} />
+      <ImageDemo code={code} defaultEditorCode={defaultEditorCode} processImage={process} name={name} {...props} />
     );
   }
   `;

@@ -1,23 +1,14 @@
 import React, { ReactNode, useMemo, useReducer } from 'react';
 
+import { defaultImages } from '../../contexts/demo/defaultImages';
 import {
-  FilterImageOption,
-  UrlOption,
+  ImageDemoInputOption,
   imageContext,
-} from './importImageContext';
-
-const defaultImages: UrlOption[] = [
-  { type: 'url', value: '/img/standard/Lenna.png', label: 'Lenna' },
-  { type: 'url', value: '/img/standard/barbara.jpg', label: 'Barbara' },
-  { type: 'url', value: '/img/standard/boat.png', label: 'Standard boat' },
-  { type: 'url', value: '/img/standard/mandrill.png', label: 'Mandrill' },
-  { type: 'url', value: '/img/standard/peppers.png', label: 'Peppers' },
-  { type: 'url', value: '/img/standard/house.png', label: 'House' },
-];
+} from '../../contexts/importImage/importImageContext';
 
 export function ImportImageProvider(props: { children: ReactNode }) {
   const [images, addImages] = useReducer(
-    (state: FilterImageOption[], newOptions: FilterImageOption[]) => {
+    (state: ImageDemoInputOption[], newOptions: ImageDemoInputOption[]) => {
       newOptions.forEach((newOption) => {
         while (state.find((option) => option.value === newOption.value)) {
           if (state.find((option) => option.value === newOption.value)) {

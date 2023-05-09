@@ -13,4 +13,4 @@ import BlurDemo from './blur.demo.tsx'
 
 ## Blur
 
-<BlurDemo />
+<BlurDemo noAutoRun />

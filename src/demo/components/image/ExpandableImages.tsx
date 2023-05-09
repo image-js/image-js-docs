@@ -13,9 +13,14 @@ import React, {
 } from 'react';
 import { useKbs } from 'react-kbs';
 
+import { RunStatus } from '../../contexts/run/runReducer';
+
 export type ImageSrc = Image | string | Error;
 
-export function ExpandableImages(props: { images: ImageSrc[] }) {
+export function ExpandableImages(props: {
+  images: ImageSrc[];
+  status: RunStatus;
+}) {
   const { images } = props;
   const [current, setCurrent] = useState(0);
   const next = useCallback(() => {
@@ -52,14 +57,12 @@ export function ExpandableImages(props: { images: ImageSrc[] }) {
 
   return (
     <expandableImagesContext.Provider value={value}>
-      <div style={{ display: 'flex' }} {...shortcuts}>
+      <div style={{ display: 'flex', position: 'relative' }} {...shortcuts}>
         {images.map((image, idx) => {
           if (image instanceof Error) {
             return (
               // eslint-disable-next-line react/no-array-index-key
-              <div key={idx} style={{ color: 'red' }}>
-                {image.message}
-              </div>
+              <ImageError key={idx} error={image} />
             );
           } else {
             return (
@@ -96,6 +99,8 @@ export function ExpandableImages(props: { images: ImageSrc[] }) {
           >
             {typeof currentImage === 'string' ? (
               <img src={currentImage} />
+            ) : currentImage instanceof Error ? (
+              <ImageError error={currentImage} />
             ) : (
               <CanvasImage image={currentImage} />
             )}
@@ -208,4 +213,8 @@ function CanvasImage(props: { image: Image }) {
     }
   }, [image, canvasRef]);
   return <canvas ref={canvasRef} />;
+}
+
+function ImageError(props: { error: Error }) {
+  return <div style={{ color: 'red' }}>{props.error.message}</div>;
 }
