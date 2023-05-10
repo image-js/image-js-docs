@@ -160,7 +160,9 @@ export const demoReducer = (state: DemoState, action: DemoAction) => {
       case 'RUN_SUCCESS': {
         const run = draft.run;
         run.image = action.payload.image;
-        run.time = action.payload.time;
+        // if perf is sub-milisecond, some browsers will report 0
+        // In this case, we set it to 1ms to prevent division by 0
+        run.time = action.payload.time === 0 ? 1 : action.payload.time;
         run.startedCount--;
         run.status = run.startedCount === 0 ? 'success' : 'running';
         updateStats(draft);
