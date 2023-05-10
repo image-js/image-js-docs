@@ -1,76 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { ImageDemoInputOption } from '../../contexts/importImage/importImageContext';
-import {
-  useImageRunDispatch,
-  useImageRunState,
-} from '../../contexts/run/imageRunContext';
-import runAndDispatch from '../../contexts/run/runAndDispatch';
-import getJobManager from '../../worker/jobManager';
+import { useDemoStateContext } from '../../contexts/demo/demoContext';
 
 import { ExpandableImages, ImageSrc } from './ExpandableImages';
 
-export default function ExpandableImageDuo({
-  selectedImage,
-  code,
-  name,
-}: {
-  selectedImage: ImageDemoInputOption;
-  code: string;
-  name: string;
-}) {
-  const runState = useImageRunState();
-  const runDispatch = useImageRunDispatch();
+export default function ExpandableImageDuo() {
+  const { run } = useDemoStateContext();
 
-  const { sourceImage, filteredImage } = runState.image || {};
-
-  useEffect(() => {
-    if (!selectedImage) {
-      return;
-    }
-    const jobManager = getJobManager();
-    let imageOption = selectedImage;
-    if (imageOption.type === 'url') {
-      fetch(imageOption.value)
-        .then((response) => {
-          return response.arrayBuffer().then((buffer) => {
-            void runAndDispatch(
-              runDispatch,
-              {
-                type: 'encoded',
-                code,
-                data: new Uint8Array(buffer),
-                name,
-              },
-              imageOption,
-              jobManager,
-            );
-          });
-        })
-        .catch((err: any) => {
-          reportError(err);
-        });
-    } else {
-      const rawImage = imageOption.image.getRawImage();
-      void runAndDispatch(
-        runDispatch,
-        {
-          type: 'decoded',
-          code,
-          image: {
-            width: imageOption.image.width,
-            height: imageOption.image.height,
-            data: rawImage.data,
-            colorModel: imageOption.image.colorModel,
-            depth: rawImage.depth,
-          },
-          name,
-        },
-        imageOption,
-        jobManager,
-      );
-    }
-  }, [selectedImage, code, name, runDispatch]);
+  const { sourceImage, filteredImage } = run.image || {};
 
   if (filteredImage && sourceImage) {
     const expandableImages: ImageSrc[] = [];
@@ -81,9 +18,7 @@ export default function ExpandableImageDuo({
     }
     expandableImages.push(filteredImage);
 
-    return (
-      <ExpandableImages images={expandableImages} status={runState.status} />
-    );
+    return <ExpandableImages images={expandableImages} status={run.status} />;
   } else {
     return (
       <>

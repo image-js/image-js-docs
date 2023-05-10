@@ -1,19 +1,15 @@
 import React, { useMemo } from 'react';
 
-import { useImageRunState } from '../../contexts/run/imageRunContext';
+import { useDemoStateContext } from '../../contexts/demo/demoContext';
 import { useVideoTransform } from '../../hooks/useVideoTransform';
 import { ExpandableImages } from '../image/ExpandableImages';
 
 export default function ExpandableVideoDuo({
   selectedDevice,
-  code,
-  name,
 }: {
   selectedDevice: MediaDeviceInfo;
-  code: string;
-  name: string;
 }) {
-  const runState = useImageRunState();
+  const { run, code, name } = useDemoStateContext();
   const { videoRef, canvasInputRef } = useVideoTransform(
     selectedDevice,
     name,
@@ -21,14 +17,14 @@ export default function ExpandableVideoDuo({
   );
 
   const images = useMemo(() => {
-    if (!runState.image) {
+    if (!run.image) {
       return null;
     }
-    if (runState.image.sourceImage.type !== 'image') {
+    if (run.image.sourceImage.type !== 'image') {
       return null;
     }
-    return [runState.image.sourceImage.image, runState.image.filteredImage];
-  }, [runState.image]);
+    return [run.image.sourceImage.image, run.image.filteredImage];
+  }, [run.image]);
 
   return (
     <>

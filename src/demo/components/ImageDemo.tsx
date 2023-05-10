@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
+import { defaultImages } from '../contexts/demo/defaultImages';
 import { useDemoStateContext } from '../contexts/demo/demoContext';
+import { useSelectImage } from '../contexts/demo/dispatchHelpers';
 
 import ImageDemoAddon from './addons/ImageDemoAddon';
 import ExpandableImageDuo from './image/ExpandableImageDuo';
@@ -20,7 +22,9 @@ export default function ImageDemo({
   noAutoRun?: boolean;
 }) {
   return (
-    <ImageDemoProvider initial={{ noAutoRun, initialCode: defaultEditorCode }}>
+    <ImageDemoProvider
+      initial={{ noAutoRun, initialCode: defaultEditorCode, name }}
+    >
       <div style={{ display: 'inline-flex', flexDirection: 'column', gap: 4 }}>
         <div
           className="filter-demo alert--success"
@@ -33,17 +37,29 @@ export default function ImageDemo({
             padding: 0,
           }}
         >
-          <ImageDemoImages name={name} />
+          <ImageDemoImages />
           <ImageDemoToolbar />
-          <ImageDemoAddon code={code} defaultEditorCode={defaultEditorCode} />
+          <ImageDemoAddon
+            exampleCode={code}
+            defaultEditorCode={defaultEditorCode}
+          />
         </div>
       </div>
     </ImageDemoProvider>
   );
 }
 
-function ImageDemoImages(props: { name: string }) {
-  const { selectedDevice, selectedImage, code } = useDemoStateContext();
+function ImageDemoImages() {
+  const { selectedDevice, selectedImage } = useDemoStateContext();
+  const selectImage = useSelectImage();
+
+  useEffect(() => {
+    if (!selectedImage && !selectedDevice) {
+      // This is only true when the context is first initialized
+      // So this will run only once per demo
+      selectImage(defaultImages[0]);
+    }
+  }, [selectedImage, selectedDevice, selectImage]);
   return (
     <div
       style={{
@@ -51,17 +67,9 @@ function ImageDemoImages(props: { name: string }) {
       }}
     >
       {selectedDevice ? (
-        <ExpandableVideoDuo
-          selectedDevice={selectedDevice}
-          code={code}
-          name={props.name}
-        />
+        <ExpandableVideoDuo selectedDevice={selectedDevice} />
       ) : (
-        <ExpandableImageDuo
-          selectedImage={selectedImage}
-          code={code}
-          name={props.name}
-        />
+        <ExpandableImageDuo />
       )}
     </div>
   );

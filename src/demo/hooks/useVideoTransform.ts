@@ -2,8 +2,8 @@ import { readCanvas } from 'image-js';
 import { useEffect, useRef } from 'react';
 
 import { useCameraContext } from '../../components/camera/cameraContext';
-import { useImageRunDispatch } from '../contexts/run/imageRunContext';
-import runAndDispatch from '../contexts/run/runAndDispatch';
+import { useDemoDispatchContext } from '../contexts/demo/demoContext';
+import { runAndDispatch } from '../contexts/demo/dispatchHelpers';
 import getJobManager from '../worker/jobManager';
 
 export function useVideoTransform(
@@ -14,7 +14,7 @@ export function useVideoTransform(
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasInputRef = useRef<HTMLCanvasElement>(null);
   const { dispatch } = useCameraContext();
-  const runDispatch = useImageRunDispatch();
+  const demoDispatch = useDemoDispatchContext();
 
   useEffect(() => {
     const jobManager = getJobManager();
@@ -82,29 +82,18 @@ export function useVideoTransform(
                 if (!video) return;
                 inputContext.drawImage(video, 0, 0);
                 const image = readCanvas(canvasInput);
-                const rawImage = image.getRawImage();
 
                 void runAndDispatch(
-                  runDispatch,
-                  {
-                    type: 'decoded',
-                    code,
-                    image: {
-                      width: image.width,
-                      height: image.height,
-                      data: rawImage.data,
-                      colorModel: image.colorModel,
-                      depth: rawImage.depth,
-                    },
-                    name,
-                  },
+                  demoDispatch,
                   {
                     type: 'image',
                     image,
                     value: name,
                   },
-                  jobManager,
+                  name,
+                  code,
                 ).then((status) => {
+                  // We don't request the next fram in case of error
                   if (status === 'success') {
                     nextFrameRequest = requestAnimationFrame(nextFrame);
                   }
@@ -130,7 +119,7 @@ export function useVideoTransform(
     return () => {
       abortController.abort();
     };
-  }, [selectedDevice, dispatch, runDispatch, code, name]);
+  }, [selectedDevice, demoDispatch, dispatch, code, name]);
 
   return { videoRef, canvasInputRef };
 }

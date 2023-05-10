@@ -5,49 +5,26 @@ import {
 } from 'react-icons/hi2';
 import { RxCodesandboxLogo } from 'react-icons/rx';
 
-import {
-  findCameraById,
-  getCameraId,
-  getCameraLabel,
-  useCameraContext,
-} from '../../../components/camera/cameraContext';
-import {
-  useDemoDispatchContext,
-  useDemoStateContext,
-} from '../../contexts/demo/demoContext';
+import { useDemoStateContext } from '../../contexts/demo/demoContext';
+import { useSelectImage } from '../../contexts/demo/dispatchHelpers';
 import {
   ImageOption,
-  isImageOption,
-  isUrlOption,
   useImportImageContext,
 } from '../../contexts/importImage/importImageContext';
-import { useImageRunState } from '../../contexts/run/imageRunContext';
 import AddonButton from '../addons/AddonButton';
 import { ImageInputButton } from '../addons/ImageInputButton';
 import CameraImageButton from '../snapshot/CameraImageButton';
 import CameraStreamButton from '../video/CameraStreamButton';
 
 import ImageDemoToolbarInfo from './ImageDemoToolbarInfo';
+import SourceSelect from './SourceSelect';
 
 export default function ImageDemoToolbar() {
-  const { selectedImage, selectedDevice } = useDemoStateContext();
-  const demoDispatch = useDemoDispatchContext();
+  const { run } = useDemoStateContext();
+  const selectImage = useSelectImage();
 
-  const { images, addImages, isVideoStreamAllowed } = useImportImageContext();
-  const runState = useImageRunState();
+  const { addImages } = useImportImageContext();
 
-  const {
-    cameraState: { cameras },
-  } = useCameraContext();
-
-  const shownCameras = isVideoStreamAllowed ? cameras : [];
-
-  const standardImages = images.filter(isUrlOption);
-  const customImages = images.filter((img) => isImageOption(img));
-
-  const selectedOption = selectedDevice
-    ? getCameraId(selectedDevice)
-    : selectedImage.value;
   return (
     <div
       style={{
@@ -58,55 +35,7 @@ export default function ImageDemoToolbar() {
       }}
     >
       <div style={{ marginTop: 0 }}>
-        <div className="flex-row">
-          <label style={{ fontSize: '0.875em' }} htmlFor="demo-image-select">
-            Source:
-          </label>
-          <select
-            id="demo-image-select"
-            style={{ width: 150, display: 'block' }}
-            value={selectedOption}
-            onChange={(event) => {
-              const device = findCameraById(cameras, event.target.value);
-              const image = images.find(
-                (opt) => opt.value === event.target.value,
-              );
-              if (device) {
-                demoDispatch({ type: 'SET_SELECTED_DEVICE', payload: device });
-              } else if (image) {
-                if (image) {
-                  demoDispatch({ type: 'SET_SELECTED_IMAGE', payload: image });
-                }
-              }
-            }}
-          >
-            {shownCameras.length > 0 && (
-              <optgroup label="Video streams">
-                {shownCameras.map((camera, idx) => (
-                  <option key={getCameraId(camera)} value={getCameraId(camera)}>
-                    {getCameraLabel(camera, idx)}
-                  </option>
-                ))}
-              </optgroup>
-            )}
-            {customImages.length > 0 && (
-              <optgroup label="Custom images">
-                {customImages.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.value}
-                  </option>
-                ))}
-              </optgroup>
-            )}
-            <optgroup label="Standard images">
-              {standardImages.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </optgroup>
-          </select>
-        </div>
+        <SourceSelect />
         <ImageDemoToolbarInfo />
       </div>
       <div style={{ display: 'flex', gap: 4 }}>
@@ -120,10 +49,7 @@ export default function ImageDemoToolbar() {
             }));
             addImages(newOptions);
             if (newOptions.length) {
-              demoDispatch({
-                type: 'SET_SELECTED_IMAGE',
-                payload: newOptions[newOptions.length - 1],
-              });
+              selectImage(newOptions[newOptions.length - 1]);
             }
           }}
         />
@@ -137,10 +63,7 @@ export default function ImageDemoToolbar() {
               },
             ];
             addImages(newOptions);
-            demoDispatch({
-              type: 'SET_SELECTED_IMAGE',
-              payload: newOptions[0],
-            });
+            selectImage(newOptions[0]);
           }}
         />
         <AddonButton addon="code">
@@ -152,7 +75,7 @@ export default function ImageDemoToolbar() {
         </AddonButton>
         <AddonButton
           addon="error"
-          style={{ display: runState.status === 'error' ? 'inherit' : 'none' }}
+          style={{ display: run.status === 'error' ? 'inherit' : 'none' }}
         >
           <HiOutlineExclamationTriangle style={{ color: 'red' }} />
         </AddonButton>
