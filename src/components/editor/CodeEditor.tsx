@@ -7,25 +7,41 @@ import React, { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 
 type EditorInstance = Parameters<OnMount>[0];
 
+interface EditorCommand {
+  keybinding: number;
+  handler: (editorValue: string) => void;
+}
+
+type CustomCommands = (editor: Monaco) => EditorCommand[];
+
 export default function CodeEditor(props: {
   setEditorValue: Dispatch<SetStateAction<string>>;
   editorValue: string;
   visible?: boolean;
+  commands?: CustomCommands;
 }) {
-  const { editorValue, setEditorValue, visible } = props;
+  const { editorValue, setEditorValue, visible, commands } = props;
   if (!visible) {
     return null;
   }
 
-  return <MonacoEditor value={editorValue} setValue={setEditorValue} />;
+  return (
+    <MonacoEditor
+      value={editorValue}
+      setValue={setEditorValue}
+      commands={commands}
+    />
+  );
 }
 
 function MonacoEditor({
   value,
   setValue,
+  commands,
 }: {
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
+  commands?: (editor: Monaco) => EditorCommand[];
 }) {
   const editorRef = useRef<any>(null);
   const monacoRef = useRef<Monaco | null>(null);
@@ -60,6 +76,12 @@ function MonacoEditor({
           '!editorHasMultipleSelections && !editorTabMovesFocus && ' +
           '!hasQuickSuggest',
       );
+      for (let command of commands?.(monaco) ?? []) {
+        editor.addCommand(command.keybinding, () => {
+          const editorValue = monaco.editor.getEditors()[0].getValue();
+          command.handler(editorValue);
+        });
+      }
     }
 
     // This is a trick to prevent the command from being triggered on the wrong

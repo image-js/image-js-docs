@@ -46,6 +46,14 @@ export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
         setEditorValue={setEditorValue}
         editorValue={editorValue}
         visible={addon === 'editor'}
+        commands={(editor) => [
+          {
+            keybinding: editor.KeyMod.CtrlCmd | editor.KeyCode.Enter,
+            handler: (editorValue) => {
+              runCode(editorValue);
+            },
+          },
+        ]}
       />
       {addon === 'editor' && (
         <div style={{ position: 'absolute', bottom: 4, right: 16 }}>
@@ -75,6 +83,7 @@ function PlayButton(props: { disabled?: boolean; onClick: () => void }) {
     <button
       type="button"
       disabled={disabled}
+      title="Run code (Ctrl/Cmd + Enter)"
       className={clsx('editor-button-icon button--success', {
         'editor-button-icon-disabled': disabled,
       })}
