@@ -70,7 +70,7 @@ export interface RunState {
   } | null;
   runTimes: number[];
   runTimeSum: number;
-  operationsPerSecond: number;
+  meanTime: number;
 }
 export interface DemoState {
   selectedImage: ImageDemoInputOption | null;
@@ -99,7 +99,7 @@ function getInitialState(initial: DemoInitialConfig): DemoState {
       previous: null,
       runTimes: [],
       runTimeSum: 0,
-      operationsPerSecond: 0,
+      meanTime: 0,
     },
   };
 }
@@ -209,6 +209,6 @@ function updateStats(draft: WritableDraft<DemoState>) {
       }
     }
     run.runTimes.push(run.time);
-    run.operationsPerSecond = 1000 / (run.runTimeSum / run.runTimes.length);
+    run.meanTime = run.runTimeSum / run.runTimes.length;
   }
 }
