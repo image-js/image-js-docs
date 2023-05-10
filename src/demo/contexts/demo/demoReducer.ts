@@ -45,6 +45,33 @@ export type DemoAction =
       payload: Error;
     };
 
+interface ImageData {
+  /**
+   * Currently shown source image.
+   */
+  sourceImage: ImageDemoInputOption;
+  /**
+   * Image after running the code on source image
+   */
+  filteredImage: Image;
+}
+
+export interface RunState {
+  status: RunStatus;
+  time: number;
+  error: Error | null;
+  image: ImageData | null;
+  startedCount: number;
+  // Remember the state of the previous run in case the current run is canceled
+  previous: {
+    status: Exclude<RunStatus, 'running'>;
+    error: Error | null;
+    image: ImageData | null;
+  } | null;
+  runTimes: number[];
+  runTimeSum: number;
+  operationsPerSecond: number;
+}
 export interface DemoState {
   selectedImage: ImageDemoInputOption | null;
   selectedDevice: MediaDeviceInfo | null;
@@ -104,8 +131,17 @@ export const demoReducer = (state: DemoState, action: DemoAction) => {
         break;
       }
       case 'RUN_START': {
-        draft.run.status = 'running';
-        draft.run.startedCount++;
+        const run = draft.run;
+        if (run.status !== 'running') {
+          run.previous = {
+            status: run.status,
+            error: run.error,
+            image: run.image,
+          };
+        }
+        run.status = 'running';
+        run.startedCount++;
+
         updateStats(draft);
         break;
       }
@@ -158,35 +194,6 @@ export function useDemoReducer(initial: DemoInitialConfig) {
 }
 
 export type RunStatus = 'running' | 'success' | 'error';
-
-export interface ImageRunState {}
-
-interface ImageData {
-  /**
-   * Currently shown source image.
-   */
-  sourceImage: ImageDemoInputOption;
-  /**
-   * Image after running the code on source image
-   */
-  filteredImage: Image;
-}
-
-export interface RunState {
-  status: RunStatus;
-  time: number;
-  error: Error | null;
-  image: ImageData | null;
-  startedCount: number;
-  previous: {
-    status: Exclude<RunStatus, 'running'>;
-    error: Error | null;
-    image: ImageData | null;
-  } | null;
-  runTimes: number[];
-  runTimeSum: number;
-  operationsPerSecond: number;
-}
 
 function updateStats(draft: WritableDraft<DemoState>) {
   const run = draft.run;
