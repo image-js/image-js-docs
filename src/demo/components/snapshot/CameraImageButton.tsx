@@ -16,7 +16,7 @@ export default function CameraImageButton({
     <>
       <button
         type="button"
-        className="button-icon"
+        className="toolbar-button-icon"
         onClick={open}
         onKeyDown={(event) => {
           if (event.key === 'Escape') {

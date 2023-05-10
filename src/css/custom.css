@@ -53,7 +53,7 @@ button {
 
 /* ====== button ====== */
 
-.button-icon {
+.toolbar-button-icon {
   display: inline-flex;
   border-radius: var(--ifm-button-border-radius);
   border-color: transparent;
@@ -63,21 +63,29 @@ button {
   box-sizing: border-box;
 }
 
-.button-icon svg {
+.editor-button-icon {
+  display: inline-flex;
+  border-radius: var(--ifm-button-border-radius);
+  border-color: transparent;
+  box-sizing: border-box;
+}
+
+.toolbar-button-icon svg {
   width: 1.5em;
   height: 1.5em;
 }
 
-.button-icon-lg svg {
-  width: 2em;
-  height: 2em;
+.editor-button-icon svg {
+  width: 1.75em;
+  height: 1.75em;
 }
 
-.button-icon-selected {
+.toolbar-button-icon-selected {
   border-color: var(--ifm-button-border-color);
 }
 
-.button-icon-disabled {
+.editor-button-icon:disabled,
+.toolbar-button-icon:disabled {
   opacity: 0.5;
 }
 
@@ -85,7 +93,7 @@ button {
 
 .flex-row {
   display: flex;
-  gap: 4;
+  gap: 4px;
   align-items: center;
 }
 
