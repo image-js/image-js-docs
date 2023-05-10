@@ -1,6 +1,6 @@
-import { assertUnreachable } from '@site/src/utils/assert';
+import { assert, assertUnreachable } from '@site/src/utils/assert';
 import { Image } from 'image-js';
-import { produce } from 'immer';
+import { original, produce } from 'immer';
 import { useReducer } from 'react';
 
 import { ImageDemoInputOption } from '../importImage/importImageContext';
@@ -52,7 +52,7 @@ export interface RunState {
   } | null;
   runTimes: number[];
   runTimeSum: number;
-  operationsPerSecond: number;
+  meanTime: number;
 }
 
 const initialState: RunState = {
@@ -64,7 +64,7 @@ const initialState: RunState = {
   previous: null,
   runTimes: [],
   runTimeSum: 0,
-  operationsPerSecond: 0,
+  meanTime: 0,
 };
 
 export const runReducer = (state: RunState, action: RunAction) => {
@@ -117,8 +117,7 @@ export const runReducer = (state: RunState, action: RunAction) => {
         }
       }
       draft.runTimes.push(draft.time);
-      draft.operationsPerSecond =
-        1000 / (draft.runTimeSum / draft.runTimes.length);
+      draft.meanTime = draft.runTimeSum / draft.runTimes.length;
     }
     return draft;
   });
