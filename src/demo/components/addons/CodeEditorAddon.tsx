@@ -50,10 +50,6 @@ export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
       {addon === 'editor' && (
         <div style={{ position: 'absolute', bottom: 4, right: 16 }}>
           <div className="flex-row" style={{ gap: 0 }}>
-            <AutoRunButton
-              noAutoRun={noAutoRun}
-              onClick={() => demoDispatch({ type: 'TOGGLE_NO_AUTO_RUN' })}
-            />
             {noAutoRun && (
               <PlayButton
                 disabled={disabled}
@@ -62,6 +58,10 @@ export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
                 }}
               />
             )}
+            <AutoRunButton
+              noAutoRun={noAutoRun}
+              onClick={() => demoDispatch({ type: 'TOGGLE_NO_AUTO_RUN' })}
+            />
           </div>
         </div>
       )}
