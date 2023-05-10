@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { useImageRunState } from '../../contexts/run/imageRunContext';
+import { useDemoStateContext } from '../../contexts/demo/demoContext';
 
 export default function ErrorAddon() {
-  const runState = useImageRunState();
+  const { run } = useDemoStateContext();
 
-  if (runState.error) {
-    return <pre style={{ color: 'red' }}>{runState.error.message}</pre>;
+  if (run.error) {
+    return <pre style={{ color: 'red' }}>{run.error.message}</pre>;
   } else {
     return <pre style={{ fontSize: 'italic' }}>No error</pre>;
   }

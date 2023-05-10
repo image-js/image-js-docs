@@ -12,32 +12,37 @@ import {
   useDemoDispatchContext,
   useDemoStateContext,
 } from '../../contexts/demo/demoContext';
-import { useImageRunState } from '../../contexts/run/imageRunContext';
+import { useRunCode } from '../../contexts/demo/dispatchHelpers';
 import { convertCodeToFunction } from '../../utils/convertCodeToFunction';
 
 export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
-  const runState = useImageRunState();
-  const { addon, noAutoRun, code } = useDemoStateContext();
+  const { addon, noAutoRun, run, selectedDevice } = useDemoStateContext();
   const demoDispatch = useDemoDispatchContext();
   const [editorValue, setEditorValue] = useState(props.defaultEditorCode);
   const debouncedEditorValue = useDebounce(editorValue, 1000);
+  const runCode = useRunCode();
+
+  const debouncedStatus = useDebounce(run.status, 200);
+  const disabled =
+    !selectedDevice &&
+    (debouncedStatus === 'running' || run.status === 'running');
 
   useEffect(() => {
     if (!noAutoRun) {
       // Check for syntax errors before dispatching the code
       try {
         convertCodeToFunction(debouncedEditorValue);
-        demoDispatch({ type: 'SET_CODE', payload: debouncedEditorValue });
+        runCode(debouncedEditorValue);
       } catch (e) {
         // Ignore
         // The code editor should highlight the syntax error
       }
     }
-  }, [debouncedEditorValue, demoDispatch, noAutoRun]);
+  }, [debouncedEditorValue, runCode, noAutoRun]);
   return (
     <div style={{ position: 'relative' }}>
       <CodeEditor
-        key={runState.image?.sourceImage.value}
+        key={run.image?.sourceImage.value}
         setEditorValue={setEditorValue}
         editorValue={editorValue}
         visible={addon === 'editor'}
@@ -51,10 +56,10 @@ export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
             />
             {noAutoRun && (
               <PlayButton
-                disabled={code === editorValue}
-                onClick={() =>
-                  demoDispatch({ type: 'SET_CODE', payload: editorValue })
-                }
+                disabled={disabled}
+                onClick={() => {
+                  runCode(editorValue);
+                }}
               />
             )}
           </div>

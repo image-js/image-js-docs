@@ -13,7 +13,7 @@ import React, {
 } from 'react';
 import { useKbs } from 'react-kbs';
 
-import { RunStatus } from '../../contexts/run/runReducer';
+import { RunStatus } from '../../contexts/demo/demoReducer';
 
 export type ImageSrc = Image | string | Error;
 

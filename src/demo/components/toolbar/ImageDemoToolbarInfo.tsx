@@ -2,7 +2,6 @@ import React from 'react';
 
 import useThrottle from '../../../hooks/useThrottle';
 import { useDemoStateContext } from '../../contexts/demo/demoContext';
-import { useImageRunState } from '../../contexts/run/imageRunContext';
 import useDebouncedStatus from '../../hooks/useDebouncedStatus';
 
 export default function ImageDemoToolbarInfo() {
@@ -16,9 +15,9 @@ export default function ImageDemoToolbarInfo() {
 }
 
 function FrameRateInfo() {
-  const runState = useImageRunState();
+  const { run } = useDemoStateContext();
 
-  const opsThrottled = useThrottle(runState.operationsPerSecond, 1000);
+  const opsThrottled = useThrottle(run.operationsPerSecond, 1000);
   return (
     <div className="image-demo-toolbar-info">
       {Math.round(opsThrottled)} ops/s
@@ -27,12 +26,12 @@ function FrameRateInfo() {
 }
 
 function ImageInfo() {
-  const runState = useImageRunState();
-  const debouncedStatus = useDebouncedStatus(runState.status);
+  const { run } = useDemoStateContext();
+  const debouncedStatus = useDebouncedStatus(run.status);
   return (
     <div className="image-demo-toolbar-info">
       {debouncedStatus === 'success' && (
-        <span>Ran in {formatTime(runState.time)}</span>
+        <span>Ran in {formatTime(run.time)}</span>
       )}
       {debouncedStatus === 'error' && <span>Processing failed</span>}
       {debouncedStatus === 'running' && <span>Running...</span>}

@@ -1,6 +1,6 @@
 import { useDebounce } from '@site/src/hooks/useDebounce';
 
-import { RunStatus } from '../contexts/run/runReducer';
+import { RunStatus } from '../contexts/demo/demoReducer';
 
 export default function useDebouncedStatus(status: RunStatus) {
   const debouncedStatus = useDebounce(status, 300);
