@@ -17,10 +17,11 @@ export default function ImageDemoToolbarInfo() {
 function FrameRateInfo() {
   const { run } = useDemoStateContext();
 
-  const opsThrottled = useThrottle(run.operationsPerSecond, 1000);
+  const meanTimeThrottled = useThrottle(run.meanTime, 1000);
   return (
     <div className="image-demo-toolbar-info">
-      {Math.round(opsThrottled)} ops/s
+      {Math.round(1000 / meanTimeThrottled)} ops/s (
+      {formatTime(meanTimeThrottled)})
     </div>
   );
 }
@@ -31,7 +32,9 @@ function ImageInfo() {
   return (
     <div className="image-demo-toolbar-info">
       {debouncedStatus === 'success' && (
-        <span>Ran in {formatTime(run.time)}</span>
+        <span>
+          Ran in {formatTime(run.time)} ({Math.round(1000 / run.time)} ops/s)
+        </span>
       )}
       {debouncedStatus === 'error' && <span>Processing failed</span>}
       {debouncedStatus === 'running' && <span>Running...</span>}
