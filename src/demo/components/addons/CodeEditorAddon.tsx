@@ -2,7 +2,11 @@ import CodeEditor from '@site/src/components/editor/CodeEditor';
 import { useDebounce } from '@site/src/hooks/useDebounce';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
-import { HiOutlinePlayCircle } from 'react-icons/hi2';
+import {
+  HiOutlineBolt,
+  HiOutlineBoltSlash,
+  HiOutlinePlayCircle,
+} from 'react-icons/hi2';
 
 import {
   useDemoDispatchContext,
@@ -38,14 +42,22 @@ export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
         editorValue={editorValue}
         visible={addon === 'editor'}
       />
-      {addon === 'editor' && noAutoRun && (
-        <div style={{ position: 'absolute', bottom: 0, right: 16 }}>
-          <PlayButton
-            disabled={code === editorValue}
-            onClick={() =>
-              demoDispatch({ type: 'SET_CODE', payload: editorValue })
-            }
-          />
+      {addon === 'editor' && (
+        <div style={{ position: 'absolute', bottom: 4, right: 16 }}>
+          <div className="flex-row" style={{ gap: 0 }}>
+            <AutoRunButton
+              noAutoRun={noAutoRun}
+              onClick={() => demoDispatch({ type: 'TOGGLE_NO_AUTO_RUN' })}
+            />
+            {noAutoRun && (
+              <PlayButton
+                disabled={code === editorValue}
+                onClick={() =>
+                  demoDispatch({ type: 'SET_CODE', payload: editorValue })
+                }
+              />
+            )}
+          </div>
         </div>
       )}
     </div>
@@ -58,12 +70,28 @@ function PlayButton(props: { disabled?: boolean; onClick: () => void }) {
     <button
       type="button"
       disabled={disabled}
-      className={clsx('button-icon button-icon-lg button--success', {
-        'button-icon-disabled': disabled,
+      className={clsx('editor-button-icon button--success', {
+        'editor-button-icon-disabled': disabled,
       })}
       onClick={props.onClick}
     >
-      <HiOutlinePlayCircle width="" height="32" />
+      <HiOutlinePlayCircle />
+    </button>
+  );
+}
+
+function AutoRunButton(props: { noAutoRun: boolean; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      className="editor-button-icon button--success"
+      onClick={props.onClick}
+    >
+      {props.noAutoRun ? (
+        <HiOutlineBoltSlash title="Click to enable auto-run" />
+      ) : (
+        <HiOutlineBolt title="Click to disable auto-run" />
+      )}
     </button>
   );
 }

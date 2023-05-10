@@ -15,7 +15,7 @@ export function ImageInputButton(props: {
   return (
     <button
       type="button"
-      className="button-icon"
+      className="toolbar-button-icon"
       title="Import file"
       onClick={() => inputRef.current?.click()}
     >

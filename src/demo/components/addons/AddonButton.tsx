@@ -18,8 +18,8 @@ export default function AddonButton(props: {
   return (
     <button
       type="button"
-      className={clsx('button-icon button--success', {
-        'button-icon-selected': addon === selectedAddon,
+      className={clsx('toolbar-button-icon button--success', {
+        'toolbar-button-icon-selected': addon === selectedAddon,
       })}
       style={props.style}
       onClick={() => demoDispatch({ type: 'SET_ADDON', payload: addon })}

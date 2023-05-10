@@ -25,8 +25,7 @@ export type DemoAction =
       payload: string;
     }
   | {
-      type: 'SET_NO_AUTO_RUN';
-      payload: boolean;
+      type: 'TOGGLE_NO_AUTO_RUN';
     };
 
 export interface DemoState {
@@ -68,8 +67,8 @@ export const demoReducer = (state: DemoState, action: DemoAction) => {
         draft.code = action.payload;
         break;
       }
-      case 'SET_NO_AUTO_RUN': {
-        draft.noAutoRun = action.payload;
+      case 'TOGGLE_NO_AUTO_RUN': {
+        draft.noAutoRun = !draft.noAutoRun;
         break;
       }
       default: {

@@ -22,7 +22,7 @@ export default function CameraStreamButton() {
         <button
           type="button"
           title="Stream from camera"
-          className="button-icon"
+          className="toolbar-button-icon"
           onClick={allowVideoStream}
           disabled={isVideoStreamAllowed}
         >
