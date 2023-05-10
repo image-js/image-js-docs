@@ -85,13 +85,14 @@ function run(
         demoDispatch({
           type: 'RUN_CANCEL',
         });
+        return 'cancel';
       } else {
         demoDispatch({
           type: 'RUN_ERROR',
           payload: err,
         });
+        return 'error';
       }
-      return 'error';
     });
 }
 
@@ -130,7 +131,7 @@ export function useRunCode() {
   const dispatch = useDemoDispatchContext();
   const { name, selectedImage } = useDemoStateContext();
 
-  return useCallback(
+  const runCode = useCallback(
     (code: string) => {
       dispatch({
         type: 'SET_CODE',
@@ -143,4 +144,14 @@ export function useRunCode() {
     },
     [name, selectedImage, dispatch],
   );
+
+  const stopCode = useCallback(() => {
+    const jobManager = getJobManager();
+    jobManager.abortJob(name);
+  }, [name]);
+
+  return {
+    runCode,
+    stopCode,
+  };
 }

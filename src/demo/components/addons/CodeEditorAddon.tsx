@@ -1,11 +1,11 @@
 import CodeEditor from '@site/src/components/editor/CodeEditor';
 import { useDebounce } from '@site/src/hooks/useDebounce';
-import clsx from 'clsx';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   HiOutlineBolt,
   HiOutlineBoltSlash,
   HiOutlinePlayCircle,
+  HiOutlineStopCircle,
 } from 'react-icons/hi2';
 
 import {
@@ -16,19 +16,21 @@ import { useRunCode } from '../../contexts/demo/dispatchHelpers';
 import { convertCodeToFunction } from '../../utils/convertCodeToFunction';
 
 export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
-  const { addon, noAutoRun, run, selectedDevice } = useDemoStateContext();
+  const { addon, noAutoRun, run, selectedDevice, code } = useDemoStateContext();
   const demoDispatch = useDemoDispatchContext();
   const [editorValue, setEditorValue] = useState(props.defaultEditorCode);
   const debouncedEditorValue = useDebounce(editorValue, 1000);
-  const runCode = useRunCode();
+  const { runCode, stopCode } = useRunCode();
 
-  const debouncedStatus = useDebounce(run.status, 200);
-  const disabled =
-    !selectedDevice &&
-    (debouncedStatus === 'running' || run.status === 'running');
+  // We need refs for anything that is referenced in a CodeEditor command
+  // Because the handler is created once and never updated
+  const refs = useRef({ noAutoRun, runCode, editorValue });
+  useEffect(() => {
+    refs.current = { noAutoRun, runCode, editorValue };
+  }, [noAutoRun, runCode, editorValue]);
 
   useEffect(() => {
-    if (!noAutoRun) {
+    if (!noAutoRun && code !== debouncedEditorValue) {
       // Check for syntax errors before dispatching the code
       try {
         convertCodeToFunction(debouncedEditorValue);
@@ -38,7 +40,11 @@ export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
         // The code editor should highlight the syntax error
       }
     }
-  }, [debouncedEditorValue, runCode, noAutoRun]);
+  }, [debouncedEditorValue, runCode, noAutoRun, code]);
+
+  // Video streams cannot be stopped, instead the code can be updated at anytime
+  // And the new code will apply on the next frame
+  const canStop = selectedDevice === null && run.status === 'running';
   return (
     <div style={{ position: 'relative' }}>
       <CodeEditor
@@ -49,8 +55,10 @@ export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
         commands={(editor) => [
           {
             keybinding: editor.KeyMod.CtrlCmd | editor.KeyCode.Enter,
-            handler: (editorValue) => {
-              runCode(editorValue);
+            handler: () => {
+              if (refs.current.noAutoRun) {
+                refs.current.runCode(refs.current.editorValue);
+              }
             },
           },
         ]}
@@ -59,10 +67,14 @@ export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
         <div style={{ position: 'absolute', bottom: 4, right: 16 }}>
           <div className="flex-row" style={{ gap: 0 }}>
             {noAutoRun && (
-              <PlayButton
-                disabled={disabled}
+              <PlayStopButton
+                canStop={canStop}
                 onClick={() => {
-                  runCode(editorValue);
+                  if (canStop) {
+                    stopCode();
+                  } else {
+                    runCode(editorValue);
+                  }
                 }}
               />
             )}
@@ -77,19 +89,16 @@ export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
   );
 }
 
-function PlayButton(props: { disabled?: boolean; onClick: () => void }) {
-  const { disabled } = props;
+function PlayStopButton(props: { canStop: boolean; onClick: () => void }) {
+  const { canStop } = props;
   return (
     <button
       type="button"
-      disabled={disabled}
-      title="Run code (Ctrl/Cmd + Enter)"
-      className={clsx('editor-button-icon button--success', {
-        'editor-button-icon-disabled': disabled,
-      })}
+      title={canStop ? 'Stop code' : 'Run code (Ctrl/Cmd + Enter)'}
+      className={'editor-button-icon button--success'}
       onClick={props.onClick}
     >
-      <HiOutlinePlayCircle />
+      {canStop ? <HiOutlineStopCircle /> : <HiOutlinePlayCircle />}
     </button>
   );
 }
