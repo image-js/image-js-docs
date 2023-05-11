@@ -55,7 +55,7 @@ module.exports = function demoLoader(source) {
 /**
  * Process the image
  * @param { IJS.Image } image the input image
- * @returns { IJS.Image } the processed image
+ * @returns { IJS.Image | IJS.Mask } the processed image
  */
 export function process(image) {
   ${processBody}

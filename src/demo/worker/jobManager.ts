@@ -1,5 +1,5 @@
 import { ComputeData, WorkerResponse } from '@site/src/types/IJS';
-import { Image } from 'image-js';
+import { Image, Mask } from 'image-js';
 
 type WorkerMessageHandler = (event: MessageEvent<WorkerResponse>) => void;
 
@@ -10,7 +10,7 @@ interface Job {
 }
 
 interface SuccessData {
-  image: Image;
+  image: Image | Mask;
   time: number;
 }
 
@@ -31,15 +31,26 @@ class JobManagerClass {
       }
       this._runningJobs.delete(event.data.name);
       if (event.data.type === 'success') {
-        const { width, height, colorModel, data, depth } = event.data.data;
-        job.resolve({
-          image: new Image(width, height, {
-            colorModel,
-            data,
-            depth,
-          }),
-          time: event.data.time,
-        });
+        const data = event.data.data;
+        if (data.type === 'image') {
+          const { width, height, colorModel, data: imgData, depth } = data;
+          job.resolve({
+            image: new Image(width, height, {
+              colorModel,
+              data: imgData,
+              depth,
+            }),
+            time: event.data.time,
+          });
+        } else {
+          const { width, height, data: imgData } = data;
+          job.resolve({
+            image: new Mask(width, height, {
+              data: imgData,
+            }),
+            time: event.data.time,
+          });
+        }
       } else {
         job.reject(new Error(event.data.error));
       }

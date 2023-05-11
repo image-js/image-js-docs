@@ -42,6 +42,7 @@ export function runAndDispatch(
         type: 'decoded',
         code,
         image: {
+          type: 'image',
           width: imageOption.image.width,
           height: imageOption.image.height,
           data: rawImage.data,
