@@ -9,8 +9,16 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 async function demoLoaderPlugin() {
   return {
     name: 'demo-loader',
-    configureWebpack() {
-      return {
+
+    /**
+     *
+     * @param {import('webpack').Configuration} config
+     * @param {boolean} isServer
+     * @returns {import('webpack').Configuration}
+     */
+    configureWebpack(config, isServer) {
+      /** @type {import('webpack').Configuration} */
+      const customConfig = {
         module: {
           rules: [
             {
@@ -22,6 +30,10 @@ async function demoLoaderPlugin() {
           ],
         },
       };
+      if (process.env.NODE_ENV === 'production' && !isServer) {
+        customConfig.devtool = 'source-map';
+      }
+      return customConfig;
     },
   };
 }
