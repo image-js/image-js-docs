@@ -1,5 +1,5 @@
 import { assertUnreachable } from '@site/src/utils/assert';
-import { Image } from 'image-js';
+import { Image, Mask } from 'image-js';
 import { produce } from 'immer';
 import { WritableDraft } from 'immer/dist/internal';
 import { useReducer } from 'react';
@@ -53,7 +53,7 @@ interface ImageData {
   /**
    * Image after running the code on source image
    */
-  filteredImage: Image;
+  filteredImage: Image | Mask;
 }
 
 export interface RunState {

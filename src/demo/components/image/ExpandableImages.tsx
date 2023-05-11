@@ -1,4 +1,4 @@
-import { Image, writeCanvas } from 'image-js';
+import { Image, Mask, writeCanvas } from 'image-js';
 import React, {
   createContext,
   Dispatch,
@@ -15,7 +15,7 @@ import { useKbs } from 'react-kbs';
 
 import { RunStatus } from '../../contexts/demo/demoReducer';
 
-export type ImageSrc = Image | string | Error;
+export type ImageSrc = Image | Mask | string | Error;
 
 export function ExpandableImages(props: {
   images: ImageSrc[];
@@ -141,7 +141,7 @@ function useToggleImage(index: number) {
 }
 
 function ZoomableImageOrCanvas(props: {
-  image: string | Image;
+  image: string | Image | Mask;
   height?: number;
   index: number;
 }) {
@@ -155,7 +155,7 @@ function ZoomableImageOrCanvas(props: {
 }
 
 function ZoomableCanvas(props: {
-  image: Image | null;
+  image: Image | Mask | null;
   height: number;
   index: number;
 }) {
@@ -204,7 +204,7 @@ function ZoomableImage(props: {
   );
 }
 
-function CanvasImage(props: { image: Image }) {
+function CanvasImage(props: { image: Image | Mask }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { image } = props;
   useLayoutEffect(() => {

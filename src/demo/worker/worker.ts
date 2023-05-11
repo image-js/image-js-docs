@@ -27,19 +27,36 @@ onmessage = (event: MessageEvent<ComputeData>) => {
     const start = performance.now();
     const newImage = processImage(image, IJS);
     const end = performance.now();
-    const imageRaw = newImage.getRawImage();
-    postResponse({
-      type: 'success',
-      data: {
-        data: imageRaw.data,
-        width: newImage.width,
-        height: newImage.height,
-        depth: imageRaw.depth,
-        colorModel: newImage.colorModel,
-      },
-      time: end - start,
-      name: event.data.name,
-    });
+    if (newImage instanceof IJS.Image) {
+      const imageRaw = newImage.getRawImage();
+      postResponse({
+        type: 'success',
+        data: {
+          type: 'image',
+          data: imageRaw.data,
+          width: newImage.width,
+          height: newImage.height,
+          depth: imageRaw.depth,
+          colorModel: newImage.colorModel,
+        },
+        time: end - start,
+        name: event.data.name,
+      });
+    } else {
+      const maskRaw = newImage.getRawImage();
+      postResponse({
+        type: 'success',
+        data: {
+          type: 'mask',
+          data: maskRaw.data,
+          width: newImage.width,
+          height: newImage.height,
+        },
+        time: end - start,
+        name: event.data.name,
+      });
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     postResponse({ type: 'error', error: err.message, name: event.data.name });
