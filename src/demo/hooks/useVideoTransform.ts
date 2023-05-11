@@ -4,7 +4,6 @@ import { useEffect, useRef } from 'react';
 import { useCameraContext } from '../../components/camera/cameraContext';
 import { useDemoDispatchContext } from '../contexts/demo/demoContext';
 import { runAndDispatch } from '../contexts/demo/dispatchHelpers';
-import getJobManager from '../worker/jobManager';
 
 export function useVideoTransform(
   selectedDevice: MediaDeviceInfo,
@@ -17,7 +16,6 @@ export function useVideoTransform(
   const demoDispatch = useDemoDispatchContext();
 
   useEffect(() => {
-    const jobManager = getJobManager();
     const video = videoRef.current;
     let nextFrameRequest: number;
     let stream: MediaStream | null = null;
@@ -26,7 +24,6 @@ export function useVideoTransform(
       if (nextFrameRequest) {
         cancelAnimationFrame(nextFrameRequest);
       }
-      jobManager.abortJob(name);
       if (stream) {
         stream.getVideoTracks().forEach((track) => {
           track.stop();
