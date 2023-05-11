@@ -71,6 +71,7 @@ export interface RunState {
   runTimes: number[];
   runTimeSum: number;
   meanTime: number;
+  isApproximate: boolean;
 }
 export interface DemoState {
   selectedImage: ImageDemoInputOption | null;
@@ -100,6 +101,7 @@ function getInitialState(initial: DemoInitialConfig): DemoState {
       runTimes: [],
       runTimeSum: 0,
       meanTime: 0,
+      isApproximate: false,
     },
   };
 }
@@ -124,6 +126,7 @@ export const demoReducer = (state: DemoState, action: DemoAction) => {
       }
       case 'SET_CODE': {
         draft.code = action.payload;
+        draft.run.isApproximate = false;
         break;
       }
       case 'TOGGLE_NO_AUTO_RUN': {
@@ -162,7 +165,12 @@ export const demoReducer = (state: DemoState, action: DemoAction) => {
         run.image = action.payload.image;
         // if perf is sub-milisecond, some browsers will report 0
         // In this case, we set it to 1ms to prevent division by 0
-        run.time = action.payload.time === 0 ? 1 : action.payload.time;
+        if (action.payload.time === 0) {
+          run.isApproximate = true;
+          run.time = 1;
+        } else {
+          run.time = action.payload.time;
+        }
         run.startedCount--;
         run.status = run.startedCount === 0 ? 'success' : 'running';
         updateStats(draft);

@@ -20,7 +20,9 @@ function FrameRateInfo() {
   const meanTimeThrottled = useThrottle(run.meanTime, 1000);
   return (
     <div className="image-demo-toolbar-info">
+      {run.isApproximate ? '>' : ''}
       {Math.round(1000 / meanTimeThrottled)} ops/s (
+      {run.isApproximate ? ',' : ''}
       {formatTime(meanTimeThrottled)})
     </div>
   );
@@ -29,11 +31,14 @@ function FrameRateInfo() {
 function ImageInfo() {
   const { run } = useDemoStateContext();
   const debouncedStatus = useDebouncedStatus(run.status);
+
   return (
     <div className="image-demo-toolbar-info">
       {debouncedStatus === 'success' && (
         <span>
-          Ran in {formatTime(run.time)} ({Math.round(1000 / run.time)} ops/s)
+          Ran in {run.isApproximate ? '<' : ''}
+          {formatTime(run.time)} ({run.isApproximate ? '>' : ''}
+          {Math.round(1000 / run.time)} ops/s)
         </span>
       )}
       {debouncedStatus === 'error' && <span>Processing failed</span>}
