@@ -31,12 +31,12 @@ export class JobManager {
       if (event.data.type === 'success') {
         const data = event.data.data;
         if (data.type === 'image') {
-          const { width, height, colorModel, data: imgData, depth } = data;
+          const { width, height, colorModel, data: imgData, bitDepth } = data;
           job.resolve({
             image: new Image(width, height, {
               colorModel,
               data: imgData,
-              depth,
+              bitDepth,
             }),
             time: event.data.time,
           });

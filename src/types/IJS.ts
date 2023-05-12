@@ -21,7 +21,7 @@ interface ImageData {
   data: IJS.ImageDataArray;
   width: number;
   height: number;
-  depth: IJS.ColorDepth;
+  bitDepth: IJS.BitDepth;
   colorModel: IJS.ImageColorModel;
 }
 

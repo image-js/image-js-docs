@@ -47,7 +47,7 @@ export function runAndDispatch(
           height: imageOption.image.height,
           data: rawImage.data,
           colorModel: imageOption.image.colorModel,
-          depth: rawImage.depth,
+          bitDepth: imageOption.image.bitDepth,
         },
         name,
       },

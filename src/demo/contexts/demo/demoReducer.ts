@@ -1,7 +1,7 @@
 import { assertUnreachable } from '@site/src/utils/assert';
 import { Image, Mask } from 'image-js';
 import { produce } from 'immer';
-import { WritableDraft } from 'immer/dist/internal';
+import { WritableDraft } from 'immer/dist/internal.js';
 import { useReducer } from 'react';
 
 import { Addon } from '../../utils/types';
