@@ -11,7 +11,7 @@ onmessage = (event: MessageEvent<ComputeData>) => {
       ? IJS.decode(data.data)
       : new IJS.Image(data.image.width, data.image.height, {
           colorModel: data.image.colorModel,
-          depth: data.image.depth,
+          bitDepth: data.image.bitDepth,
           data: data.image.data,
         });
 
@@ -36,7 +36,7 @@ onmessage = (event: MessageEvent<ComputeData>) => {
           data: imageRaw.data,
           width: newImage.width,
           height: newImage.height,
-          depth: imageRaw.depth,
+          bitDepth: newImage.bitDepth,
           colorModel: newImage.colorModel,
         },
         time: end - start,
