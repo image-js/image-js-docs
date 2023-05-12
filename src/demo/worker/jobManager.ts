@@ -14,7 +14,9 @@ interface SuccessData {
   time: number;
 }
 
-export class JobManager {
+export type JobManager = InstanceType<typeof JobManagerClass>;
+
+class JobManagerClass {
   private _callback: WorkerMessageHandler;
   private _worker: Worker;
   private _runningJobs = new Map<string, Job>();
@@ -102,7 +104,7 @@ export class JobManager {
 let jobManager: JobManager | null = null;
 export default function getJobManager() {
   if (!jobManager) {
-    jobManager = new JobManager();
+    jobManager = new JobManagerClass();
   }
   return jobManager;
 }
