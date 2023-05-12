@@ -7,6 +7,7 @@
     "clear": "docusaurus clear",
     "deploy": "docusaurus deploy",
     "docusaurus": "docusaurus",
+    "cspell": "cspell lint \"**/*.md\"",
     "eslint": "eslint ./src",
     "eslint-fix": "npm run eslint -- --fix",
     "prettier": "prettier --check ./",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.4.0",
     "@tsconfig/docusaurus": "^1.0.5",
+    "cspell": "^6.31.1",
     "dts-bundle": "^0.7.3",
     "eslint": "^8.38.0",
     "eslint-config-zakodium": "^7.1.0",
