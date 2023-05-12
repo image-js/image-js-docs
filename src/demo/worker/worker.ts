@@ -42,6 +42,7 @@ onmessage = (event: MessageEvent<ComputeData>) => {
     });
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
+    reportError(err);
     postResponse({ type: 'error', error: err.message, name: event.data.name });
   }
 };
