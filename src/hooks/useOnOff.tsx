@@ -6,6 +6,6 @@ export function useOnOff(
   const [isOn, setOnOff] = useState(initialValue);
   const setOn = useCallback(() => setOnOff(true), []);
   const setOff = useCallback(() => setOnOff(false), []);
-  const toggle = useCallback(() => setOnOff(!isOn), [isOn]);
+  const toggle = useCallback(() => setOnOff((isOn) => !isOn), []);
   return [isOn, setOn, setOff, toggle];
 }

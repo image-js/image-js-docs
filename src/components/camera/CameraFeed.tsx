@@ -3,7 +3,6 @@ import React, { RefObject } from 'react';
 import UnavailableCamera from './UnavailableCamera';
 import { useCameraContext, useVideoStream } from './cameraContext';
 
-
 export default function CameraFeed({
   videoRef,
 }: {

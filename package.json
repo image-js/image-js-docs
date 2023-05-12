@@ -9,6 +9,8 @@
     "docusaurus": "docusaurus",
     "eslint": "eslint ./src",
     "eslint-fix": "npm run eslint -- --fix",
+    "prettier": "prettier --check ./",
+    "prettier-fix": "prettier --write ./",
     "serve": "docusaurus serve",
     "dev": "docusaurus start",
     "swizzle": "docusaurus swizzle",
@@ -37,6 +39,7 @@
     "dts-bundle": "^0.7.3",
     "eslint": "^8.38.0",
     "eslint-config-zakodium": "^7.1.0",
+    "prettier": "^2.8.8",
     "raw-loader": "^4.0.2",
     "typescript": "^4.7.4"
   },
