@@ -6,7 +6,7 @@ A median filter is a digital image processing technique used to reduce noise in 
 
 Here's how a median filter works:
 
-Window or Kernel Selection: The first step is to choose a small window or kernel. This window will move over the entire image, pixel by pixel. Common window sizes are 3x3, 5x5, or 7x7, but the size depends on the level of noise and the desired amount of smoothing.
+_Window or Kernel Selection_: The first step is to choose a small window or kernel. This window will move over the entire image, pixel by pixel. Common window sizes are 3x3, 5x5, or 7x7, but the size depends on the level of noise and the desired amount of smoothing.
 
 _Pixel Neighborhood_: As the window moves over the image, for each pixel location, the filter collects the pixel values within the window's neighborhood. The neighborhood consists of the pixels that are currently covered by the window.
 
