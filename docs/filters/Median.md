@@ -1,3 +1,7 @@
+import MedianDemo from './median.demo.tsx'
+
+[Check options and parameters of median method](https://image-js.github.io/image-js-typescript/classes/Image.html#medianFilter 'github.io link')
+
 A median filter is a digital image processing technique used to reduce noise in an image by replacing each pixel's value with the median value of neighboring pixels. It's particularly effective at removing ["salt and pepper"](https://en.wikipedia.org/wiki/Salt-and-pepper_noise 'Wikipedia link on salt and pepper effect') noise, which appears as randomly scattered bright and dark pixels in an image. The median filter helps preserve the edges and details of an image while effectively removing the noise.
 
 Here's how a median filter works:
@@ -15,3 +19,5 @@ The key advantage of using the median filter, especially for noise reduction, is
 However, the median filter also has limitations. It can blur sharp edges and thin lines in the image, as it doesn't consider the spatial relationship between pixels beyond their intensity values. This means that while it's great for removing noise, it might not be suitable for all types of image enhancement tasks.
 
 In summary, a median filter is an effective tool for reducing noise in images, particularly salt and pepper noise, while preserving the image's overall structure and details.
+
+<MedianDemo />

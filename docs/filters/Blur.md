@@ -1,6 +1,6 @@
 import BlurDemo from './blur.demo.tsx'
 
-<BlurDemo />
+[Check options and parameters of grayscale method](https://image-js.github.io/image-js-typescript/classes/Image.html#blur 'link on github io')
 
 Blur or [Gaussian blur](https://en.wikipedia.org/wiki/Gaussian_blur 'Wikipedia link on gaussian blur') is a widely used image processing technique that smooths an image by reducing high-frequency noise and fine details while preserving the overall structure and larger features. It's named after the Gaussian function, which is a mathematical function that represents a bell-shaped curve. Gaussian blur is often applied to images before other processing steps like edge detection to improve their quality and reliability.
 
@@ -21,3 +21,5 @@ The key idea behind Gaussian blur is that it simulates a diffusion process, wher
 The size of the Gaussian kernel and the standard deviation parameter (which controls the spread of the Gaussian curve) influence the degree of smoothing. A larger kernel or a higher standard deviation will produce more pronounced smoothing, but might also result in a loss of fine details.
 
 Gaussian blur is a foundational technique in image processing and is often used as a preprocessing step before applying other operations like edge detection or feature extraction. It strikes a balance between noise reduction and preserving the important structures within an image.<BlurDemo noAutoRun />
+
+<BlurDemo />

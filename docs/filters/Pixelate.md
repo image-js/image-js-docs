@@ -1,3 +1,7 @@
+import PixelateDemo from './pixelate.demo.tsx'
+
+[Check options and parameters of pixelate median](https://image-js.github.io/image-js-typescript/classes/Image.html#pixelate 'github.io link')
+
 [Pixelate filter](https://en.wikipedia.org/wiki/Pixelization 'Wikipedia link on pixelization concept') is a digital image processing technique used to reduce the level of detail in an image by replacing groups of pixels with a single, average color value. This creates a mosaic-like effect where the image appears to be composed of larger, blocky elements rather than fine details.
 
 Here's how a basic pixelate filter works:
@@ -17,3 +21,5 @@ _Color Replacement_: After obtaining the average color of each grid cell, the fi
 _Blocky Appearance_: Since each grid cell now represents a larger area of the original image, the fine details are lost, and the image appears pixelated or mosaic-like.
 
 The size of the grid cells determines the degree of pixelation. Larger grid cells create a more pronounced pixelation effect, while smaller grid cells result in a subtler effect. The pixelation effect is most noticeable in images with high levels of detail, as the reduction in detail becomes more apparent.
+
+<PixelateDemo />
