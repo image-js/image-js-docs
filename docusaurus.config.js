@@ -41,7 +41,7 @@ async function demoLoaderPlugin() {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
+  title: 'Welcome',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
@@ -56,7 +56,7 @@ const config = {
   organizationName: 'Zakodium', // Usually your GitHub org/user name.
   projectName: 'image-js', // Usually your repo name.
 
-  plugins: [demoLoaderPlugin],
+  plugins: [demoLoaderPlugin, '@orama/plugin-docusaurus'],
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -125,8 +125,8 @@ const config = {
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            href: 'https://image-js.github.io/image-js-typescript/',
+            label: 'GitHub IO',
             position: 'right',
           },
         ],
