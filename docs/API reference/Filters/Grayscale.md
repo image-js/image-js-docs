@@ -14,35 +14,35 @@ _Pixel Transformation_: For each pixel in each color channel (red, green, and bl
 
 - [luma601](<https://en.wikipedia.org/wiki/Luma_(video)>)
 
-- [max]
+- max : takes maximum value among of red,green and blue
 
-- [min]
+- min : takes the minimum value of red,green and blue
 
-- [average]
+- average : takes an average value of red,green and blue
 
-- [minmax]
+- minmax : takes an average between the max and min values of red, green and blue.
 
-- [red]
+- red : takes a value of pixel's red channel
 
-- [green]
+- green : takes a value of pixel's green channel
 
-- [blue]
+- blue : takes a value of pixel's blue channel
 
-- [black]
+- **black** : takes the minimum of the inverses of red, green and blue.
 
-- [cyan]
+- cyan : takes cyan component of a pixel
 
-- [magenta]
+- magenta : takes magenta component of a pixel
 
-- [yellow]
+- yellow : takes yellow component of a pixel
 
-- [hue]
+- **hue**: takes hue component of a pixel
 
-- [saturation]
+- **saturation** : takes saturation component of a pixel
 
-- [lightness]
+- **lightness** : takes lightness component of a pixel
 
-_Intensity Clipping_: After calculating the grayscale intensity, the resulting value is then assigned to all three color channels (red, green, and blue) of that pixel. This converts the pixel's color to a shade of gray. If the calculated intensity value is below 0, it is set to 0, and if it is above 255, it is set to 255 to ensure that it remains within the valid intensity range.
+_Applying intensity_: After calculating the grayscale intensity, the resulting value is then assigned to all three color channels (red, green, and blue) of that pixel. This converts the pixel's color to a shade of gray.
 
 _Reassembly_: If the image was processed separately for each color channel, the transformed color channels are reassembled to create the final grayscale image.
 
