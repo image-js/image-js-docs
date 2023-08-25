@@ -1,8 +1,10 @@
 import DerivativeDemo from './derivative.demo.tsx'
+import GradientDemo from './gradient.demo.tsx'
 
 [Check options and parameters of derivative filter method](https://image-js.github.io/image-js-typescript/classes/Image.html#derivativeFilter 'link on github io')
 
-Derivative filter is a special case of a gradient filter, therefore it behaves the algorithm is similar. However, the key difference are the kernels used in this very algorithm. In ImageJS there are three distinguished kernels:
+Derivative filter is a special case of a gradient filter, therefore it uses gradient algorithm. However, the key difference are the kernels used in this very algorithm. In ImageJS there are three distinguished kernels:
+<DerivativeDemo />
 
 - ## [Sobel kernel](https://en.wikipedia.org/wiki/Sobel_operator 'Sobel kernel')
 
@@ -46,4 +48,30 @@ $KernelY = \begin{bmatrix}
 -1 & -1 & -1
 \end{bmatrix}$
 
-<DerivativeDemo />
+:::info
+As was mentioned, derivative filter is a type of gradient filter. Therefore using the same kernels with gradient filter will provide the same image output.Derivative filter simplifies some kernel's application.
+
+_Applying Sobel kernel using gradient filter_
+
+```js
+return image.gradientFilter({
+  kernelX: [
+    [-1, 0, 1],
+    [-2, 0, 2],
+    [-1, 0, 1],
+  ],
+  kernelY: [
+    [-1, -2, -1],
+    [0, 0, 0],
+    [1, 2, 1],
+  ],
+});
+```
+
+_Applying Sobel kernel using derivative filter_
+
+```js
+return image.derivativeFilter();
+```
+
+:::
