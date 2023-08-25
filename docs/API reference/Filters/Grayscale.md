@@ -38,7 +38,7 @@ _Pixel Transformation_: For each pixel in each color channel (red, green, and bl
 
 - yellow : takes yellow component of a pixel
 
-- **hue** : takes hue component of a pixel
+- hue : takes hue component of a pixel
 
 - saturation : takes a fraction from difference of minimum and maximum components of a pixel
 
