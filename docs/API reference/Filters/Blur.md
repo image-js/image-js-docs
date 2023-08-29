@@ -1,25 +1,38 @@
----
-sidebar_position: 1
----
-
 import BlurDemo from './blur.demo.tsx'
 
 [Check options and parameters of blur method](https://image-js.github.io/image-js-typescript/classes/Image.html#blur 'link on github io')
 
-Blur or [Gaussian blur](https://en.wikipedia.org/wiki/Gaussian_blur 'Wikipedia link on gaussian blur') is a widely used image processing technique that smooths an image by reducing high-frequency noise and fine details while preserving the overall structure and larger features. It's named after the [Gaussian function](https://en.wikipedia.org/wiki/Gaussian_function 'wikipedia link on Gaussian function'), which is a mathematical function that represents a bell-shaped curve. Gaussian blur is often applied to images before other processing steps like edge detection to improve their quality and reliability.
+Blur, also known as average blur or box blur, is a simple image processing technique used to reduce noise and smooth out images. It involves replacing the color value of a pixel with the average color value of its neighboring pixels within a specified window or kernel. This process effectively blurs the image and reduces high-frequency noise.
+
+Box blur is particularly effective in reducing salt-and-pepper noise (random black and white pixels) and minor imperfections in an image. However, it also leads to loss of finer details, so the choice of kernel size is important.
 
 <BlurDemo />
 
-Here's how Gaussian blur works:
+### Default values
 
-_Kernel Definition_: The core concept of Gaussian blur involves [convolving](../../Glossary.md#convolution 'glossary link on convolution') the image with a Gaussian [kernel](../../Glossary.md#kernel 'glossary link on kernel'), also known as a Gaussian filter or mask. This kernel's values are arranged in a way that creates a symmetric, bell-shaped pattern around the center of the kernel to approximate Gaussian function.
+| Option                                                                                                       | Default value |
+| ------------------------------------------------------------------------------------------------------------ | ------------- |
+| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderType)        | 'reflect101'  |
+| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderValue)      | 0             |
+| [`height`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#height)(**mandatory**) | -             |
+| [`out`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderValue)              | -             |
+| [`width`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#width)(**mandatory**)   | -             |
 
-_Convolution Operation_: The Gaussian kernel is applied to the image using a convolution operation. This involves placing the kernel's center over each pixel in the image and performing element-wise multiplication of the kernel's values with the corresponding pixel values in the neighborhood. The results of these multiplications are summed up to compute the new value for the central pixel.
+More advanced blurring techniques, such as [Gaussian blur](./Gaussian%20Blur.md 'internal link to gausian blur') or [bilateral filter](https://en.wikipedia.org/wiki/Bilateral_filter 'wikipedia link on bilateral filters'), are often used for better results in various applications.
 
-_Weighted Averaging_: The Gaussian kernel values create a weighting scheme that favors pixels closer to the center of the kernel and decreases the influence of pixels farther away. This is because the Gaussian function is symmetrically distributed around its center, resulting in stronger weights for nearby pixels and weaker weights for distant ones.
+<details>
+<summary>
+<b>Implementation</b>
+ </summary>
 
-_Smoothing Effect_: As the convolution operation is applied across the entire image, each pixel's value is replaced with a weighted average of its neighboring pixels' values. This process effectively reduces the intensity variations caused by noise and fine details, resulting in a smoothed version of the image.
+Here's how the box blur process works:
 
-The key idea behind Gaussian blur is that it simulates a diffusion process, where each pixel's value is influenced by the values of its neighbors. Because the weights are determined by the Gaussian function, pixels that are closer to the central pixel have a larger impact on the smoothed value, while pixels that are farther away contribute less.
+_Select a Kernel Size_: The first step is to choose the size of the kernel or window that will be used for the blurring operation. The kernel is typically a square matrix with odd dimensions, such as 3x3, 5x5, 7x7, etc. The larger the kernel, the more intense the blurring effect.
 
-The size of the Gaussian kernel and the standard deviation parameter (which controls the spread of the Gaussian curve) influence the degree of smoothing. A larger kernel or a higher standard deviation will produce more pronounced smoothing, but might also result in a loss of fine details.
+_Iterate through Pixels_: For each pixel in the image, the algorithm applies [convolution](../../Glossary.md#convolution).
+
+_Calculate Average Color_: The algorithm calculates the average color value of all the pixels within the kernel.
+
+_Replace Pixel Value_: The original pixel's color value is then replaced with the calculated average color value.
+
+</details>

@@ -6,6 +6,16 @@ import InvertDemo from './invert.demo.tsx'
 
 <InvertDemo />
 
+### Default values
+
+| Option                                                                                    | Default value |
+| ----------------------------------------------------------------------------------------- | ------------- |
+| [`out`](https://image-js.github.io/image-js-typescript/interfaces/InvertOptions.html#out) | -             |
+
+<details>
+<summary><b>Implementation</b>
+</summary>
+
 Here's how the invert filter works:
 
 _Pixel Transformation_: For each pixel in the image, the inversion filter transforms its color [intensity](../../Glossary.md#intensity 'glossary link on intensity') value. The new intensity value is calculated using the formula:
@@ -17,3 +27,5 @@ Where "_Max Intensity_" is the maximum possible intensity value for the color ch
 :::warning
 ImageJS uses components to calculate each pixel value and leaves alpha channel unchanged.For more information between channels and components visit [this link](../../Tutorials%20and%20concepts/Concepts/Difference%20between%20channel%20and%20component%20in%20ImageJS.md).
 :::
+
+</details>
