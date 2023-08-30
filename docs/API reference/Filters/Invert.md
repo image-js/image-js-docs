@@ -11,6 +11,7 @@ import InvertDemo from './invert.demo.tsx'
 - `options`
 
 #### Options
+
 | Option                                                                                    | Default value |
 | ----------------------------------------------------------------------------------------- | ------------- |
 | [`out`](https://image-js.github.io/image-js-typescript/interfaces/InvertOptions.html#out) | -             |
