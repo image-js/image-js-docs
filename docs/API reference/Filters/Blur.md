@@ -4,7 +4,7 @@ import BlurDemo from './blur.demo.tsx'
 
 Blur, also known as average blur or box blur, is a simple image processing technique used to reduce noise and smooth out images. It involves replacing the color value of a pixel with the average color value of its neighboring pixels within a specified window or kernel. This process effectively blurs the image and reduces high-frequency noise.
 
-Box blur is particularly effective in reducing salt-and-pepper noise (random black and white pixels) and minor imperfections in an image. However, it also leads to loss of finer details, so the choice of kernel size is important.
+Box blur is particularly effective in reducing [salt-and-pepper](https://en.wikipedia.org/wiki/Salt-and-pepper_noise 'wikipedia link on salt and pepper noise') noise (random black and white pixels) and minor imperfections in an image. However, it also leads to loss of finer details, so the choice of [kernel](../../Glossary.md#kernel) size is important.
 
 <BlurDemo />
 
