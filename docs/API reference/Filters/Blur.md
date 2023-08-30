@@ -8,7 +8,7 @@ Box blur is particularly effective in reducing [salt-and-pepper](https://en.wiki
 
 <BlurDemo />
 
-### Default values
+### Parameters and default values
 
 | Option                                                                                                       | Default value |
 | ------------------------------------------------------------------------------------------------------------ | ------------- |

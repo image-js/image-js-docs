@@ -6,7 +6,7 @@ import InvertDemo from './invert.demo.tsx'
 
 <InvertDemo />
 
-### Default values
+### Parameters and default values
 
 | Option                                                                                    | Default value |
 | ----------------------------------------------------------------------------------------- | ------------- |

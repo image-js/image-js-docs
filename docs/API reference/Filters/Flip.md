@@ -4,7 +4,7 @@ import FlipDemo from './flip.demo.tsx'
 
 <FlipDemo />
 
-### Default values
+### Parameters and default values
 
 | Option                                                                                         | Default value |
 | ---------------------------------------------------------------------------------------------- | ------------- |

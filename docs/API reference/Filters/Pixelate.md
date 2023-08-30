@@ -8,7 +8,7 @@ import PixelateDemo from './pixelate.demo.tsx'
 
 A user can pass on multiple options to customize a desired output. Here are listed available options and their respective default values.For more detailed information click on the option directly.
 
-### Default values
+### Parameters and default values
 
 | Option                                                                                                               | Default value |
 | -------------------------------------------------------------------------------------------------------------------- | ------------- |

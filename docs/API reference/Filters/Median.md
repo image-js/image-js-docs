@@ -6,7 +6,7 @@ import MedianDemo from './median.demo.tsx'
 
 <MedianDemo />
 
-### Default values
+### Parameters and default values
 
 | Option                                                                                                                   | Default value |
 | ------------------------------------------------------------------------------------------------------------------------ | ------------- |

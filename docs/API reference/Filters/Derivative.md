@@ -7,7 +7,7 @@ Derivative filter is a special case of a gradient filter, therefore it uses grad
 
 <DerivativeDemo />
 
-### Default values
+### Parameters and default values
 
 | Option                                                                                                              | Default value    |
 | ------------------------------------------------------------------------------------------------------------------- | ---------------- |

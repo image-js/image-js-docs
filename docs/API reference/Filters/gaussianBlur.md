@@ -10,7 +10,7 @@ import GaussianBlurDemo from './gaussianBlur.demo.tsx'
 
 <GaussianBlurDemo />
 
-### Default values
+### Parameters and default values
 
 With Gaussian blur there are two ways of passing options: through sigma and through sigmaX and sigmaY. Main difference is that in first case sigma is the same for X and Y directions.
 

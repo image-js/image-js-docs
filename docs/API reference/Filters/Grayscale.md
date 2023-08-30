@@ -4,11 +4,15 @@ import GrayDemo from './grayscale.demo.tsx'
 
 [A grayscale filter](https://en.wikipedia.org/wiki/Grayscale 'Wikipedia link on grayscale filter'), often called a black-and-white filter, is an image processing technique used to convert a colored image into a grayscale version. In a grayscale image, each pixel is represented by a single intensity value, typically ranging from 0 (black) to 255 (white), with various shades of gray in between. This process removes color information and retains only the brightness information of the image.
 
-<GrayDemo />
+<GrayDemo image='barbara.png'/>
 
 A user can pass on multiple options to customize a desired output. Here are listed available options and their respective default values.For more detailed information click on the option directly.
 
-### Default values
+### Parameters and default values
+
+- `options`
+
+#### Options
 
 | Option                                                                                                | Default value |
 | ----------------------------------------------------------------------------------------------------- | ------------- |
@@ -66,3 +70,4 @@ _Pixel Transformation_: For each pixel in each color channel (red, green, and bl
 _Applying intensity_: After calculating the grayscale intensity, the resulting value is then assigned to a new copy of an image. Depending whether user keeps alpha or merges it, the value is calculated differently.
 
 </details>
+````
