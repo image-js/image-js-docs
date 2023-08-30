@@ -6,6 +6,10 @@ import FlipDemo from './flip.demo.tsx'
 
 ### Parameters and default values
 
+- `options`
+
+#### Options
+
 | Option                                                                                         | Default value |
 | ---------------------------------------------------------------------------------------------- | ------------- |
 | [`axis`](https://image-js.github.io/image-js-typescript/variables/GreyAlgorithm-1.html)        | 'horizontal'  |

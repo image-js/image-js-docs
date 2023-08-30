@@ -9,6 +9,10 @@ Derivative filter is a special case of a gradient filter, therefore it uses grad
 
 ### Parameters and default values
 
+- `options`
+
+#### Options
+
 | Option                                                                                                              | Default value    |
 | ------------------------------------------------------------------------------------------------------------------- | ---------------- |
 | [`bitDepth`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#bitDepth)       | `image.bitDepth` |

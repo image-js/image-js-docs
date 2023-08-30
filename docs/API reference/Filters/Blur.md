@@ -10,6 +10,10 @@ Box blur is particularly effective in reducing [salt-and-pepper](https://en.wiki
 
 ### Parameters and default values
 
+- `options`
+
+#### Options
+
 | Option                                                                                                       | Default value |
 | ------------------------------------------------------------------------------------------------------------ | ------------- |
 | [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderType)        | 'reflect101'  |
@@ -18,7 +22,7 @@ Box blur is particularly effective in reducing [salt-and-pepper](https://en.wiki
 | [`out`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderValue)              | -             |
 | [`width`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#width)(**mandatory**)   | -             |
 
-More advanced blurring techniques, such as [Gaussian blur](./Gaussian%20Blur.md 'internal link to gausian blur') or [bilateral filter](https://en.wikipedia.org/wiki/Bilateral_filter 'wikipedia link on bilateral filters'), are often used for better results in various applications.
+More advanced blurring techniques, such as [Gaussian blur](./gaussianBlur.md 'internal link to gaussian blur') or [bilateral filter](https://en.wikipedia.org/wiki/Bilateral_filter 'wikipedia link on bilateral filters'), are often used for better results in various applications.
 
 <details>
 <summary>

@@ -10,6 +10,10 @@ A user can pass on multiple options to customize a desired output. Here are list
 
 ### Parameters and default values
 
+- `options`
+
+#### Options
+
 | Option                                                                                                               | Default value |
 | -------------------------------------------------------------------------------------------------------------------- | ------------- |
 | [`algorithm`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#algorithm)              | 'center'      |

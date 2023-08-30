@@ -8,6 +8,10 @@ import MedianDemo from './median.demo.tsx'
 
 ### Parameters and default values
 
+- `options`
+
+#### Options
+
 | Option                                                                                                                   | Default value |
 | ------------------------------------------------------------------------------------------------------------------------ | ------------- |
 | [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#borderType)            | 'reflect101'  |
