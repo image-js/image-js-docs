@@ -19,7 +19,7 @@ A user can pass on multiple options to customize a desired output. Here are list
 | [`algorithm`](https://image-js.github.io/image-js-typescript/variables/GreyAlgorithm-1.html)          | 'luma709'     |
 | [`keepAlpha`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#keepAlpha)   | false         |
 | [`mergeAlpha`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#mergeAlpha) | true          |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#mergeAlpha)        | -             |
+| [`out`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#out)        | -             |
 
 #### List of grayscale algorithms:
 

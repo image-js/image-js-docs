@@ -15,7 +15,7 @@ import MedianDemo from './median.demo.tsx'
 | Option                                                                                                                   | Default value |
 | ------------------------------------------------------------------------------------------------------------------------ | ------------- |
 | [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#borderType)            | 'reflect101'  |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#borderType)           | 0             |
+| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#borderValue)          | 0             |
 | [`cellSize`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#cellSize)(**mandatory**) | 1             |
 
 The key advantage of using the median filter, especially for noise reduction, is that it is less sensitive to extreme values or outliers compared to other filters like the [mean filter](https://en.wikipedia.org/wiki/Geometric_mean_filter 'wikipedia link on mean filter'). Since noise often appears as isolated bright or dark pixels that deviate significantly from their neighbors, the median filter effectively ignores these outliers and replaces them with more representative values from the local neighborhood.

@@ -20,12 +20,12 @@ With Gaussian blur there are two ways of passing options: through sigma and thro
 
 #### Sigma Options:
 
-| Option                                                                                                                       | Default value                  |
-| ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#borderType)           | `reflect101`                   |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#borderType)                  | -                              |
-| [`sigma`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#borderType)(**mandatory**) | -                              |
-| [`size`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#borderType)                 | `2 * Math.ceil(2 * sigma) + 1` |
+| Option                                                                                                                  | Default value                  |
+| ----------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#borderType)      | `reflect101`                   |
+| [`out`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#out)                    | -                              |
+| [`sigma`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#sigma)(**mandatory**) | -                              |
+| [`size`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#size)                  | `2 * Math.ceil(2 * sigma) + 1` |
 
 #### SigmaXY Options
 
