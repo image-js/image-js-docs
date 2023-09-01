@@ -53,9 +53,7 @@ Here's how thresholding works:
 
 _Choose a threshold value_: This value is determined based on the characteristics of the image and the desired segmentation outcome. It can be chosen manually or automatically using various algorithms.
 
-_Compare each pixel's intensity value with the threshold value:_
-
-If the pixel value is greater than or equal to the threshold value, it is assigned to one group (foreground or object).
+_Compare each pixel's intensity value with the threshold value:_ If the pixel value is greater than or equal to the threshold value, it is assigned to one group (foreground or object).
 If the pixel value is less than the threshold value, it is assigned to the other group (background).
 
 _Generate a binary image:_ The result of thresholding is a binary image(mask) where pixels belonging to the foreground are assigned a value of 1 (white) and pixels belonging to the background are assigned a value of 0 (black).
