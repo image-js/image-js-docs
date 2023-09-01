@@ -1,0 +1,17 @@
+Grayscale
+Sobel
+Scharr
+Prewitt
+bmatrix
+Thresholding
+thresholding
+luma
+minmax
+midtones
+pixelization 
+CMYK
+otsu
+intermodes
+isodata
+renyi
+shanbhag

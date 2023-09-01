@@ -1,10 +1,11 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
 const path = require('path');
 
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const lightCodeTheme = require('prism-react-renderer/themes/github');
+const katex = require('rehype-katex');
+const math = require('remark-math');
 
 async function demoLoaderPlugin() {
   return {
@@ -40,7 +41,7 @@ async function demoLoaderPlugin() {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
+  title: 'Welcome',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
@@ -55,7 +56,7 @@ const config = {
   organizationName: 'Zakodium', // Usually your GitHub org/user name.
   projectName: 'image-js', // Usually your repo name.
 
-  plugins: [demoLoaderPlugin],
+  plugins: [demoLoaderPlugin, '@orama/plugin-docusaurus'],
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -79,6 +80,8 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
         blog: {
           showReadingTime: true,
@@ -93,7 +96,15 @@ const config = {
       }),
     ],
   ],
-
+  stylesheets: [
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      crossorigin: 'anonymous',
+    },
+  ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -114,8 +125,8 @@ const config = {
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            href: 'https://image-js.github.io/image-js-typescript/',
+            label: 'GitHub IO',
             position: 'right',
           },
         ],

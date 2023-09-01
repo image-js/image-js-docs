@@ -1,0 +1,6 @@
+extends:
+  - zakodium/ts
+  - zakodium/react
+parserOptions:
+  sourceType: module
+  ecmaVersion: 2020
