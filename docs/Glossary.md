@@ -12,12 +12,11 @@ sidebar_position: 7
 
 ### Channel
 
-In the context of digital images, [a channel](<https://en.wikipedia.org/wiki/Channel_(digital_image)> 'wikipedia link on color channel') refers to one of the separate grayscale or color components that together make up the complete image. Channels are a fundamental concept in image processing and manipulation, especially in color images, where each channel represents a primary color or a specific property of the image.The most common color spaces used in images are RGB (Red, Green, Blue) and CMYK (Cyan, Magenta, Yellow, Black).
+[A channel](<https://en.wikipedia.org/wiki/Channel_(digital_image)> 'wikipedia link on color channel') refers to one of the separate grayscale or color components that together make up the complete image. Channels are a fundamental concept in image processing and manipulation, especially in color images, where each channel represents a primary color or a specific property of the image.The most common color spaces used in images are RGB (Red, Green, Blue) and CMYK (Cyan, Magenta, Yellow, Black).
 
 ### Component
 
-In image processing, a component typically refers to a distinct and identifiable part or element within an image
-In summary, components in image processing represent distinct and identifiable regions or objects within an image. They are crucial for tasks like object detection, segmentation, and feature extraction and are often identified and labeled using connected component analysis techniques.
+A component typically refers to a distinct and identifiable part or element within an image. Components are crucial for tasks like object detection, segmentation, and feature extraction and are often identified and labeled using connected component analysis techniques.
 
 ### Convolution
 
@@ -31,7 +30,7 @@ The convolution operation involves sliding a small matrix (filter, kernel, or ma
 
 ### Intensity
 
-[Intensity](https://en.wikipedia.org/wiki/Color_histogram 'wikipedia link on histogram'), in the context of image processing and computer vision, refers to the brightness or darkness of a pixel or region within an image. It quantifies the amount of light or energy that a pixel or area emits, reflects, or transmits. Intensity values are typically represented numerically and can be single-channel (grayscale) or multi-channel (color) depending on whether the image is grayscale or color.
+[Intensity](https://en.wikipedia.org/wiki/Color_histogram 'wikipedia link on histogram') refers to the brightness or darkness of a pixel or region within an image. It quantifies the amount of light or energy that a pixel or area emits, reflects, or transmits. Intensity values are typically represented numerically and can be single-channel (grayscale) or multi-channel (color) depending on whether the image is grayscale or color.
 
 _In a grayscale image_:
 
@@ -44,11 +43,11 @@ Each color channel typically has an intensity value ranging from 0 (no contribut
 
 ### Kernel
 
-In image processing, a [Kernel](<https://en.wikipedia.org/wiki/Kernel_(image_processing)> 'wikipedia link on kernel') is a small matrix of numerical values that is used to perform operations such as convolution on an image. Kernels are a fundamental concept in various image processing techniques and are employed to modify, enhance, or extract specific features from an image.
+A [Kernel](<https://en.wikipedia.org/wiki/Kernel_(image_processing)> 'wikipedia link on kernel') is a small matrix of numerical values that is used to perform operations such as convolution on an image. Kernels are a fundamental concept in various image processing techniques and are employed to modify, enhance, or extract specific features from an image.
 
 ### Mask
 
-In image processing, a mask is a small matrix or grid of values that is used to perform various operations on an image. These operations can include filtering, convolution, blurring, sharpening, edge detection, and more. Masks are fundamental tools in image processing because they allow you to modify and enhance images by applying various mathematical operations to each pixel.
+A mask is a small matrix or grid of values that is used to perform various operations on an image. These operations can include filtering, convolution, blurring, sharpening, edge detection, and more. Masks are fundamental tools in image processing because they allow you to modify and enhance images by applying various mathematical operations to each pixel.
 
 ### Morphology
 
