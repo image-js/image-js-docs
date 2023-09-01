@@ -38,7 +38,7 @@ Keep in mind that gradient filters can be sensitive to noise and might result in
 <summary><b>Implementation</b></summary>
 Here's how gradient filter is implemented in ImageJS:
 
-_Grayscale Conversion_: Before applying a gradient filter, the color image is converted into [grayscale](Grayscale.md 'link to grayscale filter'). This simplifies the processing by reducing the image to a single channel representing pixel intensities.
+_Grayscale Conversion_: Before applying a gradient filter, the color image is converted into [grayscale](grayscale.md 'link to grayscale filter'). This simplifies the processing by reducing the image to a single channel representing pixel intensities.
 
 _Kernel Operators_: Gradient filter consists of small convolution [kernels](../../Glossary.md#kernel 'glossary link on kernel'). Normally, one for detecting horizontal changes and another for vertical changes, however user might indicate only one kernel to check only one of directions. These kernels are usually 3x3 matrices of numerical weights.
 
@@ -49,7 +49,7 @@ _Gradient Magnitude and Direction_: For each pixel, the gradient magnitude is ca
 _Edge Detection_: The gradient magnitude values are used to identify regions of rapid intensity change, which correspond to edges in the image. Higher gradient magnitude values indicate stronger edges.
 
 :::tip
-_Thresholding_: To further refine the edges detected, a [thresholding](../Operations/Threshold.md 'internal link on threshold filter') step is often applied. Pixels with gradient magnitudes below a certain threshold are considered as non-edges, while those above the threshold are considered edges. This helps in reducing noise and emphasizing significant edges.
+_Thresholding_: To further refine the edges detected, a [thresholding](../Operations/threshold.md 'internal link on threshold filter') step is often applied. Pixels with gradient magnitudes below a certain threshold are considered as non-edges, while those above the threshold are considered edges. This helps in reducing noise and emphasizing significant edges.
 :::
 
 </details>
