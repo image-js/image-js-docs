@@ -14,9 +14,9 @@ import MedianDemo from './median.demo.tsx'
 
 | Option                                                                                                                   | Default value |
 | ------------------------------------------------------------------------------------------------------------------------ | ------------- |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#borderType)            | 'reflect101'  |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#borderValue)          | 0             |
-| [`cellSize`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#cellSize)(**mandatory**) | 1             |
+| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#borderType)            | `reflect101`  |
+| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#borderValue)          | `0`           |
+| [`cellSize`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#cellSize)(**mandatory**) | `1`           |
 
 The key advantage of using the median filter, especially for noise reduction, is that it is less sensitive to extreme values or outliers compared to other filters like the [mean filter](https://en.wikipedia.org/wiki/Geometric_mean_filter 'wikipedia link on mean filter'). Since noise often appears as isolated bright or dark pixels that deviate significantly from their neighbors, the median filter effectively ignores these outliers and replaces them with more representative values from the local neighborhood.
 
@@ -25,7 +25,7 @@ However, the median filter also has limitations. It can blur sharp edges and thi
 <details>
 <summary><b>Implementation</b></summary>
 
-Here's how a median filter is implemented in ImageJS:
+Here's how median filter is implemented in ImageJS:
 
 _Window or Kernel Selection_: The first step is to choose a small window or [kernel](../../Glossary.md#kernel 'glossary link to kernel'). This window will move over the entire image, pixel by pixel.
 

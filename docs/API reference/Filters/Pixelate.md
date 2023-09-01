@@ -6,8 +6,6 @@ import PixelateDemo from './pixelate.demo.tsx'
 
 <PixelateDemo />
 
-A user can pass on multiple options to customize a desired output. Here are listed available options and their respective default values.For more detailed information click on the option directly.
-
 ### Parameters and default values
 
 - `options`
@@ -16,13 +14,13 @@ A user can pass on multiple options to customize a desired output. Here are list
 
 | Option                                                                                                               | Default value |
 | -------------------------------------------------------------------------------------------------------------------- | ------------- |
-| [`algorithm`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#algorithm)              | 'center'      |
+| [`algorithm`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#algorithm)              | `center`      |
 | [`cellSize`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#cellSize)(**mandatory**) | -             |
 | [`out`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#out)                          | -             |
 
 <details><summary><b>Implementation</b></summary>
 
-Here's how a pixelate filter is implemented in ImageJS:
+Here's how pixelate filter is implemented in ImageJS:
 
 _Grid Division_: The first step is to divide the image into a grid of cells. Each cell will represent a block of pixels that will be replaced by a single color in the pixelated version.The size of the grid cells determines the degree of pixelation. Larger grid cells create a more pronounced pixelation effect.
 

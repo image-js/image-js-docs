@@ -10,8 +10,6 @@ Gradient filter or specifically[ a gradient-based edge detection filter](https:/
 
 <GradientDemo />
 
-A user can pass on multiple options to customize a desired output. Here are listed available options and their respective default values.For more detailed information click on the option directly.
-
 ### Parameters and default values
 
 - `options`
@@ -21,8 +19,8 @@ A user can pass on multiple options to customize a desired output. Here are list
 | Option                                                                                                             | Default value    |
 | ------------------------------------------------------------------------------------------------------------------ | ---------------- |
 | [`bitDepth`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#bitDepth)       | `image.bitDepth` |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#borderType)   | 'replicate'      |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#borderValue) | 0                |
+| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#borderType)   | `replicate`      |
+| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#borderValue) | `0`              |
 | [`kernelX`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#kernelX)**\***   | -                |
 | [`kernelY`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterYOptions.html#kernelY)**\***   | -                |
 
@@ -31,11 +29,12 @@ A user can pass on multiple options to customize a desired output. Here are list
 The gradient filter enhances edges by detecting abrupt changes in pixel intensities.
 
 :::caution
-Keep in mind that gradient filters can be sensitive to noise and might result in false edges or emphasize noise. Smoothing the image (e.g., using a Gaussian blur) before applying the gradient filter can help mitigate this issue.
+Keep in mind that gradient filters can be sensitive to noise and might result in false edges or emphasize noise. Smoothing the image (e.g., using Gaussian blur) before applying the gradient filter can help mitigate this issue.
 :::
 
 <details>
 <summary><b>Implementation</b></summary>
+
 Here's how gradient filter is implemented in ImageJS:
 
 _Grayscale Conversion_: Before applying a gradient filter, the color image is converted into [grayscale](grayscale.md 'link to grayscale filter'). This simplifies the processing by reducing the image to a single channel representing pixel intensities.

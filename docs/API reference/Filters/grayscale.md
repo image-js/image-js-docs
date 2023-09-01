@@ -4,9 +4,7 @@ import GrayDemo from './grayscale.demo.tsx'
 
 [A grayscale filter](https://en.wikipedia.org/wiki/Grayscale 'Wikipedia link on grayscale filter'), often called a black-and-white filter, is an image processing technique used to convert a colored image into a grayscale version. In a grayscale image, each pixel is represented by a single intensity value, typically ranging from 0 (black) to 255 (white), with various shades of gray in between. This process removes color information and retains only the brightness information of the image.
 
-<GrayDemo image='barbara.png'/>
-
-A user can pass on multiple options to customize a desired output. Here are listed available options and their respective default values.For more detailed information click on the option directly.
+<GrayDemo />
 
 ### Parameters and default values
 
@@ -16,10 +14,10 @@ A user can pass on multiple options to customize a desired output. Here are list
 
 | Option                                                                                                | Default value |
 | ----------------------------------------------------------------------------------------------------- | ------------- |
-| [`algorithm`](https://image-js.github.io/image-js-typescript/variables/GreyAlgorithm-1.html)          | 'luma709'     |
-| [`keepAlpha`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#keepAlpha)   | false         |
-| [`mergeAlpha`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#mergeAlpha) | true          |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#out)        | -             |
+| [`algorithm`](https://image-js.github.io/image-js-typescript/variables/GreyAlgorithm-1.html)          | `luma709`     |
+| [`keepAlpha`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#keepAlpha)   | `false`       |
+| [`mergeAlpha`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#mergeAlpha) | `true`        |
+| [`out`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#out)               | -             |
 
 #### List of grayscale algorithms:
 
@@ -61,7 +59,8 @@ The grayscale filter essentially eliminates the color information from the image
 <summary>
 <b>Implementation</b>
 </summary>
-Here's how a grayscale filter works:
+
+Here's how grayscale filter is implemented in ImageJS:
 
 _Color Channel Separation_: If the image is in color (composed of red, green, and blue channels), the grayscale filter typically processes each color channel separately. This is done to ensure that the brightness values are determined from the original color intensities.
 
@@ -70,4 +69,3 @@ _Pixel Transformation_: For each pixel in each color channel (red, green, and bl
 _Applying intensity_: After calculating the grayscale intensity, the resulting value is then assigned to a new copy of an image. Depending whether user keeps alpha or merges it, the value is calculated differently.
 
 </details>
-````

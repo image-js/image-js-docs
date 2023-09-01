@@ -16,8 +16,8 @@ Box blur is particularly effective in reducing [salt-and-pepper](https://en.wiki
 
 | Option                                                                                                       | Default value |
 | ------------------------------------------------------------------------------------------------------------ | ------------- |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderType)        | 'reflect101'  |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderValue)      | 0             |
+| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderType)        | `reflect101`  |
+| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderValue)      | `0`           |
 | [`height`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#height)(**mandatory**) | -             |
 | [`out`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#out)                      | -             |
 | [`width`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#width)(**mandatory**)   | -             |
@@ -29,7 +29,7 @@ More advanced blurring techniques, such as [Gaussian blur](./gaussianBlur.md 'in
 <b>Implementation</b>
  </summary>
 
-Here's how the box blur process works:
+Here's how blur filter is implemented in ImageJS:
 
 _Select a Kernel Size_: The first step is to choose the size of the kernel or window that will be used for the blurring operation. The kernel is typically a square matrix with odd dimensions, such as 3x3, 5x5, 7x7, etc. The larger the kernel, the more intense the blurring effect.
 

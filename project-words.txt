@@ -10,3 +10,4 @@ minmax
 midtones
 pixelization 
 CMYK
+otsu
