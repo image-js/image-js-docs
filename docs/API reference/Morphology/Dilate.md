@@ -12,7 +12,7 @@ import DilateDemo from './dilate.demo.tsx'
 
 #### Options
 
-| Option                                                                                                 | Default value                     |
-| ------------------------------------------------------------------------------------------------------ | --------------------------------- |
-| [`iterations`](https://image-js.github.io/image-js-typescript/interfaces/ErodeOptions.html#iterations) | `1`                               |
-| [`kernel`](https://image-js.github.io/image-js-typescript/interfaces/ErodeOptions.html#kernel)         | `[[1, 1, 1],[1, 1, 1],[1, 1, 1]]` |
+| Option                                                                                                 | Mandatory? | Default value                     |
+| ------------------------------------------------------------------------------------------------------ | ---------- | --------------------------------- |
+| [`iterations`](https://image-js.github.io/image-js-typescript/interfaces/ErodeOptions.html#iterations) | no         | `1`                               |
+| [`kernel`](https://image-js.github.io/image-js-typescript/interfaces/ErodeOptions.html#kernel)         | no         | `[[1, 1, 1],[1, 1, 1],[1, 1, 1]]` |

@@ -13,12 +13,12 @@ Derivative filter is a special case of a gradient filter, therefore it uses grad
 
 #### Options
 
-| Option                                                                                                              | Default value    |
-| ------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| [`bitDepth`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#bitDepth)       | `image.bitDepth` |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#borderType)   | `replicate`      |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#borderValue) | `0`              |
-| [`filter`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#filter)           | `sobel`          |
+| Option                                                                                                              | Mandatory? | Default value    |
+| ------------------------------------------------------------------------------------------------------------------- | ---------- | ---------------- |
+| [`bitDepth`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#bitDepth)       | no         | `image.bitDepth` |
+| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#borderType)   | no         | `replicate`      |
+| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#borderValue) | no         | `0`              |
+| [`filter`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#filter)           | no         | `sobel`          |
 
 - ## Sobel kernel
 

@@ -12,11 +12,11 @@ import PixelateDemo from './pixelate.demo.tsx'
 
 #### Options
 
-| Option                                                                                                               | Default value |
-| -------------------------------------------------------------------------------------------------------------------- | ------------- |
-| [`algorithm`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#algorithm)              | `center`      |
-| [`cellSize`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#cellSize)(**mandatory**) | -             |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#out)                          | -             |
+| Option                                                                                                  | Mandatory? | Default value |
+| ------------------------------------------------------------------------------------------------------- | ---------- | ------------- |
+| [`cellSize`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#cellSize)   | **yes**    | -             |
+| [`algorithm`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#algorithm) | no         | `center`      |
+| [`out`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#out)             | no         | -             |
 
 <details><summary><b>Implementation</b></summary>
 

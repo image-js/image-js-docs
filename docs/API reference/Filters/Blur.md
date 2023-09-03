@@ -14,13 +14,13 @@ Box blur is particularly effective in reducing [salt-and-pepper](https://en.wiki
 
 #### Options
 
-| Option                                                                                                       | Default value |
-| ------------------------------------------------------------------------------------------------------------ | ------------- |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderType)        | `reflect101`  |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderValue)      | `0`           |
-| [`height`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#height)(**mandatory**) | -             |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#out)                      | -             |
-| [`width`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#width)(**mandatory**)   | -             |
+| Option                                                                                                  | Mandatory? | Default value |
+| ------------------------------------------------------------------------------------------------------- | ---------- | ------------- |
+| [`height`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#height)           | **yes**    | -             |
+| [`width`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#width)             | **yes**    | -             |
+| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderType)   | no         | `reflect101`  |
+| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderValue) | no         | `0`           |
+| [`out`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#out)                 | no         | -             |
 
 More advanced blurring techniques, such as [Gaussian blur](./gaussianBlur.md 'internal link to gaussian blur') or [bilateral filter](https://en.wikipedia.org/wiki/Bilateral_filter 'wikipedia link on bilateral filters'), are often used for better results in various applications.
 
