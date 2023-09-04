@@ -12,14 +12,14 @@ With threshold filter there are two ways of passing options: by passing threshol
 
 #### Options
 
-#### Threshold Varaiant:
+#### Threshold Variant:
 
 | Property                                                                                                          | Required | Default value |
 | ----------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
 | [`threshold`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsThreshold.html#threshold) | no       | -             |
 | [`out`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsThreshold.html#out)             | no       | -             |
 
-#### Threshold Algorithm Varaiant
+#### Threshold Algorithm Variant
 
 | Property                                                                                                          | Required | Default value |
 | ----------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
