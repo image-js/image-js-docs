@@ -20,7 +20,7 @@ With Gaussian blur there are two ways of passing options: through sigma and thro
 
 #### Sigma Variant:
 
-| Property                                                                                                             | Required | Default value                  |
+| Property                                                                                                           | Required | Default value                  |
 | ------------------------------------------------------------------------------------------------------------------ | -------- | ------------------------------ |
 | [`sigma`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#sigma)           | **yes**  | -                              |
 | [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#borderType) | no       | `reflect101`                   |
@@ -29,7 +29,7 @@ With Gaussian blur there are two ways of passing options: through sigma and thro
 
 #### SigmaXY Variant
 
-| Property                                                                                                          | Required | Default value                   |
+| Property                                                                                                        | Required | Default value                   |
 | --------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------- |
 | [`sigmaX`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurXYOptions.html#sigmaX)         | **yes**  | -                               |
 | [`sigmaY`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurXYOptions.html#sigmaY)         | **yes**  | -                               |

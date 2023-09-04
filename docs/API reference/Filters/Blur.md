@@ -14,7 +14,7 @@ Box blur is particularly effective in reducing [salt-and-pepper](https://en.wiki
 
 #### Options
 
-| Property                                                                                                 | Required | Default value |
+| Property                                                                                                | Required | Default value |
 | ------------------------------------------------------------------------------------------------------- | -------- | ------------- |
 | [`height`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#height)           | **yes**  | -             |
 | [`width`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#width)             | **yes**  | -             |
