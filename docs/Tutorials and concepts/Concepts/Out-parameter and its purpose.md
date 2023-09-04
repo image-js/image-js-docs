@@ -1,6 +1,6 @@
 In several functions there is an option called "out".
 
-It gives the user a possibility to choose if one wants to modify the current image or copy it in a new one.
+It gives the user a possibility to choose if one wants to modify the current image or create a new one.
 For example, let's say a user has an image which needs to be invert filtered.
 
 ```ts
