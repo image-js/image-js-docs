@@ -12,7 +12,7 @@ import GrayDemo from './grayscale.demo.tsx'
 
 #### Options
 
-| Option                                                                                                | Required | Default value |
+| Property                                                                                              | Required | Default value |
 | ----------------------------------------------------------------------------------------------------- | -------- | ------------- |
 | [`algorithm`](https://image-js.github.io/image-js-typescript/variables/GreyAlgorithm-1.html)          | no       | `luma709`     |
 | [`keepAlpha`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#keepAlpha)   | no       | `false`       |

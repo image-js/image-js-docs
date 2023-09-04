@@ -12,7 +12,7 @@ A "flip filter" in image processing refers to a transformation that horizontally
 
 #### Options
 
-| Option                                                                                    | Required | Default value |
+| Property                                                                                  | Required | Default value |
 | ----------------------------------------------------------------------------------------- | -------- | ------------- |
 | [`axis`](https://image-js.github.io/image-js-typescript/interfaces/FlipOptions.html#axis) | no       | `horizontal`  |
 | [`out`](https://image-js.github.io/image-js-typescript/interfaces/FlipOptions.html#out)   | no       | -             |

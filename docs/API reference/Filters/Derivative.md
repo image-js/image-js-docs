@@ -13,7 +13,7 @@ Derivative filter is a special case of a gradient filter, therefore it uses grad
 
 #### Options
 
-| Option                                                                                                              | Required | Default value    |
+| Property                                                                                                            | Required | Default value    |
 | ------------------------------------------------------------------------------------------------------------------- | -------- | ---------------- |
 | [`bitDepth`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#bitDepth)       | no       | `image.bitDepth` |
 | [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#borderType)   | no       | `replicate`      |

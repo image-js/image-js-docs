@@ -16,7 +16,7 @@ Gradient filter or specifically[ a gradient-based edge detection filter](https:/
 
 #### Options
 
-| Option                                                                                                             | Required | Default value    |
+| Property                                                                                                           | Required | Default value    |
 | ------------------------------------------------------------------------------------------------------------------ | -------- | ---------------- |
 | [`kernelX`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#kernelX)         | **\***   | -                |
 | [`kernelY`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterYOptions.html#kernelY)         | **\***   | -                |

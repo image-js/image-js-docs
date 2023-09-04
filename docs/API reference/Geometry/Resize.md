@@ -12,7 +12,7 @@ import ResizeDemo from './resize.demo.tsx'
 
 #### Options
 
-| Option                                                                                                                    | Required | Default value |
+| Property                                                                                                                  | Required | Default value |
 | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
 | [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#borderType)                   | no       | `constant`    |
 | [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#borderValue)                 | no       | `0`           |

@@ -12,7 +12,7 @@ import PixelateDemo from './pixelate.demo.tsx'
 
 #### Options
 
-| Option                                                                                                  | Required | Default value |
+| Property                                                                                                | Required | Default value |
 | ------------------------------------------------------------------------------------------------------- | -------- | ------------- |
 | [`cellSize`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#cellSize)   | **yes**  | -             |
 | [`algorithm`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#algorithm) | no       | `center`      |

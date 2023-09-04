@@ -12,7 +12,7 @@ import MedianDemo from './median.demo.tsx'
 
 #### Options
 
-| Option                                                                                                          | Required | Default value |
+| Property                                                                                                        | Required | Default value |
 | --------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
 | [`cellSize`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#cellSize)       | **yes**  | `1`           |
 | [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#borderType)   | no       | `reflect101`  |

@@ -12,7 +12,7 @@ import ErodeDemo from './erode.demo.tsx'
 
 #### Options
 
-| Option                                                                                                  | Required | Default value                     |
+| Property                                                                                                | Required | Default value                     |
 | ------------------------------------------------------------------------------------------------------- | -------- | --------------------------------- |
 | [`iterations`](https://image-js.github.io/image-js-typescript/interfaces/DilateOptions.html#iterations) | no       | `1`                               |
 | [`kernel`](https://image-js.github.io/image-js-typescript/interfaces/DilateOptions.html#kernel)         | no       | `[[1, 1, 1],[1, 1, 1],[1, 1, 1]]` |
