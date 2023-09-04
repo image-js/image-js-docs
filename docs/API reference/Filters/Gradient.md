@@ -16,13 +16,13 @@ Gradient filter or specifically[ a gradient-based edge detection filter](https:/
 
 #### Options
 
-| Option                                                                                                             | Mandatory? | Default value    |
-| ------------------------------------------------------------------------------------------------------------------ | ---------- | ---------------- |
-| [`kernelX`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#kernelX)         | **\***     | -                |
-| [`kernelY`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterYOptions.html#kernelY)         | **\***     | -                |
-| [`bitDepth`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#bitDepth)       | no         | `image.bitDepth` |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#borderType)   | no         | `replicate`      |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#borderValue) | no         | `0`              |
+| Option                                                                                                             | Required | Default value    |
+| ------------------------------------------------------------------------------------------------------------------ | -------- | ---------------- |
+| [`kernelX`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#kernelX)         | **\***   | -                |
+| [`kernelY`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterYOptions.html#kernelY)         | **\***   | -                |
+| [`bitDepth`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#bitDepth)       | no       | `image.bitDepth` |
+| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#borderType)   | no       | `replicate`      |
+| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#borderValue) | no       | `0`              |
 
 **\*** - if applying filter is necessary in only one of directions, then a user can pass one kernel instead of two. However, if none were passed on, function will throw an error.
 

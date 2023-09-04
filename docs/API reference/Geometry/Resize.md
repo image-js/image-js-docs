@@ -12,13 +12,13 @@ import ResizeDemo from './resize.demo.tsx'
 
 #### Options
 
-| Option                                                                                                                    | Mandatory? | Default value |
-| ------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------- |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#borderType)                   | no         | `constant`    |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#borderValue)                 | no         | `0`           |
-| [`height`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#height)                           | no         | -             |
-| [`interpolationType`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#preserveAspectRatio)   | no         | `bilinear`    |
-| [`preserveAspectRatio`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#preserveAspectRatio) | no         | `true`        |
-| [`width`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#width)                             | no         | -             |
-| [`xFactor`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#xFactor)                         | no         | -             |
-| [`yFactor`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#yFactor)                         | no         | -             |
+| Option                                                                                                                    | Required | Default value |
+| ------------------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#borderType)                   | no       | `constant`    |
+| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#borderValue)                 | no       | `0`           |
+| [`height`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#height)                           | no       | -             |
+| [`interpolationType`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#preserveAspectRatio)   | no       | `bilinear`    |
+| [`preserveAspectRatio`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#preserveAspectRatio) | no       | `true`        |
+| [`width`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#width)                             | no       | -             |
+| [`xFactor`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#xFactor)                         | no       | -             |
+| [`yFactor`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#yFactor)                         | no       | -             |

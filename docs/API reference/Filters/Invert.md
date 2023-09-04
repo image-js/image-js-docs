@@ -12,9 +12,9 @@ import InvertDemo from './invert.demo.tsx'
 
 #### Options
 
-| Option                                                                                    | Mandatory? | Default value |
-| ----------------------------------------------------------------------------------------- | ---------- | ------------- |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/InvertOptions.html#out) | no         | -             |
+| Option                                                                                    | Required | Default value |
+| ----------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`out`](https://image-js.github.io/image-js-typescript/interfaces/InvertOptions.html#out) | no       | -             |
 
 <details>
 <summary><b>Implementation</b>

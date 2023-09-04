@@ -12,12 +12,12 @@ import GrayDemo from './grayscale.demo.tsx'
 
 #### Options
 
-| Option                                                                                                | Mandatory? | Default value |
-| ----------------------------------------------------------------------------------------------------- | ---------- | ------------- |
-| [`algorithm`](https://image-js.github.io/image-js-typescript/variables/GreyAlgorithm-1.html)          | no         | `luma709`     |
-| [`keepAlpha`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#keepAlpha)   | no         | `false`       |
-| [`mergeAlpha`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#mergeAlpha) | no         | `true`        |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#out)               | no         | -             |
+| Option                                                                                                | Required | Default value |
+| ----------------------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`algorithm`](https://image-js.github.io/image-js-typescript/variables/GreyAlgorithm-1.html)          | no       | `luma709`     |
+| [`keepAlpha`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#keepAlpha)   | no       | `false`       |
+| [`mergeAlpha`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#mergeAlpha) | no       | `true`        |
+| [`out`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#out)               | no       | -             |
 
 #### List of grayscale algorithms:
 
