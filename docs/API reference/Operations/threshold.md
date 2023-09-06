@@ -12,19 +12,19 @@ With threshold filter there are two ways of passing options: by passing threshol
 
 #### Options
 
-#### Threshold Options:
+#### Threshold Variant:
 
-| Option                                                                                                            | Default value |
-| ----------------------------------------------------------------------------------------------------------------- | ------------- |
-| [`threshold`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsThreshold.html#threshold) | -             |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsThreshold.html#out)             | -             |
+| Property                                                                                                          | Required | Default value |
+| ----------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`threshold`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsThreshold.html#threshold) | no       | -             |
+| [`out`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsThreshold.html#out)             | no       | -             |
 
-#### Threshold Algorithm Options
+#### Threshold Algorithm Variant
 
-| Option                                                                                                            | Default value |
-| ----------------------------------------------------------------------------------------------------------------- | ------------- |
-| [`algorithm`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsAlgorithm.html#algorithm) | `otsu`        |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsAlgorithm.html#out)             | -             |
+| Property                                                                                                          | Required | Default value |
+| ----------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`algorithm`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsAlgorithm.html#algorithm) | no       | `otsu`        |
+| [`out`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsAlgorithm.html#out)             | no       | -             |
 
 #### List of threshold algorithms:
 
