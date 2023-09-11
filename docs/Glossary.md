@@ -17,7 +17,7 @@ sidebar_position: 7
 ### Component
 
 A component typically refers to a distinct and identifiable part or element within an image. In ImageJS, however, component represents the number of color [channels](#channel 'anchor on channel') in the image, excluding [the alpha channel](#alpha-channel 'anchor to alpha-channel').
-A grey image has 1 component. An RGB image has 3 components. Components are crucial for tasks like object detection, segmentation, and feature extraction and are often identified and labeled using connected component analysis techniques.
+A grey image has 1 component. An RGB image has 3 components.
 
 ### Convolution
 
