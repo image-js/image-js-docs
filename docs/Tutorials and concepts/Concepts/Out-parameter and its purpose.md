@@ -25,4 +25,15 @@ const invertedImage = image.invert({ out: outputImage });
 //expect outputImage === invertedImage
 ```
 
-Then inverted image will be copied to variable `outputImage` and initial image will remain intact.
+Then inverted image will be copied to variable `outputImage` and initial image will remain intact. In fact any compatible image can be passed down as an `out` option.
+
+```ts
+let blurredImage = image.blur();
+let outputImage = blurredImage.invert({
+  out: testUtils.load('opencv/testBlur.png'),
+});
+```
+
+:::warning
+Image can be passed down as an option only if certain conditions are met. An image must have the same color model, width, height and bit depth. If one of those conditions is not met, a corresponding error will be thrown.
+:::
