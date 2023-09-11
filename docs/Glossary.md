@@ -12,7 +12,7 @@ sidebar_position: 7
 
 ### Channel
 
-[A channel](<https://en.wikipedia.org/wiki/Channel_(digital_image)> 'wikipedia link on color channel') refers to one of the separate grayscale or color components that together make up the complete image. Channels are a fundamental concept in image processing and manipulation, especially in color images, where each channel represents a primary color or a specific property of the image.The most common color spaces used in images are RGB (Red, Green, Blue) and CMYK (Cyan, Magenta, Yellow, Black).
+[A channel](<https://en.wikipedia.org/wiki/Channel_(digital_image)> 'wikipedia link on color channel') refers to one of the separate grayscale or color components that together make up the complete image. Channels are a fundamental concept in image processing and manipulation, especially in color images, where each channel represents a primary color or a specific property of the pixel.The most common color spaces used in images are RGB (Red, Green, Blue) and CMYK (Cyan, Magenta, Yellow, Black).
 
 ### Component
 
@@ -47,7 +47,7 @@ A [Kernel](<https://en.wikipedia.org/wiki/Kernel_(image_processing)> 'wikipedia 
 
 ### Mask(class)
 
-Mask in imageJS is a class that represents binary data from the image, which means that it is a grid divided on black and white elements. It is usually used to find [regions of interest](#roiregion-of-interest 'anchor on ROI') and/or [their maps](#roi-map 'anchor on RoiMap').It can also be applied to an image in various ways like filtering, edge detection, image fusion etc.
+Mask in imageJS is a special class of 1-bit depth,single channel images that represents binary data from the image, which means that it is a grid divided on black and white elements. It is usually used to find [regions of interest](#roiregion-of-interest 'anchor on ROI') and/or [their maps](#roi-map 'anchor on RoiMap').It can also be applied to an image in various ways like filtering, edge detection, image fusion etc.
 
 ### Morphology
 
