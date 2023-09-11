@@ -8,7 +8,7 @@ sidebar_position: 7
 
 ### Bit depth
 
-[Bit depth](https://en.wikipedia.org/wiki/Color_depth 'wikipedia link on bit depth'), also known as color depth or pixel depth, refers to the number of bits used to represent the color of each pixel in a digital image. Bit depth directly impacts the number of colors or shades of gray that can be displayed in an image. A higher bit depth allows for a greater range of colors, resulting in more detailed and accurate representations, while a lower bit depth limits the color variations that can be shown
+[Bit depth](https://en.wikipedia.org/wiki/Color_depth 'wikipedia link on bit depth'), also known as color depth or pixel depth, refers to the number of bits used to represent the color of each pixel in a digital image. Bit depth directly impacts the number of colors or shades of gray that can be displayed in an image. A higher bit depth allows for a greater range of colors, resulting in more detailed and accurate representations, while a lower bit depth limits the color variations.
 
 ### Channel
 
@@ -39,7 +39,7 @@ _In a color image_:
 
 As in grayscale images intensity value depends on image's bit depth.
 However, the difference is that each pixel consists of intensity values for different color channels.
-Each color channel typically has an intensity value ranging from 0 (no contribution of that color) to maximal value (maximum contribution of that color). In an RGB image, these channels are red, green, and blue. Therefore in 8-bit RGB image, black-colored pixel would have intensity value of 0 for all three channels, while white-colored pixel channels would have 255.
+Each color channel typically has an intensity value ranging from 0 (no contribution of that color) to maximal value (maximum contribution of that color). In an RGB image, these channels are red, green, and blue. Therefore in 8-bit RGB image, black-colored pixel would have intensity value of 0 for all three channels, while white-colored pixel channels would have value of 255.
 
 ### Kernel
 
