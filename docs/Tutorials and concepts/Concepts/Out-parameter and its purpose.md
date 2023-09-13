@@ -1,23 +1,59 @@
-In several functions there is an option called "out".
+In ImageJS several functions have an optional parameter called `out`.
+This parameter allows to choose which image to use as an output. It enables better memory management by allowing cloning image into an existing one instead of cloning it every time a function is executed.
 
-It gives the user a choice what image should be used as function output.  
-For example, let's say a user has an image which needs to be invert filtered.
+This option is mostly supported for filters which take a single image as input and produce a single image as output.
 
-If option `out` is not passed then the existing image will be simply cloned.
+For cloning to be successful,`out` must be compatible with target width, height, depth and color model.
 
-```ts
-const invertedImage = image.invert();
-```
-
-However if option `out` is passed and specified like this:
+Here is a simple example of correct and incorrect usage of `out` while applying `pixelate` filter:
 
 ```ts
-let outputImage: Image;
-const invertedImage = image.invert({ out: outputImage });
+//Creates a gray image of width = 3 and height = 3.
+let image1 = testUtils.createGreyImage([
+  [1, 1, 1],
+  [1, 1, 1],
+  [1, 1, 1],
+]);
+//Creates an RGB image of width = 1 and height = 3.
+let image2 = testUtils.createRgbImage([
+  [1, 1, 1],
+  [1, 1, 1],
+  [1, 1, 1],
+]);
+//Image to apply filter on.
+let testImage = testUtils.createGreyImage([
+  [1, 1, 1],
+  [2, 2, 2],
+  [3, 3, 3],
+]);
+//Correct usage of `out` option.Images are compatible.
+testImage = testImage.invert({ out: image1 });
+console.log(testImage === image1); //true
+
+//Incorrect usage of `out` option. Images have different widths.
+testImage = testImage.invert({ out: image2 });
+//Throws an error `cannot use out image. Its width property must be 3. Received 1`.
 ```
 
-Then image can be copied to a specific variable, in this case, `outputImage`.
+If the output image is compatible it can be overwritten by the source image. The example below shows the difference between function with and without `out` parameter.
 
-:::warning
-Regardless of what kind of image is passed down as an option, the code will be executed. However,an error will be thrown if certain conditions are not met. For successful use of `out`, images must have the same color model, width, height and bit depth.
+```ts
+// By default, not passing the out parameter will create and return a new image
+const newImage = image.invert();
+console.log(image === newImage); // false
+
+// You can pass the source image as the out parameter to avoid creating a new image
+// The returned image is the out image
+const replacedImage = image.invert({ out: image });
+console.log(image === replacedImage); // true
+```
+
+:::caution
+Some functions like `convertColor` can have an `out` parameter but cannot be applied on itself, since the function changes color model of input image.
+
+```ts
+let image1 = testUtils.createGreyImage([[1, 1, 1]]);
+image1 = image1.convertColor('RGB', { out: image1 }); //will throw error
+```
+
 :::
