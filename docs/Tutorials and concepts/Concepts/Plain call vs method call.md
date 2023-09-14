@@ -2,7 +2,7 @@ In most cases there are two ways of calling API functions: as a function and as 
 
 ```ts
 //import for function call
-import flip from 'image-js';
+import { flip } from 'image-js';
 
 // Method call on the image instance
 const flipped1 = image.flip(options);
