@@ -1,11 +1,11 @@
 In ImageJS several functions have an optional parameter called `out`.
-This parameter allows to choose which image to use as an output. It enables better memory management by allowing cloning image into an existing one instead of cloning it every time a function is executed.
+This parameter allows to choose which image to use as an output. It enables better memory management by allowing writing image into an existing one instead of cloning it every time a function is executed.
 
 This option is mostly supported for filters which take a single image as input and produce a single image as output.
 
-For cloning to be successful,`out` must be compatible with target width, height, depth and color model.
+For overwriting to be successful,`out` must be compatible with target width, height, depth and color model.
 
-Here is a simple example of correct and incorrect usage of `out` while applying `pixelate` filter:
+Here is a simple example of correct and incorrect usage of `out` while applying `invert` filter:
 
 ```ts
 //Creates a gray image of width = 3 and height = 3.
@@ -26,7 +26,7 @@ let testImage = testUtils.createGreyImage([
   [2, 2, 2],
   [3, 3, 3],
 ]);
-//Correct usage of `out` option.Images are compatible.
+//Correct usage of `out` option. Images are compatible.
 testImage = testImage.invert({ out: image1 });
 console.log(testImage === image1); //true
 
@@ -35,17 +35,17 @@ testImage = testImage.invert({ out: image2 });
 //Throws an error `cannot use out image. Its width property must be 3. Received 1`.
 ```
 
-If the output image is compatible it can be overwritten by the source image. The example below shows the difference between function with and without `out` parameter.
+If images are compatible source image can be used as an output. The example below shows the difference between function with and without `out` parameter.
 
 ```ts
 // By default, not passing the out parameter will create and return a new image
-const newImage = image.invert();
-console.log(image === newImage); // false
+testImage = image.invert();
+console.log(image === testImage); // false
 
 // You can pass the source image as the out parameter to avoid creating a new image
 // The returned image is the out image
-const replacedImage = image.invert({ out: image });
-console.log(image === replacedImage); // true
+testImage = image.invert({ out: image });
+console.log(image === testImage); // true
 ```
 
 :::caution
