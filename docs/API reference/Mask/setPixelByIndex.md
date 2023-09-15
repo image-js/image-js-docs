@@ -1,6 +1,6 @@
 [Check options and parameters of setPixelByIndex method](https://image-js.github.io/image-js-typescript/classes/Mask.html#setPixelByIndex 'github.io link')
 
-This method gets pixel value from mask data by pixel's index. It works like this:
+This method sets pixel value from mask data by pixel's index. It works like this:
 
 ```ts
 let mask = new Mask(3, 3);

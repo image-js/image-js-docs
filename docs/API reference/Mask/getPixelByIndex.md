@@ -12,5 +12,3 @@ let pixel = mask.getPixelByIndex(4);
 ### Parameters and default values
 
 - [`index`](https://image-js.github.io/image-js-typescript/classes/Mask.html#getPixelByIndex 'github.io link')
-
-- [`column`](https://image-js.github.io/image-js-typescript/classes/Mask.html#getPixelByIndex 'github.io link')

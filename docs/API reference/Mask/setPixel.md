@@ -1,6 +1,6 @@
 [Check options and parameters of setPixel method](https://image-js.github.io/image-js-typescript/classes/Image.html#resize 'github.io link')
 
-This method does the opposite of [`getPixel()`](getPixel.md 'internal link on getPixel').`setPixel()` method sets the value of a pixel.
+Opposed to [`getPixel()`](getPixel.md 'internal link on getPixel'), `setPixel()` method sets the value of a pixel.
 It works like this:
 
 ```ts
