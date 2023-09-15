@@ -1,38 +1,26 @@
 In ImageJS several functions have an optional parameter called `out`.
-This parameter allows to choose which image to use as an output. It enables better memory management by allowing writing image into an existing one instead of cloning it every time a function is executed.
+You can use this parameter to select the image you want to use as the output. It helps with memory management by allowing you to write the image into an existing one instead of creating a new copy every time the function is run.
 
 This option is mostly supported for filters which take a single image as input and produce a single image as output.
 
-For overwriting to be successful,`out` must be compatible with target width, height, depth and color model.
+For overwriting to be successful, `out` must be compatible with the width, height, depth and color model of the target image.
 
 Here is a simple example of correct and incorrect usage of `out` while applying `invert` filter:
 
-```ts
-//Creates a gray image of width = 3 and height = 3.
-let image1 = testUtils.createGreyImage([
-  [1, 1, 1],
-  [1, 1, 1],
-  [1, 1, 1],
-]);
-//Creates an RGB image of width = 1 and height = 3.
-let image2 = testUtils.createRgbImage([
-  [1, 1, 1],
-  [1, 1, 1],
-  [1, 1, 1],
-]);
-//Image to apply filter on.
-let testImage = testUtils.createGreyImage([
-  [1, 1, 1],
-  [2, 2, 2],
-  [3, 3, 3],
-]);
-//Correct usage of `out` option. Images are compatible.
+```js
+// Creates a gray image of width = 3 and height = 3.
+let image1 = new Image(3, 3, { colorModel: 'GREY' });
+// Creates an RGB image of width = 1 and height = 3.
+let image2 = new Image(1, 3, { colorModel: 'RGB' });
+// Image to apply filter on.
+let testImage = new Image(3, 3, { colorModel: 'GREY' });
+// Correct usage of `out` option. Images are compatible.
 testImage = testImage.invert({ out: image1 });
-console.log(testImage === image1); //true
+console.log(testImage === image1); // true
 
-//Incorrect usage of `out` option. Images have different widths.
+// Incorrect usage of `out` option. Images have different widths.
 testImage = testImage.invert({ out: image2 });
-//Throws an error `cannot use out image. Its width property must be 3. Received 1`.
+// Throws an error `cannot use out image. Its width property must be 3. Received 1`.
 ```
 
 If images are compatible source image can be used as an output. The example below shows the difference between function with and without `out` parameter.
@@ -53,7 +41,7 @@ Some functions like `convertColor` can have an `out` parameter but cannot be app
 
 ```ts
 let image1 = testUtils.createGreyImage([[1, 1, 1]]);
-image1 = image1.convertColor('RGB', { out: image1 }); //will throw error
+image1 = image1.convertColor('RGB', { out: image1 }); // will throw error
 ```
 
 :::
