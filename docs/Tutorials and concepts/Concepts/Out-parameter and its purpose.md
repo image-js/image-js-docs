@@ -37,7 +37,7 @@ console.log(image === testImage); // true
 ```
 
 :::caution
-Some functions like `convertColor` can have an `out` parameter but use the source image as the target image, since the function changes the color model of the input image.
+Some functions like `convertColor` can have an `out` parameter but cannot use the source image as the target image, since the function changes the color model of the input image.
 
 ```ts
 let image1 = testUtils.createGreyImage([[1, 1, 1]]);
