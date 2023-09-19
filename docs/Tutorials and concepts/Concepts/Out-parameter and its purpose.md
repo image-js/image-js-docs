@@ -23,7 +23,7 @@ testImage = testImage.invert({ out: image2 });
 // Throws an error `cannot use out image. Its width property must be 3. Received 1`.
 ```
 
-If images are compatible source image can be used as an output. The example below shows the difference between function with and without `out` parameter.
+If the images are compatible, the source image can be used as an output, as shown in the following example:
 
 ```ts
 // By default, not passing the out parameter will create and return a new image
@@ -37,7 +37,7 @@ console.log(image === testImage); // true
 ```
 
 :::caution
-Some functions like `convertColor` can have an `out` parameter but cannot be applied on itself, since the function changes color model of input image.
+Some functions like `convertColor` can have an `out` parameter but use the source image as the target image, since the function changes the color model of the input image.
 
 ```ts
 let image1 = testUtils.createGreyImage([[1, 1, 1]]);
