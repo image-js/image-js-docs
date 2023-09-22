@@ -1,12 +1,12 @@
-[Check options and parameters of setPixel method](https://image-js.github.io/image-js-typescript/classes/Mask.html#setValueByPoint 'github.io link')
+[Check options and parameters of setValueByPoint method](https://image-js.github.io/image-js-typescript/classes/Mask.html#setValueByPoint 'github.io link')
 
-`setValueByPoint()` method sets the value of a bit via its point.
+`setValueByPoint()` method sets the value of a bit via its point coordinates.
 It works like this:
 
 ```ts
 let mask = new Mask(3, 3);
-let pixel = mask.setValue({ column: 1, row: 1 }, 2);
-// sets a pixel in second row and second column with a value (in this case 2).
+let value = mask.setValueByPoint({ column: 1, row: 1 }, 1);
+// sets a bit in second row and second column with a value (in this case 1).
 ```
 
 ### Parameters and default values
