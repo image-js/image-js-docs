@@ -5,12 +5,12 @@ It works like this:
 ```ts
 let mask = new Mask(3, 3, data: new Uint8Array([1, 1, 1, 1, 1, 1, 0, 0, 0]));
 let mask2 = new Mask(3, 3, data: new Uint8Array([0, 0, 0, 1, 1, 1,  1, 1, 1]));
-const orMask = mask.and(mask2);
+const orMask = mask.or(mask2);
 // expect orMask to equal [1,1,1,1,1,1,1,1,1]
 ```
 
 :::info
-Mask calls an `or` function. To know how the function works more in-depth click on this link(link).
+Mask calls an `or` function. To learn more about how the function works click on this link(link).
 :::
 
 ### Parameters and default values

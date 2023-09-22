@@ -5,8 +5,13 @@ This method gets pixel value from mask data. It works like this:
 ```ts
 let mask = new Mask(3, 3);
 let pixel = mask.getPixel(1, 1);
-// returns an array with a value of a pixel (in this case 0). Unlike image.getPixel() this method gives only one value because Mask has only one channel.
+// returns an array with a value of the pixel (in this case 0). 
+
 ```
+:::info
+Unlike `image.getPixel()`(link on image.getPixel) this method gives only one value because Mask has only one channel.
+:::
+
 
 ### Parameters and default values
 

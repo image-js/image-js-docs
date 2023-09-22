@@ -12,7 +12,7 @@ const andMask = mask.and(mask2);
 ```
 
 :::info
-Mask calls `and` function. To know how the function works more in-depth click on this link(link).
+Mask calls a preexisting `and` function. To learn more about how the function works click on this link(link).
 :::
 
 ### Parameters and default values
