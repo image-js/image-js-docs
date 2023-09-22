@@ -11,7 +11,7 @@ mask.invert();
 ```
 
 :::info
-Mask calls already preexisting function. To know how the function works click on [this link](../Filters/Invert.md 'internal link on invert function').
+Mask calls already preexisting `invert` function. To learn more about how the function works click on [this link](../Filters/Invert.md 'internal link on invert function').
 :::
 
 ### Parameters and default values

@@ -17,7 +17,7 @@ Masks must have the same size for compatibility reasons.
 :::
 
 :::info
-Mask method calls `subtract` function. To check how this function works in depth click on this link(link)
+Mask method calls already preexisting `subtract` function. To learn more about how the function works click on this link(link)
 :::
 
 ### Parameters and default values
