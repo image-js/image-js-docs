@@ -5,9 +5,13 @@ It works like this:
 
 ```ts
 let mask = new Mask(3, 3);
-let pixel = mask.setBit(1, 1, 2);
-// sets a bit in second row and second column with a value (in this case 2).
+let bit = mask.setBit(1, 1, 1);
+// sets a bit in second row and second column with a value (in this case 1).
 ```
+
+:::info
+Mask is a binary image, therefore only two possible bit values are 0 and 1.
+:::
 
 ### Parameters and default values
 

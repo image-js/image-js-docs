@@ -1,12 +1,15 @@
-[Check options and parameters of setPixel method](https://image-js.github.io/image-js-typescript/classes/Mask.html#setValue 'github.io link')
+[Check options and parameters of setValue method](https://image-js.github.io/image-js-typescript/classes/Mask.html#setValue 'github.io link')
 
 `setValue()` method sets the value of a bit.
+:::info
+`setValue()` and `setBit()` work the same way with the mask. The `setValue()` function exists for compatibility with the `Image` class.
+:::
 It works like this:
 
 ```ts
 let mask = new Mask(3, 3);
-let pixel = mask.setValue(1, 1, 0, 2);
-// sets a pixel in second row and second column with a value (in this case 2).
+let value = mask.setValue(1, 1, 0, 1);
+// sets a bit in second row and second column with a value (in this case 1).
 ```
 
 ### Parameters and default values
