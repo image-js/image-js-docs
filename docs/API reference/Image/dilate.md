@@ -13,7 +13,3 @@ mask = mask.dilate();
 - [`image`](https://image-js.github.io/image-js-typescript/classes/Mask.html#and 'github.io link')
 
 - [`options`](https://image-js.github.io/image-js-typescript/classes/Mask.html#and 'github.io link')
-
-:::info
-Mask calls a preexisting `dilate` function. To learn more about how the function works click on [this link](../Morphology/Dilate.md)
-:::

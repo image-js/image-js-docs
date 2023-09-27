@@ -2,7 +2,7 @@ Method called `subtract` ,as the name suggests, takes another mask and makes a s
 It works like this:
 
 ```ts
-let mask = new Mask(3, 3, {
+let image = new Mask(3, 3, {
   data: new Uint8Array([1, 1, 1, 1, 1, 1, 1, 1, 1]),
 });
 let mask2 = new Mask(3, 3, {

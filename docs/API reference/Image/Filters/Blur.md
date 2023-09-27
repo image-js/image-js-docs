@@ -4,7 +4,7 @@ import BlurDemo from './blur.demo.tsx'
 
 Blur, also known as average blur or box blur, is a simple image processing technique used to reduce noise and smooth out images. It involves replacing the color value of a pixel with the average color value of its neighboring pixels within a specified window or kernel. This process effectively blurs the image and reduces high-frequency noise.
 
-Box blur is particularly effective in reducing [salt-and-pepper](https://en.wikipedia.org/wiki/Salt-and-pepper_noise 'wikipedia link on salt and pepper noise') noise (random black and white pixels) and minor imperfections in an image. However, it also leads to loss of finer details, so the choice of [kernel](../../Glossary.md#kernel) size is important.
+Box blur is particularly effective in reducing [salt-and-pepper](https://en.wikipedia.org/wiki/Salt-and-pepper_noise 'wikipedia link on salt and pepper noise') noise (random black and white pixels) and minor imperfections in an image. However, it also leads to loss of finer details, so the choice of [kernel](../../../Glossary.md#kernel) size is important.
 
 <BlurDemo />
 
@@ -33,7 +33,7 @@ Here's how blur filter is implemented in ImageJS:
 
 _Select a Kernel Size_: The first step is to choose the size of the kernel or window that will be used for the blurring operation. The kernel is typically a square matrix with odd dimensions, such as 3x3, 5x5, 7x7, etc. The larger the kernel, the more intense the blurring effect.
 
-_Iterate through Pixels_: For each pixel in the image, the algorithm applies [convolution](../../Glossary.md#convolution).
+_Iterate through Pixels_: For each pixel in the image, the algorithm applies [convolution](../../../Glossary.md#convolution).
 
 _Calculate Average Color_: The algorithm calculates the average color value of all the pixels within the kernel.
 
