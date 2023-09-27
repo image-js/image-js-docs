@@ -49,7 +49,7 @@ The size of the Gaussian kernel and the standard deviation parameter (which cont
 
 Here's how Gaussian blur is implemented in ImageJS:
 
-_Kernel Definition_: The core concept of Gaussian blur involves [convolving](../../Glossary.md#convolution 'glossary link on convolution') the image with a Gaussian [kernel](../../Glossary.md#kernel 'glossary link on kernel'), also known as a Gaussian filter or mask. This kernel's values are arranged in a way that creates a symmetric, bell-shaped pattern around the center of the kernel to approximate Gaussian function.
+_Kernel Definition_: The core concept of Gaussian blur involves [convolving](../../../Glossary.md#convolution 'glossary link on convolution') the image with a Gaussian [kernel](../../../Glossary.md#kernel 'glossary link on kernel'), also known as a Gaussian filter or mask. This kernel's values are arranged in a way that creates a symmetric, bell-shaped pattern around the center of the kernel to approximate Gaussian function.
 
 _Convolution Operation_: The Gaussian kernel is applied to the image using a convolution operation. This involves placing the kernel's center over each pixel in the image and performing element-wise multiplication of the kernel's values with the corresponding pixel values in the neighborhood. The results of these multiplications are summed up to compute the new value for the central pixel.
 

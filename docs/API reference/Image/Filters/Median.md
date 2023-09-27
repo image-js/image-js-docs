@@ -27,7 +27,7 @@ However, the median filter also has limitations. It can blur sharp edges and thi
 
 Here's how median filter is implemented in ImageJS:
 
-_Window or Kernel Selection_: The first step is to choose a small window or [kernel](../../Glossary.md#kernel 'glossary link to kernel'). This window will move over the entire image, pixel by pixel.
+_Window or Kernel Selection_: The first step is to choose a small window or [kernel](../../../Glossary.md#kernel 'glossary link to kernel'). This window will move over the entire image, pixel by pixel.
 
 _Pixel Neighborhood_: As the window moves over the image, for each pixel location, the filter collects the pixel values within the window's neighborhood. The neighborhood consists of the pixels that are currently covered by the window/kernel.
 
