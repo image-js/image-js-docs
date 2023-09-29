@@ -17,7 +17,7 @@ import ResizeDemo from './resize.demo.tsx'
 | [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#borderType)                   | no       | `constant`    |
 | [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#borderValue)                 | no       | `0`           |
 | [`height`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#height)                           | no       | -             |
-| [`interpolationType`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#preserveAspectRatio)   | no       | `bilinear`    |
+| [`interpolationType`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#interpolationType)     | no       | `bilinear`    |
 | [`preserveAspectRatio`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#preserveAspectRatio) | no       | `true`        |
 | [`width`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#width)                             | no       | -             |
 | [`xFactor`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#xFactor)                         | no       | -             |

@@ -16,10 +16,6 @@ mask = mask.subtract(mask2);
 Masks must have the same size for compatibility reasons.
 :::
 
-:::info
-Mask method calls already preexisting `subtract` function. To learn more about how the function works click on this link(link)
-:::
-
 ### Parameters and default values
 
 - [`mask`](https://image-js.github.io/image-js-typescript/classes/Mask.html#subtract 'github.io link')
