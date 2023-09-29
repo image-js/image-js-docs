@@ -9,3 +9,5 @@ Geometric operations in image processing involve transforming the spatial coordi
 - [Resize](Resize.md 'internal link on resize')
 
 - [Rotate](Rotate.md 'internal link on rotate')
+
+- [Transform](./transform.md 'internal link on transform')
