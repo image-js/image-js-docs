@@ -42,7 +42,6 @@
     "@docusaurus/module-type-aliases": "^2.4.1",
     "@tsconfig/docusaurus": "^1.0.5",
     "cspell": "^6.31.1",
-    "dts-bundle": "^0.7.3",
     "eslint": "^8.38.0",
     "eslint-config-zakodium": "^7.1.0",
     "prettier": "^2.8.8",
