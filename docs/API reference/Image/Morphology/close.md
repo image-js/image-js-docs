@@ -1,5 +1,7 @@
 import CloseDemo from './close.demo.tsx'
 
+[Check options and parameters of close method](https://image-js.github.io/image-js-typescript/classes/Image.html#close 'github.io link')
+
 Opposed to [opening](./open.md 'internal link to open method'), [closing process](<https://en.wikipedia.org/wiki/Closing_(morphology)> 'wikipedia link on closing') first [erodes](./Erode.md 'internal link to erode method') an image and only then [dilates](./Dilate.md 'internal link to dilate method') it.
 It is a useful process for filling small holes in the image, while preserving the shape and size of large holes and objects.
 
