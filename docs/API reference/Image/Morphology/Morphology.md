@@ -8,6 +8,10 @@ Morphological operations are simple yet powerful tools that play a significant r
 
 ## Core concepts
 
+There are two main processes in morphology:
+
 - [Erode](Erode.md 'internal link on erode')
 
 - [Dilate](Dilate.md 'internal link on dilate')
+
+These two operations are the foundation of most of the morphological operation that ImageJs possesses.
