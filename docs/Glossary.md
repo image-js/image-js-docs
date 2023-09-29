@@ -24,6 +24,13 @@ A component typically refers to a distinct and identifiable part or element with
 
 The convolution operation involves sliding a small matrix (filter, kernel, or mask) over an input image and calculating a new value for each pixel by performing a mathematical operation between the values in the filter and the corresponding pixel neighborhood in the image.
 
+### Hysteresis
+
+Hysteresis thresholding is a technique used in image processing, particularly in the context of edge detection, to distinguish between strong and weak edges in an image. It is commonly used in edge detection algorithms like the Canny edge detector to improve the detection of continuous edges in noisy images.
+The function takes two binary images that have been thresholded at different levels. The higher threshold has a smaller population of white pixels. The values in the higher threshold are
+more likely to be real edges. In hysteresis, if a value in the larger population is connected to a point in the smaller population, we can assume it is a real edge and add it to
+hysteresis image.
+
 ### Image noise
 
 [Image noise](https://en.wikipedia.org/wiki/Image_noise 'wikipedia link on image noise') refers to random variations in pixel values within an image, which can lead to unwanted visual artifacts and reduced image quality. It is often caused by various factors during image acquisition, transmission, or processing. Image noise can obscure details, reduce contrast, and make it harder to extract meaningful information from an image.
