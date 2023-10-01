@@ -11,8 +11,8 @@ const andMask = mask.and(mask2);
 // expect andMask to equal [0,0,0,1,1,1,0,0,0]
 ```
 
-:::info
-Mask calls a preexisting `and` function. To learn more about how the function works click on this link(link).
+:::caution
+Masks must have the same size for compatibility reasons.
 :::
 
 ### Parameters and default values
