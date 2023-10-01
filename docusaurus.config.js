@@ -125,7 +125,7 @@ const config = {
           { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://image-js.github.io/image-js-typescript/',
-            label: 'GitHub IO',
+            label: 'API reference',
             position: 'right',
           },
         ],
