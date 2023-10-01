@@ -5,7 +5,7 @@ Creation of the mask is based on the threshold that define the level of grey int
 Mask is an object which represents a binary image, therefore its properties are the same as in `Image` class. However, the methods can be slightly different.
 
 :::info
-To look deeper into Mask's properties and methods take a look at [the Mask description](../../../API%20reference/Mask/Mask.md) in API reference.
+To look deeper into Mask's properties and methods take a look at [the Mask description](../../../Features/Mask/Mask.md) in API reference.
 :::
 
 There are multiple ways of creating a Mask.
