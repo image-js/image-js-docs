@@ -9,8 +9,8 @@ const orMask = mask.or(mask2);
 // expect orMask to equal [1,1,1,1,1,1,1,1,1]
 ```
 
-:::info
-Mask calls an `or` function. To learn more about how the function works click on this link(link).
+:::caution
+Masks must have the same size for compatibility reasons.
 :::
 
 ### Parameters and default values
