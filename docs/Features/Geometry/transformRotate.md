@@ -27,7 +27,7 @@ import TransRotateDemo from './transformRotate.demo.tsx'
 | [`width`](https://image-js.github.io/image-js-typescript/interfaces/TransformRotateOptions.html#width)                         | no       | -             |
 
 :::info
-Technically, `transform` method can still be applied to rotate an image. It's just harder.
+Technically, `transform` method can still be applied to rotate an image. However it is harder.
 This means that ,to rotate an image by 90 degrees anti-clockwise, you can use `transform` method like this:
 
 ```js

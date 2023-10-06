@@ -10,6 +10,10 @@ This method only works with images.
 
 <MedianDemo />
 
+The key advantage of using the median filter, especially for noise reduction, is that it is less sensitive to extreme values or outliers compared to other filters like the [mean filter](https://en.wikipedia.org/wiki/Geometric_mean_filter 'wikipedia link on mean filter'). Since noise often appears as isolated bright or dark pixels that deviate significantly from their neighbors, the median filter effectively ignores these outliers and replaces them with more representative values from the local neighborhood.
+
+However, the median filter also has limitations. It can blur sharp edges and thin lines in the image, as it doesn't consider the spatial relationship between pixels beyond their intensity values. This means that while it's great for removing noise, it might not be suitable for all types of image enhancement tasks.
+
 ### Parameters and default values
 
 - `options`
@@ -22,16 +26,12 @@ This method only works with images.
 | [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#borderType)   | no       | `reflect101`  |
 | [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#borderValue) | no       | `0`           |
 
-The key advantage of using the median filter, especially for noise reduction, is that it is less sensitive to extreme values or outliers compared to other filters like the [mean filter](https://en.wikipedia.org/wiki/Geometric_mean_filter 'wikipedia link on mean filter'). Since noise often appears as isolated bright or dark pixels that deviate significantly from their neighbors, the median filter effectively ignores these outliers and replaces them with more representative values from the local neighborhood.
-
-However, the median filter also has limitations. It can blur sharp edges and thin lines in the image, as it doesn't consider the spatial relationship between pixels beyond their intensity values. This means that while it's great for removing noise, it might not be suitable for all types of image enhancement tasks.
-
 <details>
 <summary><b>Implementation</b></summary>
 
 Here's how median filter is implemented in ImageJS:
 
-_Window or Kernel Selection_: The first step is to choose a small window or [kernel](../../../Glossary.md#kernel 'glossary link to kernel'). This window will move over the entire image, pixel by pixel.
+_Window or Kernel Selection_: The first step is to choose a small window or [kernel](../../Glossary.md#kernel 'glossary link to kernel'). This window will move over the entire image, pixel by pixel.
 
 _Pixel Neighborhood_: As the window moves over the image, for each pixel location, the filter collects the pixel values within the window's neighborhood. The neighborhood consists of the pixels that are currently covered by the window/kernel.
 

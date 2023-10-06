@@ -10,11 +10,7 @@ $$
 NewValue = \sqrt{Value1^2+Value2^2}
 $$
 
-Where $$Value1$$ is a value of the pixel in the first image and $$Value2$$ is the value in the second one. The goal is to identify which points in one image correspond to points in another image, which is essential for various computer vision and image processing applications. Calculating hypotenuse value between two pixels is necessary for image aligning, feature matching.
-
-:::caution
-Images must be compatible by size, bit depth, number of channels and number of alpha channels. However, for the resulting image the bit depth and number of channels depends on the input options.
-:::
+Where $$Value1$$ is a value of the pixel in the first image and $$Value2$$ is the value in the second one. The goal is to identify which points in one image correspond to points in another image, which is essential for various computer vision and image processing applications. Calculating hypotenuse value between two pixels is also necessary for image aligning and feature matching.
 
 ### Parameters and default values
 
@@ -28,3 +24,7 @@ Images must be compatible by size, bit depth, number of channels and number of a
 | ------------------------------------------------------------------------------------------------------- | -------- | ---------------- |
 | [`bitDepth`](https://image-js.github.io/image-js-typescript/interfaces/HypotenuseOptions.html#bitDepth) | no       | `image.bitDepth` |
 | [`channels`](https://image-js.github.io/image-js-typescript/interfaces/HypotenuseOptions.html#channels) | no       | -                |
+
+:::caution
+Images must be compatible by size, bit depth, number of channels and number of alpha channels. However, for the resulting image the bit depth and number of channels depends on the input options.
+:::

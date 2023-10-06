@@ -8,14 +8,14 @@ This method only works with images.
 
 The Canny edge detector is a popular and widely used image processing technique for detecting edges in images. It is widely used in computer vision, image processing, and various applications such as object recognition, image segmentation, and feature extraction due to its ability to accurately detect edges and suppress noise.
 
+<CannyEdgeDemo />
+
 The Canny edge detector is known for its ability to:
 
 - Detect edges with good localization (i.e., edges are thin and located precisely).
 - Suppress noise due to the Gaussian smoothing.
 - Handle edges with varying levels of intensity (gradient).
 - Allow for customization through the selection of appropriate threshold values.
-
-<CannyEdgeDemo />
 
 ### Parameters and default values
 
@@ -45,7 +45,7 @@ _Non-maximum Suppression_: In this step, the gradient magnitude is examined at e
 
 **(optional)**
 
-_Edge Tracking by [Hysteresis](../../../Glossary.md#hysteresis "internal link on hysteresis)_: This step involves tracking edges by applying two thresholds: a high threshold and a low threshold. Pixels with gradient magnitude values above the high threshold are considered strong edges, while those between the low and high thresholds are considered potential edges. The algorithm then connects potential edges to strong edges, forming continuous edge contours.
+_Edge Tracking by [Hysteresis](../../Glossary.md#hysteresis "internal link on hysteresis)_: This step involves tracking edges by applying two thresholds: a high threshold and a low threshold. Pixels with gradient magnitude values above the high threshold are considered strong edges, while those between the low and high thresholds are considered potential edges. The algorithm then connects potential edges to strong edges, forming continuous edge contours.
 
 Finally, edge tracking by hysteresis is performed to link weak edges to strong edges. This helps in forming continuous edges and eliminating isolated weak edges caused by noise.
 

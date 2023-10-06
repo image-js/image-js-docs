@@ -67,7 +67,7 @@ $KernelY = \begin{bmatrix}
 \end{bmatrix}$
 
 :::info
-As was mentioned, derivative filter is a type of gradient filter. Therefore using the same kernels with gradient filter will provide the same image output.Derivative filter simplifies some kernel's application.
+As was mentioned, derivative filter is a type of gradient filter. Therefore using the same kernels with gradient filter will provide the same image output. Derivative filter simplifies some kernel's application.
 
 _Applying Sobel kernel using gradient filter_
 
