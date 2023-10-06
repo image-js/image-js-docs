@@ -20,8 +20,6 @@ sidebar_position: 0
 
 - [Median](./Median.md 'internal link on median')
 
-- [hypotenuse](./hypotenuse.md 'internal link on hypotenuse')
-
 - [level](./level.md 'internal link on level')
 
 - [pixelate](./Pixelate.md 'internal link on pixelate')
@@ -35,5 +33,3 @@ sidebar_position: 0
 ### Methods that can be applied on Images or Masks
 
 - [invert](./Invert.md 'internal link on invert')
-
-- [subtract](./subtract.md 'internal link on subtract')
