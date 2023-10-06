@@ -18,13 +18,13 @@ sidebar_position: 0
 
 - [Derivative](./Derivative.md 'internal link on derivative')
 
-- [Median](./median.md 'internal link on median')
+- [Median](./Median.md 'internal link on median')
 
 - [hypotenuse](./hypotenuse.md 'internal link on hypotenuse')
 
 - [level](./level.md 'internal link on level')
 
-- [pixelate](./level.md 'internal link on pixelate')
+- [pixelate](./Pixelate.md 'internal link on pixelate')
 
 ### Methods that can be applied on Masks only
 
@@ -34,4 +34,6 @@ sidebar_position: 0
 
 ### Methods that can be applied on Images or Masks
 
-- [invert](./invert.md 'internal link on invert')
+- [invert](./Invert.md 'internal link on invert')
+
+- [subtract](./subtract.md 'internal link on subtract')

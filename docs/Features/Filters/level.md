@@ -33,17 +33,17 @@ This process can make details in both dark and bright regions of the image more 
 
 Here's how level filter is implemented in ImageJS:
 
-_Input border values selection_: The first step is to choose the range of values where the filter must be applied.
+_Input border values selection_: The first step is to choose the range of values that the filter must redistribute.
 
 _Output border values selection_: Then the range of output values must be chosen. It is necessary to understand in what output limits should lie pixels that belong to the input values set.
 
-_Calculation of the values_: After getting input and output values each pixel's gets compared with it and a ratio is calculated by using formula:
+_Calculation of the values_: After getting input and output values each pixel is compared with input values and a ratio is calculated by using formula:
 
 $$
-(value - inputMin)/(inputMax - inputMin)
+\dfrac{value - inputMin}{inputMax - inputMin}
 $$
 
-where $$value$$ is a value of a pixel which is within the input borders. Otherwise it is equal to maximum input value.
+where $$value$$ is a value of a pixel which is within the input borders. If value is outside of input limits it is equal to maximum input value.
 From there the formula is reciprocated to compute new output value.
 
 :::caution

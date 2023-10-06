@@ -22,14 +22,14 @@ import InvertDemo from './invert.demo.tsx'
 
 Here's how invert filter is implemented in ImageJS:
 
-_Pixel Transformation_: For each pixel in the image, the inversion filter transforms its color [intensity](../../../Glossary.md#intensity 'glossary link on intensity') value. The new intensity value is calculated using the formula:
+_Pixel Transformation_: For each pixel in the image, the inversion filter transforms its color [intensity](../../Glossary.md#intensity 'glossary link on intensity') value. The new intensity value is calculated using the formula:
 
 $$New Intensity = Max Intensity - Original Intensity$$
 
-Where "_Max Intensity_" is the maximum possible intensity value for the color channel.
+Where $$Max Intensity$$ is the maximum possible intensity value for the color channel.
 
 :::warning
-ImageJS uses components to calculate each pixel value and leaves alpha channel unchanged. For more information about channels and components visit [this link](../../../Tutorials%20and%20concepts/Concepts/Channel%20vs%20component.md).
+ImageJS uses components to calculate each pixel value and leaves alpha channel unchanged. For more information about channels and components visit [this link](../../Tutorials%20and%20concepts/Concepts/Channel%20vs%20component.md).
 :::
 
 </details>
