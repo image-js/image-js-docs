@@ -1,4 +1,6 @@
-Method called `subtract` ,as the name suggests, takes another mask and makes a subtraction between each respective bit of the mask.
+[Check options and parameters of subtract method](https://image-js.github.io/image-js-typescript/classes/Mask.html#subtract 'github.io link')
+
+Method called `subtract`, as the name suggests, takes another mask and makes a subtraction between each respective bit of the mask.
 It works like this:
 
 ```ts
@@ -13,7 +15,7 @@ mask = mask.subtract(mask2);
 ```
 
 :::caution
-Masks must have the same size for compatibility reasons.
+Both masks must have the same size for compatibility reasons. Images must have the same size, channel number and bit depth.
 :::
 
 ### Parameters and default values

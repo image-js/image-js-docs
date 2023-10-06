@@ -1,3 +1,9 @@
+[Check options and parameters of level method](https://image-js.github.io/image-js-typescript/classes/Image.html#level 'github.io link')
+
+:::caution
+This method works only with masks
+:::
+
 `or` method performs a [logical disjunction](https://en.wikipedia.org/wiki/Logical_disjunction 'wikipedia link on logical disjunction') between bits of two masks.
 
 It works like this:
