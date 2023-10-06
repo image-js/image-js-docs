@@ -1,5 +1,12 @@
 import { Image } from 'image-js';
 
 export default function level(image: Image) {
-  return image.level({ outputMin: 0, outputMax: 500, gamma: 1 });
+  image = image.grey();
+  return image.level({
+    inputMin: image.maxValue - 200,
+    inputMax: image.maxValue,
+    outputMin: 0,
+    outputMax: 300,
+    gamma: 1,
+  });
 }
