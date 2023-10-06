@@ -8,9 +8,10 @@ This method only works with images.
 
 Blur, also known as average blur or box blur, is a simple image processing technique used to reduce noise and smooth out images. It involves replacing the color value of a pixel with the average color value of its neighboring pixels within a specified window or kernel. This process effectively blurs the image and reduces high-frequency noise.
 
-Box blur is particularly effective in reducing [salt-and-pepper](https://en.wikipedia.org/wiki/Salt-and-pepper_noise 'wikipedia link on salt and pepper noise') noise (random black and white pixels) and minor imperfections in an image. However, it also leads to loss of finer details, so the choice of [kernel](../../Glossary.md#kernel) size is important.
-
 <BlurDemo />
+
+Box blur is particularly effective in reducing [salt-and-pepper](https://en.wikipedia.org/wiki/Salt-and-pepper_noise 'wikipedia link on salt and pepper noise') noise (random black and white pixels) and minor imperfections in an image. However, it also leads to loss of finer details, so the choice of [kernel](../../Glossary.md#kernel) size is important.
+More advanced blurring techniques, such as [Gaussian blur](./gaussianBlur.md 'internal link to gaussian blur') or [bilateral filter](https://en.wikipedia.org/wiki/Bilateral_filter 'wikipedia link on bilateral filters'), are often used for better results in various applications.
 
 ### Parameters and default values
 
@@ -25,8 +26,6 @@ Box blur is particularly effective in reducing [salt-and-pepper](https://en.wiki
 | [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderType)   | no       | `reflect101`  |
 | [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderValue) | no       | `0`           |
 | [`out`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#out)                 | no       | -             |
-
-More advanced blurring techniques, such as [Gaussian blur](./gaussianBlur.md 'internal link to gaussian blur') or [bilateral filter](https://en.wikipedia.org/wiki/Bilateral_filter 'wikipedia link on bilateral filters'), are often used for better results in various applications.
 
 <details>
 <summary>
