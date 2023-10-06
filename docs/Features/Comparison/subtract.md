@@ -8,10 +8,10 @@ let mask = new Mask(3, 3, {
   data: new Uint8Array([1, 1, 1, 1, 1, 1, 1, 1, 1]),
 });
 let mask2 = new Mask(3, 3, {
-  data: new Uint8Array([1, 1, 1, 2, 2, 2, 2, 2, 2]),
+  data: new Uint8Array([1, 1, 1, 0, 0, 0, 0, 0, 1]),
 });
 mask = mask.subtract(mask2);
-// expect mask to equal [0,0,0,1,1,1,1,1,1]
+// expect mask to equal [0,0,0,1,1,1,1,1,0]
 ```
 
 :::caution
@@ -20,7 +20,7 @@ Both masks must have the same size for compatibility reasons. Images must have t
 
 ### Parameters and default values
 
-- [`mask`](https://image-js.github.io/image-js-typescript/classes/Mask.html#subtract 'github.io link')
+- [`other`](https://image-js.github.io/image-js-typescript/classes/Mask.html#subtract 'github.io link')
 
 - [`options`](https://image-js.github.io/image-js-typescript/classes/Mask.html#subtract 'github.io link')
 
