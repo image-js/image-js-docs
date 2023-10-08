@@ -21,9 +21,9 @@ Matrix cannot be singular. Otherwise it cannot be inverted. Click [here](https:/
 
 ### Parameters and its default values
 
-- [transformMatrix](https://image-js.github.io/image-js-typescript/classes/Image.html#transform)
+- `transformMatrix`
 
-- [options](https://image-js.github.io/image-js-typescript/interfaces/TransformOptions.html)
+- `options`
 
 #### Options
 

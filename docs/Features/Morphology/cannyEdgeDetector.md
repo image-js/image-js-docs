@@ -3,7 +3,7 @@ import CannyEdgeDemo from './cannyEdgeDetector.demo.tsx'
 [Check options and parameters of cannyEdgeDetector method](https://image-js.github.io/image-js-typescript/classes/Image.html#cannyEdgeDetector 'github.io link')
 
 :::caution
-This method only works with images.
+This method works only with images.
 :::
 
 The Canny edge detector is a popular and widely used image processing technique for detecting edges in images. It is widely used in computer vision, image processing, and various applications such as object recognition, image segmentation, and feature extraction due to its ability to accurately detect edges and suppress noise.

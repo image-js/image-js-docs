@@ -10,7 +10,7 @@ $$
 NewValue = \sqrt{Value1^2+Value2^2}
 $$
 
-Where $$Value1$$ is a value of the pixel in the first image and $$Value2$$ is the value in the second one. The goal is to identify which points in one image correspond to points in another image, which is essential for various computer vision and image processing applications. Calculating hypotenuse value between two pixels is also necessary for image aligning and feature matching.
+Where $$Value1$$ is a value of the pixel in the first image and $$Value2$$ is the value of the second one. The goal is to identify which points in one image correspond to points in another image, which is essential for various computer vision and image processing applications. Calculating hypotenuse value between two pixels is also necessary for image aligning and feature matching.
 
 ### Parameters and default values
 

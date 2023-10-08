@@ -3,7 +3,7 @@ import MorphGradientDemo from './morphologicalGradient.demo.tsx'
 [Check options and parameters of morphologicalGradient method](https://image-js.github.io/image-js-typescript/classes/Image.html#morphologicalGradient 'github.io link')
 
 :::caution
-This method only works with images.
+This method works only with images.
 :::
 
 [The morphological gradient](https://en.wikipedia.org/wiki/Morphological_gradient 'wikipedia link on morphological gradient') is a mathematical operation used in image processing and mathematical morphology to highlight the boundaries of objects or regions within an image.

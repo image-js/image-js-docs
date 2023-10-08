@@ -4,7 +4,7 @@
 This method works only with images.
 :::
 
-Method called `add`, opposed to [`subtract`](./subtract.md 'internal link on subtract'), takes another Image and makes an addition between each respective pixel.
+Add method, opposed to [subtract](./subtract.md 'internal link on subtract'), takes another Image and makes an addition between each respective pixel value.
 It works like this:
 
 ```ts
@@ -14,7 +14,7 @@ let mask = new Image(3, 3, {
 let mask2 = new Image(3, 3, {
   data: new Uint8Array([1, 133, 133, 133, 0, 0, 50, 0, 1]),
 });
-mask = mask.subtract(mask2);
+mask = mask.add(mask2);
 // expect mask to equal [2,255,255,255,255,122,1,51,2]
 ```
 
