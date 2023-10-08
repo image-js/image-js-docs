@@ -8,4 +8,4 @@ Rotating images in image processing involves changing the orientation of the ima
 
 ### Parameters and its default values
 
-- [RotateAngle](https://image-js.github.io/image-js-typescript/types/RotateAngle.html)
+- `RotateAngle`

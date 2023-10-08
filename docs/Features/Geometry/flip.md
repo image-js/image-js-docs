@@ -6,7 +6,7 @@ import FlipDemo from './flip.demo.tsx'
 This method works only with images.
 :::
 
-A "flip filter" in image processing refers to a transformation that horizontally or vertically flips an image. This operation is also known as a "mirror" operation. Flipping an image horizontally means reversing the order of pixels in each row, while flipping vertically means reversing the order of pixels in each column.
+Flip filter in image processing refers to a transformation that horizontally or vertically flips an image. This operation is also known as a "mirror" operation. Flipping an image horizontally means reversing the order of pixels in each row, while flipping vertically means reversing the order of pixels in each column.
 
 <FlipDemo />
 

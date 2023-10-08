@@ -1,4 +1,4 @@
-[Check options and parameters of level method](https://image-js.github.io/image-js-typescript/classes/Image.html#level 'github.io link')
+[Check options and parameters of or method](https://image-js.github.io/image-js-typescript/classes/Mask.html#or 'github.io link')
 
 :::caution
 This method works only with masks
@@ -21,6 +21,12 @@ Masks must have the same size for compatibility reasons.
 
 ### Parameters and default values
 
-- [`mask`](https://image-js.github.io/image-js-typescript/classes/Mask.html#or 'github.io link')
+- `mask`
 
-- [`options`](https://image-js.github.io/image-js-typescript/classes/Mask.html#or 'github.io link')
+- `options`
+
+#### Options
+
+| Property                                                                              | Required | Default value |
+| ------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`out`](https://image-js.github.io/image-js-typescript/interfaces/OrOptions.html#out) | no       | -             |

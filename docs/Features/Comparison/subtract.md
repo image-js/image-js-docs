@@ -20,9 +20,9 @@ Both masks must have the same size for compatibility reasons. Images must have t
 
 ### Parameters and default values
 
-- [`other`](https://image-js.github.io/image-js-typescript/classes/Mask.html#subtract 'github.io link')
+- `other`
 
-- [`options`](https://image-js.github.io/image-js-typescript/classes/Mask.html#subtract 'github.io link')
+- `options`
 
 #### Options
 
