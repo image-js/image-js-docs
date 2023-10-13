@@ -41,7 +41,7 @@ Keep in mind that gradient filters can be sensitive to noise and might result in
 
 Here's how gradient filter is implemented in ImageJS:
 
-_Grayscale Conversion_: Before applying a gradient filter, the color image is converted into [grayscale](Grayscale.md 'link to grayscale filter'). This simplifies the processing by reducing the image to a single channel representing pixel intensities.
+_Grayscale Conversion_: Before applying a gradient filter, the color image is converted into [grayscale](./Grayscale.md 'internal link on grayscale filter'). This simplifies the processing by reducing the image to a single channel representing pixel intensities.
 
 _Kernel Operators_: Gradient filter consists of small convolution [kernels](../../Glossary.md#kernel 'glossary link on kernel'). Normally, one for detecting horizontal changes and another for vertical changes, however user might indicate only one kernel to check only one of directions. These kernels are usually 3x3 matrices of numerical weights.
 

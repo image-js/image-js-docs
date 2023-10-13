@@ -8,9 +8,9 @@ sidebar_position: 0
 
 ### Methods that can be applied on Images only
 
-- [Grayscale](Grayscale.md 'internal link on grayscale')
+- [Grayscale](./Grayscale.md 'internal link on grayscale')
 
-- [Blur](Blur.md 'internal link on blur')
+- [Blur](./Blur.md 'internal link on blur')
 
 - [gaussianBlur](./Gaussian%20Blur.md 'internal link on gaussianBlur')
 
