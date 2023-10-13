@@ -8,20 +8,20 @@ Morphological operations are simple yet powerful tools that play a significant r
 
 ### Methods that can be applied on Images only
 
-- [Erode](./Erode.md 'internal link on erode')
+- [Erode](./Erosion.md 'internal link on erode')
 
-- [Dilate](./Dilate.md 'internal link on dilate')
+- [Dilate](./Dilation.md 'internal link on dilate')
 
-- [open](./open.md 'internal link on open')
+- [open](./Opening.md 'internal link on open')
 
-- [close](./close.md 'internal link on close')
+- [close](./Closing.md 'internal link on close')
 
-- [topHat](./topHat.md 'internal link on topHat')
+- [topHat](./Top%20Hat.md 'internal link on topHat')
 
-- [bottomHat](./bottomHat 'internal link on bottomHat')
+- [bottomHat](./Bottom%20Hat 'internal link on bottomHat')
 
 ### Methods that can be applied on Images and Masks
 
-- [morphologicalGradient](./morphologicalGradient.md 'internal link on morphologicalGradient')
+- [morphologicalGradient](./Morphological%20Gradient.md 'internal link on morphologicalGradient')
 
-- [cannyEdgeDetector](./cannyEdgeDetector.md 'internal link on cannyEdgeDetector')
+- [cannyEdgeDetector](./Canny%20Edge%20Detector.md 'internal link on cannyEdgeDetector')
