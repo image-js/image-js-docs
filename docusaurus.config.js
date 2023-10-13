@@ -41,7 +41,7 @@ async function demoLoaderPlugin() {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Welcome',
+  title: 'Image-JS',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
