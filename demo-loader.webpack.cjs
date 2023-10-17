@@ -88,7 +88,9 @@ export function process(${isMask ? 'mask' : 'image'}) {
   const defaultEditorCode= \`${editorCode}\`;
   export default function Demo(props) {
     return (
-      <ImageDemo code={code} defaultEditorCode={defaultEditorCode} processImage={process} name={name} isMask={${isMask ? 'true' : 'false'}} {...props} />
+      <ImageDemo code={code} defaultEditorCode={defaultEditorCode} processImage={process} name={name} isMask={${
+        isMask ? 'true' : 'false'
+      }} {...props} />
     );
   }
   `;

@@ -12,10 +12,10 @@ import InvertMaskDemo from './invert.mask.demo.tsx';
 
 - `options`
 
-#### Options 
+#### Options
 
 | Property                                                                                  | Required | Default value |
-|-------------------------------------------------------------------------------------------|----------|---------------|
+| ----------------------------------------------------------------------------------------- | -------- | ------------- |
 | [`out`](https://image-js.github.io/image-js-typescript/interfaces/InvertOptions.html#out) | no       | -             |
 
 <details>
