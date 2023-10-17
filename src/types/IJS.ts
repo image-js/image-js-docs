@@ -3,7 +3,7 @@ import * as IJS from 'image-js';
 type IJSType = typeof IJS;
 
 export type ProcessImage = (
-  image: IJS.Image,
+  image: IJS.Image | IJS.Mask,
   IJS: IJSType,
 ) => IJS.Image | IJS.Mask;
 
@@ -14,6 +14,7 @@ interface ComputeDataBase {
 export interface EncodedComputeData extends ComputeDataBase {
   type: 'encoded';
   data: Uint8Array;
+  imageType: 'image' | 'mask';
 }
 
 interface ImageData {
@@ -32,12 +33,20 @@ interface MaskData {
   height: number;
 }
 
-export interface DecodedComputeData extends ComputeDataBase {
-  type: 'decoded';
-  image: ImageData;
+export interface DecodedImageComputeData extends ComputeDataBase {
+  type: 'decoded-image';
+  decoded: ImageData;
 }
 
-export type ComputeData = EncodedComputeData | DecodedComputeData;
+export interface DecodedMaskComputeData extends ComputeDataBase {
+  type: 'decoded-mask';
+  decoded: MaskData;
+}
+
+export type ComputeData =
+  | EncodedComputeData
+  | DecodedImageComputeData
+  | DecodedMaskComputeData;
 
 export interface WorkerSuccessResponse {
   type: 'success';

@@ -1,8 +1,9 @@
-import { Image } from 'image-js';
+import { Image, Mask } from 'image-js';
 import { createContext, DispatchWithoutAction, useContext } from 'react';
 
 export type UrlOption = {
   type: 'url';
+  imageType: 'image' | 'mask';
   value: string;
   label: string;
 };
@@ -13,11 +14,17 @@ export interface ImageOption {
   image: Image;
 }
 
-export type ImageDemoInputOption = UrlOption | ImageOption;
+export interface MaskOption {
+  type: 'mask';
+  value: string;
+  mask: Mask;
+}
+
+export type ImageDemoInputOption = UrlOption | ImageOption | MaskOption;
 
 export interface ImportImageContext {
-  images: ImageDemoInputOption[];
-  addImages: (images: ImageDemoInputOption[]) => void;
+  options: ImageDemoInputOption[];
+  addOptions: (options: ImageDemoInputOption[]) => void;
   isVideoStreamAllowed: boolean;
   allowVideoStream: DispatchWithoutAction;
 }
@@ -34,10 +41,4 @@ export function useImportImageContext() {
 
 export function isUrlOption(option: ImageDemoInputOption): option is UrlOption {
   return option.type === 'url';
-}
-
-export function isImageOption(
-  option: ImageDemoInputOption,
-): option is ImageOption {
-  return option.type === 'image';
 }

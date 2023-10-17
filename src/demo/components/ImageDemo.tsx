@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { defaultImages } from '../contexts/demo/defaultImages';
+import { defaultImages, defaultMasks } from '../contexts/demo/defaultImages';
 import { useDemoStateContext } from '../contexts/demo/demoContext';
 import { useSelectImage } from '../contexts/demo/dispatchHelpers';
 
@@ -15,15 +15,22 @@ export default function ImageDemo({
   code,
   defaultEditorCode,
   noAutoRun,
+  isMask,
 }: {
   name: string;
   code: string;
   defaultEditorCode: string;
   noAutoRun?: boolean;
+  isMask?: boolean;
 }) {
   return (
     <ImageDemoProvider
-      initial={{ noAutoRun, initialCode: defaultEditorCode, name }}
+      initial={{
+        noAutoRun,
+        initialCode: defaultEditorCode,
+        name,
+        isMask,
+      }}
     >
       <div style={{ display: 'inline-flex', flexDirection: 'column', gap: 4 }}>
         <div
@@ -50,16 +57,21 @@ export default function ImageDemo({
 }
 
 function ImageDemoImages() {
-  const { selectedDevice, selectedImage } = useDemoStateContext();
+  const { selectedDevice, selectedImage, isMask } = useDemoStateContext();
+
   const selectImage = useSelectImage();
 
   useEffect(() => {
     if (!selectedImage && !selectedDevice) {
       // This is only true when the context is first initialized
       // So this will run only once per demo
-      selectImage(defaultImages[0]);
+      if (isMask) {
+        selectImage(defaultMasks[0]);
+      } else {
+        selectImage(defaultImages[0]);
+      }
     }
-  }, [selectedImage, selectedDevice, selectImage]);
+  }, [selectedImage, selectedDevice, selectImage, isMask]);
   return (
     <div
       style={{

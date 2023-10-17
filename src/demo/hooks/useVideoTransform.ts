@@ -90,7 +90,7 @@ export function useVideoTransform(
                   name,
                   code,
                 ).then((status) => {
-                  // We don't request the next fram in case of error
+                  // We don't request the next frame in case of error
                   if (status === 'success') {
                     nextFrameRequest = requestAnimationFrame(nextFrame);
                   }

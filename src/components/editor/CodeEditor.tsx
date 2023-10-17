@@ -43,7 +43,7 @@ function MonacoEditor({
   setValue: Dispatch<SetStateAction<string>>;
   commands?: (editor: Monaco) => EditorCommand[];
 }) {
-  const editorRef = useRef<any>(null);
+  const editorRef = useRef<unknown>(null);
   const monacoRef = useRef<Monaco | null>(null);
   const { colorMode } = useColorMode();
 

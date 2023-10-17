@@ -13,8 +13,10 @@ export default function ExpandableImageDuo() {
     const expandableImages: ImageSrc[] = [];
     if (sourceImage.type === 'url') {
       expandableImages.push(sourceImage.value);
-    } else {
+    } else if (sourceImage.type === 'image') {
       expandableImages.push(sourceImage.image);
+    } else {
+      expandableImages.push(sourceImage.mask);
     }
     expandableImages.push(filteredImage);
 
