@@ -22,6 +22,7 @@ export function runAndDispatch(
             demoDispatch,
             {
               type: 'encoded',
+              imageType: imageOption.imageType,
               code,
               data: new Uint8Array(buffer),
               name,
@@ -31,23 +32,41 @@ export function runAndDispatch(
           );
         });
       })
-      .catch((err: any) => {
+      .catch((err: unknown) => {
         reportError(err);
       });
-  } else {
+  } else if (imageOption.type === 'image') {
     const rawImage = imageOption.image.getRawImage();
     return run(
       demoDispatch,
       {
-        type: 'decoded',
+        type: 'decoded-image',
         code,
-        image: {
+        decoded: {
           type: 'image',
           width: imageOption.image.width,
           height: imageOption.image.height,
           data: rawImage.data,
           colorModel: imageOption.image.colorModel,
           bitDepth: imageOption.image.bitDepth,
+        },
+        name,
+      },
+      imageOption,
+      jobManager,
+    );
+  } else {
+    const rawMask = imageOption.mask.getRawImage();
+    return run(
+      demoDispatch,
+      {
+        type: 'decoded-mask',
+        code,
+        decoded: {
+          type: 'mask',
+          data: rawMask.data,
+          width: imageOption.mask.width,
+          height: imageOption.mask.height,
         },
         name,
       },
@@ -114,7 +133,7 @@ export function useSelectImage() {
   const dispatch = useDemoDispatchContext();
   const { name, code } = useDemoStateContext();
 
-  const selectImage = useCallback(
+  return useCallback(
     (imageOption: ImageDemoInputOption) => {
       dispatch({
         type: 'SET_SELECTED_IMAGE',
@@ -125,7 +144,6 @@ export function useSelectImage() {
     },
     [dispatch, name, code],
   );
-  return selectImage;
 }
 
 export function useRunCode() {

@@ -80,6 +80,7 @@ export interface DemoState {
   name: string;
   code: string;
   noAutoRun: boolean;
+  isMask: boolean;
   run: RunState;
 }
 
@@ -91,6 +92,7 @@ function getInitialState(initial: DemoInitialConfig): DemoState {
     code: initial.initialCode,
     noAutoRun: initial.noAutoRun || false,
     name: initial.name,
+    isMask: initial.isMask || false,
     run: {
       status: 'success',
       error: null,
@@ -196,6 +198,7 @@ export interface DemoInitialConfig {
   initialCode: string;
   name: string;
   noAutoRun?: boolean;
+  isMask?: boolean;
 }
 
 export function useDemoReducer(initial: DemoInitialConfig) {
