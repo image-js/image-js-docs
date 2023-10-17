@@ -1,4 +1,4 @@
-import { useImportImageContext } from '@site/src/demo/contexts/importImage/importImageContext';
+import { useFilteredDemoImages } from '@site/src/demo/contexts/demo/demoContext';
 import { Image } from 'image-js';
 import React, { useRef, useState } from 'react';
 import { useKbs } from 'react-kbs';
@@ -18,7 +18,7 @@ export default function CameraSnapshotModal(props: {
   close: () => void;
   onSnapshot: (snapshot: Snapshot) => void;
 }) {
-  const { images } = useImportImageContext();
+  const images = useFilteredDemoImages();
   const shortcutProps = useKbs([
     {
       handler: () => props.close(),

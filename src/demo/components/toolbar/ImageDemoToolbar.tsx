@@ -1,3 +1,4 @@
+import { imageToMask } from '@site/src/demo/utils/image';
 import React from 'react';
 import {
   HiOutlineCodeBracket,
@@ -8,7 +9,7 @@ import { RxCodesandboxLogo } from 'react-icons/rx';
 import { useDemoStateContext } from '../../contexts/demo/demoContext';
 import { useSelectImage } from '../../contexts/demo/dispatchHelpers';
 import {
-  ImageOption,
+  ImageDemoInputOption,
   useImportImageContext,
 } from '../../contexts/importImage/importImageContext';
 import AddonButton from '../addons/AddonButton';
@@ -20,10 +21,10 @@ import ImageDemoToolbarInfo from './ImageDemoToolbarInfo';
 import SourceSelect from './SourceSelect';
 
 export default function ImageDemoToolbar() {
-  const { run } = useDemoStateContext();
+  const { run, isMask } = useDemoStateContext();
   const selectImage = useSelectImage();
 
-  const { addImages } = useImportImageContext();
+  const { addOptions } = useImportImageContext();
 
   return (
     <div
@@ -39,15 +40,28 @@ export default function ImageDemoToolbar() {
         <ImageDemoToolbarInfo />
       </div>
       <div style={{ display: 'flex', gap: 4 }}>
-        <CameraStreamButton />
+        {isMask ? null : <CameraStreamButton />}
         <ImageInputButton
           onImages={(images) => {
-            const newOptions: ImageOption[] = images.map((image) => ({
-              type: 'image',
-              value: image.file.name,
-              image: image.image,
-            }));
-            addImages(newOptions);
+            const newOptions: Array<ImageDemoInputOption> = images.map(
+              (image) => {
+                if (isMask) {
+                  const mask = imageToMask(image.image);
+                  return {
+                    type: 'mask',
+                    value: `${image.file.name} (mask)`,
+                    mask,
+                  };
+                } else {
+                  return {
+                    type: 'image',
+                    value: image.file.name,
+                    image: image.image,
+                  };
+                }
+              },
+            );
+            addOptions(newOptions);
             if (newOptions.length) {
               selectImage(newOptions[newOptions.length - 1]);
             }
@@ -55,14 +69,22 @@ export default function ImageDemoToolbar() {
         />
         <CameraImageButton
           onSnapshot={({ image, name }) => {
-            const newOptions: ImageOption[] = [
-              {
+            const newOptions: ImageDemoInputOption[] = [];
+            if (isMask) {
+              const mask = imageToMask(image);
+              newOptions.push({
+                type: 'mask',
+                value: `${name} (mask)`,
+                mask,
+              });
+            } else {
+              newOptions.push({
                 type: 'image',
                 value: name,
                 image,
-              },
-            ];
-            addImages(newOptions);
+              });
+            }
+            addOptions(newOptions);
             selectImage(newOptions[0]);
           }}
         />
