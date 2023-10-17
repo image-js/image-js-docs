@@ -50,3 +50,7 @@ ImageJS uses components to calculate each pixel value and leaves alpha channel u
 :::
 
 </details>
+
+### On masks
+
+<InvertMaskDemo />
