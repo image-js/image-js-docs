@@ -37,14 +37,13 @@ Then, there are two ways of importing an image to process it, depending on the w
 
 Local import is simple. Use function `decode` while getting file's path:
 
-```
+```ts
 let parsedImage = decode(readFileSync(<filepath>));
-
 ```
 
 #### Import via link
 
-Via browser image is imported through `fetch`. It works like this:
+Via browser image is imported through `fetch` method. It works like this:
 
 ```
 
@@ -60,7 +59,7 @@ image = image.invert();
 
 ImageJS possesses many features. To look at them more in-depth visit "Features" category.
 
-### Image
+### Images
 
 Currently ImageJS supports
 
@@ -72,8 +71,10 @@ Currently ImageJS supports
 
 ### Mask
 
-Masks are binary images.
+In image processing, a mask is a binary image that specifies which pixels are to be processed or analyzed. It is often used for filtering or isolating specific regions of interest within an image.
+In ImageJS Mask can be obtained by using `threshold` method on an image. It can also
 
 ### ROI
 
-Regions of interest derive from analyzing a mask which in turn produces ROI map.
+Regions of interest derive from analyzing a mask which in turn produces a map of those regions.
+In scientific research, ROIs are also used in data analysis to focus on particular segments of data, time intervals, or areas of interest within a larger dataset. By isolating these regions, researchers can extract relevant information and gain insights more effectively.ROI analysis allows
