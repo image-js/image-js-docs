@@ -1,4 +1,4 @@
-import BlurDemo from './blur.demo.tsx'
+import BlurDemo from './demos/blur.demo.tsx'
 
 [Check options and parameters of blur method](https://image-js.github.io/image-js-typescript/classes/Image.html#blur 'link on github io')
 

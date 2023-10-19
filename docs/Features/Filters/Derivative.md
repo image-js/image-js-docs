@@ -1,5 +1,4 @@
-import DerivativeDemo from './derivative.demo.tsx'
-import GradientDemo from './gradient.demo.tsx'
+import DerivativeDemo from './demos//derivative.demo.tsx'
 
 [Check options and parameters of derivative method](https://image-js.github.io/image-js-typescript/classes/Image.html#derivativeFilter 'link on github io')
 

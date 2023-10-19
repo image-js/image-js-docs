@@ -1,4 +1,4 @@
-import MedianDemo from './median.demo.tsx'
+import MedianDemo from './demos/median.demo.tsx'
 
 [Check options and parameters of median method](https://image-js.github.io/image-js-typescript/classes/Image.html#medianFilter 'github.io link')
 

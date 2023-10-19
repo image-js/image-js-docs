@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-import GradientDemo from './gradient.demo.tsx'
+import GradientDemo from './demos/gradient.demo.tsx'
 
 [Check options and parameters of gradient method](https://image-js.github.io/image-js-typescript/functions/gradientFilter.html 'link on github.io')
 
