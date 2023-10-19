@@ -4,7 +4,7 @@ sidebar_position: 1
 
 import GaussianBlurDemo from './gaussianBlur.demo.tsx'
 
-[Check options and parameters of gaussian blur method](https://image-js.github.io/image-js-typescript/classes/Image.html#gaussianBlur 'link on github io')
+[Check options and parameters of `gaussianBlur` method](https://image-js.github.io/image-js-typescript/classes/Image.html#gaussianBlur 'link on github io')
 
 :::caution
 This method works only with images.

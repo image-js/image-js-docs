@@ -1,4 +1,4 @@
-[Check options and parameters of hypotenuse method](https://image-js.github.io/image-js-typescript/classes/Image.html#hypotenuse 'github.io link')
+[Check options and parameters of `hypotenuse` method](https://image-js.github.io/image-js-typescript/classes/Image.html#hypotenuse 'github.io link')
 
 :::caution
 This method works only with images.

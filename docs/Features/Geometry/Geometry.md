@@ -6,12 +6,12 @@ Geometric operations in image processing involve transforming the spatial coordi
 
 ### Methods that can be applied on Images only
 
-- [Flip](./Flip.md 'internal link on flip')
+- [`flip`](./Flip.md 'internal link on flip')
 
-- [Resize](Resize.md 'internal link on resize')
+- [`resize`](Resize.md 'internal link on resize')
 
-- [Rotate](Rotate.md 'internal link on rotate')
+- [`rotate`](Rotate.md 'internal link on rotate')
 
-- [Transform](./Transform.md 'internal link on transform')
+- [`transform`](./Transform.md 'internal link on transform')
 
-- [transformRotate](./Transform%20and%20Rotate 'internal link on transformRotate')
+- [`transformRotate`](./Transform%20and%20Rotate 'internal link on transformRotate')

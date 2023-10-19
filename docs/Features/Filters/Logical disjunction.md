@@ -1,4 +1,4 @@
-[Check options and parameters of or method](https://image-js.github.io/image-js-typescript/classes/Mask.html#or 'github.io link')
+[Check options and parameters of `or` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#or 'github.io link')
 
 :::caution
 This method works only with masks

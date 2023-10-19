@@ -1,4 +1,4 @@
-[Check options and parameters of subtract method](https://image-js.github.io/image-js-typescript/classes/Image.html#subtract 'github.io link')
+[Check options and parameters of `subtract` method](https://image-js.github.io/image-js-typescript/classes/Image.html#subtract 'github.io link')
 
 Method called `subtract`, as the name suggests, takes another Image(or Mask) and makes a subtraction between each respective bit.
 It works like this:

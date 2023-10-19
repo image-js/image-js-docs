@@ -1,4 +1,4 @@
-[Check options and parameters of and method](https://image-js.github.io/image-js-typescript/classes/Mask.html#and 'github.io link')
+[Check options and parameters of `and` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#and 'github.io link')
 
 :::caution
 This method works only with masks.

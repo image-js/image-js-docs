@@ -1,6 +1,6 @@
 import BlurDemo from './blur.demo.tsx'
 
-[Check options and parameters of blur method](https://image-js.github.io/image-js-typescript/classes/Image.html#blur 'link on github io')
+[Check options and parameters of `blur` method](https://image-js.github.io/image-js-typescript/classes/Image.html#blur 'link on github io')
 
 :::caution
 This method works only with images.

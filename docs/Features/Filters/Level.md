@@ -1,6 +1,6 @@
 import LevelDemo from './level.demo.tsx'
 
-[Check options and parameters of level method](https://image-js.github.io/image-js-typescript/classes/Image.html#level 'github.io link')
+[Check options and parameters of `level` method](https://image-js.github.io/image-js-typescript/classes/Image.html#level 'github.io link')
 
 :::caution
 This method works only with images.
