@@ -1,4 +1,4 @@
-import FlipDemo from './flip.demo.tsx'
+import FlipDemo from './demos/flip.demo.tsx'
 
 [Check options and parameters of flip method](https://image-js.github.io/image-js-typescript/classes/Image.html#flip 'github.io link')
 
