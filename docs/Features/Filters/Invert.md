@@ -6,7 +6,13 @@ import InvertMaskDemo from './demos/invert.mask.demo.tsx';
 
 [Invert filter](<https://en.wikipedia.org/wiki/Negative_(photography)> 'wikipedia link on negative filtering') is an image processing technique used to reverse the color values of an image, creating a negative or "inverted" version of the original. In this process, the darkest areas become the lightest, and the lightest areas become the darkest, while the midtones are adjusted accordingly. The invert filter is a simple but effective way to create visual contrast and produce interesting effects.
 
+### Applying invert filter on Images
+
 <InvertDemo />
+
+### Applying invert filter on Masks
+
+<InvertMaskDemo />
 
 ### Parameters and default values
 
@@ -35,7 +41,3 @@ ImageJS uses components to calculate each pixel value and leaves alpha channel u
 :::
 
 </details>
-
-### On masks
-
-<InvertMaskDemo />

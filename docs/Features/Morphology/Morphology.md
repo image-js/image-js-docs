@@ -10,7 +10,7 @@ Morphological operations are simple yet powerful tools that play a significant r
 
 | Can be applied on                                                                                             | Images  | Masks    |
 | ------------------------------------------------------------------------------------------------------------- | ------- | -------- |
-| [morphologicalGradient](./Morphological%20Gradient.md 'internal link on morphologicalGradient')               | &#9989; | &#9989;; |
+| [morphologicalGradient](./Morphological%20Gradient.md 'internal link on morphologicalGradient')               | &#9989; | &#9989;  |
 | [Canny edge detector(`cannyEdgeDetector`)](./Canny%20Edge%20Detector.md 'internal link on cannyEdgeDetector') | &#9989; | &#9989;  |
 | [Erosion(`erode`)](./Erosion.md 'internal link on erode')                                                     | &#9989; | &#10060; |
 | [Dilation(`dilate`)](./Dilation.md 'internal link on dilate')                                                 | &#9989; | &#10060; |
