@@ -1,4 +1,4 @@
-import MorphGradientDemo from './morphologicalGradient.demo.tsx'
+import MorphGradientDemo from './demos/morphologicalGradient.demo.tsx'
 
 [Check options and parameters of morphologicalGradient method](https://image-js.github.io/image-js-typescript/classes/Image.html#morphologicalGradient 'github.io link')
 

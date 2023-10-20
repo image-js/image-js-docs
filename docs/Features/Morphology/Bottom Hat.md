@@ -1,4 +1,4 @@
-import BottomHatDemo from './bottomHat.demo.tsx'
+import BottomHatDemo from './demos/bottomHat.demo.tsx'
 
 [Check options and parameters of bottomHat method](https://image-js.github.io/image-js-typescript/classes/Image.html#bottomHat 'github.io link')
 

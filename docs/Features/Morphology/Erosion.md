@@ -1,4 +1,4 @@
-import ErodeDemo from './erode.demo.tsx'
+import ErodeDemo from './demos/erode.demo.tsx'
 
 [Check options and parameters of erode method](https://image-js.github.io/image-js-typescript/classes/Image.html#erode 'github.io link')
 

@@ -6,22 +6,15 @@ sidebar_position: 2
 
 Morphological operations are simple yet powerful tools that play a significant role in various image processing tasks, especially in situations where the shapes and structures of objects are important.
 
-### Methods that can be applied on Images only
+### Methods
 
-- [Erode](./Erosion.md 'internal link on erode')
-
-- [Dilate](./Dilation.md 'internal link on dilate')
-
-- [open](./Opening.md 'internal link on open')
-
-- [close](./Closing.md 'internal link on close')
-
-- [topHat](./Top%20Hat.md 'internal link on topHat')
-
-- [bottomHat](./Bottom%20Hat 'internal link on bottomHat')
-
-### Methods that can be applied on Images and Masks
-
-- [morphologicalGradient](./Morphological%20Gradient.md 'internal link on morphologicalGradient')
-
-- [cannyEdgeDetector](./Canny%20Edge%20Detector.md 'internal link on cannyEdgeDetector')
+| Can be applied on                                                                                             | Images  | Masks    |
+| ------------------------------------------------------------------------------------------------------------- | ------- | -------- |
+| [morphologicalGradient](./Morphological%20Gradient.md 'internal link on morphologicalGradient')               | &#9989; | &#9989;; |
+| [Canny edge detector(`cannyEdgeDetector`)](./Canny%20Edge%20Detector.md 'internal link on cannyEdgeDetector') | &#9989; | &#9989;  |
+| [Erosion(`erode`)](./Erosion.md 'internal link on erode')                                                     | &#9989; | &#10060; |
+| [Dilation(`dilate`)](./Dilation.md 'internal link on dilate')                                                 | &#9989; | &#10060; |
+| [Opening(`open`)](./Opening.md 'internal link on open')                                                       | &#9989; | &#10060; |
+| [Closing(`close`)](./Closing.md 'internal link on close')                                                     | &#9989; | &#10060; |
+| [Top Hat(`topHat`)](./Top%20Hat 'internal link on topHat')                                                    | &#9989; | &#10060; |
+| [Bottom Hat(`bottomHat`)](./Bottom%20Hat 'internal link on bottomHat')                                        | &#9989; | &#10060; |
