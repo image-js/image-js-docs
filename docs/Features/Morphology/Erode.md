@@ -1,3 +1,7 @@
+---
+sidebar_position: 10
+---
+
 import ErodeDemo from './erode.demo.tsx'
 
 [Check options and parameters of erode method](https://image-js.github.io/image-js-typescript/classes/Image.html#erode 'github.io link')

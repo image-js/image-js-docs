@@ -1,3 +1,7 @@
+---
+sidebar_position: 100
+---
+
 `fill` method fills the whole Mask with a designated value.
 It works like this:
 

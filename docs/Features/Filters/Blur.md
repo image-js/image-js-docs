@@ -1,3 +1,7 @@
+---
+sidebar_position: 30
+---
+
 import BlurDemo from './blur.demo.tsx'
 
 [Check options and parameters of blur method](https://image-js.github.io/image-js-typescript/classes/Image.html#blur 'link on github io')
