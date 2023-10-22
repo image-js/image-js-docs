@@ -1,4 +1,5 @@
-import { createContext, Dispatch, useContext } from 'react';
+import { useImportImageContext } from '@site/src/demo/contexts/importImage/importImageContext';
+import { createContext, Dispatch, useContext, useMemo } from 'react';
 
 import { DemoAction, DemoState } from './demoReducer';
 
@@ -25,4 +26,33 @@ export const useDemoDispatchContext = () => {
     );
   }
   return context;
+};
+
+export const useFilteredDemoImages = () => {
+  const { isMask } = useDemoStateContext();
+  const { options } = useImportImageContext();
+  const images = useMemo(
+    () =>
+      options.filter((option) =>
+        option.type === 'url'
+          ? option.imageType === 'image'
+          : option.type === 'image',
+      ),
+    [options],
+  );
+
+  const masks = useMemo(
+    () =>
+      options.filter((option) =>
+        option.type === 'url'
+          ? option.imageType === 'mask'
+          : option.type === 'mask',
+      ),
+    [options],
+  );
+  if (isMask) {
+    return masks;
+  } else {
+    return images;
+  }
 };

@@ -8,11 +8,11 @@ sidebar_position: 0
 
 ### Methods that can be applied on Images only
 
-- [Grayscale](grayscale.md 'internal link on grayscale')
+- [Grayscale](./Grayscale.md 'internal link on grayscale')
 
-- [Blur](Blur.md 'internal link on blur')
+- [Blur](./Blur.md 'internal link on blur')
 
-- [gaussianBlur](./gaussianBlur.md 'internal link on gaussianBlur')
+- [gaussianBlur](./Gaussian%20Blur.md 'internal link on gaussianBlur')
 
 - [Gradient](./Gradient.md 'internal link on gradient')
 
@@ -20,15 +20,15 @@ sidebar_position: 0
 
 - [Median](./Median.md 'internal link on median')
 
-- [level](./level.md 'internal link on level')
+- [level](./Level.md 'internal link on level')
 
 - [pixelate](./Pixelate.md 'internal link on pixelate')
 
 ### Methods that can be applied on Masks only
 
-- [and](./and.md 'internal link on and')
+- [and](./Logical%20conjunction.md 'internal link on and')
 
-- [or](./or.md 'internal link on or')
+- [or](./Logical%20disjunction.md 'internal link on or')
 
 ### Methods that can be applied on Images or Masks
 

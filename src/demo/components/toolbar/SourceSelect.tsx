@@ -6,20 +6,23 @@ import {
 } from '@site/src/components/camera/cameraContext';
 import React from 'react';
 
-import { useDemoStateContext } from '../../contexts/demo/demoContext';
+import {
+  useDemoStateContext,
+  useFilteredDemoImages,
+} from '../../contexts/demo/demoContext';
 import {
   useSelectDevice,
   useSelectImage,
 } from '../../contexts/demo/dispatchHelpers';
 import {
-  isImageOption,
   isUrlOption,
   useImportImageContext,
 } from '../../contexts/importImage/importImageContext';
 
 export default function SourceSelect() {
-  const { selectedImage, selectedDevice } = useDemoStateContext();
-  const { images, isVideoStreamAllowed } = useImportImageContext();
+  const { selectedImage, selectedDevice, isMask } = useDemoStateContext();
+  const { isVideoStreamAllowed } = useImportImageContext();
+  const images = useFilteredDemoImages();
 
   const {
     cameraState: { cameras },
@@ -28,7 +31,7 @@ export default function SourceSelect() {
   const shownCameras = isVideoStreamAllowed ? cameras : [];
 
   const standardImages = images.filter(isUrlOption);
-  const customImages = images.filter((img) => isImageOption(img));
+  const customImages = images.filter((img) => !isUrlOption(img));
 
   const selectedOption = selectedDevice
     ? getCameraId(selectedDevice)
@@ -68,7 +71,7 @@ export default function SourceSelect() {
           </optgroup>
         )}
         {customImages.length > 0 && (
-          <optgroup label="Custom images">
+          <optgroup label={isMask ? 'Custom masks' : 'Custom images'}>
             {customImages.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.value}

@@ -8,7 +8,7 @@ sidebar_position: 10
 This method works only with images.
 :::
 
-Add method, opposed to [subtract](./subtract.md 'internal link on subtract'), takes another Image and makes an addition between each respective pixel value.
+Add method, opposed to [subtraction](./Subtraction.md 'internal link on subtract'), takes another Image and makes an addition between each respective pixel value.
 It works like this:
 
 ```ts
