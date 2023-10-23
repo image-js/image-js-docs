@@ -11,6 +11,12 @@ The specific reasons for comparing images depend on the application and the desi
 
 - [hypotenuse](./Hypotenuse.md 'internal link on hypotenuse')
 
+### Methods that can be applied on Masks only
+
+- [and](./Logical%20conjunction.md 'internal link on and')
+
+- [or](./Logical%20disjunction.md 'internal link on or')
+
 ### Methods that can be applied on Images and Masks
 
 - [subtract](./Subtraction.md 'internal link on subtract')

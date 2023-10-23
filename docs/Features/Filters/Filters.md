@@ -24,12 +24,6 @@ sidebar_position: 0
 
 - [pixelate](./Pixelate.md 'internal link on pixelate')
 
-### Methods that can be applied on Masks only
-
-- [and](./Logical%20conjunction.md 'internal link on and')
-
-- [or](./Logical%20disjunction.md 'internal link on or')
-
 ### Methods that can be applied on Images or Masks
 
 - [invert](./Invert.md 'internal link on invert')
