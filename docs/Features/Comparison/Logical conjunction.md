@@ -1,3 +1,7 @@
+---
+sidebar_position: 100
+---
+
 [Check options and parameters of and method](https://image-js.github.io/image-js-typescript/classes/Mask.html#and 'github.io link')
 
 `and` method performs a [logical conjunction](https://en.wikipedia.org/wiki/Logical_conjunction 'wikipedia link on logical conjunction') between bits of two masks.

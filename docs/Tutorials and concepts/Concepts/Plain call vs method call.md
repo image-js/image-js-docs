@@ -1,3 +1,7 @@
+---
+sidebar_position: 30
+---
+
 In most cases there are two ways of calling API functions: as a function and as a class method.
 
 ```ts

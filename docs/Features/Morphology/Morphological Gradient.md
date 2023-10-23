@@ -1,3 +1,7 @@
+---
+sidebar_position: 70
+---
+
 import MorphGradientDemo from './demos/morphologicalGradient.demo.tsx'
 import MorphGradientMaskDemo from './demos/morphologicalGradient.mask.demo.tsx'
 

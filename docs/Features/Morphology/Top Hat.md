@@ -1,3 +1,7 @@
+---
+sidebar_position: 50
+---
+
 import TopHatDemo from './demos/topHat.demo.tsx'
 
 [Check options and parameters of topHat method](https://image-js.github.io/image-js-typescript/classes/Image.html#topHat 'github.io link')

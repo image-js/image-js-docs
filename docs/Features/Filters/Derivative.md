@@ -1,3 +1,7 @@
+---
+sidebar_position: 70
+---
+
 import DerivativeDemo from './demos//derivative.demo.tsx'
 
 [Check options and parameters of derivative method](https://image-js.github.io/image-js-typescript/classes/Image.html#derivativeFilter 'link on github io')

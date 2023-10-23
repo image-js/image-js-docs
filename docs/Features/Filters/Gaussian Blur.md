@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 40
 ---
 
 import GaussianBlurDemo from './demos/gaussianBlur.demo.tsx'

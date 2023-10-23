@@ -1,3 +1,7 @@
+---
+sidebar_position: 80
+---
+
 import CannyEdgeDemo from './demos/cannyEdgeDetector.demo.tsx'
 import CannyEdgeMaskDemo from './demos/cannyEdgeDetector.mask.demo.tsx'
 

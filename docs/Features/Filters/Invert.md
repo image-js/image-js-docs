@@ -1,3 +1,7 @@
+---
+sidebar_position: 10
+---
+
 import InvertDemo from './demos/invert.demo.tsx'
 
 import InvertMaskDemo from './demos/invert.mask.demo.tsx';
