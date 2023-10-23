@@ -1,3 +1,7 @@
+---
+sidebar_position: 20
+---
+
 In ImageJS several functions have an optional parameter called `out`.
 You can use this parameter to select the image you want to use as the output. It helps with memory management by allowing you to write the image into an existing one instead of creating a new copy every time the function is run.
 
