@@ -1,3 +1,7 @@
+---
+sidebar_position: 40
+---
+
 import TransformDemo from './transform.demo.tsx'
 
 [Check options and parameters of transform method](https://image-js.github.io/image-js-typescript/classes/Image.html#transform 'github.io link')

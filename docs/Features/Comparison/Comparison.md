@@ -1,3 +1,7 @@
+---
+sidebar_position: 0
+---
+
 Comparison methods are methods that compare other images for feature matching or change detection by subtraction or addition of image values etc.
 The specific reasons for comparing images depend on the application and the desired outcome. In many cases, it is also a valuable tool for identifying changes, isolating objects, enhancing features, and improving image quality for various purposes.
 
@@ -6,6 +10,12 @@ The specific reasons for comparing images depend on the application and the desi
 - [add](./Addition.md 'internal link on add')
 
 - [hypotenuse](./Hypotenuse.md 'internal link on hypotenuse')
+
+### Methods that can be applied on Masks only
+
+- [and](./Logical%20conjunction.md 'internal link on and')
+
+- [or](./Logical%20disjunction.md 'internal link on or')
 
 ### Methods that can be applied on Images and Masks
 
