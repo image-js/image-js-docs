@@ -1,3 +1,7 @@
+---
+sidebar_position: 70
+---
+
 import DerivativeDemo from './derivative.demo.tsx'
 import GradientDemo from './gradient.demo.tsx'
 

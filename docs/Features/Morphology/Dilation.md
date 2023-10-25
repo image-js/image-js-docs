@@ -1,3 +1,7 @@
+---
+sidebar_position: 20
+---
+
 import DilateDemo from './dilate.demo.tsx'
 
 [Check options and parameters of `dilate` method](https://image-js.github.io/image-js-typescript/classes/Image.html#dilate 'github.io link')
