@@ -4,7 +4,11 @@ sidebar_position: 10
 
 import ResizeDemo from './demos/resize.demo.tsx'
 
+<<<<<<< HEAD
 _Changes the size of an image._
+=======
+[Check options and parameters of `resize` method](https://image-js.github.io/image-js-typescript/classes/Image.html#resize 'github.io link')
+>>>>>>> 9e147dd (docs: put backticks in code-like names (#53))
 
 [🖼️ Image options and parameters of `resize` method](https://image-js.github.io/image-js-typescript/classes/Image.html#resize 'github.io link')
 
