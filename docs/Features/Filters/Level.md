@@ -2,8 +2,6 @@
 sidebar_position: 80
 ---
 
-import LevelDemo from './level.demo.tsx'
-
 [Check options and parameters of level method](https://image-js.github.io/image-js-typescript/classes/Image.html#level 'github.io link')
 
 :::caution
@@ -13,6 +11,8 @@ This method works only with images.
 Level method applies process called ["histogram equalization"](https://en.wikipedia.org/wiki/Histogram_equalization 'wikipedia link on histogram equalization').
 Histogram equalization is a technique used in image processing to enhance the contrast and visibility of details in an image by redistributing the pixel intensity values.
 This process can make details in both dark and bright regions of the image more visible.
+
+import LevelDemo from './level.demo.tsx'
 
 <LevelDemo />
 

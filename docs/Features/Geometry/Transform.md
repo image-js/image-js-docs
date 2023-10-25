@@ -2,8 +2,6 @@
 sidebar_position: 40
 ---
 
-import TransformDemo from './transform.demo.tsx'
-
 [Check options and parameters of transform method](https://image-js.github.io/image-js-typescript/classes/Image.html#transform 'github.io link')
 
 `transform` method uses transformation matrix to rotate, translate, and/or scale the image. User needs to pass on the matrix that will be applied to the image. Matrix must have 2 rows and 3 columns:
@@ -20,6 +18,8 @@ Where the first two columns are responsible for image [rotation](https://en.wiki
 :::caution
 Matrix cannot be singular. Otherwise it cannot be inverted. Click [here](https://en.wikipedia.org/wiki/Invertible_matrix 'wikipedia link on invertible matrices') to learn more.
 :::
+
+import TransformDemo from './transform.demo.tsx'
 
 <TransformDemo />
 

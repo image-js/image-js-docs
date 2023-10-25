@@ -2,9 +2,6 @@
 sidebar_position: 70
 ---
 
-import DerivativeDemo from './derivative.demo.tsx'
-import GradientDemo from './gradient.demo.tsx'
-
 [Check options and parameters of derivative method](https://image-js.github.io/image-js-typescript/classes/Image.html#derivativeFilter 'link on github io')
 
 :::caution
@@ -12,6 +9,8 @@ This method works only with images.
 :::
 
 Derivative filter is a special case of a gradient filter, therefore it uses gradient algorithm. However, the key difference are the kernels used in this very algorithm. In ImageJS there are three distinguished kernels: [Sobel](https://en.wikipedia.org/wiki/Sobel_operator 'wikipedia link on Sobel kernel'), [Scharr](https://en.wikipedia.org/wiki/Sobel_operator#Alternative_operators 'wikipedia link on Scharr operator') and [Prewitt](https://en.wikipedia.org/wiki/Prewitt_operator 'wikipedia link on Prewitt kernel').
+
+import DerivativeDemo from './derivative.demo.tsx'
 
 <DerivativeDemo />
 
