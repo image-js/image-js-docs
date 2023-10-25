@@ -4,7 +4,7 @@ sidebar_position: 30
 
 import FlipDemo from './flip.demo.tsx'
 
-[Check options and parameters of flip method](https://image-js.github.io/image-js-typescript/classes/Image.html#flip 'github.io link')
+[Check options and parameters of `flip` method](https://image-js.github.io/image-js-typescript/classes/Image.html#flip 'github.io link')
 
 :::caution
 This method works only with images.

@@ -5,7 +5,7 @@ sidebar_position: 70
 import DerivativeDemo from './derivative.demo.tsx'
 import GradientDemo from './gradient.demo.tsx'
 
-[Check options and parameters of derivative method](https://image-js.github.io/image-js-typescript/classes/Image.html#derivativeFilter 'link on github io')
+[Check options and parameters of `derivative` method](https://image-js.github.io/image-js-typescript/classes/Image.html#derivativeFilter 'link on github io')
 
 :::caution
 This method works only with images.
