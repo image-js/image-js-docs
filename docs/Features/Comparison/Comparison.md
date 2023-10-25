@@ -7,9 +7,9 @@ The specific reasons for comparing images depend on the application and the desi
 
 ### Methods that can be applied on Images only
 
-- [add](./Addition.md 'internal link on add')
+- [`add`](./Addition.md 'internal link on add')
 
-- [hypotenuse](./Hypotenuse.md 'internal link on hypotenuse')
+- [`hypotenuse`](./Hypotenuse.md 'internal link on hypotenuse')
 
 ### Methods that can be applied on Masks only
 
@@ -19,4 +19,4 @@ The specific reasons for comparing images depend on the application and the desi
 
 ### Methods that can be applied on Images and Masks
 
-- [subtract](./Subtraction.md 'internal link on subtract')
+- [`subtract`](./Subtraction.md 'internal link on subtract')
