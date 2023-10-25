@@ -2,7 +2,7 @@
 sidebar_position: 110
 ---
 
-[Check options and parameters of or method](https://image-js.github.io/image-js-typescript/classes/Mask.html#or 'github.io link')
+[Check options and parameters of `or` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#or 'github.io link')
 
 `or` method performs a [logical disjunction](https://en.wikipedia.org/wiki/Logical_disjunction 'wikipedia link on logical disjunction') between bits of two masks.
 

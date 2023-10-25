@@ -4,7 +4,7 @@ sidebar_position: 90
 
 import PixelateDemo from './demos/pixelate.demo.tsx'
 
-[Check options and parameters of pixelate method](https://image-js.github.io/image-js-typescript/classes/Image.html#pixelate 'github.io link')
+[Check options and parameters of `pixelate` method](https://image-js.github.io/image-js-typescript/classes/Image.html#pixelate 'github.io link')
 
 [Pixelate filter](https://en.wikipedia.org/wiki/Pixelization 'Wikipedia link on pixelization concept') is a digital image processing technique used to reduce the level of detail in an image by replacing groups of pixels with a single, average color value. This creates a mosaic-like effect where the image appears to be composed of larger, blocky elements rather than fine details.
 

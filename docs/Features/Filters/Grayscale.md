@@ -4,7 +4,7 @@ sidebar_position: 20
 
 import GrayDemo from './demos/grayscale.demo.tsx'
 
-[Check options and parameters of grayscale method](https://image-js.github.io/image-js-typescript/classes/Image.html#grey 'github.io link')
+[Check options and parameters of `grayscale` method](https://image-js.github.io/image-js-typescript/classes/Image.html#grey 'github.io link')
 
 [Grayscale filter](https://en.wikipedia.org/wiki/Grayscale 'Wikipedia link on grayscale filter'), often called a black-and-white filter, is an image processing technique used to convert a colored image into a grayscale version. In a grayscale image, each pixel is represented by a single intensity value, typically ranging from 0 (black) to 255 (white), with various shades of gray in between. This process removes color information and retains only the brightness information of the image.
 
