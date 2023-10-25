@@ -14,6 +14,10 @@ sidebar_position: 100
 
 [A channel](<https://en.wikipedia.org/wiki/Channel_(digital_image)> 'wikipedia link on color channel') refers to one of the separate grayscale or color components that together make up the complete image. Channels are a fundamental concept in image processing and manipulation, especially in color images, where each channel represents a primary color or a specific property of the pixel.The most common color spaces used in images are RGB (Red, Green, Blue) and CMYK (Cyan, Magenta, Yellow, Black).
 
+### Color model
+
+[A color model](https://en.wikipedia.org/wiki/Color_model#Additive_and_subtractive_color_models 'wikipedia link on color model') also known as a color space or color system, is a way to represent and describe colors in a systematic and mathematical manner. These models are essential in various fields, including computer graphics, imaging, design, and color reproduction. Different color models serve different purposes and are used for specific applications. Some of the most commonly used color models include RGB(Red Green Blue) and CMYK(Cyan Magenta Hue Key).
+
 ### Component
 
 A component typically refers to a distinct and identifiable part or element within an image. In ImageJS, however, component represents the number of color [channels](#channel 'anchor on channel') in the image, excluding [the alpha channel](#alpha-channel 'anchor to alpha-channel').
