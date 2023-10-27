@@ -10,7 +10,17 @@ import TabItem from '@theme/TabItem';
 Welcome
 Image-JS is a versatile and powerful TypeScript library that opens up a world of possibilities for image processing and analysis. Designed to empower developers, researchers, and enthusiasts, Image-JS provides a comprehensive set of tools and algorithms for manipulating, enhancing, and understanding images directly within web applications. With its user-friendly API and extensive range of functions, Image-JS serves as a valuable resource for tasks such as applying filters, detecting edges, handling color balance, and much more.
 
-### Requirements
+### System requirements
+
+- Node.js 16+
+
+- Google Chrome 91+, Firefox 90+, Safari 15+, Opera 77+, Edge 91+
+
+- Windows 10+
+
+- MacOS 12 Monterrey or MacOS 13 Ventura
+
+- Debian 11, Debian 12, Ubuntu 20.04 or Ubuntu 22.04
 
 ### Installation
 
@@ -65,4 +75,8 @@ ImageJS possesses many features. To look at them more in-depth visit "Features" 
 
 ### Saving an image
 
-### Images
+To save an image you need to put the decoded data back into an image format. To do so use `encode` function:
+
+```ts
+image = image.encode();
+```
