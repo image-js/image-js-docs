@@ -35,3 +35,7 @@ Both masks must have the same size for compatibility reasons. Images must have t
 | Property                                                                                                   | Required | Default value |
 | ---------------------------------------------------------------------------------------------------------- | -------- | ------------- |
 | [`absolute`](https://image-js.github.io/image-js-typescript/interfaces/SubtractImageOptions.html#absolute) | no       | `false`       |
+
+:::info
+The method is also available for Masks.
+:::

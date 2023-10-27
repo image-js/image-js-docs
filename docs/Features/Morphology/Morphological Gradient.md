@@ -26,3 +26,7 @@ The morphological gradient is based on the difference between an image after [di
 | ---------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------------- |
 | [`iterations`](https://image-js.github.io/image-js-typescript/interfaces/MorphologicalGradientOptions.html#iterations) | no       | `1`                               |
 | [`kernel`](https://image-js.github.io/image-js-typescript/interfaces/MorphologicalGradientOptions.html#kernel)         | no       | `[[1, 1, 1],[1, 1, 1],[1, 1, 1]]` |
+
+:::info
+The method is also available for Masks.
+:::

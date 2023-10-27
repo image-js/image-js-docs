@@ -23,3 +23,7 @@ The purpose of bottom hat(or, as it is also called, _black-hat_) is to enhance a
 | ---------------------------------------------------------------------------------------------------------- | -------- | --------------------------------- |
 | [`iterations`](https://image-js.github.io/image-js-typescript/interfaces/BottomHatOptions.html#iterations) | no       | `1`                               |
 | [`kernel`](https://image-js.github.io/image-js-typescript/interfaces/BottomHatOptions.html#kernel)         | no       | `[[1, 1, 1],[1, 1, 1],[1, 1, 1]]` |
+
+:::info
+The method is also available for Masks.
+:::

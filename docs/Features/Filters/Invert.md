@@ -24,7 +24,9 @@ import InvertDemo from './demos/invert.demo.tsx'
 | ----------------------------------------------------------------------------------------- | -------- | ------------- |
 | [`out`](https://image-js.github.io/image-js-typescript/interfaces/InvertOptions.html#out) | no       | -             |
 
-### Parameters and default values for Mask method
+:::info
+The method is also available for Masks.
+:::
 
 <details>
 <summary><b>Implementation</b>

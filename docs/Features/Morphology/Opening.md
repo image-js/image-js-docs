@@ -23,3 +23,7 @@ This process allows removing small objects and thin lines while preserving the s
 | ----------------------------------------------------------------------------------------------------- | -------- | --------------------------------- |
 | [`iterations`](https://image-js.github.io/image-js-typescript/interfaces/OpenOptions.html#iterations) | no       | `1`                               |
 | [`kernel`](https://image-js.github.io/image-js-typescript/interfaces/OpenOptions.html#kernel)         | no       | `[[1, 1, 1],[1, 1, 1],[1, 1, 1]]` |
+
+:::info
+The method is also available for Masks.
+:::

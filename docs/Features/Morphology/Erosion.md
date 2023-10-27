@@ -22,3 +22,7 @@ import ErodeDemo from './demos/erode.demo.tsx'
 | ------------------------------------------------------------------------------------------------------ | -------- | --------------------------------- |
 | [`iterations`](https://image-js.github.io/image-js-typescript/interfaces/ErodeOptions.html#iterations) | no       | `1`                               |
 | [`kernel`](https://image-js.github.io/image-js-typescript/interfaces/ErodeOptions.html#kernel)         | no       | `[[1, 1, 1],[1, 1, 1],[1, 1, 1]]` |
+
+:::info
+The method is also available for Masks.
+:::
