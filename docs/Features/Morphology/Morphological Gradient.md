@@ -4,6 +4,8 @@ sidebar_position: 70
 
 import MorphGradientDemo from './morphologicalGradient.demo.tsx'
 
+_Emphasizes the boundaries of objects in a binary or grayscale image by calculating the difference between the dilation and erosion of the image._
+
 [Check options and parameters of `morphologicalGradient` method](https://image-js.github.io/image-js-typescript/classes/Image.html#morphologicalGradient 'github.io link')
 
 :::caution

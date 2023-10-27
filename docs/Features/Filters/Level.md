@@ -4,6 +4,8 @@ sidebar_position: 80
 
 import LevelDemo from './level.demo.tsx'
 
+_Redistributes pixel intensities to achieve a more uniform histogram distribution._
+
 [Check options and parameters of `level` method](https://image-js.github.io/image-js-typescript/classes/Image.html#level 'github.io link')
 
 :::caution

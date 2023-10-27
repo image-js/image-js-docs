@@ -2,6 +2,8 @@
 sidebar_position: 30
 ---
 
+_Calculates the square root of the sum of squares of two points between two images._
+
 [Check options and parameters of `hypotenuse` method](https://image-js.github.io/image-js-typescript/classes/Image.html#hypotenuse 'github.io link')
 
 :::caution

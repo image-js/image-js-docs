@@ -4,6 +4,8 @@ sidebar_position: 60
 
 import GradientDemo from './gradient.demo.tsx'
 
+_Highlights changes in color or intensity within an image by accentuating transitions and edges._
+
 [Check options and parameters of `gradient` method](https://image-js.github.io/image-js-typescript/functions/gradientFilter.html 'link on github.io')
 
 :::caution
