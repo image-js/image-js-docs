@@ -1,3 +1,5 @@
+import ImageDemo from './image.demo.tsx'
+
 ### Images
 
 Images are basically a graphic depiction of something. In ImageJS it is an object where image data is represented as a typed array of data.
@@ -13,14 +15,14 @@ Besides some obvious ones like width and height there are special properties and
 
 - Currently ImageJS supports images with these characteristics:
 
-|                                | TIFF                       | JPEG                   | PNG                    |
-| ------------------------------ | -------------------------- | ---------------------- | ---------------------- |
-| Bits per channel               | 8,16                       | 8                      | 8,16                   |
-| Bits per Alpha                 | N/A                        | N/A                    | 8 or 16 bits           |
-| Compression                    | yes/no(may be destructive) | no(destructive)        | yes                    |
-| Color Model                    | RGB and grayscale          | RGB,RGBA and grayscale | RGB,RGBA and grayscale |
-| Can be imported in this format | &#9989;                    | &#9989;                | &#9989;                |
-| Can be saved in this format    | &#10060;                   | &#9989;                | &#9989;                |
+|                                | TIFF                       | JPEG              | PNG               |
+| ------------------------------ | -------------------------- | ----------------- | ----------------- |
+| Bits per channel               | 8 or 16 bits               | 8 bits            | 8 or 16 bits      |
+| Bits per Alpha                 | 8 or 16 bits               | no                | 8 or 16 bits      |
+| Compression                    | yes/no(may be destructive) | no(destructive)   | yes               |
+| Color Model                    | RGB and grayscale          | RGB and grayscale | RGB and grayscale |
+| Can be imported in this format | &#9989;                    | &#9989;           | &#9989;           |
+| Can be saved in this format    | &#10060;                   | &#9989;           | &#9989;           |
 
 There are several types of features that image can use:
 
@@ -38,3 +40,5 @@ For instance, as was shown an image can be
 :::
 
 Image can also be converted to mask through [`threshold()`](../Features/Operations/threshold.md 'internal link on threshold') method. It will allow deeper analysis of image and enable analysis of its regions of interest.
+
+<ImageDemo />

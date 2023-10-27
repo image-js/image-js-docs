@@ -7,8 +7,7 @@ import TabItem from '@theme/TabItem';
 
 # Getting started
 
-Welcome
-Image-JS is a versatile and powerful TypeScript library that opens up a world of possibilities for image processing and analysis. Designed to empower developers, researchers, and enthusiasts, Image-JS provides a comprehensive set of tools and algorithms for manipulating, enhancing, and understanding images directly within web applications. With its user-friendly API and extensive range of functions, Image-JS serves as a valuable resource for tasks such as applying filters, detecting edges, handling color balance, and much more.
+Image-JS is a versatile and powerful TypeScript library that opens up a world of possibilities for image processing and analysis. By using JavaScript and not WebAssembly and not boosting computer's hardware, ImageJS provides a stable library across all popular browsers, and gives a user a comprehensive set of tools and algorithms for manipulating, enhancing, and understanding images not only within Node.js but also within web-browser.
 
 ### System requirements
 
@@ -24,7 +23,7 @@ Image-JS is a versatile and powerful TypeScript library that opens up a world of
 
 ### Installation
 
-Installation of ImageJS is straight-forward.Use terminal to install the package:
+Installation of ImageJS is straight-forward. Use terminal to install the package:
 
 <Tabs>
 <TabItem value="npm" label="npm" default>
@@ -59,9 +58,24 @@ let parsedImage = decode(readFileSync(<filepath>));
 
 Via browser image is imported through `fetch` method. It works like this:
 
+```ts
+
+let image = async () => {
+await fetch(<image-link>)
+.then((data) => {
+  data.ArrayBuffer()
+  }
+.then((data) => {
+  let view = new DataView(data);
+  const parsedImage = decode(view);
+  return parsedImage;
+  })
+}
+
+image = image.grey();
 ```
 
-```
+After the promise is received, the data gets parsed into a string of `DataBuffer()`.Then it gets converted into a `DataView` and finally `decode` function parses it into an actual image data.
 
 ### Applying features
 
