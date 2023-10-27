@@ -34,6 +34,10 @@ The function takes two binary images that have been thresholded at different lev
 more likely to be real edges. In hysteresis, if a value in the larger population is connected to a point in the smaller population, we can assume it is a real edge and add it to
 hysteresis image.
 
+### Image format
+
+[Image format](https://en.wikipedia.org/wiki/Image_file_format 'wikipedia link on image format') also known as a file format, is a standardized way of encoding and storing digital images. Image formats define how image data is organized, compressed, and represented in a computer file. Different image formats are designed for specific purposes and offer various features, including compression, quality, and support for different types of content.
+
 ### Image noise
 
 [Image noise](https://en.wikipedia.org/wiki/Image_noise 'wikipedia link on image noise') refers to random variations in pixel values within an image, which can lead to unwanted visual artifacts and reduced image quality. It is often caused by various factors during image acquisition, transmission, or processing. Image noise can obscure details, reduce contrast, and make it harder to extract meaningful information from an image.
