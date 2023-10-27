@@ -4,14 +4,16 @@ sidebar_position: 60
 
 import BottomHatDemo from './demos/bottomHat.demo.tsx'
 
-[Check options and parameters of `bottomHat` method](https://image-js.github.io/image-js-typescript/classes/Image.html#bottomHat 'github.io link')
+[Check options and parameters of `bottomHat` Image method](https://image-js.github.io/image-js-typescript/classes/Image.html#bottomHat 'github.io link')
+
+[Check options and parameters of `bottomHat` Mask method](https://image-js.github.io/image-js-typescript/classes/Mask.html#bottomHat 'github.io link')
 
 Similarly to [Top Hat](./Top%20Hat.md 'internal link to top hat'), [Bottom Hat](https://en.wikipedia.org/wiki/Top-hat_transform 'wikipedia link to top hat') operation computes the difference between two images. However, if top hat was using [opening method](./Opening.md 'internal link on open method'), bottom hat is using [closing method](./Closing.md 'internal link on close method').
 The purpose of bottom hat(or, as it is also called, _black-hat_) is to enhance and extract **darker** regions of the image.
 
 <BottomHatDemo />
 
-### Parameters and default values
+### Parameters and default values for Images and Masks
 
 - `options`
 

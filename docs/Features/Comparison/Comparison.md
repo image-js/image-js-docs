@@ -7,8 +7,10 @@ The specific reasons for comparing images depend on the application and the desi
 
 ### Methods
 
-| Can be applied on                                                           | Images  | Masks    |
-| --------------------------------------------------------------------------- | ------- | -------- |
-| [Addition(`add`)](./Addition.md 'internal link on add')                     | &#9989; | &#10060; |
-| [Subtraction( `subtract` )](./Subtraction.md 'internal link on subtract')   | &#9989; | &#9989;  |
-| [Hypotenuse( `hypotenuse` )](./Hypotenuse.md 'internal link on hypotenuse') | &#9989; | &#10060; |
+| Can be applied on                                                               | Images   | Masks    |
+| ------------------------------------------------------------------------------- | -------- | -------- |
+| [Addition(`add`)](./Addition.md 'internal link on add')                         | &#9989;  | &#10060; |
+| [Subtraction( `subtract` )](./Subtraction.md 'internal link on subtract')       | &#9989;  | &#9989;  |
+| [Hypotenuse( `hypotenuse` )](./Hypotenuse.md 'internal link on hypotenuse')     | &#9989;  | &#10060; |
+| [Logical conjunction(`and`)](./Logical%20conjunction.md 'internal link on and') | &#10060; | &#9989;  |
+| [Logical disjunction(`or`)](./Logical%20disjunction.md 'internal link on or')   | &#10060; | &#9989;  |
