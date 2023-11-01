@@ -2,10 +2,10 @@ import ImageDemo from './image.demo.tsx'
 
 ### Images
 
-Images are basically a graphic depiction of something. In ImageJS it is an object where image data is represented as a typed array of data.
-Besides some obvious ones like width and height there are special properties and it is crucial to understand what some of these properties are.
+In ImageJS an image is an object where its data is represented as a typed array of data.
+Besides some obvious ones like width and height there are special properties and it is crucial to understand what they represent.
 
-- [Image format](../Glossary.md#image-format 'internal link on glossary'): file format. Depending on it, image properties can look very differently and an image can have different size.
+- [Image format](../Glossary.md#image-format 'internal link on glossary'): file format. Depending on it, image properties like bit depth can look very different.
 
 - [Color model](../Glossary.md#color-model 'internal link on glossary'): the abstract model of how pixel colors are formed.
 
@@ -15,14 +15,14 @@ Besides some obvious ones like width and height there are special properties and
 
 - Currently ImageJS supports images with these characteristics:
 
-|                                | TIFF                       | JPEG              | PNG               |
-| ------------------------------ | -------------------------- | ----------------- | ----------------- |
-| Bits per channel               | 8 or 16 bits               | 8 bits            | 8 or 16 bits      |
-| Bits per Alpha                 | 8 or 16 bits               | no                | 8 or 16 bits      |
-| Compression                    | yes/no(may be destructive) | no(destructive)   | yes               |
-| Color Model                    | RGB and grayscale          | RGB and grayscale | RGB and grayscale |
-| Can be imported in this format | &#9989;                    | &#9989;           | &#9989;           |
-| Can be saved in this format    | &#10060;                   | &#9989;           | &#9989;           |
+|                                | TIFF                       | JPEG                   | PNG               |
+| ------------------------------ | -------------------------- | ---------------------- | ----------------- |
+| Bits per channel               | 8 or 16 bits               | 8 bits                 | 8 or 16 bits      |
+| Bits per Alpha                 | 8 or 16 bits               | no                     | 8 or 16 bits      |
+| Compression                    | yes/no(may be destructive) | no(may be destructive) | yes               |
+| Color Model                    | RGB and grayscale          | RGB and grayscale      | RGB and grayscale |
+| Can be imported in this format | &#9989;                    | &#9989;                | &#9989;           |
+| Can be saved in this format    | &#10060;                   | &#9989;                | &#9989;           |
 
 There are several types of features that image can use:
 
@@ -39,6 +39,6 @@ For instance, as was shown an image can be
 **Image coordinate plane should be here(will be done in another PR)**
 :::
 
-Image can also be converted to mask through [`threshold()`](../Features/Operations/threshold.md 'internal link on threshold') method. It will allow deeper analysis of image and enable analysis of its regions of interest.
-
 <ImageDemo />
+
+Image can also be converted to mask through [`threshold()`](../Features/Operations/threshold.md 'internal link on threshold') method. It will allow deeper analysis of image and enable analysis of its regions of interest.

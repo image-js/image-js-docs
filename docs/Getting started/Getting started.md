@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 
 # Getting started
 
-Image-JS is a versatile and powerful TypeScript library that opens up a world of possibilities for image processing and analysis. By using JavaScript and not WebAssembly and not boosting computer's hardware, ImageJS provides a stable library across all popular browsers, and gives a user a comprehensive set of tools and algorithms for manipulating, enhancing, and understanding images not only within Node.js but also within web-browser.
+Image-JS is a versatile and powerful TypeScript library for image processing and analysis. By using JavaScript and not WebAssembly, ImageJS provides a stable library across all popular browsers, and gives a user a comprehensive set of tools and algorithms for manipulating, enhancing, and understanding images not only within Node.js but also within web-browser.
 
 ### System requirements
 
@@ -56,7 +56,7 @@ let parsedImage = decode(readFileSync(<filepath>));
 
 #### Import via link
 
-Via browser image is imported through `fetch` method. It works like this:
+Via browser an image is imported through `fetch` method:
 
 ```ts
 
@@ -79,13 +79,13 @@ After the promise is received, the data gets parsed into a string of `DataBuffer
 
 ### Applying features
 
-ImageJS features are, basically, methods of classes that can be applied on an Image or Mask. Therefore once the image is imported and processed, any image method can be applied. For example if you want to invert pixel values you can use the invert method:
+Once the image is imported and processed, any `Image` class method can be applied as a feature. For example if you want to apply an [invert filter](../Features/Filters/Invert.md 'internal link on invert filter') you can use the invert method:
 
 ```ts
 image = image.invert();
 ```
 
-ImageJS possesses many features. To look at them more in-depth visit "Features" category.
+ImageJS possesses many features. To have a deeper understanding visit "Features" category.
 
 ### Saving an image
 

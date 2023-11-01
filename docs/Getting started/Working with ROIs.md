@@ -2,7 +2,7 @@ import RoiDemo from './roi.demo.tsx'
 
 ### Regions of Interest(ROI)
 
-This brings us to ROI class. Regions of interest, as the name suggests, represent the regions that the user wants to analyze. ROIs are also used in data analysis to focus on particular segments of data, time intervals, or areas of interest within a larger dataset. By isolating these regions, researchers can extract relevant information and gain insights more effectively.
+Regions of interest, as the name suggests, represent the regions that the user wants to analyze. ROIs are also used in data analysis to focus on particular segments of data, time intervals, or areas of interest within a larger dataset. By isolating these regions, researchers can extract relevant information and gain insights more effectively.
 
 ### Getting ROIs
 
