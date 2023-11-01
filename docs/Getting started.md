@@ -79,7 +79,7 @@ After the promise is received, the data gets parsed into a string of `DataBuffer
 
 ### Applying features
 
-Once the image is imported and processed, any `Image` class method can be applied as a feature. For example if you want to apply an [invert filter](../Features/Filters/Invert.md 'internal link on invert filter') you can use the invert method:
+Once the image is imported and processed, any `Image` class method can be applied as a feature. For example if you want to apply an [invert filter](/Features/Filters/Invert.md 'internal link on invert filter') you can use the invert method:
 
 ```ts
 image = image.invert();
