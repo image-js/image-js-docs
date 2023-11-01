@@ -4,7 +4,7 @@ sidebar_position: 10
 
 import ErodeDemo from './erode.demo.tsx'
 
-_Reduces the size of foreground objects by iteratively shrinking their boundaries, removing pixels that do not meet specific criteria._
+_Reduces the size of foreground objects by iteratively shrinking their boundaries._
 
 [Check options and parameters of `erode` method](https://image-js.github.io/image-js-typescript/classes/Image.html#erode 'github.io link')
 
