@@ -41,4 +41,4 @@ For instance, as was shown an image can be
 
 <ImageDemo />
 
-Image can also be converted to mask through [`threshold()`](../Features/Operations/threshold.md 'internal link on threshold') method. It will allow deeper analysis of image and enable analysis of its regions of interest.
+Image can also be converted to mask through [`threshold()`](../Features/Operations/Threshold.md 'internal link on threshold') method. It will allow deeper analysis of image and enable analysis of its regions of interest.
