@@ -2,6 +2,8 @@
 sidebar_position: 100
 ---
 
+_Makes a logical conjunction between masks._
+
 [Check options and parameters of `and` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#and 'github.io link')
 
 :::caution

@@ -4,6 +4,8 @@ sidebar_position: 50
 
 import MedianDemo from './median.demo.tsx'
 
+_Replaces each pixel's value with the median value of neighboring pixels, effectively reducing noise and preserving edge details._
+
 [Check options and parameters of `median` method](https://image-js.github.io/image-js-typescript/classes/Image.html#medianFilter 'github.io link')
 
 :::caution

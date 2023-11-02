@@ -4,6 +4,8 @@ sidebar_position: 40
 
 import CloseDemo from './close.demo.tsx'
 
+_Combines a dilation filter followed by an erosion filter._
+
 [Check options and parameters of `close` method](https://image-js.github.io/image-js-typescript/classes/Image.html#close 'github.io link')
 
 Opposed to [opening](./Opening.md 'internal link to open method'), [closing process](<https://en.wikipedia.org/wiki/Closing_(morphology)> 'wikipedia link on closing') first [erodes](./Erosion.md 'internal link to erode method') an image and only then [dilates](./Dilation.md 'internal link to dilate method') it.
