@@ -5,11 +5,16 @@ sidebar_position: 50
 import TransRotateDemo from './demos/transformRotate.demo.tsx'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 _Rotates an image by any angle._
 
 [🖼️ Image options and parameters of `transformRotate` method](https://image-js.github.io/image-js-typescript/classes/Image.html#transformRotate 'github.io link')
 
 =======
+=======
+_Rotates an image by any angle._
+
+>>>>>>> 14ab2c2 (docs: add one-liners to features (#71))
 [Check options and parameters of `transformRotate` method](https://image-js.github.io/image-js-typescript/classes/Image.html#transformRotate 'github.io link')
 
 >>>>>>> 9e147dd (docs: put backticks in code-like names (#53))

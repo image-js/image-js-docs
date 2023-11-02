@@ -5,10 +5,15 @@ sidebar_position: 40
 import TransformDemo from './demos/transform.demo.tsx'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 _Applies linear transformations to an image, such as scaling, rotation, skewing, or warping, altering its shape or orientation._
 
 [🖼️ Image options and parameters of `transform` method](https://image-js.github.io/image-js-typescript/classes/Image.html#transform 'github.io link')
 =======
+=======
+_Applies linear transformations to an image, such as scaling, rotation, skewing, or warping, altering its shape or orientation._
+
+>>>>>>> 14ab2c2 (docs: add one-liners to features (#71))
 [Check options and parameters of `transform` method](https://image-js.github.io/image-js-typescript/classes/Image.html#transform 'github.io link')
 >>>>>>> 9e147dd (docs: put backticks in code-like names (#53))
 
