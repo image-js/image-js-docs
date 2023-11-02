@@ -2,6 +2,8 @@
 sidebar_position: 10
 ---
 
+_Makes an addition between two images._
+
 [Check options and parameters of `add` method](https://image-js.github.io/image-js-typescript/classes/Image.html#add 'github.io link')
 
 :::caution
