@@ -4,6 +4,8 @@ sidebar_position: 60
 
 import BottomHatDemo from './bottomHat.demo.tsx'
 
+_Enhances the fine details or small objects within an image by subtracting an opened version of the image from the original._
+
 [Check options and parameters of `bottomHat` method](https://image-js.github.io/image-js-typescript/classes/Image.html#bottomHat 'github.io link')
 
 Similarly to [Top Hat](./Top%20Hat.md 'internal link to top hat'), [Bottom Hat](https://en.wikipedia.org/wiki/Top-hat_transform 'wikipedia link to top hat') operation computes the difference between two images. However, if top hat was using [opening method](./Opening.md 'internal link on open method'), bottom hat is using [closing method](./Closing.md 'internal link on close method').

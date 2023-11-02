@@ -4,6 +4,8 @@ sidebar_position: 40
 
 import GaussianBlurDemo from './gaussianBlur.demo.tsx'
 
+_A blur filter that uses gaussian function for smoothing._
+
 [Check options and parameters of `gaussianBlur` method](https://image-js.github.io/image-js-typescript/classes/Image.html#gaussianBlur 'link on github io')
 
 :::caution
