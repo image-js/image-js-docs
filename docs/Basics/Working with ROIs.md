@@ -13,16 +13,12 @@ To do so, use `fromMask()` function like this:
 let RoiManager = fromMask(mask);
 ```
 
-This gives us an object of `RoiMapManager` class. This object serves as a literal map of Regions of Interest.
+This gives us an object of `RoiMapManager` class. This is, basically, a map of all Regions of Interest .
 From there, to get all the ROIs use:
 
 ```ts
 let rois = RoiManager.getRois();
 ```
-
-:::info
-If there is a particular region of interest that needs to be analyzed, there is `getRoiById(<ROI id>)` method.
-:::
 
 ### Working with ROIs
 
@@ -30,4 +26,6 @@ ROIs are particular parts of the image to be analyzed. The idea is to identify s
 
 <RoiDemo />
 
-
+:::info
+If there is a particular region of interest that needs to be analyzed, there is `getRoiById(<ROI id>)` method.
+:::

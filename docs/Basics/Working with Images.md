@@ -17,7 +17,7 @@ In the context of digital technology and computing, images are often represented
 | **Can be loaded in this format** | &#9989;                    | &#9989;                | &#9989;           |
 | **Can be saved in this format**  | &#10060;                   | &#9989;                | &#9989;           |
 
-### Properties and features
+### Properties
 
 In ImageJS an image is an object where its data is represented as a typed array.
 There are properties that a user should pay attention to and it is crucial to understand what they represent.
@@ -32,9 +32,11 @@ There are properties that a user should pay attention to and it is crucial to un
 
 - [Number of channels/components](../Glossary.md#channel 'internal link on glossary'): number of color channels that each pixel has. Grey image has one, RGB-type of image has three.
 
-  These properties matter most in features that involve two images, like [Hypotenuse method](../Features/Comparison/Hypotenuse.md 'internal link on hypotenuse') or [Subtraction method](../Features/Comparison/Subtraction.md 'internal link on subtraction method'). It simply will not work if images don't have the same bit depth, color model or size.
+  These properties matter most in features that involve two images, like [Hypotenuse method](../Features/Comparison/Hypotenuse.md 'internal link on hypotenuse') or [Subtraction method](../Features/Comparison/Subtraction.md 'internal link on subtraction method'). It simply will not work if images are not compatible by bit depth, color model or size.
 
-  Currently, here are several types of features that image can use:
+### Features
+
+Currently, there are several types of features that image can apply:
 
 - [Filtering](../Features/Filters/Filters.md 'internal link on filters'): filters usually apply some sort of [kernel](../Glossary.md#kernel 'internal link on kernel') to change an image.
 
@@ -48,6 +50,6 @@ There are properties that a user should pay attention to and it is crucial to un
 **Image coordinate plane should be here(will be done in another PR)**
 :::
 
-Presented features can be used to alter image in aesthetical way as well as to analyze its contents to distinguish shapes or match features. For instance, this demonstration shows how an [`invert` filter](../Features/Filters/Invert.md 'internal link on invert filter') is applied on image.
+Presented tools can be used to alter image in aesthetical way as well as to analyze its contents to distinguish shapes or match features. For instance, this demonstration shows how an [`invert` filter](../Features/Filters/Invert.md 'internal link on invert filter') is applied on image.
 
 <ImageDemo />

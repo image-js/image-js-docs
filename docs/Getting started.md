@@ -44,7 +44,7 @@ yarn add image-js
 
 ### Importing an image
 
-Then, there are two ways of importing an image to process it, depending on the way the user is operating: import locally and import through the browser.
+There are two ways of importing an image to process it, depending on the way the user is operating: import locally and import through the browser.
 
 #### Local import
 
@@ -64,18 +64,16 @@ let image = async () => {
 await fetch(<image-link>)
 .then((data) => {
   data.ArrayBuffer()
-  }
+  } // provides image raw data
 .then((data) => {
-  let view = new DataView(data);
-  const parsedImage = decode(view);
+  let view = new DataView(data); //allows data to be parsed
+  const parsedImage = decode(view); //parses data
   return parsedImage;
   })
 }
 
-image = image.grey();
+image = image.grey(); // image is ready for usage
 ```
-
-After the promise is received, the data gets parsed into a string of binary data. Then it gets converted into a `DataView` and finally `decode` function parses it into an actual image data which the user can work with.
 
 ### Applying features
 
@@ -85,12 +83,35 @@ Once the image is imported and processed, any `Image` class method can be applie
 image = image.invert();
 ```
 
-ImageJS possesses many features. To have a deeper understanding visit "Features" category.
+Image can visit "Features" category.
 
 ### Saving an image
 
-To save an image you need to put the decoded data back into an image format. To do so use `encode` function:
+Saving an image is an inverse process of importing an image.
+First you need to put the decoded data back into an image format. To do so use `encode` function:
 
 ```ts
 image = image.encode();
+```
+
+Then again the procedure depends on where the image was initially imported.
+
+#### Save an image locally
+
+To save image via Node.js use the `writeFileSync()`.
+
+```ts
+writeFileSync(<path to file>, <name of encoded image>);
+```
+
+It will save an image in a designated filepath. If a file doesn't exist, yet it will be created.
+
+#### Display an image via browser
+
+To display an image via [DOM](https://en.wikipedia.org/wiki/Document_Object_Model 'wikipedia link on dom') you can add a few lines to your browser import.
+Use `querySelector` or `getElementFromId` to pick a place where an image will land on your page.
+
+```ts
+let placeToLandImage = document.querySelector('<place to put an image>');
+placeToLandImage.src = image.toDataUrl();
 ```
