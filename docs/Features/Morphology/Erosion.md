@@ -2,7 +2,7 @@
 sidebar_position: 10
 ---
 
-import ErodeDemo from './demos/erode.demo.tsx'
+import ErodeDemo from './demos/erode.mask.demo.tsx'
 
 _Reduces the size of foreground objects by iteratively shrinking their boundaries._
 

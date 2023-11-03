@@ -2,7 +2,7 @@
 sidebar_position: 70
 ---
 
-import MorphGradientDemo from './demos/morphologicalGradient.demo.tsx'
+import MorphGradientDemo from './demos/morphologicalGradient.mask.demo.tsx'
 
 _Emphasizes the boundaries of objects in a binary or grayscale image by calculating the difference between the dilation and erosion of the image._
 

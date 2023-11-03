@@ -2,7 +2,7 @@
 sidebar_position: 60
 ---
 
-import BottomHatDemo from './demos/bottomHat.demo.tsx'
+import BottomHatDemo from './demos/bottomHat.mask.demo.tsx'
 
 _Enhances the fine details or small objects within an image by subtracting an opened version of the image from the original._
 

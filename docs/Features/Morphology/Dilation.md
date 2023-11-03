@@ -2,7 +2,7 @@
 sidebar_position: 20
 ---
 
-import DilateDemo from './demos/dilate.demo.tsx'
+import DilateDemo from './demos/dilate.mask.demo.tsx'
 
 _Enlarges the size of foreground objects by iteratively expanding their boundaries._
 

@@ -2,7 +2,7 @@
 sidebar_position: 40
 ---
 
-import CloseDemo from './demos/close.demo.tsx'
+import CloseDemo from './demos/close.mask.demo.tsx'
 
 _Combines a dilation filter followed by an erosion filter._
 

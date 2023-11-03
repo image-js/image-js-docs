@@ -2,7 +2,7 @@
 sidebar_position: 30
 ---
 
-import OpenDemo from './demos/open.demo.tsx'
+import OpenDemo from './demos/open.mask.demo.tsx'
 
 _Combines an erosion filter followed by a dilation filter._
 
