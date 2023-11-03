@@ -4,9 +4,8 @@ sidebar_position: 70
 
 import MorphGradientDemo from './demos/morphologicalGradient.demo.tsx'
 
-[Check options and parameters of `morphologicalGradient` Image method](https://image-js.github.io/image-js-typescript/classes/Image.html#morphologicalGradient 'github.io link')
-
-[Check options and parameters of `morphologicalGradient` Mask method](https://image-js.github.io/image-js-typescript/classes/Mask.html#morphologicalGradient 'github.io link')
+[🖼️ Image options and parameters of `morphologicalGradient` method](https://image-js.github.io/image-js-typescript/classes/Image.html#morphologicalGradient 'github.io link')  
+[🎭 Mask options and parameters of `morphologicalGradient` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#morphologicalGradient 'github.io link')
 
 [The morphological gradient](https://en.wikipedia.org/wiki/Morphological_gradient 'wikipedia link on morphological gradient') is a mathematical operation used in image processing and mathematical morphology to highlight the boundaries of objects or regions within an image.
 It is a fundamental concept in morphological image analysis and is often used for tasks such as edge detection and image segmentation.
@@ -16,7 +15,11 @@ The morphological gradient is based on the difference between an image after [di
 
 <MorphGradientDemo />
 
-### Parameters and default values for Images and Masks
+### Parameters and default values
+
+:::info
+Parameters and options for Images and Masks are the same.
+:::
 
 - `options`
 

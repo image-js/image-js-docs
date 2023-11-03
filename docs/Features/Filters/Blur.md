@@ -4,7 +4,7 @@ sidebar_position: 30
 
 import BlurDemo from './demos/blur.demo.tsx'
 
-[Check options and parameters of `blur` method](https://image-js.github.io/image-js-typescript/classes/Image.html#blur 'link on github io')
+[🖼️ Image options and parameters of `blur` method](https://image-js.github.io/image-js-typescript/classes/Image.html#blur 'link on github io')
 
 Blur, also known as average blur or box blur, is a simple image processing technique used to reduce noise and smooth out images. It involves replacing the color value of a pixel with the average color value of its neighboring pixels within a specified window or kernel. This process effectively blurs the image and reduces high-frequency noise.
 

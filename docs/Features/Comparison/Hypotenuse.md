@@ -2,7 +2,7 @@
 sidebar_position: 30
 ---
 
-[Check options and parameters of `hypotenuse` method](https://image-js.github.io/image-js-typescript/classes/Image.html#hypotenuse 'github.io link')
+[🖼️ Image options and parameters of `hypotenuse` method](https://image-js.github.io/image-js-typescript/classes/Image.html#hypotenuse 'github.io link')
 
 A "hypotenuse filter" is using two compatible images to change values of each pixel by calculating [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance 'wikipedia link on Euclidean distance') with the formula:
 

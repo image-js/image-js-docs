@@ -4,9 +4,8 @@ sidebar_position: 50
 
 import TopHatDemo from './demos/topHat.demo.tsx'
 
-[Check options and parameters of `topHat` Image method](https://image-js.github.io/image-js-typescript/classes/Image.html#topHat 'github.io link')
-
-[Check options and parameters of `topHat` Mask method](https://image-js.github.io/image-js-typescript/classes/Mask.html#topHat 'github.io link')
+[🖼️ Image options and parameters of `topHat` method](https://image-js.github.io/image-js-typescript/classes/Image.html#topHat 'github.io link')  
+[🎭 Mask options and parameters of `topHat` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#topHat 'github.io link')
 
 In morphology and image processing, [Top Hat](https://en.wikipedia.org/wiki/Top-hat_transform 'wikipedia link on top hat') is an operation used to enhance or extract small bright regions or details from an image while suppressing the larger surrounding structures.
 It is the result of subtraction between the result of input image [opening](./Opening.md 'internal link on open method') and the input image itself.
@@ -14,7 +13,7 @@ The purpose of bottom hat(or as it is also called _black-hat_) is to enhance and
 
 <TopHatDemo />
 
-### Parameters and default values for Images and Masks
+### Parameters and default values
 
 - `options`
 
