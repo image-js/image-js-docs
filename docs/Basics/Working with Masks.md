@@ -12,7 +12,7 @@ image = image.threshold(); // returns a mask
 ```
 
 :::caution
-`threshold()`method possesses different algorithms which cn affect the mask output. It is better to try several of them to see which one fits your needs best.
+`threshold()`method possesses different algorithms which can affect the mask output. It is better to try several of them to see which one fits your needs best.
 :::
 :::info
 Mask can also be created by simply creating a Mask object. By default mask will be filled with 0s.
@@ -29,6 +29,7 @@ let mask = new Mask(<width>,<height>,<options>);
 | [`data`](https://image-js.github.io/image-js-typescript/interfaces/MaskOptions.html#data)     | no       | -                      |
 
 :::
+
 Besides the fact that masks can analyze shapes and regions by themselves using Convex Hull or Feret Diameter, they also allow finding the regions of interest of the image.
 
 <MaskDemo />

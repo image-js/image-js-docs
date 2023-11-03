@@ -44,11 +44,11 @@ yarn add image-js
 
 ### Importing an image
 
-Then, there are two ways of importing an image to process it, depending on the way the user is operating: import locally and import through the internet.
+Then, there are two ways of importing an image to process it, depending on the way the user is operating: import locally and import through the browser.
 
 #### Local import
 
-Local import is simple. Use function `decode` while getting file's path:
+Local import is simple. Use function `decode` while using `readFileSync()` :
 
 ```ts
 let parsedImage = decode(readFileSync(<filepath>));
@@ -75,7 +75,7 @@ await fetch(<image-link>)
 image = image.grey();
 ```
 
-After the promise is received, the data gets parsed into a string of `DataBuffer()`.Then it gets converted into a `DataView` and finally `decode` function parses it into an actual image data.
+After the promise is received, the data gets parsed into a string of binary data. Then it gets converted into a `DataView` and finally `decode` function parses it into an actual image data which the user can work with.
 
 ### Applying features
 
