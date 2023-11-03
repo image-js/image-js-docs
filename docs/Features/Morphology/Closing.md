@@ -4,6 +4,8 @@ sidebar_position: 40
 
 import CloseDemo from './demos/close.demo.tsx'
 
+_Combines a dilation filter followed by an erosion filter._
+
 [🖼️ Image options and parameters of `close` method](https://image-js.github.io/image-js-typescript/classes/Image.html#close 'github.io link')  
 [🎭 Mask options and parameters of `close` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#close 'github.io link')
 

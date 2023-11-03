@@ -4,6 +4,8 @@ sidebar_position: 40
 
 import TransformDemo from './demos/transform.demo.tsx'
 
+_Applies linear transformations to an image, such as scaling, rotation, skewing, or warping, altering its shape or orientation._
+
 [🖼️ Image options and parameters of `transform` method](https://image-js.github.io/image-js-typescript/classes/Image.html#transform 'github.io link')
 
 `transform` method uses transformation matrix to rotate, translate, and/or scale the image. User needs to pass on the matrix that will be applied to the image. Matrix must have 2 rows and 3 columns:

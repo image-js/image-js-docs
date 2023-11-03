@@ -4,6 +4,8 @@ sidebar_position: 30
 
 import OpenDemo from './demos/open.demo.tsx'
 
+_Combines an erosion filter followed by a dilation filter._
+
 [🖼️ Image options and parameters of `open` method](https://image-js.github.io/image-js-typescript/classes/Image.html#open 'github.io link')  
 [🎭 Mask options and parameters of `open` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#open 'github.io link')
 

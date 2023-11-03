@@ -2,6 +2,8 @@
 sidebar_position: 20
 ---
 
+_Makes a subtraction between two images._
+
 [🖼️ Image options and parameters of `subtract` method](https://image-js.github.io/image-js-typescript/classes/Image.html#subtract 'github.io link')  
 [🎭 Mask options and parameters of `subtract` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#subtract 'github.io link')
 

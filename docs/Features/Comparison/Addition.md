@@ -2,7 +2,9 @@
 sidebar_position: 10
 ---
 
-[🖼️ Image options and parameters of `add` method](https://image-js.github.io/image-js-typescript/classes/Image.html#add 'github.io link')
+_Makes an addition between two images._
+
+[Check options and parameters of `add` method](https://image-js.github.io/image-js-typescript/classes/Image.html#add 'github.io link')
 
 `add` method, opposed to [subtraction](./Subtraction.md 'internal link on subtract'), takes another Image and makes an addition between each respective pixel value.
 It works like this:
