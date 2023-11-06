@@ -87,16 +87,14 @@ Image can visit "Features" category.
 
 ### Saving an image
 
+#### Save an image locally
+
 Saving an image is an inverse process of importing an image.
 First you need to put the decoded data back into an image format. To do so use `encode` function:
 
 ```ts
 image = image.encode();
 ```
-
-Then again the procedure depends on where the image was initially imported.
-
-#### Save an image locally
 
 To save image via Node.js use the `writeFileSync()`.
 
