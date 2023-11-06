@@ -8,7 +8,7 @@ _Changes the size of an image._
 
 [🖼️ Image options and parameters of `resize` method](https://image-js.github.io/image-js-typescript/classes/Image.html#resize 'github.io link')
 
-[Image rescaling](https://en.wikipedia.org/wiki/Image_scaling 'wikipedia link on image rescaling'), also known as image resizing or image scaling, is an image processing technique used to change the dimensions (size) of an image while maintaining its aspect ratio. Rescaling can involve both enlarging and reducing the image's size. The goal of image rescaling is to adapt an image to fit within specific dimensions, whether it's for display, printing, or other purposes.
+Image resizing, also known as [image rescaling](https://en.wikipedia.org/wiki/Image_scaling 'wikipedia link on image rescaling'), is an image processing technique used to change the dimensions (size) of an image. Rescaling can involve both enlarging and reducing the image's size. The goal is to adapt an image to fit within specific dimensions, whether it's for display, printing, or other purposes.
 
 <ResizeDemo />
 
