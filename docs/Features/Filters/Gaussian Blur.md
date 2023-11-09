@@ -2,15 +2,11 @@
 sidebar_position: 40
 ---
 
-import GaussianBlurDemo from './gaussianBlur.demo.tsx'
+import GaussianBlurDemo from './demos/gaussianBlur.demo.tsx'
 
 _A blur filter that uses gaussian function for smoothing._
 
-[Check options and parameters of `gaussianBlur` method](https://image-js.github.io/image-js-typescript/classes/Image.html#gaussianBlur 'link on github io')
-
-:::caution
-This method works only with images.
-:::
+[🖼️ Image options and parameters of `gaussianBlur` method](https://image-js.github.io/image-js-typescript/classes/Image.html#gaussianBlur 'link on github io')
 
 [Gaussian blur](https://en.wikipedia.org/wiki/Gaussian_blur 'Wikipedia link on gaussian blur') is a widely used image processing technique that smooths an image by reducing high-frequency noise and fine details while preserving the overall structure and larger features. It's named after the [Gaussian function](https://en.wikipedia.org/wiki/Gaussian_function 'wikipedia link on Gaussian function'), which is a mathematical function that represents a bell-shaped curve. Gaussian blur is often applied to images before other processing steps like edge detection to improve their quality and reliability.
 

@@ -3,6 +3,8 @@ import { UrlOption } from '../importImage/importImageContext';
 const standardUrl = 'https://image-js.github.io/image-dataset-demo/standard';
 const standardMaskUrl =
   'https://image-js.github.io/image-dataset-demo/standard_mask';
+const morphologyMaskUrl =
+  'https://image-js.github.io/image-dataset-demo/morphology_mask';
 
 export const defaultImages: UrlOption[] = [
   {
@@ -44,6 +46,24 @@ export const defaultImages: UrlOption[] = [
 ];
 
 export const defaultMasks: UrlOption[] = [
+  {
+    type: 'url',
+    value: `${morphologyMaskUrl}/circles.png`,
+    label: 'Circles',
+    imageType: 'mask',
+  },
+  {
+    type: 'url',
+    value: `${morphologyMaskUrl}/star.png`,
+    label: 'Star',
+    imageType: 'mask',
+  },
+  {
+    type: 'url',
+    value: `${morphologyMaskUrl}/shapes.png`,
+    label: 'Shapes',
+    imageType: 'mask',
+  },
   {
     type: 'url',
     value: `${standardMaskUrl}/lenna.png`,

@@ -2,15 +2,11 @@
 sidebar_position: 50
 ---
 
-import MedianDemo from './median.demo.tsx'
+import MedianDemo from './demos/median.demo.tsx'
 
 _Replaces each pixel's value with the median value of neighboring pixels, effectively reducing noise and preserving edge details._
 
-[Check options and parameters of `median` method](https://image-js.github.io/image-js-typescript/classes/Image.html#medianFilter 'github.io link')
-
-:::caution
-This method works only with images.
-:::
+[🖼️ Image options and parameters of `median` method](https://image-js.github.io/image-js-typescript/classes/Image.html#medianFilter 'github.io link')
 
 [Median filter](https://en.wikipedia.org/wiki/Median_filter 'wikipedia link on median filter') is a digital image processing technique used to reduce noise in an image by replacing each pixel's value with the median value of neighboring pixels. It's particularly effective at removing ["salt and pepper"](https://en.wikipedia.org/wiki/Salt-and-pepper_noise 'Wikipedia link on salt and pepper effect') noise.
 
