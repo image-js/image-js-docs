@@ -1,4 +1,4 @@
-[Check options and parameters of `fill` method](https://image-js.github.io/image-js-typescript/classes/Image.html#fill 'github.io link')
+[🎭 Mask options and parameters of `fill` method](https://image-js.github.io/image-js-typescript/classes/Image.html#fill 'github.io link')
 
 Fill method fills the whole Mask with a designated value.
 It works like this:
