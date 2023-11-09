@@ -41,7 +41,7 @@ async function demoLoaderPlugin() {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Welcome',
+  title: 'Image-JS',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
@@ -122,10 +122,9 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://image-js.github.io/image-js-typescript/',
-            label: 'GitHub IO',
+            label: 'API reference',
             position: 'right',
           },
         ],
@@ -162,10 +161,6 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/facebook/docusaurus',

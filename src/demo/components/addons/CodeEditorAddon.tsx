@@ -16,7 +16,8 @@ import { useRunCode } from '../../contexts/demo/dispatchHelpers';
 import { convertCodeToFunction } from '../../utils/convertCodeToFunction';
 
 export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
-  const { addon, noAutoRun, run, selectedDevice, code } = useDemoStateContext();
+  const { addon, noAutoRun, run, selectedDevice, code, isMask } =
+    useDemoStateContext();
   const demoDispatch = useDemoDispatchContext();
   const [editorValue, setEditorValue] = useState(props.defaultEditorCode);
   const debouncedEditorValue = useDebounce(editorValue, 1000);
@@ -33,14 +34,14 @@ export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
     if (!noAutoRun && code !== debouncedEditorValue) {
       // Check for syntax errors before dispatching the code
       try {
-        convertCodeToFunction(debouncedEditorValue);
+        convertCodeToFunction(debouncedEditorValue, isMask);
         runCode(debouncedEditorValue);
       } catch (e) {
         // Ignore
         // The code editor should highlight the syntax error
       }
     }
-  }, [debouncedEditorValue, runCode, noAutoRun, code]);
+  }, [debouncedEditorValue, runCode, noAutoRun, code, isMask]);
 
   // Video streams cannot be stopped, instead the code can be updated at anytime
   // And the new code will apply on the next frame

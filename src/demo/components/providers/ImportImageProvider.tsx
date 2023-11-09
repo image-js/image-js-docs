@@ -1,13 +1,13 @@
 import React, { ReactNode, useMemo, useReducer } from 'react';
 
-import { defaultImages } from '../../contexts/demo/defaultImages';
+import { defaultImages, defaultMasks } from '../../contexts/demo/defaultImages';
 import {
-  ImageDemoInputOption,
   imageContext,
+  ImageDemoInputOption,
 } from '../../contexts/importImage/importImageContext';
 
 export function ImportImageProvider(props: { children: ReactNode }) {
-  const [images, addImages] = useReducer(
+  const [options, addOptions] = useReducer(
     (state: ImageDemoInputOption[], newOptions: ImageDemoInputOption[]) => {
       newOptions.forEach((newOption) => {
         while (state.find((option) => option.value === newOption.value)) {
@@ -25,10 +25,9 @@ export function ImportImageProvider(props: { children: ReactNode }) {
           }
         }
       });
-      const newState = [...state, ...newOptions];
-      return newState;
+      return [...state, ...newOptions];
     },
-    defaultImages,
+    [...defaultImages, ...defaultMasks],
   );
 
   const [isVideoStreamAllowed, allowVideoStream] = useReducer(
@@ -37,8 +36,13 @@ export function ImportImageProvider(props: { children: ReactNode }) {
   );
 
   const contextValue = useMemo(() => {
-    return { images, addImages, isVideoStreamAllowed, allowVideoStream };
-  }, [images, addImages, isVideoStreamAllowed, allowVideoStream]);
+    return {
+      options,
+      addOptions,
+      isVideoStreamAllowed,
+      allowVideoStream,
+    };
+  }, [options, addOptions, isVideoStreamAllowed, allowVideoStream]);
 
   return (
     <imageContext.Provider value={contextValue}>

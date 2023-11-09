@@ -51,13 +51,15 @@ module.exports = function demoLoader(source) {
     );
   }
 
+  const isMask = this.resourcePath.endsWith('.mask.demo.tsx');
+
   const editorCode = `import * as IJS from 'image-js';
 /**
  * Process the image
- * @param { IJS.Image } image the input image
- * @returns { IJS.Image | IJS.Mask } the processed image
+ * @param { IJS.${isMask ? 'Mask } mask' : 'Image } image'} the input image
+ * @returns { IJS.Image | IJS.Mask } the processed image or mask
  */
-export function process(image) {
+export function process(${isMask ? 'mask' : 'image'}) {
   ${processBody}
 }
   `;
@@ -86,10 +88,13 @@ export function process(image) {
   const defaultEditorCode= \`${editorCode}\`;
   export default function Demo(props) {
     return (
-      <ImageDemo code={code} defaultEditorCode={defaultEditorCode} processImage={process} name={name} {...props} />
+      <ImageDemo code={code} defaultEditorCode={defaultEditorCode} processImage={process} name={name} isMask={${
+        isMask ? 'true' : 'false'
+      }} {...props} />
     );
   }
   `;
+
   babel
     .transformAsync(modifiedSource, {
       filename: this.resourcePath,

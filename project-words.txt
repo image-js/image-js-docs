@@ -15,3 +15,6 @@ intermodes
 isodata
 renyi
 shanbhag
+thresholded
+RGBA
+bezier

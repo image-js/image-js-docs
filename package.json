@@ -11,7 +11,7 @@
     "eslint": "eslint ./src",
     "eslint-fix": "npm run eslint -- --fix",
     "prettier": "prettier --check ./",
-    "prettier-fix": "prettier --write ./",
+    "prettier-write": "prettier --write ./",
     "serve": "docusaurus serve",
     "dev": "docusaurus start",
     "swizzle": "docusaurus swizzle",
@@ -61,6 +61,9 @@
     ]
   },
   "engines": {
-    "node": ">=16.14"
+    "node": ">=18"
+  },
+  "volta": {
+    "node": "18.18.0"
   }
 }
