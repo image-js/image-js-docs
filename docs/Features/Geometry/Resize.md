@@ -2,11 +2,11 @@
 sidebar_position: 10
 ---
 
-import ResizeDemo from './resize.demo.tsx'
+import ResizeDemo from './demos/resize.demo.tsx'
 
 _Changes the size of an image._
 
-[Check options and parameters of `resize` method](https://image-js.github.io/image-js-typescript/classes/Image.html#resize 'github.io link')
+[🖼️ Image options and parameters of `resize` method](https://image-js.github.io/image-js-typescript/classes/Image.html#resize 'github.io link')
 
 Image resizing, also known as [image rescaling](https://en.wikipedia.org/wiki/Image_scaling 'wikipedia link on image rescaling'), is an image processing technique used to change the dimensions (size) of an image. Rescaling can involve both enlarging and reducing the image's size. The goal is to adapt an image to fit within specific dimensions, whether it's for display, printing, or other purposes.
 
