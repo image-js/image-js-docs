@@ -4,7 +4,8 @@ sidebar_position: 20
 
 _Makes a subtraction between two images._
 
-[Check options and parameters of `subtract` method](https://image-js.github.io/image-js-typescript/classes/Image.html#subtract 'github.io link')
+[🖼️ Image options and parameters of `subtract` method](https://image-js.github.io/image-js-typescript/classes/Image.html#subtract 'github.io link')  
+[🎭 Mask options and parameters of `subtract` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#subtract 'github.io link')
 
 Method called `subtract`, as the name suggests, takes another Image(or Mask) and makes a subtraction between each respective bit.
 It works like this:
@@ -26,6 +27,10 @@ Both masks must have the same size for compatibility reasons. Images must have t
 
 ### Parameters and default values
 
+:::info
+Parameters and options for Images and Masks are the same.
+:::
+
 - `other`
 
 - `options`
@@ -35,3 +40,7 @@ Both masks must have the same size for compatibility reasons. Images must have t
 | Property                                                                                                   | Required | Default value |
 | ---------------------------------------------------------------------------------------------------------- | -------- | ------------- |
 | [`absolute`](https://image-js.github.io/image-js-typescript/interfaces/SubtractImageOptions.html#absolute) | no       | `false`       |
+
+:::info
+The method is also available for Masks.
+:::
