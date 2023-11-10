@@ -9,18 +9,6 @@ import TabItem from '@theme/TabItem';
 
 Image-JS is a versatile and powerful TypeScript library for image processing and analysis. By using JavaScript and not WebAssembly, ImageJS provides a stable library across all popular browsers, and gives a user a comprehensive set of tools and algorithms for manipulating, enhancing, and understanding images not only within Node.js but also within web-browser.
 
-### System requirements
-
-- Node.js 16+
-
-- Google Chrome 91+, Firefox 90+, Safari 15+, Opera 77+, Edge 91+
-
-- Windows 10+
-
-- MacOS 12 Monterrey or MacOS 13 Ventura
-
-- Debian 11, Debian 12, Ubuntu 20.04 or Ubuntu 22.04
-
 ### Installation
 
 Installation of ImageJS is straight-forward. Use terminal to install the package:
@@ -44,11 +32,11 @@ yarn add image-js
 
 ### Importing an image
 
-There are two ways of importing an image to process it, depending on the way the user is operating: import locally and import through the browser.
+There are two ways of importing an image to process it, depending on the way the user is operating: local import and import through the browser.
 
 #### Local import
 
-Local import is simple. Use function `decode` while using `readFileSync()` :
+Local import is simple and only needs image's filepath.`decode` function will do the rest:
 
 ```ts
 let parsedImage = decode(readFileSync(<filepath>));
@@ -56,10 +44,9 @@ let parsedImage = decode(readFileSync(<filepath>));
 
 #### Import via link
 
-Via browser an image is imported through `fetch` method:
+Importing an image via browser is different. It goes through `fetch` function:
 
 ```ts
-
 let image = async () => {
 await fetch(<image-link>)
 .then((data) => {
@@ -102,7 +89,7 @@ To save image via Node.js use the `writeFileSync()`.
 writeFileSync(<path to file>, <name of encoded image>);
 ```
 
-It will save an image in a designated filepath. If a file doesn't exist, yet it will be created.
+If a file doesn't exist yet, it will be created.
 
 #### Display an image via browser
 
@@ -113,3 +100,21 @@ Use `querySelector` or `getElementFromId` to pick a place where an image will la
 let placeToLandImage = document.querySelector('<place to put an image>');
 placeToLandImage.src = image.toDataUrl();
 ```
+
+### What's next?
+
+Now that you know how images are loaded and saved you can deepen your understanding by going through Basics folder and see how different basic elements of ImageJS work. You can also broaden your horizons by looking at available Features.
+
+If you want to see how ImageJS works in practice I suggest you visit the Tutorials segment and see for yourself its practical applications.
+
+### System requirements
+
+- Node.js 16+
+
+- Google Chrome 91+, Firefox 90+, Safari 15+, Opera 77+, Edge 91+
+
+- Windows 10+
+
+- MacOS 12 Monterrey or MacOS 13 Ventura
+
+- Debian 11, Debian 12, Ubuntu 20.04 or Ubuntu 22.04

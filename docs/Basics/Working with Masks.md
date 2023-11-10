@@ -2,10 +2,10 @@ import MaskDemo from './mask.demo.tsx'
 
 ### Mask
 
-In ImageJS masks are binary images which are used for filtering or isolating specific regions of interest within an image for processing and analysis.
+Masks are binary images which are used for filtering or isolating specific regions of interest within an image for processing and analysis.
 In ImageJS, Mask can be obtained by using [`threshold` method](../Features/Operations/Threshold.md 'internal link on threshold') on an image.
 
-:::caution
+:::tip
 `threshold()`method possesses different algorithms which can affect the mask output. It is better to try several of them to see which one fits your needs best.
 :::
 
@@ -14,6 +14,10 @@ image = image.threshold(); // returns a mask
 ```
 
 <MaskDemo />
+
+:::info
+Although Mask is called binary **image** they possess significant differences in terms of usage, purposes and functionality. For further information visit this link **link**
+:::
 
 :::info
 Mask can also be created by simply creating a Mask object. By default mask will be filled with 0s.

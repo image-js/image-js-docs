@@ -50,6 +50,6 @@ Currently, there are several types of features that image can apply:
 **Image coordinate plane should be here(will be done in another PR)**
 :::
 
-Presented tools can be used to alter image in aesthetical way as well as to analyze its contents to distinguish shapes or match features. For instance, this demonstration shows how an [`invert` filter](../Features/Filters/Invert.md 'internal link on invert filter') is applied on image.
+Presented tools can be used to alter image in aesthetical way as well as to further analyze its contents to distinguish shapes or match features. For instance, this demonstration shows how an [`invert` filter](../Features/Filters/Invert.md 'internal link on invert filter') is applied on image.
 
 <ImageDemo />

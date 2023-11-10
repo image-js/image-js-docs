@@ -7,7 +7,7 @@ Regions of interest, as the name suggests, represent the regions that the user w
 ### Getting ROIs
 
 Regions of interest derive from analyzing a mask which produces a map of those regions.
-To do so, use `fromMask()` function like this:
+To do so, use `fromMask()` function:
 
 ```ts
 let RoiManager = fromMask(mask);
@@ -22,7 +22,7 @@ let rois = RoiManager.getRois();
 
 ### Working with ROIs
 
-ROIs are particular parts of the image to be analyzed. The idea is to identify separable objects, analyze their shapes,form and size and mark them on an image.
+It is difficult to cover all the methods that ROI could use, but the most basic ones are surface, sphericity and
 
 <RoiDemo />
 
