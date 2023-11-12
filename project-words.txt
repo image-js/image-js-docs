@@ -18,5 +18,5 @@ shanbhag
 thresholded
 RGBA
 bezier
-Rois
+ROIs
 Feret

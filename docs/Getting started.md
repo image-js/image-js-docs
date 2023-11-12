@@ -30,21 +30,21 @@ yarn add image-js
 </TabItem>
 </Tabs>
 
-### Importing an image
+### Loading an image
 
-There are two ways of importing an image to process it, depending on the way the user is operating: local import and import through the browser.
+There are two ways of loading an image to process it, depending on the way the user is operating: to load locally and load through the browser.
 
-#### Local import
+#### Load via Node
 
-Local import is simple and only needs image's filepath.`decode` function will do the rest:
+Local loading is simple and only needs image's filepath.`decode` function will do the rest:
 
 ```ts
 let parsedImage = decode(readFileSync(<filepath>));
 ```
 
-#### Import via link
+#### Load via link
 
-Importing an image via browser is different. It goes through `fetch` function:
+Loading an image via browser is different. It goes through `fetch` function:
 
 ```ts
 let image = async () => {
@@ -70,13 +70,13 @@ Once the image is imported and processed, any `Image` class method can be applie
 image = image.invert();
 ```
 
-Image can visit "Features" category.
+To see more methods visit "Features" category.
 
 ### Saving an image
 
-#### Save an image locally
+#### Save an image via Node
 
-Saving an image is an inverse process of importing an image.
+Saving an image is an inverse process of loading an image.
 First you need to put the decoded data back into an image format. To do so use `encode` function:
 
 ```ts
@@ -103,18 +103,12 @@ placeToLandImage.src = image.toDataUrl();
 
 ### What's next?
 
-Now that you know how images are loaded and saved you can deepen your understanding by going through Basics folder and see how different basic elements of ImageJS work. You can also broaden your horizons by looking at available Features.
+Now that you know how images are loaded and saved you can deepen your understanding by going through [Basics](./Basics 'internal link on basics') folder and see how different basic elements of ImageJS work. You can also broaden your horizons by looking at available [Features](./Features 'internal link on features').
 
-If you want to see how ImageJS works in practice I suggest you visit the Tutorials segment and see for yourself its practical applications.
+If you want to see how ImageJS works in practice I suggest you visit the [Tutorials](./Tutorials 'internal link on tutorial') segment and see for yourself its practical applications.
 
 ### System requirements
 
 - Node.js 16+
 
 - Google Chrome 91+, Firefox 90+, Safari 15+, Opera 77+, Edge 91+
-
-- Windows 10+
-
-- MacOS 12 Monterrey or MacOS 13 Ventura
-
-- Debian 11, Debian 12, Ubuntu 20.04 or Ubuntu 22.04
