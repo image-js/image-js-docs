@@ -22,7 +22,8 @@ let rois = RoiManager.getRois();
 
 ### Working with ROIs
 
-It is difficult to cover all the methods that ROI could use, but the most basic ones are surface, sphericity and
+Each region of interest possesses many properties and characteristics.
+There are more basic ones like surface and perimeter to know the size. There are also likes of Feret diameter and convex hull as more advanced metrics. There are elements like sphericity or fill ratio to determine the shape of a region. It is difficult to cover all the methods that ROI could use here. However, to learn more about image analysis, check our Analysis section **link**.
 
 <RoiDemo />
 
