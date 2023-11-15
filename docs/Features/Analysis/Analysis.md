@@ -1,1 +1,1 @@
-This section is dedicated to analysis of a mask and specific regions.
+This section is dedicated to analysis of mask and its specific regions. ImageJS is first and foremost an analyzer of particles and analysis helps detecting particles as well as determining their size, shape position and direction.
