@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 
 # Getting started
 
-Image-JS is a versatile and powerful TypeScript library for image processing and analysis. By using JavaScript and not WebAssembly, ImageJS provides a stable library across all popular browsers, and gives a user a comprehensive set of tools and algorithms for manipulating, enhancing, and understanding images not only within Node.js but also within web-browser.
+Image-JS is a versatile and powerful library written in TypeScript for image processing and analysis. By using JavaScript and not WebAssembly, ImageJS provides a stable library across all popular browsers, and gives a user a comprehensive set of tools and algorithms for manipulating, enhancing, and understanding images not only within Node.js but also within web-browser.
 
 ### Installation
 
@@ -30,11 +30,11 @@ yarn add image-js
 </TabItem>
 </Tabs>
 
-### Loading an image
+### Loading your first image
 
 There are two ways of loading an image to process it, depending on the way the user is operating: to load locally and load through the browser.
 
-#### Load via Node
+#### Node
 
 Local loading is simple and only needs image's filepath.`decode` function will do the rest:
 
@@ -42,7 +42,9 @@ Local loading is simple and only needs image's filepath.`decode` function will d
 let parsedImage = decode(readFileSync(<filepath>));
 ```
 
-#### Load via link
+An image can be loaded thorugh `fetch` as well.
+
+#### Browser
 
 Loading an image via browser is different. It goes through `fetch` function:
 

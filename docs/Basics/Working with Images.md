@@ -11,7 +11,7 @@ In the context of digital technology and computing, images are often represented
 |                                  | TIFF                       | JPEG                   | PNG               |
 | -------------------------------- | -------------------------- | ---------------------- | ----------------- |
 | **Bits per channel**             | 8 or 16 bits               | 8 bits                 | 8 or 16 bits      |
-| **Bits per Alpha**               | 8 or 16 bits               | no                     | 8 or 16 bits      |
+| **Bits per Alpha**               | 8 or 16 bits               | N/A                    | 8 or 16 bits      |
 | **Compression**                  | yes/no(may be destructive) | no(may be destructive) | yes               |
 | **Color Model**                  | RGB and grayscale          | RGB and grayscale      | RGB and grayscale |
 | **Can be loaded in this format** | &#9989;                    | &#9989;                | &#9989;           |
@@ -22,9 +22,9 @@ In the context of digital technology and computing, images are often represented
 In ImageJS an image is an object where its data is represented as a typed array.
 There are properties that a user should pay attention to and it is crucial to understand what they represent.
 
-- Size : in ImageJS it is calculated through a multiplication of width and height.
+- width : horizontal length of an image.
 
-- [Image format](../Glossary.md#image-format 'internal link on glossary'): file format. Depending on it, image properties like bit depth can look very different.
+- height : vertical length of an image.
 
 - [Color model](../Glossary.md#color-model 'internal link on glossary'): the abstract model of how pixel colors are formed.
 
@@ -32,11 +32,13 @@ There are properties that a user should pay attention to and it is crucial to un
 
 - [Number of channels/components](../Glossary.md#channel 'internal link on glossary'): number of color channels that each pixel has. Grey image has one, RGB-type of image has three.
 
+- [Metadata]('internal link on metadata')
+
   These properties matter most in features that involve two images, like [Hypotenuse method](../Features/Comparison/Hypotenuse.md 'internal link on hypotenuse') or [Subtraction method](../Features/Comparison/Subtraction.md 'internal link on subtraction method'). It simply will not work if images are not compatible by bit depth, color model or size.
 
 ### Features
 
-Currently, there are several types of features that image can apply:
+Currently, there are several types of processing that image:
 
 - [Filtering](../Features/Filters/Filters.md 'internal link on filters'): filters usually apply some sort of [kernel](../Glossary.md#kernel 'internal link on kernel') to change an image.
 
