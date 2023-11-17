@@ -2,7 +2,7 @@ import ImageDemo from './image.demo.tsx'
 
 ### What is an Image?
 
-In the context of digital technology and computing, images are often represented as a grid of pixels, with each pixel containing information about color and intensity.
+In the context of digital technology and computing, images are represented as a grid of pixels, with each pixel containing information about color and intensity.
 
 ### Types of images supported by ImagesJS
 
@@ -20,11 +20,7 @@ In the context of digital technology and computing, images are often represented
 ### Properties
 
 In ImageJS an image is an object where its data is represented as a typed array.
-There are properties that a user should pay attention to and it is crucial to understand what they represent.
-
-- width : horizontal length of an image.
-
-- height : vertical length of an image.
+Besides some obvious ones like width and height there are properties that a user should pay attention to and it is crucial to understand what they represent.
 
 - [Color model](../Glossary.md#color-model 'internal link on glossary'): the abstract model of how pixel colors are formed.
 
@@ -32,7 +28,7 @@ There are properties that a user should pay attention to and it is crucial to un
 
 - [Number of channels/components](../Glossary.md#channel 'internal link on glossary'): number of color channels that each pixel has. Grey image has one, RGB-type of image has three.
 
-- [Metadata]('internal link on metadata')
+- [Metadata](../Glossary.md#metadata 'internal link on metadata'): data about data.
 
   These properties matter most in features that involve two images, like [Hypotenuse method](../Features/Comparison/Hypotenuse.md 'internal link on hypotenuse') or [Subtraction method](../Features/Comparison/Subtraction.md 'internal link on subtraction method'). It simply will not work if images are not compatible by bit depth, color model or size.
 
@@ -51,7 +47,5 @@ Currently, there are several types of processing that image:
 :::caution
 **Image coordinate plane should be here(will be done in another PR)**
 :::
-
-Presented tools can be used to alter image in aesthetical way as well as to further analyze its contents to distinguish shapes or match features. For instance, this demonstration shows how an [`invert` filter](../Features/Filters/Invert.md 'internal link on invert filter') is applied on image.
 
 <ImageDemo />

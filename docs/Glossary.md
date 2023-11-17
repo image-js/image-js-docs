@@ -64,6 +64,10 @@ A [Kernel](<https://en.wikipedia.org/wiki/Kernel_(image_processing)> 'wikipedia 
 
 Mask in imageJS is a special class of 1-bit depth,single channel images that represents binary data from the image, which means that it is a grid divided on black and white elements. It is usually used to find [regions of interest](#roiregion-of-interest 'anchor on ROI') and/or [their maps](#roi-map 'anchor on RoiMap').It can also be applied to an image in various ways like filtering, edge detection, image fusion etc.
 
+### Metadata
+
+[Metadata](https://en.wikipedia.org/wiki/Metadata 'wikipedia link on metadata') refers to data that provides information about other data. In a broad sense, it is "data about data." Metadata can describe various aspects of information, such as its origin, format, structure, and context. This information is typically used to facilitate the organization, management, and retrieval of data.
+
 ### Morphology
 
 [Morphology](https://en.wikipedia.org/wiki/Mathematical_morphology 'wikipedia link on morphology') is a comprehensive set of image processing operations that process images based on shapes and/or borders of elements that images possess. It involves manipulating the geometric properties of image elements to extract meaningful information, enhance features, or remove noise. Morphological operations are often used in tasks like image filtering, object detection, image segmentation, and more.
