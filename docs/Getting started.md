@@ -42,41 +42,11 @@ Local loading is simple and only needs image's filepath.`decode` function will d
 let parsedImage = decode(readFileSync(<filepath>));
 ```
 
-An image can be loaded thorugh `fetch` as well.
-
-#### Browser
-
-Loading an image via browser is different. It goes through `fetch` function:
-
-```ts
-let image = async () => {
-await fetch(<image-link>)
-.then((data) => {
-  data.ArrayBuffer()
-  } // provides image raw data
-.then((data) => {
-  let view = new DataView(data); //allows data to be parsed
-  const parsedImage = decode(view); //parses data
-  return parsedImage;
-  })
-}
-
-image = image.grey(); // image is ready for usage
-```
-
-### Applying features
-
-Once the image is imported and processed, any `Image` class method can be applied as a feature. For example if you want to apply an [invert filter](/Features/Filters/Invert.md 'internal link on invert filter') you can use the invert method:
+Once the image is imported and processed, any `Image` class method can be applied. For example, if you want to apply an [invert filter](/Features/Filters/Invert.md 'internal link on invert filter') you can use the invert method:
 
 ```ts
 image = image.invert();
 ```
-
-To see more methods visit "Features" category.
-
-### Saving an image
-
-#### Save an image via Node
 
 Saving an image is an inverse process of loading an image.
 First you need to put the decoded data back into an image format. To do so use `encode` function:
@@ -93,7 +63,30 @@ writeFileSync(<path to file>, <name of encoded image>);
 
 If a file doesn't exist yet, it will be created.
 
-#### Display an image via browser
+So, in the end you should get a code like this.
+
+```ts
+let image = decode(readFileSync(<path to file>));
+image = image.invert();
+image = image.encode();
+writeFileSync(<path to file>, image);
+```
+
+#### Browser
+
+Loading an image via browser is different. It goes through `fetch` function:
+
+```ts
+const data = await fetch(
+  'https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+);
+const bufferedData = await data.arrayBuffer();
+const image = decode(new DataView(bufferedData)); // image is ready for usage
+
+image = image.grey();
+```
+
+To see more methods visit "Features" category.
 
 To display an image via [DOM](https://en.wikipedia.org/wiki/Document_Object_Model 'wikipedia link on dom') you can add a few lines to your browser import.
 Use `querySelector` or `getElementFromId` to pick a place where an image will land on your page.
@@ -102,6 +95,25 @@ Use `querySelector` or `getElementFromId` to pick a place where an image will la
 let placeToLandImage = document.querySelector('<place to put an image>');
 placeToLandImage.src = image.toDataUrl();
 ```
+
+Thus in the end your code with `fetch` should look like this:
+
+```ts
+const data = await fetch(
+  'https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+);
+const bufferedData = await data.arrayBuffer();
+const image = decode(new DataView(bufferedData)); // image is ready for usage
+
+image = image.grey();
+
+let placeToLandImage = document.querySelector('<place to put an image>');
+placeToLandImage.src = image.toDataUrl();
+```
+
+:::tip
+Node.js also has the ability to load image via `fetch`
+:::
 
 ### What's next?
 
