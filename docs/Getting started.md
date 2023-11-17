@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 
 # Getting started
 
-Image-JS is a versatile and powerful library written in TypeScript for image processing and analysis. By using JavaScript and not WebAssembly, ImageJS provides a stable library across all popular browsers, and gives a user a comprehensive set of tools and algorithms for manipulating, enhancing, and understanding images not only within Node.js but also within web-browser.
+Image-JS is a versatile and powerful library written in TypeScript for image processing and analysis. It gives a user a comprehensive set of tools and algorithms for manipulating, enhancing, and understanding images not only within Node.js but also across all popular browsers.
 
 ### Installation
 
@@ -34,13 +34,17 @@ yarn add image-js
 
 There are two ways of loading an image to process it, depending on the way the user is operating: to load locally and load through the browser.
 
-#### Node
+#### Node.js
 
 Local loading is simple and only needs image's filepath.`decode` function will do the rest:
 
 ```ts
 let parsedImage = decode(readFileSync(<filepath>));
 ```
+
+:::tip
+Node.js can also load an image via `fetch` function. To get more information take a look at "Browser" part of this section.
+:::
 
 Once the image is imported and processed, any `Image` class method can be applied. For example, if you want to apply an [invert filter](/Features/Filters/Invert.md 'internal link on invert filter') you can use the invert method:
 
@@ -58,7 +62,7 @@ image = image.encode();
 To save image via Node.js use the `writeFileSync()`.
 
 ```ts
-writeFileSync(<path to file>, <name of encoded image>);
+writeFileSync(<path to file>, image);
 ```
 
 If a file doesn't exist yet, it will be created.
@@ -86,7 +90,7 @@ const image = decode(new DataView(bufferedData)); // image is ready for usage
 image = image.grey();
 ```
 
-To see more methods visit "Features" category.
+To see more methods visit ["Features"](./Features/Features.md 'internal link on features') category.
 
 To display an image via [DOM](https://en.wikipedia.org/wiki/Document_Object_Model 'wikipedia link on dom') you can add a few lines to your browser import.
 Use `querySelector` or `getElementFromId` to pick a place where an image will land on your page.
@@ -110,10 +114,6 @@ image = image.grey();
 let placeToLandImage = document.querySelector('<place to put an image>');
 placeToLandImage.src = image.toDataUrl();
 ```
-
-:::tip
-Node.js also has the ability to load image via `fetch`
-:::
 
 ### What's next?
 
