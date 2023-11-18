@@ -20,3 +20,4 @@ RGBA
 bezier
 ROIs
 Feret
+canny
