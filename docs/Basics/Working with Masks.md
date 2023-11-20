@@ -37,7 +37,7 @@ Although it might not perform as well on an image with complex background, in mo
 
 ### Use `cannyEdgeDetector()` method
 
-There is also a third way to get a mask. It is to use [`сannyEdgeDetector` method](../Features/Morphology/Canny%20Edge%20Detector.md).
+There is also a third way to get a mask. It is to use [`cannyEdgeDetector` method](../Features/Morphology/Canny%20Edge%20Detector.md).
 
 ```ts
 image = image.cannyEdgeDetector(); // returns a mask
