@@ -31,7 +31,7 @@ Another approach is to obtain a mask by using [`threshold` method](../Features/O
 image = image.threshold(); // returns a mask
 ```
 
-In most cases thresholding is your go-to method to get a mask from an image.
+Although it might not perform as well on an image with complex background, in most cases, thresholding is your go-to method to get a mask from an image.
 
 <ThresholdMaskDemo />
 
@@ -45,4 +45,4 @@ image = image.cannyEdgeDetector(); // returns a mask
 
 <CannyMaskDemo />
 
-Canny Edge detection is useful when there is a need to determine edges of the elements, although it is more complex as an algorithm than `threshold()`.
+It is less sensitive towards changes in intensity, but it is also more complex as an algorithm than `threshold()`. Canny Edge detection is useful when there is a need to determine edges of the elements.
