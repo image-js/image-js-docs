@@ -96,7 +96,7 @@ To display an image via [DOM](https://en.wikipedia.org/wiki/Document_Object_Mode
 Use `querySelector` or `getElementFromId` to pick a place where an image will land on your page.
 
 ```ts
-let placeToLandImage = document.querySelector('<place to put an image>');
+let placeToLandImage = document.querySelector('body'); //puts image into body element of the page
 placeToLandImage.src = image.toDataUrl();
 ```
 
@@ -111,7 +111,7 @@ const image = decode(new DataView(bufferedData)); // image is ready for usage
 
 image = image.grey();
 
-let placeToLandImage = document.querySelector('<place to put an image>');
+let placeToLandImage = document.querySelector('body'); //puts image into body element of the page
 placeToLandImage.src = image.toDataUrl();
 ```
 
