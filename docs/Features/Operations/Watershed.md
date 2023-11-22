@@ -11,6 +11,10 @@ The watershed algorithm is particularly useful for segmenting objects in images,
 It is important to remember that watershed filter does not return an image, nor mask. It returns a `RoiMapManager` object which stores the location of each region of interest.
 :::
 
+| Input                                      | Output                                            |
+| ------------------------------------------ | ------------------------------------------------- |
+| ![Image Input](./images/CellsDivision.jpg) | ![Image Output](./images/CellsOutputISODATA5.jpg) |
+
 ### Parameters and default values
 
 - `image`
