@@ -15,7 +15,7 @@ It is important to understand and distinguish several concepts used in image pro
 
 - Compression
 
-Currently image-js supports
+Currently ImageJS supports
 
 |                  | TIFF                       | GIF                | JPEG            | PNG          |
 | ---------------- | -------------------------- | ------------------ | --------------- | ------------ |
