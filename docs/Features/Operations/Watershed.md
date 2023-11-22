@@ -5,6 +5,7 @@ _Separates and identifies distinct regions or objects within an image through gr
 [🖼️ Image options and parameters of `waterShed` function](https://image-js.github.io/image-js-typescript/functions/waterShed.html 'github io link')
 
 [Watershed filter](<https://en.wikipedia.org/wiki/Watershed_(image_processing)> 'wikipedia link on watershed') is a way of identifying objects by finding image's lowest points(minima) in terms of intensity and filling these spaces with color(label). The process reminds geological [watershed](https://en.wikipedia.org/wiki/Drainage_divide 'wikipedia link on drainage divide'), which is the origin of algorithm's name. In order for the "water" not to go overboard and stay within the limits of the region, a threshold of [intensity](../../Glossary.md#intensity 'internal link on glossary') is set.
+
 The watershed algorithm is particularly useful for segmenting objects in images, especially when there are variations in intensity or color.
 
 :::caution
