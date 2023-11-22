@@ -2,15 +2,11 @@
 sidebar_position: 60
 ---
 
-import GradientDemo from './gradient.demo.tsx'
+import GradientDemo from './demos/gradient.demo.tsx'
 
 _Highlights changes in color or intensity within an image by accentuating transitions and edges._
 
-[Check options and parameters of `gradient` method](https://image-js.github.io/image-js-typescript/functions/gradientFilter.html 'link on github.io')
-
-:::caution
-This method works only with images.
-:::
+[🖼️ Image options and parameters of `gradient` method](https://image-js.github.io/image-js-typescript/functions/gradientFilter.html 'link on github.io')
 
 Gradient filter or specifically[ a gradient-based edge detection filter](https://en.wikipedia.org/wiki/Graduated_neutral-density_filter 'Wikipedia link on gradient filter'), is an image processing technique used to highlight edges and boundaries within an image by emphasizing areas of rapid intensity change. The gradient filter operates by calculating the rate of change of pixel intensities across the image. When there's a rapid transition from one intensity level to another, [the convolution operation](../../Glossary.md#convolution 'glossary link on convolution') captures this change as a high gradient magnitude value, indicating the presence of an edge. It's a fundamental step in various computer vision and image analysis tasks, such as edge detection, object recognition, and image segmentation.
 
