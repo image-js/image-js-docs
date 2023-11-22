@@ -11,7 +11,7 @@ The watershed algorithm is particularly useful for segmenting objects in images,
 It is important to remember that watershed filter does not return an image, nor mask. It returns a `RoiMapManager` object which stores the location of each region of interest.
 :::
 
-| Input                                      | Output                                            |
+| Input                                      | What watershed finds                              |
 | ------------------------------------------ | ------------------------------------------------- |
 | ![Image Input](./images/CellsDivision.jpg) | ![Image Output](./images/CellsOutputISODATA5.jpg) |
 
@@ -44,8 +44,7 @@ _Find minima_: the first step is to find minima points. You need to use `getExtr
 If you look for bright-colored ROIs, then either look for maximum points or invert image before applying watershed.
 :::
 
-_Set a threshold_: threshold needs to be set in order for minima not to fill the whole image and stop at intensity border of a region.
-
+_Set a threshold or use mask_: threshold needs to be set in order for minima not to fill the whole image and stop at intensity border of a region. It can also use a mask to situate general areas of interest.
 _Sort pixels by their intensity_: ImageJS uses a priority queue to sort elements.
 
 _Indicate created regions of interest on a ROI map_: Created regions are indicated on a new ROI map.
