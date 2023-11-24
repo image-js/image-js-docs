@@ -6,10 +6,10 @@ Masks are binary images which are used for filtering or isolating specific regio
 ### Create a Mask object
 
 In ImageJS there are three ways of creating a mask.
-First method for creating a mask is creating a Mask object. By default mask will be filled with 0s. It is the easiest way, but once applied on the image, such mask will not affect it in any way, so it needs to be additionally customized by user.
+First method for creating a mask is creating a Mask object. It is the easiest way, but once applied on the image, such mask will not affect it in any way, so it needs to be additionally customized by user.
 
 ```ts
-let mask = new Mask(<width>,<height>,<options>);
+const mask = new Mask(500, 500); // Creates a simple mask filled with 0s of size 500x500.
 ```
 
 #### Options
@@ -23,17 +23,17 @@ let mask = new Mask(<width>,<height>,<options>);
 
 Another approach is to obtain a mask by using [`threshold` method](../Features/Operations/Threshold.md 'internal link on threshold') on an image.
 
-:::tip
-`threshold()`method possesses different algorithms which can affect the mask output. It is better to try several of them to see which one fits your needs best.
-:::
-
 ```ts
 image = image.threshold(); // returns a mask
 ```
 
-Although it might not perform as well on an image with complex background, in most cases, thresholding is your go-to method to get a mask from an image.
+In most cases, thresholding is your go-to method to get a mask from an image.
 
 <ThresholdMaskDemo />
+
+:::tip
+`threshold()`method possesses different algorithms which can affect the mask output. It is better to try several of them to see which one fits your needs best. For instance the demo above uses [`'otsu'`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu') algorithm.
+:::
 
 ### Use `cannyEdgeDetector()` method
 
@@ -45,4 +45,4 @@ image = image.cannyEdgeDetector(); // returns a mask
 
 <CannyMaskDemo />
 
-It is less sensitive towards changes in intensity, but it is also more complex as an algorithm than `threshold()`. Canny Edge detection is useful when there is a need to determine edges of the elements.
+Canny Edge detection is useful when there is a need to determine edges of the elements. Elements with a change of intensity are colored white, while regions with no change are colored black.

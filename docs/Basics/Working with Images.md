@@ -19,8 +19,13 @@ In the context of digital technology and computing, images are represented as a 
 
 ### Properties
 
-In ImageJS an image is an object where its data is represented as a typed array.
-Besides some obvious ones like width and height there are properties that a user should pay attention to and it is crucial to understand what they represent.
+In ImageJS main properties of an image are:
+
+- width
+
+- height
+
+- data: typed array with information about image's pixels.
 
 - [Color model](../Glossary.md#color-model 'internal link on glossary'): the abstract model of how pixel colors are formed.
 
@@ -30,11 +35,11 @@ Besides some obvious ones like width and height there are properties that a user
 
 - [Metadata](../Glossary.md#metadata 'internal link on metadata'): data about data.
 
-  These properties matter most in features that involve two images, like [Hypotenuse method](../Features/Comparison/Hypotenuse.md 'internal link on hypotenuse') or [Subtraction method](../Features/Comparison/Subtraction.md 'internal link on subtraction method'). It simply will not work if images are not compatible by bit depth, color model or size.
+The latter ones matter most in features that involve two images, like [Hypotenuse method](../Features/Comparison/Hypotenuse.md 'internal link on hypotenuse') or [Subtraction method](../Features/Comparison/Subtraction.md 'internal link on subtraction method'). It simply will not work if images are not compatible by bit depth, color model or size.
 
 ### Features
 
-Currently, there are several types of processing that image:
+Currently, there are several ways of processing an image:
 
 - [Filtering](../Features/Filters/Filters.md 'internal link on filters'): filters usually apply some sort of [kernel](../Glossary.md#kernel 'internal link on kernel') to change an image.
 

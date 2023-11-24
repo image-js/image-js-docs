@@ -1,10 +1,12 @@
-The reason why we need a [mask](./Working%20with%20Masks.md 'internal link on working with mask') is to identify its regions of interest.
+One of the reasons why we need a [mask](./Working%20with%20Masks.md 'internal link on working with mask') is to identify its regions of interest.
 In the context of image processing or computer vision, a region of interest is an area or subregion within an image that is identified for closer examination or specific operations. ROIs are often chosen because they contain relevant information or features of interest.
 
 To access regions of interest you need to get a `roiMapManager` object.
 
 ```ts
-let roiManager = fromMask(mask); // It is a function that returns ROIs from mask.
+import { fromMask } from 'image-js';
+
+const roiManager = fromMask(mask); // It is a function that returns ROIs from mask.
 ```
 
 It is literally a map of all the regions of interest situated on an image.
@@ -12,14 +14,13 @@ It is literally a map of all the regions of interest situated on an image.
 From there all you need to do is use `getRois()` method and you get an array of all the regions of interest ready for analysis.
 
 ```ts
-let rois = roiManager.getRois();
+const rois = roiManager.getRois();
 ```
 
 ![output image](roiImages/outputImage.png)
 
 :::caution
 In the options parameter,`getRois()` has a `kind` option which tells what kind of regions to return.
-Let's not go deep into the ins and outs of `RoiMapManager`, but if we take example above, to get the darker regions you need to specify option `{kind:'black'}` or invert an image beforehand.
 
 | `kind` option | What it does               |
 | ------------- | -------------------------- |
