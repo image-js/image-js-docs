@@ -41,9 +41,9 @@ Here's how watershed filter is implemented in ImageJS:
 
 _Blur and grayscale an image(if necessary)_: an image should be grayscale for watershed filter to work. It is also a good practice to blur an image to remove some of its noise for more precise results(see [blur](../Filters/Blur.md) for more information).
 
-| Image Input                                          | Output without blur                                               | Output with blur                                                          |
-| ---------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| ![Input](./images/watershedOutput/CellsDivision.jpg) | ![without blur](./images/watershedOutput/CellsOutputISODATA0.jpg) | ![With blur of width 5](./images/watershedOutput/CellsOutputISODATA5.jpg) |
+| Image Input                                          | Output without blur                                                  | Output with blur                                                             |
+| ---------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| ![Input](./images/watershedOutput/CellsDivision.jpg) | ![without blur](./images/watershedOutput/CellsOutputISODATA0mbr.jpg) | ![With blur of width 5](./images/watershedOutput/CellsOutputISODATA5mbr.jpg) |
 
 _Find minima_: the first step is to find minima points. You need to use `getExtrema` to while precising what kind of points you are looking for. The points should be additionally filtered to remove repeating minima close by.
 
