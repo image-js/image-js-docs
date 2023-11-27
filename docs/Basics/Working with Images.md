@@ -49,8 +49,4 @@ Currently, there are several ways of processing an image:
 
 - [Morphology](../Features/Morphology/Morphology.md 'internal link on morphology'): enables shape analysis and shape identification.
 
-:::caution
-**Image coordinate plane should be here(will be done in another PR)**
-:::
-
 <ImageDemo />
