@@ -96,25 +96,91 @@ const data = async () => {
 };
 ```
 
-To display an image via [DOM](https://en.wikipedia.org/wiki/Document_Object_Model 'wikipedia link on dom') you can add a few lines to your browser import.
-You can use `writeCanvas` method to do so.
+### Bundling your image with Vite
 
-```ts
-let canvas = document.getElementById('canvasID'); //puts image into body element of the page
-writeCanvas(image, canvas);
+To display an image via [DOM](https://en.wikipedia.org/wiki/Document_Object_Model 'wikipedia link on dom') you can use `writeCanvas` method.
+
+To do so, you need to create a Node.js project:
+
+```
+npm init
 ```
 
-Thus in the end your code with `fetch` should look like this:
+After creating one, install `vite` as a dev-dependency and then install `image-js`:
+
+```
+npm install -D vite
+```
+
+```
+npm install image-js
+```
+
+After this you can create a basic html page `index.html` with a `<canvas>` element:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>image-js demo app</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- canvas element -->
+    <canvas id="my_canvas" />
+  </body>
+</html>
+```
+
+In the `<body>` part of your code insert your `image-js` script. For instance, here the script turns image into grayscale:
+
+```html
+<script type="module">
+  import {(Image, writeCanvas)} from 'image-js';
+  const data = await fetch('https:://example.com/image.jpg');
+  const bufferedData = await data.arrayBuffer();
+  let image = decode(new DataView(bufferedData)); // image is ready for usage
+
+  image = image.grey();
+  console.log(Image);
+  const canvas = document.getElementById('my_canvas');
+  writeCanvas(image, canvas);
+</script>
+```
+
+:::caution
+Don't forget to specify the script type. If it is not set as module, the script will not work.
+:::
+
+Thus, in the end your html page should look like this:
 
 ```ts
-const data = await fetch('https:://example.com/image.jpg');
-const bufferedData = await data.arrayBuffer();
-const image = decode(new DataView(bufferedData)); // image is ready for usage
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>image-js demo app</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- canvas element -->
+    <canvas id="my_canvas" />
+    <script type="module">
+  import {Image, writeCanvas,decode} from 'image-js';
+  const data = await fetch('https:://example.com/image.jpg');
+  const bufferedData = await data.arrayBuffer();
+  let image = decode(new DataView(bufferedData)); // image is ready for usage
 
-image = image.grey();
-
-let canvas = document.getElementById('canvasID'); //puts image into body element of the page
-writeCanvas(image, canvas);
+  image = image.grey();
+  console.log(Image);
+  const canvas = document.getElementById('my_canvas');
+  writeCanvas(image, canvas);
+</script>
+  </body>
+</html>
 ```
 
 ### What's next?
