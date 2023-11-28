@@ -1,6 +1,10 @@
-_A region of interest (ROI) represents an area of contiguous pixels within the image._
+_A region of interest (ROI) represents an area of contiguous pixels within the dimensions of an image._
 
-ROIs are created from [masks](./Working%20with%20Masks.md 'internal link on working with mask') by identifying contiguous pixels of black or white pixels within it.
+There are currently two ways ROIs can be generated in ImageJS:
+
+- From [masks](./Working%20with%20Masks.md 'internal link on working with mask') by identifying contiguous black or white pixels within it.
+<!-- TODO: add links to the relevant sections once they exist -->
+- By identifying starting points of interest (for example by finding and filtering local extrema) and running the watershed algorithm on them.
 
 ROIs identify and characterize regions within images, which has wide applications in image analysis.
 
