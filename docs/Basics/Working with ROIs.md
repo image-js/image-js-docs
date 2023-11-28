@@ -32,6 +32,8 @@ Here is an example of how to extract ROIs from a real image.
 
 <!-- Include here an image 4 sub-images with captions: The original image, the mask, the original image with the ROIs painted in blue, the original image with the feret diameters painted over it. -->
 
+![output image](roiImages/outputImage.png)
+
 Each region of interest possesses many properties and characteristics (ROIs are highlighted in blue).
 There are more basic ones like surface and perimeter to know the size. There are also likes of Feret diameter**link** and convex hull**link** as more advanced techniques.
 
