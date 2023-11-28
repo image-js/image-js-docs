@@ -1,25 +1,19 @@
-One of the reasons why we need a [mask](./Working%20with%20Masks.md 'internal link on working with mask') is to identify its regions of interest.
-In the context of image processing or computer vision, a region of interest is an area or subregion within an image that is identified for closer examination or specific operations. ROIs are often chosen because they contain relevant information or features of interest.
+_A region of interest (ROI) represents an area of contiguous pixels within the image._
 
-To access regions of interest you need to get a `roiMapManager` object.
+ROIs are created from [masks](./Working%20with%20Masks.md 'internal link on working with mask') by identifying contiguous pixels of black or white pixels within it.
+
+ROIs identify and characterize regions within images, which has wide applications in image analysis.
 
 ```ts
 import { fromMask } from 'image-js';
 
-const roiManager = fromMask(mask); // It is a function that returns ROIs from mask.
+// Get the list of ROIs representing the white regions of the mask
+const rois = fromMask(mask).getRois();
 ```
 
-It is literally a map of all the regions of interest situated on an image.
+In general you don't need to worry about the intermediate object returned by `fromMask`. You will mostly be working with the list of ROIs returned by `getRois()`. It contains all the useful properties which characterize the regions of interest, such as surface, perimeter, centroid etc.
 
-From there all you need to do is use `getRois()` method and you get an array of all the regions of interest ready for analysis.
-
-```ts
-const rois = roiManager.getRois();
-```
-
-![output image](roiImages/outputImage.png)
-
-:::caution
+:::tip
 In the options parameter,`getRois()` has a `kind` option which tells what kind of regions to return.
 
 | `kind` option | What it does               |
@@ -30,9 +24,13 @@ In the options parameter,`getRois()` has a `kind` option which tells what kind o
 
 :::
 
-:::info
-If there is a particular region of interest that needs to be analyzed, there is `getRoiById(<ROI id>)` method.
-:::
+<!-- Add  a comment about what the image is -->
+
+Here is an example of how to extract ROIs from a real image.
+
+<!-- Here goes a your source code along with annotations about the generated intermediate images (don't put the code that creates the painted images) -->
+
+<!-- Include here an image 4 sub-images with captions: The original image, the mask, the original image with the ROIs painted in blue, the original image with the feret diameters painted over it. -->
 
 Each region of interest possesses many properties and characteristics (ROIs are highlighted in blue).
 There are more basic ones like surface and perimeter to know the size. There are also likes of Feret diameter**link** and convex hull**link** as more advanced techniques.
