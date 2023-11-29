@@ -15,7 +15,7 @@ import { fromMask } from 'image-js';
 const rois = fromMask(mask).getRois();
 ```
 
-In general you don't need to worry about the intermediate object returned by `fromMask`. You will mostly be working with the list of ROIs returned by `getRois()`. It contains all the useful properties which characterize the regions of interest, such as surface, perimeter, centroid etc.
+In general you don't need to worry about the intermediate object returned by `fromMask()`. You will mostly be working with the list of ROIs returned by `getRois()`. It contains all the useful properties which characterize the regions of interest, such as surface, perimeter, centroid etc.
 
 :::tip
 In the options parameter,`getRois()` has a `kind` option which tells what kind of regions to return.
@@ -28,18 +28,36 @@ In the options parameter,`getRois()` has a `kind` option which tells what kind o
 
 :::
 
-<!-- Add  a comment about what the image is -->
-
+ImageJS not only works with simple processing but it also specializes in advanced analysis of ROIs in scientific images.  
 Here is an example of how to extract ROIs from a real image.
 
-<!-- Here goes a your source code along with annotations about the generated intermediate images (don't put the code that creates the painted images) -->
+```ts
+import { Image, fromMask } from 'image-js';
 
-<!-- Include here an image 4 sub-images with captions: The original image, the mask, the original image with the ROIs painted in blue, the original image with the feret diameters painted over it. -->
+//image gets grayscaled and blurred for mask extraction(image 1)
+const image = sourceImage.grey().blur({ width: 5, height: 5 });
+//mask gets extracted(image 2)
+const mask = image.threshold();
+//receives all the regions of interest(colored on image 3)
+const roiMap = fromMask(mask);
+const rois = roiMap.getRois({ kind: 'black' });
 
-![output image](roiImages/outputImage.png)
+for (const roi of rois) {
+  //gets Feret diameters for each ROI(colored on image 4)
+  const feret = roi.feret;
+}
+```
+
+| **Image 1: input image**                               | **Image 2: image mask**                                     |
+| ------------------------------------------------------ | ----------------------------------------------------------- |
+| !['input image'](./roiImages/inputImage.png)           | !['mask from image '](./roiImages/outputMask.png)           |
+| **Image 3: image with colored regions of interest**    | **Image 4: image with colored Feret diameters**             |
+| ![image with colored roi](./roiImages/outputImage.png) | !['image with colored feret '](./roiImages/outputFeret.png) |
 
 Each region of interest possesses many properties and characteristics (ROIs are highlighted in blue).
-There are more basic ones like surface and perimeter to know the size. There are also likes of Feret diameter**link** and convex hull**link** as more advanced techniques.
+There are more basic ones like surface and perimeter to know the size. There are also likes of Feret diameter and convex hull as more advanced techniques.
+
+![output image](roiImages/outputImage.png)
 
 If you need further insight on ROIs level of elongation and shape you can use Feret diameter.
 You can use `roi.feret` to get the Feret diameters of region of interest. In our current example, Feret diameters are represented as two green segments.
@@ -47,8 +65,8 @@ You can use `roi.feret` to get the Feret diameters of region of interest. In our
 ![feret image](roiImages/outputFeret.png)
 
 If you need to localize ROI and have an approximate understanding of its size or placement.
-You can use `roi.mbr` to get the Minimum Bounding Rectangle(MBR)**link** of region of interest. In our current example, MBRs are represented on each region as a red rectangle.
+You can use `roi.mbr` to get the Minimum Bounding Rectangle(MBR) of region of interest. In our current example, MBRs are represented on each region as a red rectangle.
 
 ![mbr image](roiImages/outputMbr.png)
 
-Properties shown here only represent a part of what ImageJS analysis is capable of. To learn more about our analysis tools you can visit Analysis section**link**.
+Properties shown here only represent a part of what ImageJS analysis is capable of. To learn more about our analysis tools you can visit Analysis section.
