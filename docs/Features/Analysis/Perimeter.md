@@ -4,16 +4,16 @@ In ImageJS each pixel's perimeter gets calculated depending on the number of sid
 This means:
 
 We count all the pixel sides that are outside the ROI (each side counts as 1).  
-If a pixel has 1 external side, this pixel's perimeter is equal to 1.
+If a pixel has 1 external side, this pixel's perimeter is equal to **1**.
 
-If a pixel has 2 external sides, we remove from the sum (2 - √2) = ~0.59.  
-Thus this pixel's perimeter is equal to 2 - 0.59 = ~1.41.
+If a pixel has 2 external sides, we remove from the sum **(2 - √2) = ~0.59**.  
+Thus this **pixel's perimeter is equal to 2 - 0.59 = ~1.41**.
 
-If a pixel has 3 external sides, we remove from the sum 2 \* (2 - √2) = ~1.17.  
-So this pixel's perimeter is equal to 3 - 1.17 = ~1.83.
+If a pixel has 3 external sides, we remove from the sum **2 \* (2 - √2) = ~1.17**.  
+So this **pixel's perimeter is equal to 3 - 1.17 = ~1.83**.
 
-In ImageJS Perimeter is a ROI getter that returns a perimeter in pixels:
+In ImageJS Perimeter is a ROI accessor that returns a perimeter in pixels:
 
 ```ts
-let perimeter = roi.perimeter;
+const perimeter = roi.perimeter;
 ```

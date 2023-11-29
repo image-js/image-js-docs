@@ -6,7 +6,7 @@ $$
 EQPC = 2\sqrt{\frac{Surface}{\pi}}
 $$
 
-In ImageJS EQPC is a ROI class method that returns a diameter in pixels:
+In ImageJS EQPC is a ROI class accessor that returns a diameter in pixels:
 
 ```ts
 let eqpcResult = roi.eqpc;

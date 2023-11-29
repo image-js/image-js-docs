@@ -1,10 +1,10 @@
 import { Image, fromMask } from 'image-js';
 
 export default function feret(image: Image) {
-  let greyImage = image.blur({ width: 3, height: 3 }).grey();
-  let mask = greyImage.threshold();
-  let mapManager = fromMask(mask);
-  let rois = mapManager.getRois();
+  const greyImage = image.blur({ width: 3, height: 3 }).grey();
+  const mask = greyImage.threshold();
+  const mapManager = fromMask(mask);
+  const rois = mapManager.getRois();
   for (let roi of rois) {
     let feret = roi.feret;
     image = image.drawLine(

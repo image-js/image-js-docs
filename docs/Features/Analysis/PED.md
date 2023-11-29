@@ -7,8 +7,8 @@ $$
 PED = \frac{Perimeter}{\pi};
 $$
 
-In ImageJS PED is a ROI class method that returns a diameter in pixels:
+In ImageJS PED is a ROI class accessor that returns a diameter in pixels:
 
 ```ts
-let pedResult = roi.ped;
+const pedResult = roi.ped;
 ```

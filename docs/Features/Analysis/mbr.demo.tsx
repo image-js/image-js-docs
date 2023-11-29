@@ -1,9 +1,9 @@
 import { Image, fromMask } from 'image-js';
 
 export default function feret(image: Image) {
-  let mask = image.grey().threshold();
-  let mapManager = fromMask(mask);
-  let rois = mapManager.getRois();
+  const mask = image.grey().threshold();
+  const mapManager = fromMask(mask);
+  const rois = mapManager.getRois();
   for (let roi of rois) {
     let roiMask = roi.getMask();
 
