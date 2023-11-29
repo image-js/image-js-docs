@@ -28,7 +28,7 @@ In the options parameter,`getRois()` has a `kind` option which tells what kind o
 
 :::
 
-ImageJS not only works with simple processing but it also specializes in advanced analysis of ROIs in scientific images.  
+ImageJS not only works with simple processing but it also specializes in advanced analysis of ROIs on scientific images.  
 Here is an example of how to extract ROIs from a real image.
 
 ```ts
@@ -51,7 +51,7 @@ for (const roi of rois) {
 | **Image 1: input image**                               | **Image 2: image mask**                                     |
 | ------------------------------------------------------ | ----------------------------------------------------------- |
 | !['input image'](./roiImages/inputImage.png)           | !['mask from image '](./roiImages/outputMask.png)           |
-| **Image 3: image with colored regions of interest**    | **Image 4: image with colored Feret diameters**             |
+| **Image 3: image with regions of interest**            | **Image 4: image with Feret diameters**                     |
 | ![image with colored roi](./roiImages/outputImage.png) | !['image with colored feret '](./roiImages/outputFeret.png) |
 
 Each region of interest possesses many properties and characteristics (ROIs are highlighted in blue).
