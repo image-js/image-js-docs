@@ -1,3 +1,5 @@
+_Measure of the compactness of a region or object, calculated as the ratio of its area to the area of its convex hull, providing insights into the shape irregularity and concavity of the structure._
+
 The solidity describes the extent to which a shape is convex or concave.
 It is calculated through this formula.
 
