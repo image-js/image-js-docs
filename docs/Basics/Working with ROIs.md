@@ -27,9 +27,11 @@ In the options parameter,`getRois()` has a `kind` option which tells what kind o
 | `'white'`     | returns only white regions |
 
 :::
-
+Let's take a look at a real life example.  
 ImageJS not only works with simple processing but it also specializes in advanced analysis of ROIs on scientific images.  
-Here is an example of how to extract ROIs from a real image.
+Here you have an image of cells under electron microscopy magnified at 1px = 0.2727 nm.
+
+![input image](./roiImages/inputImage.png)
 
 ```ts
 import { Image, fromMask } from 'image-js';
@@ -48,25 +50,15 @@ for (const roi of rois) {
 }
 ```
 
-| **Image 1: input image**                               | **Image 2: image mask**                                     |
-| ------------------------------------------------------ | ----------------------------------------------------------- |
-| !['input image'](./roiImages/inputImage.png)           | !['mask from image '](./roiImages/outputMask.png)           |
-| **Image 3: image with regions of interest**            | **Image 4: image with Feret diameters**                     |
-| ![image with colored roi](./roiImages/outputImage.png) | !['image with colored feret '](./roiImages/outputFeret.png) |
-
-Each region of interest possesses many properties and characteristics (ROIs are highlighted in blue).
+Each region of interest possesses many properties and characteristics (ROIs are highlighted in blue on Image 3).
 There are more basic ones like surface and perimeter to know the size. There are also likes of Feret diameter and convex hull as more advanced techniques.
 
-![output image](roiImages/outputImage.png)
+![combination of images](./roiImages/comboImage.png)
 
 If you need further insight on ROIs level of elongation and shape you can use Feret diameter.
-You can use `roi.feret` to get the Feret diameters of region of interest. In our current example, Feret diameters are represented as two green segments.
-
-![feret image](roiImages/outputFeret.png)
+You can use `roi.feret` to get the Feret diameters of region of interest. In our current example, Feret diameters are represented as two green segments(Image 4).
 
 If you need to localize ROI and have an approximate understanding of its size or placement.
 You can use `roi.mbr` to get the Minimum Bounding Rectangle(MBR) of region of interest. In our current example, MBRs are represented on each region as a red rectangle.
-
-![mbr image](roiImages/outputMbr.png)
 
 Properties shown here only represent a part of what ImageJS analysis is capable of. To learn more about our analysis tools you can visit Analysis section.
