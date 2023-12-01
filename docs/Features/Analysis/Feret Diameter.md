@@ -4,24 +4,22 @@ sidebar_position: 10
 
 _The longest distances between any two points along the boundary of a region in an image._
 
-[Feret diameter](https://en.wikipedia.org/wiki/Feret_diameter 'wikipedia link on feret diameter') is an element of analysis that is determined by measuring the distance between two parallel tangents that touch the boundary of the object or region of interest.
-This measurement is commonly employed in fields such as biology, materials science, and computer vision for the analysis of shapes and structures in images.
+[Feret diameter](https://en.wikipedia.org/wiki/Feret_diameter 'wikipedia link on feret diameter') is an element of analysis that is determined by measuring the minimum and the maximum distance between two parallel tangents that touch the boundary of the object or region of interest.
+This measurement is commonly employed for the analysis of shapes and structures in images.
 
 :::tip
 Feret diameter can be defined by the same lines as if the object was measured by [caliper](https://en.wikipedia.org/wiki/Calipers 'wikipedia link on caliper'). Therefore its other name, caliper diameter.
 :::
 
-![Feret output](./img/inputOutputFeret.png)
+![Feret output](./img/FeretDiameter.png)
 
 In ImageJS Feret diameter is a ROI class accessor that returns a Feret object:
 
-It includes:
-
-- minimum diameter
-
-- maximum diameter
-
-- aspect ratio of two diameters
+| Property name | Description                    | Property type   |
+| ------------- | ------------------------------ | --------------- |
+| `minDiameter` | minimum diameter               | `FeretDiameter` |
+| `maxDiameter` | maximum diameter               | `FeretDiameter` |
+| `aspectRatio` | ratio between diameter lengths | `number`        |
 
 ```ts
 const feret = roi.feret;

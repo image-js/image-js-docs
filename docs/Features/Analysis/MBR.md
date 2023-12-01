@@ -13,21 +13,15 @@ MBR is relevant for such things as extracting features, detecting collisions or 
 
 In ImageJS minimum bounding rectangle is a ROI class accessor that returns a `Mbr` object.
 
-It includes:
-
-- points that form minimum bounding rectangle
-
-- MBR's perimeter
-
-- MBR's surface
-
-- MBR's height
-
-- MBR's width
-
-- MBR's tilt angle
-
-- aspect ratio between width and height
+| Property name | Description                          | Property type |
+| ------------- | ------------------------------------ | ------------- |
+| `points`      | points that form MBR                 | `Point[]`     |
+| `perimeter`   | MBR's perimeter                      | `number`      |
+| `surface`     | MBR's surface                        | `number`      |
+| `height`      | MBR's height                         | `number`      |
+| `width`       | MBR's width                          | `number`      |
+| `angle`       | MBR's angle                          | `number`      |
+| `aspectRatio` | ratio between MBR's width and height | `number`      |
 
 ```ts
 const mbr = roi.mbr;

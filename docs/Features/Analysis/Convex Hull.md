@@ -14,13 +14,11 @@ To understand what convex hull is, picture a rubber band wrapped around your obj
 
 In ImageJS convex hull is a ROI class accessor that returns a `ConvexHull` object.
 
-It includes:
-
-- points
-
-- convex hull's surface
-
-- convex hull's perimeter
+| Property name | Description                  | Property type |
+| ------------- | ---------------------------- | ------------- |
+| `points`      | points that form convex hull | `Point[]`     |
+| `surface`     | convex hull's surface        | `number`      |
+| `perimeter`   | convex hull's perimeter      | `number`      |
 
 ```ts
 const convexHull = roi.convexHull;
