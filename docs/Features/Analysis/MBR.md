@@ -1,4 +1,6 @@
-import MbrDemo from './mbr.demo.tsx'
+---
+sidebar_position: 20
+---
 
 _Smallest axis-aligned rectangle that fully encloses a region of interest, providing a bounding box with minimal area._
 

@@ -1,3 +1,7 @@
+---
+sidebar_position: 40
+---
+
 _Total length of the object's outer borders._
 
 Although perimeter might seem like a straight-forward sum of border pixels this is not the case.

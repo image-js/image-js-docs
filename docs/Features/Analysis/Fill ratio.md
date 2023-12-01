@@ -1,3 +1,7 @@
+---
+sidebar_position: 80
+---
+
 _Ratio of the actual filled space to the total available space._
 
 Fill ratio represents how much of regions surface is filled with holes. Basically it helps understanding the relation between actual ROI shape and its hypothetical shape if the  

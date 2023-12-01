@@ -43,18 +43,6 @@ export const defaultImages: UrlOption[] = [
     label: 'House',
     imageType: 'image',
   },
-  {
-    type: 'url',
-    value: `http://localhost:3000/img/roiTestingImage.png`,
-    label: 'Greys',
-    imageType: 'image',
-  },
-  {
-    type: 'url',
-    value: `http://localhost:3000/img/cellsDiv.jpg`,
-    label: 'Cells',
-    imageType: 'image',
-  },
 ];
 
 export const defaultMasks: UrlOption[] = [

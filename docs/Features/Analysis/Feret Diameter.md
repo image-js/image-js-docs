@@ -1,8 +1,10 @@
-import FeretDemo from './feret.demo.tsx'
+---
+sidebar_position: 10
+---
 
 _The longest distances between any two points along the boundary of a region in an image._
 
-[Feret diameter](https://en.wikipedia.org/wiki/Feret_diameter 'wikipedia link on feret diameter') is an element of analysis that is determined by measuring the distance between two parallel tangents that are perpendicular to each other and touch the boundary of the object or region of interest.
+[Feret diameter](https://en.wikipedia.org/wiki/Feret_diameter 'wikipedia link on feret diameter') is an element of analysis that is determined by measuring the distance between two parallel tangents that touch the boundary of the object or region of interest.
 This measurement is commonly employed in fields such as biology, materials science, and computer vision for the analysis of shapes and structures in images.
 
 :::tip
