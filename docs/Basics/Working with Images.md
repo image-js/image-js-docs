@@ -1,5 +1,7 @@
 import ImageDemo from './image.demo.tsx'
 
+<!-- TODO add analysis section once it is merged -->
+
 ### What is an Image?
 
 In the context of digital technology and computing, images are represented as a grid of pixels, with each pixel containing information about color and intensity.
@@ -35,7 +37,7 @@ In ImageJS main properties of an image are:
 
 - [Metadata](../Glossary.md#metadata 'internal link on metadata'): data about data.
 
-The latter ones matter most in features that involve two images, like [Hypotenuse method](../Features/Comparison/Hypotenuse.md 'internal link on hypotenuse') or [Subtraction method](../Features/Comparison/Subtraction.md 'internal link on subtraction method'). It simply will not work if images are not compatible by bit depth, color model or size.
+The latter ones matter most in features that involve two images, like [hypotenuse method](../Features/Comparison/Hypotenuse.md 'internal link on hypotenuse') or [subtraction method](../Features/Comparison/Subtraction.md 'internal link on subtraction method'). It simply will not work if images are not compatible by bit depth, color model or size.
 
 ### Features
 

@@ -28,10 +28,11 @@ In the options parameter,`getRois()` has a `kind` option which tells what kind o
 
 :::
 Let's take a look at a real life example.  
-ImageJS not only works with simple processing but it also specializes in advanced analysis of ROIs on scientific images.  
-Here you have an image of cells under electron microscopy magnified at 1px = 0.2727 nm.
+Here you have an image of cells under electron microscopy magnified where 1px = 0.2727 nm. Let's say we want to get the data about all the cells presented on the image and calculate their Feret diameters.
 
 ![input image](./roiImages/inputImage.png)
+
+It can be done with with following code:
 
 ```ts
 import { Image, fromMask } from 'image-js';
@@ -51,12 +52,12 @@ for (const roi of rois) {
 ```
 
 Each region of interest possesses many properties and characteristics (ROIs are highlighted in blue on Image 3).
-There are more basic ones like surface and perimeter to know the size. There are also likes of Feret diameter and convex hull as more advanced techniques.
+Feret diameter is a rather advanced property, but there are also more general and basic ones, like surface or perimeter.
 
 ![combination of images](./roiImages/comboImage.png)
 
-If you need further insight on ROIs level of elongation and shape you can use Feret diameter.
-You can use `roi.feret` to get the Feret diameters of region of interest. In our current example, Feret diameters are represented as two green segments(Image 4).
+If you need a further insight on ROIs level of elongation and shape, however, you can use Feret diameter by calling it with `roi.feret`.
+In our current example, they are represented as two green segments(Image 4).
 
 If you need to localize ROI and have an approximate understanding of its size or placement.
 You can use `roi.mbr` to get the Minimum Bounding Rectangle(MBR) of region of interest. In our current example, MBRs are represented on each region as a red rectangle.
