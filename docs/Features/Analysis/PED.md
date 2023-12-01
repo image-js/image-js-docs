@@ -7,6 +7,8 @@ _Diameter of the circle that results in a circumference equal to the sum of the 
 PED represents a diameter of a circle that has the same perimeter as the particle image.
 Similarly to [EQPC](./EQPC.md 'internal link on eqpc') it is used to evaluate particles' sizes albeit from its perimeter and not surface.
 
+![roi image](./img/roi.svg)
+
 The formula is simple:
 
 $$
