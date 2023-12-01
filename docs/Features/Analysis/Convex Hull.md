@@ -8,7 +8,7 @@ _Smallest convex polygon or polyhedron that contains region of interest._
 To understand what convex hull is, picture a rubber band wrapped around your object. The shape of this rubber band will be the shape of your Convex Hull.
 :::
 
-In ImageJS ConvexHull is a ROI class accessor that returns a `ConvexHull` object.
+In ImageJS convex hull is a ROI class accessor that returns a `ConvexHull` object.
 
 It includes:
 

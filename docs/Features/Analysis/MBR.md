@@ -9,6 +9,8 @@ The rectangle is aligned with the coordinate axes (horizontal and vertical), mak
 
 MBR is relevant for such things as extracting features, detecting collisions or simply localizing objects.
 
+In ImageJS minimum bounding rectangle is a ROI class accessor that returns a `Mbr` object.
+
 It includes:
 
 - points that form minimum bounding rectangle
