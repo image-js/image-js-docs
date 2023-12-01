@@ -48,9 +48,9 @@ Each diameter in itself is also an object which has its own properties:
 
 Here's how Feret diameter is calculated in ImageJS:
 
-_Finding convex hull points_: the fact that searched points belong to convex hull significantly facilitate Feret's diameter's search. Here, a preexisting convex hull method is implemented.(see [convex hull page](./Convex%20Hull.md 'internal link on convex hull') for more information).
+_Finding convex hull points_: an algorithm is based on the fact that one of the lines is aligned with one of the convex hull sides. This significantly facilitates Feret's diameter's search. Here, a preexisting convex hull method is implemented.(see [convex hull page](./Convex%20Hull.md 'internal link on convex hull') for more information).
 
-_Rotating an object_: an object gets rotated parallel to the X-axis. It allows finding tilt angles of the diameters. After all the data is found, it just gets rotated back by the same angle to get actual result.
+_Rotating an object_: , thus an object gets rotated parallel to the X-axis. It allows finding tilt angles of the diameters. It also simplifies search for points. After all the data is found, it just gets rotated back by the same angle to get actual result.
 
 _Calculating maximum distance between points_: the algorithm iterates through each point and looks for the biggest distance between other points of convex hull. For the minimum diameter it also compares it with the previous maximum value and if it is smaller, it becomes new current minimum diameter.
 For maximum diameter it just calculates the maximum distance between points of convex hull.

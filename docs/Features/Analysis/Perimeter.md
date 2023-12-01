@@ -14,6 +14,8 @@ Thus this **pixel's perimeter is equal to 2 - 0.59 = ~1.41**.
 If a pixel has 3 external sides, we remove from the sum **2 \* (2 - √2) = ~1.17**.  
 So this **pixel's perimeter is equal to 3 - 1.17 = ~1.83**.
 
+Perimeter is basic tool that provides insight to region's size and length.
+
 In ImageJS Perimeter is a ROI accessor that returns a perimeter in pixels:
 
 ```ts

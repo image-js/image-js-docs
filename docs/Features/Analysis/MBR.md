@@ -41,4 +41,10 @@ const mbr = mask.getMbr();
 
 Here's how Minimum Bounding Rectangle is calculated in ImageJS:
 
+_Finding convex hull_:an algorithm is based on the fact that one of the MBR sides is aligned with one of the convex hull sides.
+
+_Rotating an object_: an object gets rotated parallel to the X-axis. It allows finding tilt angles of the diameters. It also facilitates calculation of the points. After all the data is found, it just gets rotated back by the same angle to get actual result.
+
+_Finding extremities_: since the object is rotated, it means that vertical lines will be perpendicular to the hull side in question. Therefore, for each side, algorithm finds extremities which in turn calculate into points, width and surface.
+
 </details>
