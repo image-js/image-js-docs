@@ -60,7 +60,4 @@ Feret diameter is a rather advanced property, but there are also more general an
 If you need a further insight on ROIs level of elongation and shape, however, you can use Feret diameter by calling it with `roi.feret`.
 In our current example, they are represented as two green segments(Image 4).
 
-If you need to localize ROI and have an approximate understanding of its size or placement.
-You can use `roi.mbr` to get the Minimum Bounding Rectangle(MBR) of region of interest. In our current example, MBRs are represented on each region as a red rectangle.
-
 Properties shown here only represent a part of what ImageJS analysis is capable of. To learn more about our analysis tools you can visit Analysis section.
