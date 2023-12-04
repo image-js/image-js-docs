@@ -28,7 +28,7 @@ In the options parameter,`getRois()` has a `kind` option which tells what kind o
 
 :::
 Let's take a look at a real life example.  
-Here you have an image of cells under electron microscopy magnified where 1px = 0.2727 nm. Let's say we want to get the data about all the cells presented on the image and calculate their Feret diameters.
+Here you have an image of particles under electron microscopy magnified where 1px = 0.2727 nm. Let's say we want to get the data about all the regions presented on the image and calculate their Feret diameters.
 
 ![input image](./roiImages/inputImage.png)
 
@@ -37,16 +37,17 @@ It can be done with with following code:
 ```ts
 import { Image, fromMask } from 'image-js';
 
-//image gets grayscaled and blurred for mask extraction(image 1)
+//Convert image to grayscale, then apply a blur on it. This will smooth out the noise and avoid creating many small ROIs in the next steps(image 1).
 const image = sourceImage.grey().blur({ width: 5, height: 5 });
-//mask gets extracted(image 2)
+//Use threshold to convert the grayscale image to a Mask. The default threshold algorithm is Otsu which  will automatically determine the threshold between black and white pixels by minimizing intra-class intensity variance(image 2).
 const mask = image.threshold();
-//receives all the regions of interest(colored on image 3)
+
+//Receive all the regions of interest from mask(colored on image 3).
 const roiMap = fromMask(mask);
 const rois = roiMap.getRois({ kind: 'black' });
 
 for (const roi of rois) {
-  //gets Feret diameters for each ROI(colored on image 4)
+  //Get Feret diameters for each ROI(colored on image 4)
   const feret = roi.feret;
 }
 ```
