@@ -15,11 +15,11 @@ Feret diameter can be defined by the same lines as if the object was measured by
 
 In ImageJS Feret diameter is a ROI class accessor that returns a Feret object:
 
-| Property name | Description                    | Property type   |
-| ------------- | ------------------------------ | --------------- |
-| `minDiameter` | minimum diameter               | `FeretDiameter` |
-| `maxDiameter` | maximum diameter               | `FeretDiameter` |
-| `aspectRatio` | ratio between diameter lengths | `number`        |
+| Property name                                                                                     | Description                    | Property type   |
+| ------------------------------------------------------------------------------------------------- | ------------------------------ | --------------- |
+| [`minDiameter`](https://image-js.github.io/image-js-typescript/interfaces/Feret.html#minDiameter) | minimum diameter               | `FeretDiameter` |
+| [`maxDiameter`](https://image-js.github.io/image-js-typescript/interfaces/Feret.html#maxDiameter) | maximum diameter               | `FeretDiameter` |
+| [`aspectRatio`](https://image-js.github.io/image-js-typescript/interfaces/Feret.html#aspectRatio) | ratio between diameter lengths | `number`        |
 
 ```ts
 const feret = roi.feret;
@@ -34,13 +34,12 @@ const feret = mask.getFeret();
 :::info
 Each diameter in itself is also an object which has its own properties:
 
-- points that form the diameter
-
-- angle
-
-- length
-
-- calliper lines - its the lines that represent the calliper that enfolds an object.
+| Property name                                                                                                 | Description                                                  | Property type                      |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------- |
+| [`angle`](https://image-js.github.io/image-js-typescript/interfaces/FeretDiameter.html#angle)                 | Angle between the diameter and a horizontal line in degrees. | `number`                           |
+| [`calliperLines`](https://image-js.github.io/image-js-typescript/interfaces/FeretDiameter.html#calliperLines) | Calliper lines that pass by endpoints of Feret diameters.    | `[[Point, Point], [Point, Point]]` |
+| [`length`](https://image-js.github.io/image-js-typescript/interfaces/FeretDiameter.html#length)               | length of the diameter                                       | `number`                           |
+| [`points`](https://image-js.github.io/image-js-typescript/interfaces/FeretDiameter.html#length)               | start and end points of the diameter                         | `[Point, Point]`                   |
 
 :::
 

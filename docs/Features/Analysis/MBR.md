@@ -13,15 +13,15 @@ MBR is relevant for such things as extracting features, detecting collisions or 
 
 In ImageJS minimum bounding rectangle is a ROI class accessor that returns a `Mbr` object.
 
-| Property name | Description                          | Property type |
-| ------------- | ------------------------------------ | ------------- |
-| `points`      | points that form MBR                 | `Point[]`     |
-| `perimeter`   | MBR's perimeter                      | `number`      |
-| `surface`     | MBR's surface                        | `number`      |
-| `height`      | MBR's height                         | `number`      |
-| `width`       | MBR's width                          | `number`      |
-| `angle`       | MBR's angle                          | `number`      |
-| `aspectRatio` | ratio between MBR's width and height | `number`      |
+| Property name                                                                                   | Description                          | Property type |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------ | ------------- |
+| [`points`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#points)           | points that form MBR                 | `Point[]`     |
+| [`perimeter`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#perimeter)     | MBR's perimeter                      | `number`      |
+| [`surface`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#points)          | MBR's surface                        | `number`      |
+| [`height`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#height)           | MBR's height                         | `number`      |
+| [`width`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#width)             | MBR's width                          | `number`      |
+| [`angle`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#angle)             | MBR's angle                          | `number`      |
+| [`aspectRatio`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#aspectRatio) | ratio between MBR's width and height | `number`      |
 
 ```ts
 const mbr = roi.mbr;
