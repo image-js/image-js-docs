@@ -2,18 +2,18 @@
 sidebar_position: 10
 ---
 
-_The longest distances between any two points along the boundary of a region in an image._
+_The longest and shortest distances between two parallel lines that touch a region of interest._
 
-[Feret diameter](https://en.wikipedia.org/wiki/Feret_diameter 'wikipedia link on feret diameter') is an element of analysis that is determined by measuring the minimum and the maximum distance between two parallel tangents that touch the boundary of the object or region of interest.
+[Feret diameters](https://en.wikipedia.org/wiki/Feret_diameter 'wikipedia link on feret diameter') are determined by measuring the minimum and the maximum distances between two parallel tangents that touch the boundary of the region of interest.
 This measurement is commonly employed for the analysis of shapes and structures in images.
 
 :::tip
-Feret diameter can be defined by the same lines as if the object was measured by [caliper](https://en.wikipedia.org/wiki/Calipers 'wikipedia link on caliper'). Therefore its other name, caliper diameter.
+Feret diameters can be defined by the points as if the object was measured by [caliper](https://en.wikipedia.org/wiki/Calipers 'wikipedia link on caliper'). Therefore its other name, caliper diameter.
 :::
 
 ![Feret output](./img/feret.svg)
 
-In ImageJS Feret diameter is a ROI class accessor that returns a Feret object:
+In ImageJS Feret diameters are a ROI class accessor that return a Feret object:
 
 | Property name                                                                                     | Description                    | Property type   |
 | ------------------------------------------------------------------------------------------------- | ------------------------------ | --------------- |
@@ -25,7 +25,7 @@ In ImageJS Feret diameter is a ROI class accessor that returns a Feret object:
 const feret = roi.feret;
 ```
 
-It can also be a Mask method:
+It can also be a Mask method to calculate its feret's diameters:
 
 ```ts
 const feret = mask.getFeret();
@@ -39,13 +39,13 @@ Each diameter in itself is also an object which has its own properties:
 | [`angle`](https://image-js.github.io/image-js-typescript/interfaces/FeretDiameter.html#angle)                 | Angle between the diameter and a horizontal line in degrees. | `number`                           |
 | [`calliperLines`](https://image-js.github.io/image-js-typescript/interfaces/FeretDiameter.html#calliperLines) | Calliper lines that pass by endpoints of Feret diameters.    | `[[Point, Point], [Point, Point]]` |
 | [`length`](https://image-js.github.io/image-js-typescript/interfaces/FeretDiameter.html#length)               | length of the diameter                                       | `number`                           |
-| [`points`](https://image-js.github.io/image-js-typescript/interfaces/FeretDiameter.html#length)               | start and end points of the diameter                         | `[Point, Point]`                   |
+| [`points`](https://image-js.github.io/image-js-typescript/interfaces/FeretDiameter.html#points)               | start and end points of the diameter                         | `[Point, Point]`                   |
 
 :::
 
 <details><summary><b>Implementation</b></summary>
 
-Here's how Feret diameter is calculated in ImageJS:
+Here's how Feret diameter is implemented in ImageJS:
 
 _Finding convex hull points_: an algorithm is based on the fact that one of the lines is aligned with one of the convex hull sides. This significantly facilitates Feret's diameter's search. Here, a preexisting convex hull method is implemented.(see [convex hull page](./Convex%20Hull.md 'internal link on convex hull') for more information).
 

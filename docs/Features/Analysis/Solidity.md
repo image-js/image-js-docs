@@ -2,7 +2,7 @@
 sidebar_position: 90
 ---
 
-_Measure of the compactness of a region or object, calculated as the ratio of its area to the area of its convex hull._
+_Measure of the compactness of a region or object._
 
 The solidity describes the extent to which a shape is convex or concave.
 It is calculated through this formula.
@@ -11,7 +11,7 @@ $$
 Solidity = \frac{Surface}{ConvexHull.surface};
 $$
 
-Where $Surface$ is the surface of the ROI and $ConvexHull.surface$ is the surface of ROIs convex hull.
+Where $ConvexHull.surface$ is the surface of ROIs convex hull.
 
 It provides insights into the shape irregularity and concavity of the structure.  
 The solidity of a completely convex shape is 1, the farther it deviates from 1, the greater the extent of concavity in the shape of the ROI.

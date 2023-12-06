@@ -2,7 +2,7 @@
 sidebar_position: 60
 ---
 
-_Diameter of a circle that has the same area as the projection area of the particle._
+_Diameter of a circle that has the same area as the projection area of the region of interest._
 
 EQPC represents a circle of equal projection area. This means that it is a diameter of a circle that has the same area as an object of interest.
 It is widely used for the evaluation of particles sizes from the projection area A of a non-spherical particle.

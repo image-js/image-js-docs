@@ -2,10 +2,9 @@
 sidebar_position: 20
 ---
 
-_Smallest axis-aligned rectangle that fully encloses a region of interest, providing a bounding box with minimal area._
+_Smallest rectangle that fully encloses a region of interest, providing a bounding box with minimal area._
 
 Minimum Bounding Rectangle(MBR) is the smallest rectangle which can fit the region of interest in question.
-The rectangle is aligned with the coordinate axes (horizontal and vertical), making it simpler to compute and work with in many algorithms.
 
 ![MBR output](./img/mbr.svg)
 
@@ -17,7 +16,7 @@ In ImageJS minimum bounding rectangle is a ROI class accessor that returns a `Mb
 | ----------------------------------------------------------------------------------------------- | ------------------------------------ | ------------- |
 | [`points`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#points)           | points that form MBR                 | `Point[]`     |
 | [`perimeter`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#perimeter)     | MBR's perimeter                      | `number`      |
-| [`surface`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#points)          | MBR's surface                        | `number`      |
+| [`surface`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#surface)         | MBR's surface                        | `number`      |
 | [`height`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#height)           | MBR's height                         | `number`      |
 | [`width`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#width)             | MBR's width                          | `number`      |
 | [`angle`](https://image-js.github.io/image-js-typescript/interfaces/Mbr.html#angle)             | MBR's angle                          | `number`      |
@@ -27,7 +26,7 @@ In ImageJS minimum bounding rectangle is a ROI class accessor that returns a `Mb
 const mbr = roi.mbr;
 ```
 
-It can also be a Mask method:
+It can also be a Mask method to calculate its mbr:
 
 ```ts
 const mbr = mask.getMbr();

@@ -4,7 +4,7 @@ sidebar_position: 0
 
 _Smallest convex polygon or polyhedron that contains region of interest._
 
-[Convex Hull](https://en.wikipedia.org/wiki/Convex_hull 'wikipedia link on convex hull') is a way of characterizing the shape of an image by determining which pixels are adjacent to other pixels of the same intensity. This is a good way to find holes and convex features in an image.
+[Convex Hull](https://en.wikipedia.org/wiki/Convex_hull 'wikipedia link on convex hull') is a way of characterizing the shape of an image by determining which pixels are adjacent to other pixels of the same intensity. This is a good way to find convex features in an image.
 
 ![Image input](./img/convexHull.svg)
 
@@ -24,7 +24,7 @@ In ImageJS convex hull is a ROI class accessor that returns a `ConvexHull` objec
 const convexHull = roi.convexHull;
 ```
 
-It can also be a Mask method:
+It can also be a Mask method to calculate its convex hull:
 
 ```ts
 const convexHull = mask.getConvexHull();
