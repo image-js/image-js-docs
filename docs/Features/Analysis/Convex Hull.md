@@ -3,6 +3,8 @@ sidebar_position: 0
 ---
 
 _Smallest convex polygon or polyhedron that contains region of interest._
+[🎭 Mask options and parameters `getConvexHull` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#getConvexHull 'github.io link')
+[🔎 ROI options and parameters of `convexHull` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#convexHull 'github.io link')
 
 [Convex Hull](https://en.wikipedia.org/wiki/Convex_hull 'wikipedia link on convex hull') is a way of characterizing the shape of an image by determining which pixels are adjacent to other pixels of the same intensity. This is a good way to find convex features in an image.
 

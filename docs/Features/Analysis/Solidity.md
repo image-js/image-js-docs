@@ -4,6 +4,8 @@ sidebar_position: 90
 
 _Measure of the compactness of a region or object._
 
+[🔎 ROI options and parameters of `solidity` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#solidity 'github.io link')
+
 The solidity describes the extent to which a shape is convex or concave.
 It is calculated through this formula.
 

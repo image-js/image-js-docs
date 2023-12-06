@@ -4,6 +4,8 @@ sidebar_position: 40
 
 _Total length of the object's outer borders._
 
+[🔎 ROI options and parameters of `perimeter` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#perimeter 'github.io link')
+
 Although perimeter might seem like a straight-forward sum of border pixels this is not the case.
 In ImageJS each pixel's perimeter gets calculated depending on the number of sides that the pixel is exposed to externally.
 
