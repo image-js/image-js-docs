@@ -11,12 +11,12 @@ Fill ratio represents the ratio of how much of region's surface is filled with h
 The ratio is calculated in a simple manner:
 
 $$
-Fill ratio = \frac{Surface}{Surface + HolesInfo.surface}
+fill Ratio = \frac{Surface}{Surface + HolesInfo.surface}
 $$
 
 Where $$HolesInfo.surface$$ is the surface property of the method that specifically calculates the information about ROI's holes.
 
-In ImageJS PED is a ROI class accessor that returns a ratio:
+In ImageJS fill ratio is a ROI class accessor that returns a ratio:
 
 ```ts
 const fillRatio = roi.fillRatio;

@@ -4,7 +4,7 @@ sidebar_position: 20
 
 _Smallest rectangle that fully encloses a region of interest, providing a bounding box with minimal area._
 
-[🎭 Mask options and parameters of `getMbr` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#getMbr 'github.io link')
+[🎭 Mask options and parameters of `getMbr` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#getMbr 'github.io link')  
 [🔎 ROI options and parameters of `mbr` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#mbr 'github.io link')
 
 Minimum Bounding Rectangle(MBR) is the smallest rectangle which can fit the region of interest in question.

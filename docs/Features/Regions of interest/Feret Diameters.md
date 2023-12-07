@@ -4,7 +4,7 @@ sidebar_position: 10
 
 _The longest and shortest distances between two parallel lines that touch a region of interest._
 
-[🎭 Mask options and parameters of `getFeret` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#getFeret 'github.io link')
+[🎭 Mask options and parameters of `getFeret` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#getFeret 'github.io link')  
 [🔎 ROI options and parameters of `feret` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#feret 'github.io link')
 
 [Feret diameters](https://en.wikipedia.org/wiki/Feret_diameter 'wikipedia link on feret diameter') are determined by measuring the minimum and the maximum distances between two parallel tangents that touch the boundary of the region of interest.
@@ -52,7 +52,7 @@ Here's how Feret diameter is implemented in ImageJS:
 
 _Finding convex hull points_: an algorithm is based on the fact that one of the lines is aligned with one of the convex hull sides. This significantly facilitates Feret's diameter's search. Here, a preexisting convex hull method is implemented.(see [convex hull page](./Convex%20Hull.md 'internal link on convex hull') for more information).
 
-_Rotating an object_: , thus an object gets rotated parallel to the X-axis. It allows finding tilt angles of the diameters. It also simplifies search for points. After all the data is found, it just gets rotated back by the same angle to get actual result.
+_Rotating an object_: an object gets rotated parallel to the X-axis. It allows finding tilt angles of the diameters. It also simplifies search for points. After all the data is found, it just gets rotated back by the same angle to get actual result.
 
 _Calculating maximum distance between points_: the algorithm iterates through each point and looks for the biggest distance between other points of convex hull. For the minimum diameter it also compares it with the previous maximum value and if it is smaller, it becomes new current minimum diameter.
 For maximum diameter it just calculates the maximum distance between points of convex hull.
