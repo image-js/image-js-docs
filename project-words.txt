@@ -18,3 +18,7 @@ shanbhag
 thresholded
 RGBA
 bezier
+ROIs
+Feret
+canny
+grayscaled
