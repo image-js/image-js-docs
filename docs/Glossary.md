@@ -14,6 +14,10 @@ sidebar_position: 100
 
 [A channel](<https://en.wikipedia.org/wiki/Channel_(digital_image)> 'wikipedia link on color channel') refers to one of the separate grayscale or color components that together make up the complete image. Channels are a fundamental concept in image processing and manipulation, especially in color images, where each channel represents a primary color or a specific property of the pixel.The most common color spaces used in images are RGB (Red, Green, Blue) and CMYK (Cyan, Magenta, Yellow, Black).
 
+### Color model
+
+[A color model](https://en.wikipedia.org/wiki/Color_model#Additive_and_subtractive_color_models 'wikipedia link on color model') also known as a color space or color system, is a way to represent and describe colors in a systematic and mathematical manner. These models are essential in various fields, including computer graphics, imaging, design, and color reproduction. Different color models serve different purposes and are used for specific applications. Some of the most commonly used color models include RGB(Red Green Blue) and CMYK(Cyan Magenta Hue Key).
+
 ### Component
 
 A component typically refers to a distinct and identifiable part or element within an image. In ImageJS, however, component represents the number of color [channels](#channel 'anchor on channel') in the image, excluding [the alpha channel](#alpha-channel 'anchor to alpha-channel').
@@ -29,6 +33,10 @@ Hysteresis thresholding is a technique used in image processing, particularly in
 The function takes two binary images that have been thresholded at different levels. The higher threshold has a smaller population of white pixels. The values in the higher threshold are
 more likely to be real edges. In hysteresis, if a value in the larger population is connected to a point in the smaller population, we can assume it is a real edge and add it to
 hysteresis image.
+
+### Image format
+
+[Image format](https://en.wikipedia.org/wiki/Image_file_format 'wikipedia link on image format') also known as a file format, is a standardized way of encoding and storing digital images. Image formats define how image data is organized, compressed, and represented in a computer file. Different image formats are designed for specific purposes and offer various features, including compression, quality, and support for different types of content.
 
 ### Image noise
 
@@ -55,6 +63,10 @@ A [Kernel](<https://en.wikipedia.org/wiki/Kernel_(image_processing)> 'wikipedia 
 ### Mask(class)
 
 Mask in imageJS is a special class of 1-bit depth,single channel images that represents binary data from the image, which means that it is a grid divided on black and white elements. It is usually used to find [regions of interest](#roiregion-of-interest 'anchor on ROI') and/or [their maps](#roi-map 'anchor on RoiMap').It can also be applied to an image in various ways like filtering, edge detection, image fusion etc.
+
+### Metadata
+
+[Metadata](https://en.wikipedia.org/wiki/Metadata 'wikipedia link on metadata') refers to data that provides information about other data. In a broad sense, it is "data about data." Metadata can describe various aspects of information, such as its origin, format, structure, and context. This information is typically used to facilitate the organization, management, and retrieval of data.
 
 ### Morphology
 
