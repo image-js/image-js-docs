@@ -41,7 +41,7 @@ async function demoLoaderPlugin() {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Image-JS',
+  title: 'ImageJS',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
@@ -110,15 +110,15 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'ImageJS',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'ImageJS',
           src: 'img/logo.svg',
         },
         items: [
           {
             type: 'doc',
-            docId: 'getting-started',
+            docId: 'Getting started',
             position: 'left',
             label: 'Docs',
           },
@@ -137,7 +137,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/getting-started',
+                to: '/docs/Getting started',
               },
             ],
           },

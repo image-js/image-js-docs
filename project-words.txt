@@ -20,5 +20,8 @@ RGBA
 bezier
 EQPC
 Feret
-ROIs
 ROI's
+ROIs
+Feret
+canny
+grayscaled
