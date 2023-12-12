@@ -164,7 +164,7 @@ But even with this `getExtrema` can only give us a smaller number of local extre
 
 ![Different algorithms and extrema](./images/watershed/extremaAlgos.png)
 
-This is where another function can be used: `removeClosePoints`. With `distance` option this function can weed out local minima If there are too many extreme points in one spot, `removeClosePoints` removes the indicated number of points. With some tampering of those two options you should get the correct number of minima.
+This is where another function can be used: `removeClosePoints`. With `distance` option this function can weed out local minima so that only those with the minimum distance equal or bigger than the one set in the parameter are left. With some tampering of those two functions you should get the correct number of minima.
 For instance, in the case of this image, extrema can be obtained with this:
 
 ```ts
@@ -177,7 +177,7 @@ const points = getExtrema(
 const filteredPoints = removeClosePoints(points, image, { distance: 17 });
 ```
 
-This is how extrema will now be situated:
+And this is how extrema will now be situated:
 
 ![Extrema positions](./images/watershed/17Cross5ISODATA.jpg)
 
@@ -189,7 +189,7 @@ Finally, with all the preparations you can actually use watershed function. At t
 const roiMap = watershed(image, { points: filteredPoints, mask });
 ```
 
-It is worth mentioning, however, that mask is not the only way of finding ROIs. Another way of applying watershed is to pass the threshold value directly. While looking for threshold we looked for a mask, but we can also find the threshold value that the mask is based on.  
+It is worth mentioning, however, that mask is not the only way of finding ROIs through watershed. Another way of applying watershed is to pass the threshold value directly. While looking for threshold we looked for a mask, but we can also find the threshold value that the mask is based on.  
 Thus, by using `computeThreshold()` function we can pass its result like this:
 
 ```ts
@@ -205,7 +205,7 @@ It will provide the same result as if a threshold mask was used.
 
 ## Conclusion
 
-So, to summarize, first you must blur the image. The choice of a blurring technique depends on what kind of image is to blur, but regular blur will do. The kernel size can be 3 or 5. If it gets too big, objects' edges and minor details start to deteriorate.
+So, to summarize, first you must grayscale and then blur the image. The choice of a blurring technique depends on what kind of image is to blur, but regular blur will do. The kernel size can be 3 or 5. If it gets too big, objects' edges and minor details start to deteriorate.
 
 After that, a threshold needs to be defined. It can be defined as an arbitrary value, but we recommend to compute a threshold mask from the image of interest.
 Result can vary from one threshold algorithm to another so take a look at a few of them to see which one fits your needs.
