@@ -36,7 +36,7 @@ Most likely you won't be able to extract any regions of interest and put them on
 
 Why did nothing happen? Because the algorithm simply will not give the result without more specifics and the way watershed can be applied differs from one image to the other. There is no "one-size-fits-all" configuration. It means you need to customize the output depending on the input image, but it also means that without parameters you will not achieve the desired results.
 
-Let's have a look at the factors that account for a correct image output.
+Let's have a look at the factors that account for a correct regions output.
 
 ## Grayscaling and Blurring
 
@@ -46,9 +46,9 @@ First thing is to check the [color model](../Glossary.md#color-model 'internal l
 let image = sourceImage.grey();
 ```
 
-You can take a look at different types of grayscale algorithm on [grayscale page](../Features/Filters/Grayscale.md 'internal link on grayscale') in our "Features" section, but
+You can take a look at different types of grayscale algorithm on [grayscale page](../Features/Filters/Grayscale.md 'internal link on grayscale') in our "Features" section, but a default grayscale should be enough, since the important aspect is for an image to have only one channel.
 
-Next thing that you possibly need to do is to remove [image noise](https://en.wikipedia.org/wiki/Image_noise 'wikipedia link on image noise'). While looking for regions of interests we mostly look for changes of intensity, therefore removing small noise "dots" improve results. It is recommended to apply it to any image when it comes to ROI analysis.
+Next thing that you possibly need to do is to remove [image noise](https://en.wikipedia.org/wiki/Image_noise 'wikipedia link on image noise'). It is especially recommended if the image is of poor quality.
 
 ImageJS has several kinds of blurring:
 
@@ -94,7 +94,7 @@ For each technique, kernel size must be an odd number in order for algorithm to 
 :::
 
 Honestly speaking, any filter will do here. But keep in mind that depending on the image, result from these three filters can vary. And do not overdo it. Giving a kernel too big and the image details will deteriorate too much.
-Here you can see blurring with different kernel size(typed in red). By kernel of size 9 it becomes difficult to see the regions' boundaries.
+Here you can see blurring with different kernel size(red numbers). By kernel of size 9 it becomes difficult to see the regions' boundaries.
 
 ![Different blurs](./images/watershed/Blurs.png)
 
@@ -116,7 +116,11 @@ const mask = image.threshold({ algorithm: 'isodata' });
 
 ## Finding extrema
 
-[Finding extrema](https://en.wikipedia.org/wiki/Maximum_and_minimum 'wikipedia link on extrema') is one of the most crucial aspects for watershed because these are the starting points for each region of interest. However, unfiltered, there can be tens or even hundreds of those on the image, as you can see. So how to spot the correct ones?
+[Finding extrema](https://en.wikipedia.org/wiki/Maximum_and_minimum 'wikipedia link on extrema') is one of the most crucial aspects for watershed because these are the starting points for each region of interest. However, unfiltered, there can be tens or even hundreds of those on the image, as you can see.
+
+![Extrema unfiltered](./images/watershed/Cross5LI.jpg)
+
+So how to spot the correct ones?
 
 There are two functions that are responsible for finding extrema: `getExtrema` and `removeClosePoints`.
 
@@ -144,13 +148,13 @@ You can notice small particles that the `getExtrema` picks on. It is not very cr
 
 :::
 
-In `getExtrema` function there are three algorithm shapes that represent the searching area:
+In `getExtrema` function there are three algorithm shapes that represent the searching area(checked points are colored in light red):
 
-|                                Algorithm                                 |                           What it is                            |
-| :----------------------------------------------------------------------: | :-------------------------------------------------------------: |
-|  ![Cross](./images/watershed/cross.svg 'internal link on cross image')   |    Checks extremum in 4 directions: up,down,left and right.     |
-| ![Square](./images/watershed/square.svg 'internal link on square image') |        Looks for extremum within all neighboring points.        |
-|    ![Star](./images/watershed/star.svg 'internal link on star image')    | Looks for extremum beyond the neighbors within main directions. |
+|                                Algorithm                                 |                          What it is                          |
+| :----------------------------------------------------------------------: | :----------------------------------------------------------: |
+|  ![Cross](./images/watershed/cross.svg 'internal link on cross image')   |   Checks extremum in 4 directions: up,down,left and right.   |
+| ![Square](./images/watershed/square.svg 'internal link on square image') |        Checks extremum within all neighboring points.        |
+|    ![Star](./images/watershed/star.svg 'internal link on star image')    | Checks extremum beyond the neighbors within main directions. |
 
 The chosen algorithm changes the size of the area that it checks.
 
@@ -164,6 +168,7 @@ This is where another function can be used: `removeClosePoints`. With `distance`
 For instance, in the case of this image, extrema can be obtained with this:
 
 ```ts
+//Don't forget to explicitly specify the kind of points you are looking for
 const points = getExtrema(
   image,
   { kind: 'minimum', algorithm: 'square' },
