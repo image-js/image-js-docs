@@ -168,7 +168,7 @@ This is where another function can be used: `removeClosePoints`. With `distance`
 For instance, in the case of this image, extrema can be obtained with this:
 
 ```ts
-//Don't forget to explicitly specify the kind of points you are looking for
+//Don't forget to explicitly specify the kind of points you are looking for.
 const points = getExtrema(
   image,
   { kind: 'minimum', algorithm: 'square' },
@@ -193,11 +193,14 @@ It is worth mentioning, however, that mask is not the only way of finding ROIs t
 Thus, by using `computeThreshold()` function we can pass its result like this:
 
 ```ts
-//mask was using `isodata` algorithm, so we use the same algorithm here
+//Mask was using `isodata` algorithm, so we use the same algorithm here.
 const thresholdValue = computeThreshold(image, 'isodata');
+//Watershed's threshold option is an index between 0 and 1.
+//So you need to divide the received value from computeThreshold by
+//maximum value of an image to receive the ratio.
 const roiMap = watershed(image, {
   points: filteredPoints,
-  threshold: thresholdValue,
+  threshold: thresholdValue / image.maxValue,
 });
 ```
 
