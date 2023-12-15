@@ -9,9 +9,15 @@ The reason why it is an important algorithm is because getting the mask is one o
 
 Each object is well-defined and separated from each other, so in this case threshold algorithm will fit perfectly.
 
+### Grayscaling
+
+An image first needs to be grayscaled. Threshold algorithm works only if an image has one channel.
+
 ### Choosing an algorithm
 
-There are two ways of using threshold: by calling an algorithm name or by directly using a threshold value. The value can be arbitrary, or it can be precalculated based on one of the algorithms.
+There are two ways of using threshold: by calling an algorithm name or by directly using a threshold value. In both cases the result will be the same.
+
+The default algorithm is [`otsu`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu'). It is an algorithm that segments an image by finding the probability of each intensity through normal distribution. Then it computes cumulative probabilities and variances between foreground and background. In the end it looks for an intensity level with the highest variance and segments the image based on that.
 
 :::tip
 If you want to use threshold by a threshold value of one of the algorithms, you can use `computeThreshold` function:
@@ -25,10 +31,11 @@ const mask = image.threshold({ threshold: value / image.maxValue });
 
 :::
 
-Threshold possesses different possible algorithms which can produce different results.
+In ImageJS threshold possesses different algorithms which can produce different results.
 
 ![](./MaskCombosThreshold.png)
 
+As you can see, the best output is produced by `isodata` or `triangle` or `yen`. But with a different image a better-suited algorithm might be different as well. So, to be sure, try several algorithms to see which fits your needs better.
 By using threshold method you convert an image into a `Mask` class object:
 
 ```ts
