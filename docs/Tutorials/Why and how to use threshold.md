@@ -2,8 +2,8 @@ In this tutorial we are going to cover the threshold operation and how to get a 
 
 ### What is threshold and where it is used
 
-Threshold is used for image segmentation. It checks if the pixel is bigger or smaller than a certain value and colors it into black or white.
-It is specifically useful when objects are clearly defined by difference in intensity. For instance here is the image of particles.
+Thresholding is a simple technique used for image segmentation. It compares the pixel intensity to a certain precalculated value(threshold) and ,based on that, provides a mask.
+The reason why it is an important algorithm is because getting the mask is one of the ways to get regions of interest for analysis. It is especially useful when objects are clearly defined by intensity difference. For instance here is the image of particles.
 
 ![Particles image](greys.png)
 
@@ -11,7 +11,8 @@ Each object is well-defined and separated from each other, so in this case thres
 
 ### Choosing an algorithm
 
-There are two ways of using threshold: by calling an algorithm name or by directly using a threshold value.
+There are two ways of using threshold: by calling an algorithm name or by directly using a threshold value. The value can be arbitrary, or it can be precalculated based on one of the algorithms.
+
 :::tip
 If you want to use threshold by a threshold value of one of the algorithms, you can use `computeThreshold` function:
 
@@ -23,6 +24,7 @@ const mask = image.threshold({ threshold: value / image.maxValue });
 ```
 
 :::
+
 Threshold possesses different possible algorithms which can produce different results.
 
 ![](./MaskCombosThreshold.png)
@@ -45,7 +47,3 @@ import fromMask from 'image-js';
 
 const roiMap = fromMask(mask);
 ```
-
-:::info
-`fromMask` has an `allowCorners` option which specifies whether a
-:::
