@@ -4,7 +4,7 @@ In this tutorial we will talk about watershed algorithm, why it is used and the 
 
 [Threshold](../Features/Operations/Threshold.md 'internal link on threshold') is a great tool for finding objects, but it works only if objects are clearly separated from each other.
 
-Sometimes objects can be stuck to each other and the binary image takes it as a giant region of interest, which is not the desired result.
+Sometimes objects can be too close to each other and the binary image takes it as a giant region of interest, which is not the desired result.
 
 Let's take a look at this image. The cells here are quite close to each other and if we call a threshold function and color output regions it will be something like this:
 
@@ -13,7 +13,7 @@ Let's take a look at this image. The cells here are quite close to each other an
 | ![Input image](./images/watershed/input.jpg) | ![Mask output](./images/watershed/OTSU.png) |
 
 Two massive regions while, in reality, there are several cells there.
-That's what the watershed algorithm is for.
+This is where the watershed algorithm comes in.
 
 The idea behind watershed is that it finds extreme points of intensity and from these points it finds all ROIs.
 For instance, with watershed, here are the regions that are found:
@@ -30,23 +30,26 @@ But if you try to use watershed like that:
 const roiMap = waterShed(image);
 ```
 
-Most likely you won't be able to extract any regions of interest and put them on the image. Most likely, you will get the same image output as the input.
+Most likely, you will extract a mess of regions of interest like this.
 
-![Raw Otsu](./images/watershed/RawOTSU.jpg)
+![Raw Otsu](./images/watershed/RawOTSU.png)
 
-Why did nothing happen? Because the algorithm simply will not give the result without more specifics and the way watershed can be applied differs from one image to the other. There is no "one-size-fits-all" configuration. It means you need to customize the output depending on the input image, but it also means that without parameters you will not achieve the desired results.
+This is because watershed by default finds all the extrema without filtering them. You need to find and filter those starting points beforehand as well as compute a mask or find a threshold value to localize these regions.
 
-Let's have a look at the factors that account for a correct regions output.
+Let's have a look at the factors, necessary for a correct regions output.
 
-## Grayscaling and Blurring
+## Blurring
+
+:::info
 
 First thing is to check the [color model](../Glossary.md#color-model 'internal link on glossary') of an image. If the image is colored, you need to apply grayscale filter, otherwise the watershed algorithm will not work. To do so type:
 
 ```ts
-let image = sourceImage.grey();
+let image = image.grey();
 ```
 
 You can take a look at different types of grayscale algorithm on [grayscale page](../Features/Filters/Grayscale.md 'internal link on grayscale') in our "Features" section, but a default grayscale should be enough, since the important aspect is for an image to have only one channel.
+:::
 
 Next thing that you possibly need to do is to remove [image noise](https://en.wikipedia.org/wiki/Image_noise 'wikipedia link on image noise'). It is especially recommended if the image is of poor quality.
 
@@ -66,16 +69,16 @@ It is a basic tool that uses a simple average of the neighboring points and repl
 To use it you need to specify width and height of the kernel:
 
 ```ts
-let image = image.blur({ width: 3, height: 3 });
+let blurredImage = image.blur({ width: 3, height: 3 });
 ```
 
 #### Gaussian blur
 
-As the name suggests it is a kind of blurring technique. However, unlike regular blur, Gaussian blur uses **weighted** average. This means, that the intensity value is also taken into account during computation. It works better than regular blur but it can be slower to work through.It is effective against high-frequency noise.
+As the name suggests it is similar to blur. However, Gaussian blur uses **weighted** average. This means, that the intensity value is also taken into account during computation. It works better than regular blur but it can be slower to work through.It is effective against high-frequency noise.
 To use you need to specify the size of kernel. This is one of the ways of doing it.
 
 ```ts
-let image = image.gaussianBlur({ sigma: 3 });
+let blurredImage = image.gaussianBlur({ sigma: 3 });
 ```
 
 To discover more options you can visit our "Features" page about [gaussian blur](../Features/Filters/Gaussian%20Blur.md 'internal link on gaussian blur').
@@ -86,7 +89,10 @@ Median filter sorts all the neighbor values in ascending order and sets the pixe
 To use median filter you need to specify the kernel size and the algorithm to treat borders. How the border algorithm works is not really a goal of this tutorial. Just know that this option is mandatory.
 
 ```ts
-let image = image.medianFilter({ cellSize: 3, borderType: 'reflect101' });
+let blurredImage = image.medianFilter({
+  cellSize: 3,
+  borderType: 'reflect101',
+});
 ```
 
 :::caution
@@ -111,7 +117,7 @@ Here you can see how thresholding works with different algorithms.
 As you can see, different algorithms provide different results. Here we want to analyze the cells in the middle, so a good choice of algorithm would be `isodata` or `intermodes`.
 
 ```ts
-const mask = image.threshold({ algorithm: 'isodata' });
+const mask = blurredImage.threshold({ algorithm: 'isodata' });
 ```
 
 ## Finding extrema
@@ -131,7 +137,7 @@ In the end it returns all extreme points of the image:
 
 ```ts
 const points = getExtrema(
-  image,
+  blurredImage,
   { kind: 'minimum', algorithm: 'square' },
   mask,
 );
@@ -164,17 +170,26 @@ But even with this `getExtrema` can only give us a smaller number of local extre
 
 ![Different algorithms and extrema](./images/watershed/extremaAlgos.png)
 
-This is where another function can be used: `removeClosePoints`. With `distance` option this function can weed out local minima so that only those with the minimum distance equal or bigger than the one set in the parameter are left. With some tampering of those two functions you should get the correct number of minima.
+This is where another function can be used: `removeClosePoints`. With `distance` option this function can weed out local minima so that only those with the minimum distance equal or bigger than the one set in the parameter are left.
+
+As you can see, depending on the distance between points, number of extrema gets reduced to the correct amount. Just like with `getExtrema` algorithms, do not overdo it. With a distance too big between extrema, you will inevitably lose some regions of interest.
+
+![Filtering extrema](./images/watershed/FilterExtrema.png)
+
+With some tampering of those two functions you should get the correct number of minima.
 For instance, in the case of this image, extrema can be obtained with this:
 
 ```ts
 //Don't forget to explicitly specify the kind of points you are looking for.
 const points = getExtrema(
-  image,
-  { kind: 'minimum', algorithm: 'square' },
+  blurredImage,
+  { kind: 'minimum', algorithm: 'cross' },
   mask,
 );
-const filteredPoints = removeClosePoints(points, image, { distance: 17 });
+const filteredPoints = removeClosePoints(points, blurredImage, {
+  distance: 17,
+  kind: 'minimum',
+});
 ```
 
 And this is how extrema will now be situated:
@@ -186,7 +201,7 @@ And this is how extrema will now be situated:
 Finally, with all the preparations you can actually use watershed function. At this point we covered every important aspect for watershed to work, so all is left is assemble extrema and mask like this:
 
 ```ts
-const roiMap = watershed(image, { points: filteredPoints, mask });
+const roiMap = waterShed(blurredImage, { points: filteredPoints, mask });
 ```
 
 It is worth mentioning, however, that mask is not the only way of finding ROIs through watershed. Another way of applying watershed is to pass the threshold value directly. While looking for threshold we looked for a mask, but we can also find the threshold value that the mask is based on.  
@@ -194,11 +209,11 @@ Thus, by using `computeThreshold()` function we can pass its result like this:
 
 ```ts
 //Mask was using `isodata` algorithm, so we use the same algorithm here.
-const thresholdValue = computeThreshold(image, 'isodata');
+const thresholdValue = computeThreshold(blurredImage, 'isodata');
 //Watershed's threshold option is an index between 0 and 1.
 //So you need to divide the received value from computeThreshold by
 //maximum value of an image to receive the ratio.
-const roiMap = watershed(image, {
+const roiMap = waterShed(blurredImage, {
   points: filteredPoints,
   threshold: thresholdValue / image.maxValue,
 });
@@ -208,7 +223,7 @@ It will provide the same result as if a threshold mask was used.
 
 ## Conclusion
 
-So, to summarize, first you must grayscale and then blur the image. The choice of a blurring technique depends on what kind of image is to blur, but regular blur will do. The kernel size can be 3 or 5. If it gets too big, objects' edges and minor details start to deteriorate.
+So, to summarize, first you must have a grayscale image. If this is not the case, use `grey()` method to grayscale it. Then blur the image. The choice of a blurring technique depends on what kind of image is to blur, but regular blur will do. The kernel size can be 3 or 5. If it gets too big, objects' edges and minor details start to deteriorate.
 
 After that, a threshold needs to be defined. It can be defined as an arbitrary value, but we recommend to compute a threshold mask from the image of interest.
 Result can vary from one threshold algorithm to another so take a look at a few of them to see which one fits your needs.
@@ -222,18 +237,21 @@ Don't forget! If you look for brightest regions then you need to specify `kind` 
 With that, you are ready to use watershed. Your code should resemble something like this:
 
 ```ts
-let blurredImage = image.blur({ width: 3, height: 3 }).grey();
-const mask = image.threshold({ algorithm: 'intermodes' });
-const points = getExtrema(image, {
+if (image.colorModel != 'GREY') {
+  image = image.grey();
+}
+let blurredImage = image.blur({ width: 3, height: 3 });
+const mask = blurredImage.threshold({ algorithm: 'isodata' });
+const points = getExtrema(blurredImage, {
   kind: 'minimum',
-  algorithm: 'square',
+  algorithm: 'cross',
   mask,
 });
-const filteredPoints = removeClosePoints(points, image, {
+const filteredPoints = removeClosePoints(points, blurredImage, {
   distance: 17,
   kind: 'minimum',
 });
-const roiMap = watershed(image, { points: filteredPoints, mask });
+const roiMap = waterShed(blurredImage, { points: filteredPoints, mask });
 ```
 
 This will provide a map of all regions of interest(ROIs are colored here):
