@@ -199,7 +199,7 @@ const filteredPoints = removeClosePoints(points, blurredImage, {
 
 And this is how extrema will now be situated:
 
-![Extrema positions](./images/watershed/17Cross5ISODATA.jpg)
+![Extrema positions](./images/watershed/ISODATATransformTest.png)
 
 ## Applying watershed
 
