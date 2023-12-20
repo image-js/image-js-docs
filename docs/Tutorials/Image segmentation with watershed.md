@@ -20,7 +20,7 @@ For instance, with watershed, here are the regions that are found:
 
 | Input image                                  | What watershed found(in color)                             |
 | -------------------------------------------- | ---------------------------------------------------------- |
-| ![Input image](./images/watershed/input.jpg) | ![Watershed image](./images/watershed/17Cross3ISODATA.jpg) |
+| ![Input image](./images/watershed/input.jpg) | ![Watershed image](./images/watershed/WithMaskExtrema.png) |
 
 Nice and clean, right?
 
@@ -146,9 +146,9 @@ const points = getExtrema(
 :::note
 Adding mask improves the precision of the algorithm, so it is highly recommended to add it as a parameter (Here ROIs are colored for visual aid).
 
-|              Watershed ROIs from extrema without mask               |             Watershed ROIs from extrema with mask             |
-| :-----------------------------------------------------------------: | :-----------------------------------------------------------: |
-| ![No mask in getExtrema](./images/watershed/Gaussian5ISODATA17.jpg) | ![Mask in getExtrema](./images/watershed/17Cross3ISODATA.jpg) |
+|            Watershed ROIs from extrema without mask            |             Watershed ROIs from extrema with mask             |
+| :------------------------------------------------------------: | :-----------------------------------------------------------: |
+| ![No mask in getExtrema](./images/watershed/NoMaskExtrema.png) | ![Mask in getExtrema](./images/watershed/WithMaskExtrema.png) |
 
 You can notice small particles that the `getExtrema` picks on. It is not very crucial for visual representation of regions. However, if there is a need for more complex analysis, all those spots will be considered regions of interest and you will need to make extra steps to remove them. Adding mask as `getExtrema` option will simply facilitate your further
 
@@ -256,4 +256,4 @@ const roiMap = waterShed(blurredImage, { points: filteredPoints, mask });
 
 This will provide a map of all regions of interest(ROIs are colored here):
 
-![Final result](./images/watershed/17Cross3ISODATA.jpg)
+![Final result](./images/watershed/WithMaskExtrema.png)
