@@ -23,12 +23,12 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="1.1114787"
-     inkscape:cx="81.872914"
+     inkscape:cx="4.4985118"
      inkscape:cy="187.58794"
      inkscape:window-width="1309"
      inkscape:window-height="651"
      inkscape:window-x="30"
-     inkscape:window-y="61"
+     inkscape:window-y="33"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg282" />
   <rect
@@ -693,5 +693,6 @@
        sodipodi:role="line"
        id="tspan7699"
        x="152.59677"
-       y="25.392262">Cross</tspan></text>
+       y="25.392262"
+       style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-opacity:1">Cross</tspan></text>
 </svg>
