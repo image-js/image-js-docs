@@ -9,13 +9,18 @@ The reason why it is an important algorithm is because getting the mask is one o
 
 Each object is well-defined and separated from each other, so in this case threshold algorithm will fit perfectly.
 
-### Grayscaling
-
-An image first needs to be grayscaled. Threshold algorithm works only if an image has one channel.
-
 ### Choosing an algorithm
 
-There are two ways of using threshold: by calling an algorithm name or by directly using a threshold value. In both cases the result will be the same.
+:::info
+An image first needs to be [grayscaled](../Features/Filters/Grayscale.md 'internal link on grayscale'). Threshold algorithm works only if an image has one channel.
+
+```ts
+image = image.grayscale();
+```
+
+:::
+
+There are two ways of using threshold: by calling an algorithm name or by directly using a threshold value. In both cases the result can be the same.
 
 The default algorithm is [`otsu`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu'). It is an algorithm that segments an image by finding the probability of each intensity through normal distribution. Then it computes cumulative probabilities and variances between foreground and background. In the end it looks for an intensity level with the highest variance and segments the image based on that.
 
@@ -35,12 +40,12 @@ In ImageJS threshold possesses different algorithms which can produce different 
 
 ![](./MaskCombosThreshold.png)
 
-As you can see, the best output is produced by `isodata` or `triangle` or `yen`. But with a different image a better-suited algorithm might be different as well. So, to be sure, try several algorithms to see which fits your needs better.
+As you can see, the best output is produced by `isodata` or `triangle` or `yen`. But with a different image another algorithm might suit better as well. So, to be sure, try several algorithms to see which fits your needs better.
 By using threshold method you convert an image into a `Mask` class object:
 
 ```ts
 // Algorithm is otsu by default but
-// we added the parameter here to show how the it is used.
+// we added the parameter here to show how the parameter is used.
 const mask = image.threshold({ algorithm: 'otsu' });
 ```
 
