@@ -17,7 +17,7 @@ This is where the watershed algorithm comes in.
 
 ![Watershed Segmentation](./images/watershed/watershedSegmentation.png)
 
-The idea behind watershed is that it treats an image as topographic landscape of intensity where ROIs extreme points serve as starting of basins that should be "filled". Once these basins start getting filled, since they already belong to different extreme origins, even if they touch each other, regions do not get mixed, as if they were limited by a border. Hence is the name: watershed filter.
+The idea behind watershed is that it treats an image as topographic landscape of intensity where ROIs extreme points serve as starting points for basins that should be "filled". Once these basins start getting filled, since they already belong to different regions from the start, even if they touch each other, regions do not get mixed, as if they were limited by a border. Hence is the name: watershed filter.
 
 For instance, here is the same image with applied watershed:
 
@@ -37,13 +37,13 @@ Most likely, you will extract a mess like this.
 
 ![Raw Otsu](./images/watershed/RawOTSU.png)
 
-This is because watershed by default finds all the extrema without filtering them. You need to filter those starting points beforehand as well as to find a threshold value to localize these regions.
+This is because watershed by default finds all the extrema(starting points) without filtering them. You need to filter those starting points beforehand as well as to find a threshold value to localize these regions.
 
 Let's have a look at the necessary elements for a correct regions output.
 
 :::info
 
-Before starting check the [color model](../Glossary.md#color-model 'internal link on glossary') of an image. If the image is colored, you need to apply grayscale filter, otherwise the watershed algorithm will not work.
+Before starting, check the [color model](../Glossary.md#color-model 'internal link on glossary') of an image. If the image is colored, you need to apply grayscale filter, otherwise the watershed algorithm will not work.
 
 ```ts
 let image = image.grey();
@@ -111,7 +111,7 @@ Here you can see blurring with different kernel size(red numbers). By kernel of 
 
 Any further blurring will deteriorate the image completely and make it impossible to find regions correctly.
 
-## Finding threshold mask in watershed
+## Finding threshold mask for watershed
 
 Although threshold mask cannot precisely locate the desired regions, it is a crucial algorithm for successful watershed application because you will be using this mask on multiple occasions to significantly improve your output result. First of all, it allows us to separate background and foreground of the image. It also allows watershed to get a general location of ROIs. It even simplifies and improves the search of extrema but we will discuss it a bit later in this article.
 
@@ -159,7 +159,7 @@ You can notice small particles that the `getExtrema` picks on. It is not very cr
 
 :::
 
-In `getExtrema` function there are three algorithm shapes that represent the searching area(checked points are colored in light red):
+In `getExtrema` function there are three algorithm shapes that represent the searching area (checked points are colored in light red):
 
 |                                Algorithm                                 |                          What it is                          |
 | :----------------------------------------------------------------------: | :----------------------------------------------------------: |
@@ -203,7 +203,7 @@ And this is how extrema will now be situated:
 
 ## Applying watershed
 
-Finally, with all the preparations you can actually use watershed function. At this point we covered every important parameter for watershed to work, so all is left is to apply extrema and mask that we calculated before:
+At this point we covered every important parameter for watershed to work, so all is left is to apply extrema and mask that we calculated before:
 
 ```ts
 const roiMap = waterShed(blurredImage, { points: filteredPoints, mask });
