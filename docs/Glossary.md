@@ -42,6 +42,10 @@ hysteresis image.
 
 [Image noise](https://en.wikipedia.org/wiki/Image_noise 'wikipedia link on image noise') refers to random variations in pixel values within an image, which can lead to unwanted visual artifacts and reduced image quality. It is often caused by various factors during image acquisition, transmission, or processing. Image noise can obscure details, reduce contrast, and make it harder to extract meaningful information from an image.
 
+### Image segmentation
+
+[Image segmentation](https://en.wikipedia.org/wiki/Image_segmentation 'wikipedia link on image segmentation') is a technique that divides an image into multiple regions or parts based on certain criteria of a pixel. The goal of segmentation is to simplify and/or change the representation of an image into more meaningful and easier-to-analyze parts. Each region typically corresponds to objects or meaningful areas within the image, such as distinct shapes, colors, or textures.
+
 ### Intensity
 
 [Intensity](https://en.wikipedia.org/wiki/Color_histogram 'wikipedia link on histogram') refers to the brightness or darkness of a pixel or region within an image. It quantifies the amount of light or energy that a pixel or area emits, reflects, or transmits. Intensity values are typically represented numerically and can be single-channel (grayscale) or multi-channel (color) depending on whether the image is grayscale or color.

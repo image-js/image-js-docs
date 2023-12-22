@@ -2,8 +2,11 @@ In this tutorial we are going to cover the threshold operation and how to get a 
 
 ### What is threshold and where it is used
 
-Thresholding is a simple technique used for image segmentation. It compares the pixel intensity to a certain precalculated value(threshold) and ,based on that, provides a mask.
-The reason why it is an important algorithm is because getting the mask is one of the ways to get regions of interest for analysis. It is especially useful when objects are clearly defined by intensity difference. For instance here is the image of particles.
+One of the features in ImageJS is the ability to extract and analyze specific regions of the image.
+However, to get these regions you need to localize them first. This is where thresholding comes in.
+
+Thresholding is an [image segmentation](../Glossary.md#image-segmentation) technique. It separates image's foreground objects from their background based on pixel intensity value.
+For instance here is the image of particles under electronic microscopy.
 
 ![Particles image](greys.png)
 
@@ -12,17 +15,19 @@ Each object is well-defined and separated from each other, so in this case thres
 ### Choosing an algorithm
 
 :::info
-An image first needs to be [grayscaled](../Features/Filters/Grayscale.md 'internal link on grayscale'). Threshold algorithm works only if an image has one channel.
+If an image's color model is not `grey` then it first needs to be [grayscaled](../Features/Filters/Grayscale.md 'internal link on grayscale'). Threshold algorithm works only if an image has one channel.
 
 ```ts
-image = image.grayscale();
+image = image.grey();
 ```
 
 :::
 
-There are two ways of using threshold: by calling an algorithm name or by directly using a threshold value. In both cases the result can be the same.
+There are two ways of using threshold: by calling an algorithm name or by directly using a threshold value.
 
-The default algorithm is [`otsu`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu'). It is an algorithm that segments an image by finding the probability of each intensity through normal distribution. Then it computes cumulative probabilities and variances between foreground and background. In the end it looks for an intensity level with the highest variance and segments the image based on that.
+The default algorithm is [`otsu`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu'). It is a popular technique that uses weighted variance between foreground and background. It iterates through all the possible threshold values and finds the value where the spread between foreground and background is the lowest. After that it separates each pixel according to
+
+In ImageJS threshold possesses multiple threshold algorithms.
 
 :::tip
 If you want to use threshold by a threshold value of one of the algorithms, you can use `computeThreshold` function:
@@ -34,24 +39,29 @@ const value = computeThreshold(image, 'otsu');
 const mask = image.threshold({ threshold: value / image.maxValue });
 ```
 
+The output result will be identical to a result with a threshold algorithm as a parameter.  
 :::
-
-In ImageJS threshold possesses different algorithms which can produce different results.
 
 ![](./MaskCombosThreshold.png)
 
-As you can see, the best output is produced by `isodata` or `triangle` or `yen`. But with a different image another algorithm might suit better as well. So, to be sure, try several algorithms to see which fits your needs better.
-By using threshold method you convert an image into a `Mask` class object:
+As you can see, `otsu` algorithm defines the regions well.
+However, an output of each algorithm will vary from one image to another. So we strongly recommend to try several algorithms to see which one fits your needs.
+
+By using threshold method you convert an image into a `Mask` class object which is a binary image:
 
 ```ts
 // Algorithm is otsu by default but
-// we added the parameter here to show how the parameter is used.
+// we added the parameter here explicitly to show how the parameter is used.
 const mask = image.threshold({ algorithm: 'otsu' });
 ```
 
+:::info
+`threshold()` also has an `out` option which allows you to specify which image to use as an output. To learn more about this option and its purposes visit our article about an [`out` parameter](../Useful%20tips/Out-parameter%20and%20its%20purpose.md).
+:::
+
 ### Finding ROI map
 
-After the mask has been created, all is left is to create a `RoiMap` object. `RoiMap` is an object that stores the data about the number and the kind of regions of interest situated on an image/mask.
+With threshold you create a mask, which allows us to separate objects from their background. All is left is to locate and store those objects by creating a `RoiMap` object. `RoiMap` is an object that stores all the data about regions of interest situated on the image.
 To get this map all you need is to apply `fromMask()` function:
 
 ```ts
@@ -59,3 +69,11 @@ import fromMask from 'image-js';
 
 const roiMap = fromMask(mask);
 ```
+
+In the end you should be able to get a map of all the regions of interest(black ROIs are colored here):
+![Black ROIs](ROIsColored.jpg)
+
+:::info
+It is worth mentioning an `allowCorners` option of `fromMask` function. You can specify if regions connected by corners should be considered as two separate regions or as one whole region.
+This option is set to `false` by default.
+:::
