@@ -15,7 +15,7 @@ However, to get these regions you need to localize them first. This is where thr
 Thresholding is an [image segmentation](../Glossary.md#image-segmentation) technique. It separates image's foreground objects from their background based on pixel intensity value. It works especially well when background is rather simple and well-defined.
 For instance here is an image of particles under electronic microscopy.
 
-![Particles image](greys.png)
+![Particles image](./images/threshold/greys.png)
 
 Each object is well-defined and separated from each other, while the background is basically a gray-colored canvas. In this case threshold algorithm will fit perfectly.
 
@@ -48,7 +48,7 @@ const mask = image.threshold({ threshold: value / image.maxValue });
 The output result will be identical to a result with a threshold algorithm as a parameter.  
 :::
 
-![](./MaskCombosThreshold.png)
+![](./images/threshold/MaskCombosThreshold.png)
 
 As you can see, `otsu` algorithm defines regions quite well.
 However, an output of each algorithm will vary from one image to another. ImageJS possesses multiple threshold algorithms.
@@ -63,7 +63,7 @@ By using threshold method you convert an image into a `Mask` class object which 
 const mask = image.threshold({ algorithm: 'otsu' });
 ```
 
-![](OTSU.png)
+![](./images/threshold/OTSU.png)
 
 :::info
 `threshold()` also has an `out` option which allows you to specify which image to use as an output. To learn more about this option and its purposes visit our article about an [`out` parameter](../Useful%20tips/Out-parameter%20and%20its%20purpose.md).
@@ -81,7 +81,7 @@ const roiMap = fromMask(mask);
 ```
 
 In the end you should be able to get a map of all the regions of interest(black ROIs are colored here):
-![Black ROIs](ROIsColored.jpg)
+![Black ROIs](./images/threshold/ROIsColored.jpg)
 
 :::info
 It is worth mentioning an `allowCorners` option of `fromMask` function. You can specify if regions connected by corners should be considered as two separate regions or as one whole region.
