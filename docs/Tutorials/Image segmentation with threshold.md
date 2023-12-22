@@ -1,8 +1,15 @@
 In this tutorial we are going to cover the threshold operation and how to get a map of regions from the threshold's mask.
 
-### What is threshold and where it is used
+## Synopsis
 
-One of the ImageJS features is the ability to extract and analyze specific regions of the image.
+Here is a quick summary of this tutorial.
+
+Threshold is used for [image segmentation](../Glossary.md#image-segmentation) to locate specific regions of interest(ROI) by separating background and foreground of the image. By doing so, we can create a map of regions, a `RoiMap` object.
+Before calculating
+
+## What is threshold and where it is used
+
+One of the ImageJS features is the ability to extract and analyze specific regions of the image(regions of interest or ROI).
 However, to get these regions you need to localize them first. This is where thresholding comes in.
 
 Thresholding is an [image segmentation](../Glossary.md#image-segmentation) technique. It separates image's foreground objects from their background based on pixel intensity value. It works especially well when background is rather simple and well-defined.
@@ -12,7 +19,9 @@ For instance here is an image of particles under electronic microscopy.
 
 Each object is well-defined and separated from each other, while the background is basically a gray-colored canvas. In this case threshold algorithm will fit perfectly.
 
-### Choosing an algorithm
+## Blurring
+
+## Choosing an algorithm
 
 :::info
 If an image's color model is not `grey` then it first needs to be [grayscaled](../Features/Filters/Grayscale.md 'internal link on grayscale'). Threshold algorithm works only if an image has one channel.
@@ -49,7 +58,8 @@ By using threshold method you convert an image into a `Mask` class object which 
 
 ```ts
 // Algorithm is otsu by default but
-// we added the parameter here explicitly to show how the parameter is used.
+// we added the parameter here explicitly to
+// show how the parameter is used.
 const mask = image.threshold({ algorithm: 'otsu' });
 ```
 
@@ -59,7 +69,7 @@ const mask = image.threshold({ algorithm: 'otsu' });
 `threshold()` also has an `out` option which allows you to specify which image to use as an output. To learn more about this option and its purposes visit our article about an [`out` parameter](../Useful%20tips/Out-parameter%20and%20its%20purpose.md).
 :::
 
-### Finding ROI map
+## Finding ROI map
 
 Now all is left is to locate and store those objects by creating a `RoiMap` object. `RoiMap` is an object that stores all the data about regions of interest situated on the image.
 To get this map you need to apply `fromMask()` function:
