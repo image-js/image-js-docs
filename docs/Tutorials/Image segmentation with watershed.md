@@ -1,5 +1,48 @@
 In this tutorial we will talk about watershed algorithm, why it is used and the basics of how it is implemented. We will also cover some pitfalls that you might encounter during its use.
 
+## Synopsis
+
+Here is a quick summary of this tutorial.
+
+![Input image](./images/watershed/input.jpg)
+
+First you must have a grayscale image. If this is not the case, use `grey()` method to grayscale it. Then blur the image. The choice of a blurring technique depends on what kind of image is to blur, but regular blur will do. Be careful while setting the kernel size. If it gets too big, objects' edges and minor details start to deteriorate.
+
+After that, a threshold needs to be defined. It can be defined as an arbitrary value, but we recommend to compute a threshold mask from the image of interest.
+Result can vary from one threshold algorithm to another so take a look at a few of them to see which one fits your needs.
+
+Then extrema need to be found and filtered based on their intensity and position. You should get one point per region.
+
+:::caution
+Don't forget! If you look for brightest regions then you need to specify `kind` option as `maximum`, if darkest - `minimum`.
+:::
+
+With that, you are ready to use watershed. Your code should resemble something like this:
+
+```ts
+if (image.colorModel != 'GREY') {
+  image = image.grey();
+}
+let blurredImage = image.blur({ width: 3, height: 3 });
+const mask = blurredImage.threshold({ algorithm: 'isodata' });
+const points = getExtrema(blurredImage, {
+  kind: 'minimum',
+  algorithm: 'cross',
+  mask,
+});
+const filteredPoints = removeClosePoints(points, blurredImage, {
+  distance: 17,
+  kind: 'minimum',
+});
+const roiMap = waterShed(blurredImage, { points: filteredPoints, mask });
+```
+
+This will provide a map of all regions of interest(black ROIs are colored here):
+
+![Final result](./images/watershed/WithMaskExtrema.png)
+
+Below you will find a detailed review of all the steps.
+
 ## Why is watershed necessary?
 
 [Threshold](../Features/Operations/Threshold.md 'internal link on threshold') is a great segmentation tool for finding objects, but it works only if objects are clearly separated from each other.
@@ -17,7 +60,7 @@ This is where the watershed algorithm comes in.
 
 ![Watershed Segmentation](./images/watershed/watershedSegmentation.png)
 
-The idea behind watershed is that it treats an image as topographic landscape of intensity where ROIs extreme points serve as starting points for basins that should be "filled". Once these basins start getting filled, since they already belong to different regions from the start, even if they touch each other, regions do not get mixed, as if they were limited by a border. Hence is the name: watershed filter.
+The idea behind watershed is that it treats an image as topographic landscape of intensity where regions of interest's(ROIs') extreme points serve as starting points for basins that should be "filled". Once these basins start getting filled, since they already belong to different regions from the start, even if they touch each other, regions do not get mixed, as if they were limited by a border. Hence is the name: watershed filter.
 
 For instance, here is the same image with applied watershed:
 
@@ -33,7 +76,7 @@ However, if you try to use watershed like this:
 const roiMap = waterShed(image);
 ```
 
-Most likely, you will extract a mess like this.
+Most likely, you will extract a mess like this:
 
 ![Raw Otsu](./images/watershed/RawOTSU.png)
 
@@ -113,7 +156,7 @@ Any further blurring will deteriorate the image completely and make it impossibl
 
 ## Finding threshold mask for watershed
 
-Although threshold mask cannot precisely locate the desired regions, it is a crucial algorithm for successful watershed application because you will be using this mask on multiple occasions to significantly improve your output result. First of all, it allows us to separate background and foreground of the image. It also allows watershed to get a general location of ROIs. It even simplifies and improves the search of extrema but we will discuss it a bit later in this article.
+Although threshold mask cannot precisely locate the desired regions, it is a crucial algorithm for successful watershed application because you will be using this mask on multiple occasions to significantly improve your output result. It allows watershed to get a general location of ROIs by separating background from the foreground where objects are situated. This in turn simplifies the search for extrema and borders of the regions.
 
 Here you can see how thresholding works with different algorithms.
 
@@ -181,7 +224,7 @@ As you can see, depending on the distance between points, number of extrema gets
 
 ![Filtering extrema](./images/watershed/FilterExtrema.png)
 
-With some tampering of those two functions you should get the correct number of minima.
+With some fine-tuning of those two functions you should get the correct number of minima.
 For instance, in case of this image, extrema can be obtained with these parameters:
 
 ```ts
@@ -209,6 +252,10 @@ At this point we covered every important parameter for watershed to work, so all
 const roiMap = waterShed(blurredImage, { points: filteredPoints, mask });
 ```
 
+After extracting black ROIs you will receive these regions(colored):
+
+![Final result](./images/watershed/WithMaskExtrema.png)
+
 :::info
 It is worth mentioning, however, that mask is not the only way of finding ROIs through watershed. Another way of applying watershed is to pass the threshold value directly. While looking for threshold we looked for a mask, but we can also find the threshold value that the mask is based on.  
 Thus, by using `computeThreshold()` function we can pass its result like this:
@@ -227,40 +274,3 @@ const roiMap = waterShed(blurredImage, {
 
 It will provide the same result as if a threshold mask was used.
 :::
-
-## Conclusion
-
-So, to summarize, first you must have a grayscale image. If this is not the case, use `grey()` method to grayscale it. Then blur the image. The choice of a blurring technique depends on what kind of image is to blur, but regular blur will do. The kernel size can be 3 or 5. If it gets too big, objects' edges and minor details start to deteriorate.
-
-After that, a threshold needs to be defined. It can be defined as an arbitrary value, but we recommend to compute a threshold mask from the image of interest.
-Result can vary from one threshold algorithm to another so take a look at a few of them to see which one fits your needs.
-
-Then extrema need to be found and filtered based on their intensity and position. You should get one point per region.
-
-:::caution
-Don't forget! If you look for brightest regions then you need to specify `kind` option as `maximum`, if darkest - `minimum`.
-:::
-
-With that, you are ready to use watershed. Your code should resemble something like this:
-
-```ts
-if (image.colorModel != 'GREY') {
-  image = image.grey();
-}
-let blurredImage = image.blur({ width: 3, height: 3 });
-const mask = blurredImage.threshold({ algorithm: 'isodata' });
-const points = getExtrema(blurredImage, {
-  kind: 'minimum',
-  algorithm: 'cross',
-  mask,
-});
-const filteredPoints = removeClosePoints(points, blurredImage, {
-  distance: 17,
-  kind: 'minimum',
-});
-const roiMap = waterShed(blurredImage, { points: filteredPoints, mask });
-```
-
-This will provide a map of all regions of interest(black ROIs are colored here):
-
-![Final result](./images/watershed/WithMaskExtrema.png)
