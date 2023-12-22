@@ -3,6 +3,7 @@ In this tutorial we will talk about watershed algorithm, why it is used and the 
 ## Synopsis
 
 Here is a quick summary of this tutorial.
+Watershed algorithm is an advanced image segmentation technique to identify objects when they are too close to each other. The idea is to treat an image as a landscape. We find extreme(lowest or highest) points in intensity and from there "fill" the regions until the intensity threshold is reached. However, to use watershed there are additional steps that need to be taken before actually applying the function itself.
 
 ![Input image](./images/watershed/input.jpg)
 
@@ -34,7 +35,7 @@ const filteredPoints = removeClosePoints(points, blurredImage, {
   distance: 17,
   kind: 'minimum',
 });
-const roiMap = waterShed(blurredImage, { points: filteredPoints, mask });
+const roiMapManager = waterShed(blurredImage, { points: filteredPoints, mask });
 ```
 
 This will provide a map of all regions of interest(black ROIs are colored here):
@@ -73,7 +74,7 @@ Nice and clean output, right?
 However, if you try to use watershed like this:
 
 ```ts
-const roiMap = waterShed(image);
+const roiMapManager = waterShed(image);
 ```
 
 Most likely, you will extract a mess like this:
@@ -249,7 +250,7 @@ And this is how extrema will now be situated:
 At this point we covered every important parameter for watershed to work, so all is left is to apply extrema and mask that we calculated before:
 
 ```ts
-const roiMap = waterShed(blurredImage, { points: filteredPoints, mask });
+const roiMapManager = waterShed(blurredImage, { points: filteredPoints, mask });
 ```
 
 After extracting black ROIs you will receive these regions(colored):
@@ -266,7 +267,7 @@ const thresholdValue = computeThreshold(blurredImage, 'isodata');
 //Watershed's threshold option is an index between 0 and 1.
 //So you need to divide the received value from computeThreshold by
 //maximum value of an image to receive the ratio.
-const roiMap = waterShed(blurredImage, {
+const roiMapManager = waterShed(blurredImage, {
   points: filteredPoints,
   threshold: thresholdValue / image.maxValue,
 });
