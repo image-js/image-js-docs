@@ -19,3 +19,4 @@ thresholded
 RGBA
 bezier
 ROIs
+grayscaled
