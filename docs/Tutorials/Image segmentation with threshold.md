@@ -4,8 +4,23 @@ In this tutorial we are going to cover the threshold operation and how to get a 
 
 Here is a quick summary of this tutorial.
 
-Threshold is used for [image segmentation](../Glossary.md#image-segmentation) to locate specific regions of interest(ROI) by separating background and foreground of the image. By doing so, we can create a map of regions, a `RoiMap` object.
-Before calculating
+Threshold is used for [image segmentation](../Glossary.md#image-segmentation) to locate specific regions of interest(ROI) by separating background and foreground of the image. By doing so, we can create a map of regions, a `RoiMapManager` object.
+:::tip
+Before proceeding with threshold application it is recommended to blur the image. Do not overdo it. With a kernel too big, regions' borders start to deteriorate.
+:::
+An image must be gray. If this isn't the case, it must be grayscaled. After that, you need to choose the way for threshold to be found. It can be an arbitrary value, but we recommend to use one of the algorithms that ImageJS has. It is important to remember that different algorithms serve different purposes, so it is better to try several of them to see which one fits better for the current image.
+Once threshold is applied, you will get a mask, which will allow you to localize and extract specific objects or regions of interest situated on the image.
+So with will look something like this:
+
+```ts
+if (image.colorModel !== 'GREY') {
+  image = image.grey();
+}
+const mask = image
+  .blur({ width: 3, height: 3 })
+  .threshold({ algorithm: 'otsu' });
+const roiMapManager = fromMask(mask);
+```
 
 ## What is threshold and where it is used
 
@@ -18,8 +33,6 @@ For instance here is an image of particles under electronic microscopy.
 ![Particles image](./images/threshold/greys.png)
 
 Each object is well-defined and separated from each other, while the background is basically a gray-colored canvas. In this case threshold algorithm will fit perfectly.
-
-## Blurring
 
 ## Choosing an algorithm
 
