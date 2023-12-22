@@ -8,9 +8,9 @@ _Filters close points by minimum distance between each other._
 
 This function sorts an array of points by intensity and then calculates euclidean distance between the points. If the distance between points is smaller than the `removeClosePoints` option the compared point gets removed.
 
-| Extrema without `removeClosePoints`                                       | Extrema with `removeClosePoints`                                            |
-| ------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| ![Image Input](./images/filterPointsOutput/CellsOutputcross0ISODATA5.jpg) | ![Image Output](./images/filterPointsOutput/CellsOutputcross17ISODATA5.jpg) |
+| Extrema without `removeClosePoints`                                    | Extrema with `removeClosePoints`                                            |
+| ---------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| ![Image Input](./images/extremaOutput/CellsOutputcrossMinISODATA5.jpg) | ![Image Output](./images/filterPointsOutput/CellsOutputcross17ISODATA5.jpg) |
 
 ### Parameters and default values
 
