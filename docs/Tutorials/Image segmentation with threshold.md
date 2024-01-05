@@ -10,7 +10,7 @@ Before proceeding with threshold application it is recommended to blur the image
 :::
 An image must be gray. If this isn't the case, it must be grayscaled. After that, you need to choose the way for threshold to be found. It can be an arbitrary value, but we recommend to use one of the algorithms that ImageJS has. It is important to remember that different algorithms serve different purposes, so it is better to try several of them to see which one fits better for the current image.
 Once threshold is applied, you will get a mask, which will allow you to localize and extract specific objects or regions of interest situated on the image.
-So with will look something like this:
+So it will look something like this:
 
 ```ts
 if (image.colorModel !== 'GREY') {
@@ -45,7 +45,7 @@ image = image.grey();
 
 :::
 
-The default algorithm is [`otsu`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu'). It is a popular technique that uses weighted variance between foreground and background. It iterates through all the possible threshold values and finds the value where the spread between foreground and background is the lowest. After that it checks each pixel whether its intensity value is smaller or bigger than the calculated threshold.
+The default algorithm is [`otsu`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu'). It is a popular technique that uses weighted variance between two classes of pixels. In ImageJS we use [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function 'wikipedia link to cumulative distribution function') to compute cumulative probability of encountering pixel intensities up to a certain level. This allows calculating between-class variance between the two created classes and find an optimal threshold value. After that it checks each pixel whether its intensity value is smaller or bigger than the calculated threshold.
 
 :::tip
 There are two ways of using threshold: by calling an algorithm name or by directly using a threshold value.
