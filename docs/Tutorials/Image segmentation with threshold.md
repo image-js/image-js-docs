@@ -99,4 +99,6 @@ In the end you should be able to get a map of all the regions of interest(black 
 :::info
 It is worth mentioning an `allowCorners` option of `fromMask` function. You can specify if regions connected by corners should be considered as two separate regions or as one whole region.
 This option is set to `false` by default.
+
+![](./images/threshold/allowingCorners.svg)
 :::
