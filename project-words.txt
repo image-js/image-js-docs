@@ -18,5 +18,12 @@ shanbhag
 thresholded
 RGBA
 bezier
+EQPC
+Feret
+ROI's
 ROIs
+Feret
+canny
 grayscaled
+Grayscaling
+
