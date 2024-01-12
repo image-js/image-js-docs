@@ -45,7 +45,7 @@ image = image.grey();
 
 :::
 
-![](./images/threshold/Otsu's_Method_Visualization.gif)
+![](./images/threshold/OtsuVisualization.png)
 
 The default algorithm is [`otsu`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu'). It is a popular technique that uses weighted variance between two classes of pixels. In ImageJS we use [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function 'wikipedia link to cumulative distribution function') to compute cumulative probability of encountering pixel intensities up to a certain level. This allows calculating between-class variance between the two created classes and find an optimal threshold value. After that it checks each pixel whether its intensity value is smaller or bigger than the calculated threshold.
 
