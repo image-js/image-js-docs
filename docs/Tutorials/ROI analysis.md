@@ -83,25 +83,63 @@ for (const roi of biggestRois) {
 ```
 
 ![Roundest rois](./images/roiAnalysis/roundAndBig.jpg)
-**add image with highlighted round regions**
 
 This provides us with a code like this:
 
-```
+```ts
+const rois = roiMap.getRois({ kind: 'black' }); // In this example we specifically calculate the average surface of rois,
+//so we don't use minSurface option here.
 
+let surfaceSum = 0;
+for (const roi of rois) {
+  surfaceSum += roi.surface;
+}
+const avgSurface = surfaceSum / rois.length;
+
+//We can calculate biggest and roundest rois in one cycle,
+//but we split the logic between the two for the sake of this
+//example.
+const biggestRois = [];
+for (const roi of rois) {
+  if (roi.surface >= avgSurface) {
+    biggestRois.push(roi);
+  }
+}
+
+let roundestRois = [];
+for (const roi of biggestRois) {
+  if (roi.roundness > 0.9) {
+    roundestRois.push(roi);
+  }
+}
 ```
 
 ## Getting metadata from TIFF files
 
-Another aspect worth inspecting is extracting image metadata. If an image is of TIFF format, you can extract some metadata tags that can provide additional information. For instance, you can get data such as image length and width,
+Another aspect worth inspecting is extracting image metadata. If an image is of TIFF format, you can extract some metadata tags that can provide additional information about an image. For instance, you can get data such as image length and width or learn about image quality through bit depth(`bitsPerSample`) or X and Y Resolutions.
+The metadata of TIFF format is split into two parts: `tiff` and `exif` which is another image format. We will focus on `tiff` part.
+
+```ts
+const meta = image.meta.tiff;
+```
+
+There you will have other two parts: one part will be comprised of a map with fields and then an object of TIFF meta tags which these fields' values are attributed to.
+
+![](./images/roiAnalysis/metaDataScreen.png)
 
 ### Getting extra data
 
-Within metadata you might come across something like this:
+Within metadata, you might be wondering what is this huge mix of letters and numbers:
 
-**image with exta data**
+![](./images/roiAnalysis/extraData.jpg)
 
-These are custom fields added with additional information about an image that the user. For instance, in this case you can get information about the microscope that was used, or the magnification level or the electrometric tension that was used while the image was taken. However, this data needs to be parsed, because it simply is not presentable in its raw format.
-To do so you need to
+These are custom fields added with additional information about an image that the user. For instance, in this case you can get information about the microscope that was used, or the magnification level or the electrometric tension that was used while the image was taken. However, this data needs to be parsed, because it difficult to decipher it in its raw format.
+To do so you need to split the lines first:
+
+```
+
+```
+
+![](./images/roiAnalysis/parsedExtraData.png)
 
 ### Getting pixel size
