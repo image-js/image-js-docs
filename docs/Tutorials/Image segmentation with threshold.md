@@ -4,11 +4,11 @@ In this tutorial we are going to cover the threshold operation and how to get a 
 
 Here is a quick summary of this tutorial.
 
-Threshold is used for [image segmentation](../Glossary.md#image-segmentation) to locate specific regions of interest(ROI) by separating background and foreground of the image. By doing so, we can create a map of regions, a `RoiMapManager` object.
+Threshold is used for [image segmentation](../Glossary.md#image-segmentation) to locate specific regions of interest (ROI) by separating background and foreground of the image. By doing so, we can create a map of regions, a `RoiMapManager` object.
 :::tip
 Before proceeding with threshold application it is recommended to blur the image. Do not overdo it. With a kernel too big, regions' borders start to deteriorate.
 :::
-An image must be gray. If this isn't the case, it must be grayscaled. After that, you need to choose the way for threshold to be found. It can be an arbitrary value, but we recommend to use one of the algorithms that ImageJS has. It is important to remember that different algorithms serve different purposes, so it is better to try several of them to see which one fits better for the current image.
+An image must be gray. If this isn't the case, it must be grayscaled. After that, you need to choose the way for threshold to be found. It can be an arbitrary value, but we recommend to use one of the algorithms that ImageJS has. It is important to remember that different algorithms serve different purposes, so it is better to try several of them to see which one fits better for the image in question.
 Once threshold is applied, you will get a mask, which will allow you to localize and extract specific objects or regions of interest situated on the image.
 So it will look something like this:
 
@@ -45,6 +45,8 @@ image = image.grey();
 
 :::
 
+![](./images/threshold/Otsu's_Method_Visualization.gif)
+
 The default algorithm is [`otsu`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu'). It is a popular technique that uses weighted variance between two classes of pixels. In ImageJS we use [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function 'wikipedia link to cumulative distribution function') to compute cumulative probability of encountering pixel intensities up to a certain level. This allows calculating between-class variance between the two created classes and find an optimal threshold value. After that it checks each pixel whether its intensity value is smaller or bigger than the calculated threshold.
 
 :::tip
@@ -67,7 +69,7 @@ As you can see, `otsu` algorithm defines regions quite well.
 However, an output of each algorithm will vary from one image to another. ImageJS possesses multiple threshold algorithms.
 So we strongly recommend to try several variants to see which one fits your needs better.
 
-By using threshold method you convert an image into a `Mask` class object which is a binary image.In this case it clearly separates objects from the background.
+By using threshold method you convert an image into a `Mask` class object which is a binary image. In this case it clearly separates objects from the background.
 
 ```ts
 // Algorithm is otsu by default but
@@ -93,12 +95,12 @@ import fromMask from 'image-js';
 const roiMap = fromMask(mask);
 ```
 
-In the end you should be able to get a map of all the regions of interest(black ROIs are colored here):
+In the end you should be able to get a map of all the regions of interest (black ROIs are colored here):
 ![Black ROIs](./images/threshold/ROIsColored.jpg)
 
 :::info
 It is worth mentioning an `allowCorners` option of `fromMask` function. You can specify if regions connected by corners should be considered as two separate regions or as one whole region.
-This option is set to `false` by default.
+This option is set to `false` by default (Different ROIs are colored in different colors).
 
 ![](./images/threshold/allowingCorners.svg)
 :::
