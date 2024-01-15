@@ -45,11 +45,6 @@ image = image.grey();
 
 :::
 
-![](./images/threshold/OtsuVisualization.png)
-
-The default algorithm is [`otsu`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu'). It is a popular technique that uses weighted variance between two classes of pixels. In ImageJS we use [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function 'wikipedia link to cumulative distribution function') to compute cumulative probability of encountering pixel intensities up to a certain level. This allows calculating between-class variance between the two created classes and find an optimal threshold value. After that it checks each pixel whether its intensity value is smaller or bigger than the calculated threshold.
-
-:::tip
 There are two ways of using threshold: by calling an algorithm name or by directly using a threshold value.
 If you want to use threshold by a threshold value of one of the algorithms, you can use `computeThreshold` function:
 
@@ -60,10 +55,15 @@ const value = computeThreshold(image, 'otsu');
 const mask = image.threshold({ threshold: value / image.maxValue });
 ```
 
-The output result will be identical to a result with a threshold algorithm as a parameter.  
-:::
+The output result will be identical to a result with a threshold algorithm as a parameter.
 
-![](./images/threshold/MaskCombosThreshold.png)
+![Otsu histogram](./images/threshold/OtsuVisualization.png)
+
+The default algorithm is [`otsu`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu'). It is a popular technique that uses weighted variance between two classes of pixels.
+In ImageJS we use [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function 'wikipedia link to cumulative distribution function') to compute cumulative probability of encountering pixel intensities up to a certain level. This allows calculating between-class variance between the two created classes and find an optimal threshold value.
+After that it checks each pixel whether its intensity value is smaller or bigger than the calculated threshold. You can see a histogram of otsu's output above.
+
+![Different algorithm outputs](./images/threshold/MaskCombosThreshold.png)
 
 As you can see, `otsu` algorithm defines regions quite well.
 However, an output of each algorithm will vary from one image to another. ImageJS possesses multiple threshold algorithms.
@@ -78,11 +78,7 @@ By using threshold method you convert an image into a `Mask` class object which 
 const mask = image.threshold({ algorithm: 'otsu' });
 ```
 
-![](./images/threshold/OTSU.png)
-
-:::info
-`threshold()` also has an `out` option which allows you to specify which image to use as an output. To learn more about this option and its purposes visit our article about an [`out` parameter](../Useful%20tips/Out-parameter%20and%20its%20purpose.md).
-:::
+![Otsu output](./images/threshold/OTSU.png)
 
 ## Finding ROI map
 
@@ -102,5 +98,5 @@ In the end you should be able to get a map of all the regions of interest (black
 It is worth mentioning an `allowCorners` option of `fromMask` function. You can specify if regions connected by corners should be considered as two separate regions or as one whole region.
 This option is set to `false` by default (Different ROIs are colored in different colors).
 
-![](./images/threshold/allowingCorners.svg)
+![Allowing corners](./images/threshold/allowingCorners.svg)
 :::
