@@ -87,8 +87,10 @@ for (const roi of biggestRois) {
 This provides us with a code like this:
 
 ```ts
-const rois = roiMap.getRois({ kind: 'black' }); // In this example we specifically calculate the average surface of rois,
-//so we don't use minSurface option here.
+const rois = roiMap.getRois({ kind: 'black' });
+// In this example we want to specifically calculate
+//the average surface of rois, so we don't use
+// minSurface option here.
 
 let surfaceSum = 0;
 for (const roi of rois) {
@@ -129,17 +131,75 @@ There you will have other two parts: one part will be comprised of a map with fi
 
 ### Getting extra data
 
-Within metadata, you might be wondering what is this huge mix of letters and numbers:
+Within metadata, you might be wondering what this huge mix of letters and numbers represents:
 
 ![](./images/roiAnalysis/extraData.jpg)
 
 These are custom fields added with additional information about an image that the user. For instance, in this case you can get information about the microscope that was used, or the magnification level or the electrometric tension that was used while the image was taken. However, this data needs to be parsed, because it difficult to decipher it in its raw format.
-To do so you need to split the lines first:
+To do so you need to identify what is the key id of this text. In our case it is 34682, but it might not always be the case so check it beforehand.
 
+Next thing we need to do is to parse this text.
+
+```ts
+let metaMisc = [];
+
+let lines = image.meta.tiff.fields.get(34682).split('</Data><Data>');
+//We split each line into three elements:
+//key(name of the tag)
+//value(value of the tag)
+//unit(units in which the value is measured).
+lines.forEach((a) => {
+  var fields = a.split(/<\/Label><Value>|<\/Value><Unit>/);
+  fields[0] = fields[0].replace(/^.*>/, '');
+  fields[2] = fields[2].replace(/<.*$/, '');
+  metaMisc.push({
+    key: fields[0],
+    value: fields[1],
+    unit: fields[2],
+  });
+});
 ```
 
-```
+With this the data should be parsed.
 
 ![](./images/roiAnalysis/parsedExtraData.png)
 
 ### Getting pixel size
+
+In this specific scenario we would also like to tell you about the way to calculate image's pixel size. Pixel size can be one of metadata fields but if this isn't the case we would like to show you how you can calculate it from existing data.
+
+If there is no such field as "Pixel size" you can calculate DPI resolution and apply it with magnification.
+DPI resolution represents the number of dots per inch. To calculate it we need to look at three lines in our parsed extra data: XResolution, YResolution and ResolutionUnit.
+X and Y resolutions are the number of dots per inch on X and Y axes. So, if they are equal, then DPI resolution equals to one of these values. However, this value might not be measured in inches. To check that we need to look at ResolutionUnit.
+If its value equals to 2 then the X and Y resolutions are measured in inches.If it's 3 then it's in centimeters and has to be converted.
+
+**image of three extra data fields**
+
+```ts
+const DPIResolution = 0;
+const metaTags = image.meta.tiff.tags;
+if (metaTags.XResolution == metaTags.YResolution && metaTags.XResolution) {
+  switch(metaTags.ResolutionUnit)
+    case 2:
+      DPIResolution = metaTags.XResolution;
+      break;
+    case 3:
+      //converted from centimeters to inches
+      DPIResolution = metaTags.Xresolution*2.54;
+      break;
+    default:
+      break;
+}
+```
+
+After that we need to get the magnification. In our case it is already known.
+**get magnification image**
+
+All is left is to calculate it through the formula.
+
+```ts
+const newPixelSize = 30000 / magnification[0].value / 1e9;
+//equals 2.7272727272727273e-10
+//We already have an object that stores extra data, so let's add pixel size there.
+metaMisc.push({ key: 'Pixel Size', value: newPixelSize, unit: 'nm' });
+```
