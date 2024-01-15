@@ -169,8 +169,8 @@ With this the data should be parsed.
 In this specific scenario we would also like to tell you about the way to calculate image's pixel size. Pixel size can be one of metadata fields but if this isn't the case we would like to show you how you can calculate it from existing data.
 
 If there is no such field as "Pixel size" you can calculate DPI resolution and apply it with magnification.
-DPI resolution represents the number of dots per inch. To calculate it we need to look at three lines in our parsed extra data: XResolution, YResolution and ResolutionUnit.
-X and Y resolutions are the number of dots per inch on X and Y axes. So, if they are equal, then DPI resolution equals to one of these values. However, this value might not be measured in inches. To check that we need to look at ResolutionUnit.
+DPI resolution represents the number of dots per inch. To calculate it we need to look at three lines in our parsed extra data: `XResolution`, `YResolution` and `ResolutionUnit`.
+X and Y resolutions are the number of dots per inch on X and Y axes. So, if they are equal, then DPI resolution equals to one of these values. However, this value might not be measured in inches. To check that we need to look at the value of `ResolutionUnit`.
 If its value equals to 2 then the X and Y resolutions are measured in inches.If it's 3 then it's in centimeters and has to be converted.
 
 **image of three extra data fields**
@@ -185,7 +185,7 @@ if (metaTags.XResolution == metaTags.YResolution && metaTags.XResolution) {
       break;
     case 3:
       //converted from centimeters to inches
-      DPIResolution = metaTags.Xresolution*2.54;
+      DPIResolution = metaTags.XResolution*2.54;
       break;
     default:
       break;
