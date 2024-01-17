@@ -1,6 +1,4 @@
-In this tutorial we will talk about regions of interest, how to extract them and how to analyse them on an actual example.
-
-## Synopsis
+In this tutorial we will talk about regions of interest, how to extract them and how to analyze them on an actual example.
 
 ## Regions' analysis
 
@@ -17,15 +15,15 @@ or, if an image has more complex background and many small elements positioned c
 const roiMap = watershed(image, { points, mask });
 ```
 
-| Good image for using threshold      | Good image for using watershed      |
-| ----------------------------------- | ----------------------------------- |
-| ![](./images/roiAnalysis/greys.png) | ![](./images/roiAnalysis/input.jpg) |
+You can see a good image to use threshold (on the left) and an image for watershed (on the right).
+
+![Techniques comparison](./images/roiAnalysis/ThresholdOrWatershed.png)
 
 :::caution
 Before taking on the analysis of regions of interest we recommend to take a look at the tutorials for `watershed` and `threshold`.
 :::
 
-For the sake of simplicity we will use the same example as with a threshold method. However, we will put a little twist and use an image of [TIFF](https://en.wikipedia.org/wiki/TIFF 'wikipedia link on .tiff format') format. This format is great for storing and editing an image. It also allows adding metadata with extensive information about an image which we will examine a bit further in this tutorial. But for now let's not go too far ahead and take one step at a time.
+For the sake of simplicity we will use the same example as in a threshold method. However, we will put a little twist and use an image of [TIFF](https://en.wikipedia.org/wiki/TIFF 'wikipedia link on .tiff format') format. This format is great for storing and editing images. It also allows adding metadata with extensive information about an image which we will examine a bit further in this tutorial. But for now let's take one step at a time.
 To get regions of interest you need to extract them from a map:
 
 ```ts
@@ -75,7 +73,7 @@ for (const roi of rois) {
 
 ![Biggest rois](./images/roiAnalysis/biggestCells.jpg)
 
-The selected regions can be investigated further. For instance, we can use property like `roundness` to see how close the region's shape is to a circle. Let's put arbitrarily 0.9 as a limit.
+The selected regions can be investigated further. For instance, we can use property like `roundness` to see how close the region's shape is to a circle. Let's put arbitrarily 0.9 as a limit (the coefficient for a perfect circle will be 1).
 
 ```ts
 let roundestRois = [];
@@ -146,7 +144,7 @@ This is just a fraction of tools that ImageJS possesses. There are multiple prop
 ## Getting metadata from TIFF files
 
 Another aspect worth inspecting is extracting image metadata. If an image is of TIFF format, you can extract some metadata tags that can provide additional information about an image. For instance, you can get data such as image length and width or learn about image quality through bit depth(`bitsPerSample`) or X and Y Resolutions.
-The metadata of TIFF format is split into two parts: `tiff` and `exif` which is another image format. We will focus on `tiff` part.
+The metadata of TIFF format is split into two parts: `tiff` and `exif` which is another image format. It can provide information about camera settings, for example. `exif`, however, is mostly used for storing metadata within image formats like JPEG. And since an `exif` part of returned metadata is empty we will focus on `tiff` part.
 
 ```ts
 const meta = image.meta.tiff;
@@ -154,7 +152,7 @@ const meta = image.meta.tiff;
 
 There you will have other two parts: one part will be comprised of a map with fields and then an object of TIFF meta tags which these fields' values are attributed to.
 
-![](./images/roiAnalysis/metaDataScreen.png)
+![Metadata](./images/roiAnalysis/metaDataScreen.png)
 
 ### Getting extra data
 
@@ -162,7 +160,7 @@ Within metadata, you might be wondering what this huge mix of letters and number
 
 ![](./images/roiAnalysis/extraData.jpg)
 
-These are custom fields added with additional information about an image that the user. For instance, in this case you can get information about the microscope that was used, or the magnification level or the electrometric tension that was used while the image was taken. However, this data needs to be parsed, because it difficult to decipher it in its raw format.
+These are custom fields added with additional information about an image. For instance, in this case you can get information about the microscope that was used, or the magnification level or the electrometric tension that was used while the image was taken. However, this data needs to be parsed, because it is difficult to decipher in its raw format.
 To do so you need to identify what is the key id of this text. In our case it is 34682, but it might not always be the case so check it beforehand.
 
 Next thing we need to do is to parse this text.
@@ -187,13 +185,14 @@ lines.forEach((a) => {
 });
 ```
 
-With this the data should be parsed.
+With this the data in the. console should look something like this.
 
 ![](./images/roiAnalysis/parsedExtraData.png)
 
 ### Getting pixel size
 
-In this specific scenario we would also like to tell you about the way to calculate image's pixel size. Pixel size can be one of metadata fields but if this isn't the case we would like to show you how you can calculate it from existing data.
+In this specific scenario we would also like to tell you about the way to calculate image's pixel size. It is an important aspect to deduce image's detail sharpness and display's quality.
+Pixel size can be one of metadata fields but if this isn't the case we would like to show you how you can calculate it from existing data.
 
 If there is no such field as "Pixel size" you can calculate DPI resolution and apply it with magnification.
 DPI resolution represents the number of dots per inch. To calculate it we need to look at three lines in our parsed extra data: `XResolution`, `YResolution` and `ResolutionUnit`.
