@@ -1,5 +1,9 @@
 In this tutorial we will talk about regions of interest, how to extract them and how to analyse them on an actual example.
 
+## Synopsis
+
+## Regions' analysis
+
 As a reminder, to get ROIs, first you need to find ROI map. To do so, you can either use `threshold` method:
 
 ```ts
@@ -116,6 +120,29 @@ for (const roi of biggestRois) {
 }
 ```
 
+An image above highlights the ROIs that we found. Dark blue regions represent the particles that were above the average that we calculated. The light blue particles are the particles with an above average size and roundness above 0.9.
+This is just a fraction of tools that ImageJS possesses. There are multiple properties that you can discover more about in our [API features](../Features/Regions%20of%20interest/Regions%20of%20interest.md) section. Here is an example of the properties that you can use with each region of interest.
+
+| Feature         | Type         | Value                                                    |
+| --------------- | ------------ | -------------------------------------------------------- |
+| `id`            | `number`     | -128                                                     |
+| `origin`        | `Point`      | `{ row: 1547, column: 1602 }`                            |
+| `height`        | `number`     | 48                                                       |
+| `width`         | `number`     | 50                                                       |
+| `surface`       | `number`     | 1814                                                     |
+| `eqpc`          | `number`     | 48.05888611016266                                        |
+| `ped`           | `number`     | 50.64165599181419                                        |
+| `feret`         | `Feret`      |                                                          |
+| `fillRatio`     | `number`     | 1                                                        |
+| `sphericity`    | `number`     | 0.9489991029900559                                       |
+| `roundness`     | `number`     | 0.8948688625143686,                                      |
+| `solidity`      | `number`     | 0.9674666666666667                                       |
+| `perimeter`     | `number`     | 159.095454429505                                         |
+| `convexHull`    | `ConvexHull` |                                                          |
+| `mbr`           | `Mbr`        |                                                          |
+| `filledSurface` | `number`     | 1814                                                     |
+| `centroid`      | `Point`      | `{ column: 1626.577177508269, row: 1570.2546857772877 }` |
+
 ## Getting metadata from TIFF files
 
 Another aspect worth inspecting is extracting image metadata. If an image is of TIFF format, you can extract some metadata tags that can provide additional information about an image. For instance, you can get data such as image length and width or learn about image quality through bit depth(`bitsPerSample`) or X and Y Resolutions.
@@ -173,7 +200,7 @@ DPI resolution represents the number of dots per inch. To calculate it we need t
 X and Y resolutions are the number of dots per inch on X and Y axes. So, if they are equal, then DPI resolution equals to one of these values. However, this value might not be measured in inches. To check that we need to look at the value of `ResolutionUnit`.
 If its value equals to 2 then the X and Y resolutions are measured in inches.If it's 3 then it's in centimeters and has to be converted.
 
-**image of three extra data fields**
+![Resolution data](./images/roiAnalysis/resolutionData.png)
 
 ```ts
 const DPIResolution = 0;
@@ -193,7 +220,8 @@ if (metaTags.XResolution == metaTags.YResolution && metaTags.XResolution) {
 ```
 
 After that we need to get the magnification. In our case it is already known.
-**get magnification image**
+
+![Magnification](./images/roiAnalysis/magnification.png)
 
 All is left is to calculate it through the formula.
 
