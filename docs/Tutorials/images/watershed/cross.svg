@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="400"
+   height="356"
+   version="1.1"
+   id="svg282"
+   sodipodi:docname="cross.svg"
+   inkscape:version="1.2.1 (9c6d41e, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs286" />
+  <sodipodi:namedview
+     id="namedview284"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.1114787"
+     inkscape:cx="4.4985118"
+     inkscape:cy="187.58794"
+     inkscape:window-width="1309"
+     inkscape:window-height="651"
+     inkscape:window-x="30"
+     inkscape:window-y="33"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg282" />
+  <rect
+     x="2"
+     y="2"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect132" />
+  <rect
+     x="2"
+     y="46"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect134" />
+  <rect
+     x="2"
+     y="90"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect136" />
+  <rect
+     x="2"
+     y="134"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect138" />
+  <rect
+     x="2"
+     y="178"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect140" />
+  <rect
+     x="2"
+     y="222"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect142" />
+  <rect
+     x="2"
+     y="266"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect144" />
+  <rect
+     x="2"
+     y="310"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect146" />
+  <rect
+     x="46"
+     y="2"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect148" />
+  <rect
+     x="46"
+     y="46"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect150" />
+  <rect
+     x="46"
+     y="90"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect152" />
+  <rect
+     x="46"
+     y="134"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect154" />
+  <rect
+     x="46"
+     y="178"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect156" />
+  <rect
+     x="46"
+     y="222"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect158" />
+  <rect
+     x="46"
+     y="266"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect160" />
+  <rect
+     x="46"
+     y="310"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect162" />
+  <rect
+     x="90"
+     y="2"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect164" />
+  <rect
+     x="90"
+     y="46"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect166" />
+  <rect
+     x="90"
+     y="90"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect168" />
+  <rect
+     x="90"
+     y="134"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect170" />
+  <rect
+     x="90"
+     y="178"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect172" />
+  <rect
+     x="90"
+     y="222"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect174" />
+  <rect
+     x="90"
+     y="266"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect176" />
+  <rect
+     x="90"
+     y="310"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect178" />
+  <rect
+     x="134"
+     y="2"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect180" />
+  <rect
+     x="134"
+     y="46"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect182" />
+  <rect
+     x="134"
+     y="90"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect184" />
+  <rect
+     x="134"
+     y="134"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect186"
+     style="fill:#de6868;fill-opacity:1" />
+  <rect
+     x="134"
+     y="178"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect188" />
+  <rect
+     x="134"
+     y="222"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect190" />
+  <rect
+     x="134"
+     y="266"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect192" />
+  <rect
+     x="134"
+     y="310"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect194" />
+  <rect
+     x="178"
+     y="2"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect196" />
+  <rect
+     x="178"
+     y="46"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect198" />
+  <rect
+     x="178"
+     y="90"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="#ffffff"
+     fill="#555"
+     id="rect200"
+     style="fill:#de6868;fill-opacity:1" />
+  <rect
+     x="178"
+     y="134"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect202"
+     style="fill:#000000;fill-opacity:1" />
+  <rect
+     x="178"
+     y="178"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect204"
+     style="fill:#de6767;fill-opacity:1" />
+  <rect
+     x="178"
+     y="222"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect206" />
+  <rect
+     x="178"
+     y="266"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect208" />
+  <rect
+     x="178"
+     y="310"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect210" />
+  <rect
+     x="222"
+     y="2"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect212" />
+  <rect
+     x="222"
+     y="46"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect214" />
+  <rect
+     x="222"
+     y="90"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect216" />
+  <rect
+     x="222"
+     y="134"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="#ffffff"
+     fill="#555"
+     id="rect218"
+     style="fill:#de6666;fill-opacity:1" />
+  <rect
+     x="222"
+     y="178"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect220" />
+  <rect
+     x="222"
+     y="222"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect222" />
+  <rect
+     x="222"
+     y="266"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect224" />
+  <rect
+     x="222"
+     y="310"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect226" />
+  <rect
+     x="266"
+     y="2"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect228" />
+  <rect
+     x="266"
+     y="46"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect230" />
+  <rect
+     x="266"
+     y="90"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect232" />
+  <rect
+     x="266"
+     y="134"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect234" />
+  <rect
+     x="266"
+     y="178"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect236" />
+  <rect
+     x="266"
+     y="222"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect238" />
+  <rect
+     x="266"
+     y="266"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#555"
+     id="rect240" />
+  <rect
+     x="266"
+     y="310"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect242" />
+  <rect
+     x="310"
+     y="2"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect244" />
+  <rect
+     x="310"
+     y="46"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect246" />
+  <rect
+     x="310"
+     y="90"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect248" />
+  <rect
+     x="310"
+     y="134"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect250" />
+  <rect
+     x="310"
+     y="178"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect252" />
+  <rect
+     x="310"
+     y="222"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect254" />
+  <rect
+     x="310"
+     y="266"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect256" />
+  <rect
+     x="310"
+     y="310"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect258" />
+  <rect
+     x="354"
+     y="2"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect260" />
+  <rect
+     x="354"
+     y="46"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect262" />
+  <rect
+     x="354"
+     y="90"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect264" />
+  <rect
+     x="354"
+     y="134"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect266" />
+  <rect
+     x="354"
+     y="178"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect268" />
+  <rect
+     x="354"
+     y="222"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect270" />
+  <rect
+     x="354"
+     y="266"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect272" />
+  <rect
+     x="354"
+     y="310"
+     width="40"
+     height="40"
+     stroke-width="0"
+     stroke="white"
+     fill="#EEE"
+     id="rect274" />
+  <text
+     xml:space="preserve"
+     style="font-size:26.6667px;font-family:Avenir;-inkscape-font-specification:Avenir;fill:#000000;stroke:#000000;stroke-width:1.1"
+     x="152.59677"
+     y="25.392262"
+     id="text7701"><tspan
+       sodipodi:role="line"
+       id="tspan7699"
+       x="152.59677"
+       y="25.392262"
+       style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-opacity:1">Cross</tspan></text>
+</svg>

@@ -1,3 +1,7 @@
+---
+sidebar_position: 0
+---
+
 import ThresholdDemo from './demos/threshold.demo.tsx'
 
 _Grayscale image into a binary image by setting a specific threshold value or algorithm._
