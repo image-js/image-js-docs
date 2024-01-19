@@ -9,13 +9,13 @@ const mask = image.threshold();
 const roiMap = fromMask(mask);
 ```
 
-or, if an image has more complex background and many small elements positioned closely to each other, use `watershed` function:
+or, if an image has more complex background and many small elements are positioned closely to each other, use `watershed` function:
 
 ```ts
 const roiMap = watershed(image, { points, mask });
 ```
 
-You can see a good image to use threshold (on the left) and an image for watershed (on the right).
+You can see a good image to use threshold on the left and an image for watershed on the right.
 
 ![Techniques comparison](./images/roiAnalysis/ThresholdOrWatershed.png)
 
@@ -23,7 +23,7 @@ You can see a good image to use threshold (on the left) and an image for watersh
 Before taking on the analysis of regions of interest we recommend to take a look at the tutorials for `watershed` and `threshold`.
 :::
 
-For the sake of simplicity we will use the same example as in a threshold method. However, we will put a little twist and use an image of [TIFF](https://en.wikipedia.org/wiki/TIFF 'wikipedia link on .tiff format') format. This format is great for storing and editing images. It also allows adding metadata with extensive information about an image which we will examine a bit further in this tutorial. But for now let's take one step at a time.
+For the sake of simplicity we will use the same example as in a threshold method. However, we will put a little twist and use an image of [TIFF](https://en.wikipedia.org/wiki/TIFF 'wikipedia link on .tiff format') format. This format is great for storing and editing images of high quality. It also allows adding metadata with extensive information about an image which we will examine a bit further in this tutorial. But for now let's take one step at a time.  
 To get regions of interest you need to extract them from a map:
 
 ```ts
@@ -34,10 +34,9 @@ const rois = roiMap.getRois({ kind: 'black' });
 
 :::tip
 For `getRois()` method you can use options `minSurface` and `maxSurface` to filter the ROIs by surface size.
-So in this case we can specify the minimum surface of the regions in question:
 
 ```ts
-const rois = roiMap.getRois({ kind: 'black', minSurface: 64 });
+const rois = roiMap.getRois({ kind: 'black', minSurface: 1000 });
 ```
 
 :::
@@ -45,12 +44,11 @@ const rois = roiMap.getRois({ kind: 'black', minSurface: 64 });
 Now we have all the regions identified and stored. We can work on the analysis of those regions.
 
 ![Get ROIs](./images/roiAnalysis/MBR.jpg)
-![Get ConvexHull](./images/roiAnalysis/ConvexH.jpg)
 
-To do so we need to understand what kind of analysis is necessary. Depending on the answer different tools can be used. Let's say we want to find the filter regions by size and shape. Now,
-For the size it is rather straight-forward. You can use the `getRois()` options, as was mentioned above, or you can use region's perimeter and surface properties to filter the ROIs.
+To do so we need to understand what kind of analysis is necessary. Depending on the answer, different tools can be used. Let's say we want to filter regions by size and shape.
+For filtering by size the process is rather straight-forward. You can use the `getRois()` options, as was mentioned above, or you can use region's perimeter and surface properties to filter the ROIs. We can detect
 In this example let's get the regions which are above an average size of the `rois` sample.
-First we need to find this average. It can be done in a rather straight-forward fashion:
+First we need to find this average. It can be done like this:
 
 ```ts
 let surfaceSum = 0;
@@ -73,7 +71,7 @@ for (const roi of rois) {
 
 ![Biggest rois](./images/roiAnalysis/biggestCells.jpg)
 
-The selected regions can be investigated further. For instance, we can use property like `roundness` to see how close the region's shape is to a circle. Let's put arbitrarily 0.9 as a limit (the coefficient for a perfect circle will be 1).
+This provides us with a certain number of regions (colored in blue). The selected regions can be investigated further. For instance, we can use property like `roundness` to see how close the region's shape is to a circle. Let's put 0.9 as a limit (the coefficient for a perfect circle will be 1).
 
 ```ts
 let roundestRois = [];
@@ -83,8 +81,6 @@ for (const roi of biggestRois) {
   }
 }
 ```
-
-![Roundest rois](./images/roiAnalysis/roundAndBig.jpg)
 
 This provides us with a code like this:
 
@@ -100,59 +96,65 @@ for (const roi of rois) {
 }
 const avgSurface = surfaceSum / rois.length;
 
-//We can calculate biggest and roundest rois in one cycle,
-//but we split the logic between the two for the sake of this
-//example.
+//We put the calculation of both biggest and
+//roundest rois into one loop for faster
+//computation.
 const biggestRois = [];
+const roundestRois = [];
 for (const roi of rois) {
   if (roi.surface >= avgSurface) {
     biggestRois.push(roi);
-  }
-}
-
-let roundestRois = [];
-for (const roi of biggestRois) {
-  if (roi.roundness > 0.9) {
-    roundestRois.push(roi);
+    if (roi.roundness > 0.9) {
+      roundestRois.push(roi);
+    }
   }
 }
 ```
 
-An image above highlights the ROIs that we found. Dark blue regions represent the particles that were above the average that we calculated. The light blue particles are the particles with an above average size and roundness above 0.9.
-This is just a fraction of tools that ImageJS possesses. There are multiple properties that you can discover more about in our [API features](../Features/Regions%20of%20interest/Regions%20of%20interest.md) section. Here is an example of the properties that you can use with each region of interest.
+![Roundest rois](./images/roiAnalysis/roundAndBig.jpg)
 
-| Feature         | Type         | Value                                                    |
-| --------------- | ------------ | -------------------------------------------------------- |
-| `id`            | `number`     | -128                                                     |
-| `origin`        | `Point`      | `{ row: 1547, column: 1602 }`                            |
-| `height`        | `number`     | 48                                                       |
-| `width`         | `number`     | 50                                                       |
-| `surface`       | `number`     | 1814                                                     |
-| `eqpc`          | `number`     | 48.05888611016266                                        |
-| `ped`           | `number`     | 50.64165599181419                                        |
-| `feret`         | `Feret`      |                                                          |
-| `fillRatio`     | `number`     | 1                                                        |
-| `sphericity`    | `number`     | 0.9489991029900559                                       |
-| `roundness`     | `number`     | 0.8948688625143686,                                      |
-| `solidity`      | `number`     | 0.9674666666666667                                       |
-| `perimeter`     | `number`     | 159.095454429505                                         |
-| `convexHull`    | `ConvexHull` |                                                          |
-| `mbr`           | `Mbr`        |                                                          |
-| `filledSurface` | `number`     | 1814                                                     |
-| `centroid`      | `Point`      | `{ column: 1626.577177508269, row: 1570.2546857772877 }` |
+An image above highlights the ROIs that we found. Dark blue regions represent the particles that were above the average that we calculated. The light blue particles are the particles with an above average size and roundness above 0.9.
+This is just a fraction of tools that ImageJS possesses. There are many other properties that you can discover more about in our [API features](../Features/Regions%20of%20interest/Regions%20of%20interest.md) section. Here is an example of the properties that you can use with any region of interest:
+
+| Feature         | Type         | Value                                                                  |
+| --------------- | ------------ | ---------------------------------------------------------------------- |
+| `id`            | `number`     | -128                                                                   |
+| `origin`        | `Point`      | `{ row: 1547, column: 1602 }`                                          |
+| `height`        | `number`     | 48                                                                     |
+| `width`         | `number`     | 50                                                                     |
+| `surface`       | `number`     | 1814                                                                   |
+| `eqpc`          | `number`     | 48.05888611016266                                                      |
+| `ped`           | `number`     | 50.64165599181419                                                      |
+| `feret`         | `Feret`      | `feret: {minDiameter, maxDiameter, aspectRatio}`                       |
+| `fillRatio`     | `number`     | 1                                                                      |
+| `sphericity`    | `number`     | 0.9489991029900559                                                     |
+| `roundness`     | `number`     | 0.8948688625143686,                                                    |
+| `solidity`      | `number`     | 0.9674666666666667                                                     |
+| `perimeter`     | `number`     | 159.095454429505                                                       |
+| `convexHull`    | `ConvexHull` | `convexHull: {points,perimeter,surface}`                               |
+| `mbr`           | `Mbr`        | `mbr: {points, surface, angle, width, height, perimeter, aspectRatio}` |
+| `filledSurface` | `number`     | 1814                                                                   |
+| `centroid`      | `Point`      | `{ column: 1626.577177508269, row: 1570.2546857772877 }`               |
 
 ## Getting metadata from TIFF files
 
-Another aspect worth inspecting is extracting image metadata. If an image is of TIFF format, you can extract some metadata tags that can provide additional information about an image. For instance, you can get data such as image length and width or learn about image quality through bit depth(`bitsPerSample`) or X and Y Resolutions.
-The metadata of TIFF format is split into two parts: `tiff` and `exif` which is another image format. It can provide information about camera settings, for example. `exif`, however, is mostly used for storing metadata within image formats like JPEG. And since an `exif` part of returned metadata is empty we will focus on `tiff` part.
+Another aspect worth inspecting is extracting image metadata. Metadata represents information about an image itself. It can be something basic such as the date when an image was taken, or something specific like the name of the camera that the image was taken by. You can extract some metadata tags that can provide additional information about an image by using this command:
+
+```ts
+const meta = image.meta;
+```
+
+![Metadata](./images/roiAnalysis/metadata.png)
+
+In ImageJS there are two supported formats for metadata: `exif` and `tiff`. While `exif` is a format used by digital images to store metadata, `tiff` is an image format used for high quality [raster graphics](https://en.wikipedia.org/wiki/Raster_graphics 'wikipedia link for raster graphics') images. Since our image in question is of `tiff` format and `exif` part of returned metadata is empty we will focus on `tiff` part.
 
 ```ts
 const meta = image.meta.tiff;
 ```
 
-There you will have other two parts: one part will be comprised of a map with fields and then an object of TIFF meta tags which these fields' values are attributed to.
+There you will have two other parts: one part will be comprised of a map with fields and then an object of TIFF meta tags which these fields' values are attributed to.
 
-![Metadata](./images/roiAnalysis/metaDataScreen.png)
+![TIFF Metadata](./images/roiAnalysis/metadataScreen.png)
 
 ### Getting extra data
 
@@ -160,8 +162,8 @@ Within metadata, you might be wondering what this huge mix of letters and number
 
 ![](./images/roiAnalysis/extraData.jpg)
 
-These are custom fields added with additional information about an image. For instance, in this case you can get information about the microscope that was used, or the magnification level or the electrometric tension that was used while the image was taken. However, this data needs to be parsed, because it is difficult to decipher in its raw format.
-To do so you need to identify what is the key id of this text. In our case it is 34682, but it might not always be the case so check it beforehand.
+These are custom fields added with additional information about an image. For instance, in this case you can get information about the microscope that was used, or the magnification level or the electrometric tension that was used while the image was taken. However, this data needs to be parsed, as it is difficult to decipher in its raw format.
+To do so you need to identify what is the key id of this text. In our case it is `34682`, but it might not always be the case so check it beforehand.
 
 Next thing we need to do is to parse this text.
 
@@ -187,14 +189,14 @@ lines.forEach((a) => {
 
 With this the data in the. console should look something like this.
 
-![](./images/roiAnalysis/parsedExtraData.png)
+![Parsed extra data](./images/roiAnalysis/parsedExtraData.png)
 
 ### Getting pixel size
 
 In this specific scenario we would also like to tell you about the way to calculate image's pixel size. It is an important aspect to deduce image's detail sharpness and display's quality.
-Pixel size can be one of metadata fields but if this isn't the case we would like to show you how you can calculate it from existing data.
+Pixel size can be one of metadata fields but if this isn't the case we would like to show you how you can calculate it from the existing data in this specific scenario.
 
-If there is no such field as "Pixel size" you can calculate DPI resolution and apply it with magnification.
+To calculate pixel size you can calculate DPI resolution and apply it with magnification.
 DPI resolution represents the number of dots per inch. To calculate it we need to look at three lines in our parsed extra data: `XResolution`, `YResolution` and `ResolutionUnit`.
 X and Y resolutions are the number of dots per inch on X and Y axes. So, if they are equal, then DPI resolution equals to one of these values. However, this value might not be measured in inches. To check that we need to look at the value of `ResolutionUnit`.
 If its value equals to 2 then the X and Y resolutions are measured in inches.If it's 3 then it's in centimeters and has to be converted.
@@ -210,8 +212,8 @@ if (metaTags.XResolution == metaTags.YResolution && metaTags.XResolution) {
       DPIResolution = metaTags.XResolution;
       break;
     case 3:
-      //converted from centimeters to inches
-      DPIResolution = metaTags.XResolution*2.54;
+      //converted from inches to centimeters
+      DPIResolution = metaTags.XResolution/2.54;
       break;
     default:
       break;
