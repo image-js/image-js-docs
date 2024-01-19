@@ -27,7 +27,7 @@
     "@orama/plugin-docusaurus": "^1.2.1",
     "clsx": "^1.2.1",
     "hast-util-is-element": "^1.1.0",
-    "image-js": "0.0.0-next-74561455b0",
+    "image-js": "0.0.0-next-2b771f3039",
     "immer": "^9.0.19",
     "prism-react-renderer": "^1.3.5",
     "react": "^17.0.2",
