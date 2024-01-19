@@ -9,7 +9,7 @@ const mask = image.threshold();
 const roiMap = fromMask(mask);
 ```
 
-or, if an image has more complex background and many small elements are positioned closely to each other, use `watershed` function:
+or, if an image has small elements that are touching each other, use `watershed` function:
 
 ```ts
 const roiMap = watershed(image, { points, mask });
@@ -62,12 +62,39 @@ After that we can get regions that are above the average size:
 
 ```ts
 const biggestRois = [];
-for (const roi of rois) {
-  if (roi.surface >= avgSurface) {
-    biggestRois.push(roi);
-  }
+const biggestRois = rois.filter((roi) => {
+  return roi.surface >= avgSurface;
+});
+//since our image is of grey color model, we need to convert
+//it into 'RGB' model to color it. Otherwise, we will get an error
+// if we try to put an rgb color to a grey image.
+const coloredRoisImage = image.convertColor('RGB');
+for (const roi of biggestRois) {
+  //The image is of 16 bit depth, so the channel values are
+  //between 0 and 65535. Here we will receive a shade of blue.
+  coloredRoisImage = image.paintMask(roi.getMask(), {
+    color: [0, 0, 50000],
+    origin: { column: roi.origin.column, row: roi.origin.row },
+  });
 }
 ```
+
+:::caution
+It is important to put origin as a parameter. If not specified, the origin of the whole image will be considered as one,so your mask will probably be painted somewhere in the top left
+corner regardless of your ROI position.
+:::
+
+:::info
+You can also use `paintMaskOnImage` function to do the same thing:
+
+```ts
+coloredRoisImage = paintMaskOnImage(image, roi.getMask(), {
+  color: [0, 0, 50000],
+  origin: { column: roi.origin.column, row: roi.origin.row },
+});
+```
+
+:::
 
 ![Biggest rois](./images/roiAnalysis/biggestCells.jpg)
 
@@ -75,12 +102,22 @@ This provides us with a certain number of regions (colored in blue). The selecte
 
 ```ts
 let roundestRois = [];
-for (const roi of biggestRois) {
-  if (roi.roundness > 0.9) {
-    roundestRois.push(roi);
-  }
-}
+const roundestRois = biggestRois.filter((roi) => {
+  return roi.roundness > 0.9;
+});
 ```
+
+After that we can paint the rois with a different color the same manner we did before to highlight the "roundest" regions.
+
+```ts
+for (const roi of roundestRois) {
+  coloredRoisImage = image.paintMask(roi.getMask(), {
+    color: [0, 50000, 50000],
+    origin: { column: roi.origin.column, row: roi.origin.row },
+  });
+```
+
+![Roundest rois](./images/roiAnalysis/roundAndBig.jpg)
 
 This provides us with a code like this:
 
@@ -96,22 +133,26 @@ for (const roi of rois) {
 }
 const avgSurface = surfaceSum / rois.length;
 
-//We put the calculation of both biggest and
-//roundest rois into one loop for faster
-//computation.
-const biggestRois = [];
-const roundestRois = [];
-for (const roi of rois) {
-  if (roi.surface >= avgSurface) {
-    biggestRois.push(roi);
-    if (roi.roundness > 0.9) {
-      roundestRois.push(roi);
-    }
-  }
+const biggestRois = rois.filter((roi) => {
+  return roi.surface >= avgSurface;
+});
+const roundestRois = biggestRois.filter((roi) => {
+  return roi.roundness > 0.9;
+});
+const coloredRoisImage = image.convertColor('RGB');
+for (const roi of biggestRois) {
+  coloredRoisImage = image.paintMask(roi.getMask(), {
+    color: [0, 0, 50000],
+    origin: { column: roi.origin.column, row: roi.origin.row },
+  });
+}
+for (const roi of roundestRois) {
+  coloredRoisImage = image.paintMask(roi.getMask(), {
+    color: [0, 50000, 50000],
+    origin: { column: roi.origin.column, row: roi.origin.row },
+  });
 }
 ```
-
-![Roundest rois](./images/roiAnalysis/roundAndBig.jpg)
 
 An image above highlights the ROIs that we found. Dark blue regions represent the particles that were above the average that we calculated. The light blue particles are the particles with an above average size and roundness above 0.9.
 This is just a fraction of tools that ImageJS possesses. There are many other properties that you can discover more about in our [API features](../Features/Regions%20of%20interest/Regions%20of%20interest.md) section. Here is an example of the properties that you can use with any region of interest:
@@ -135,100 +176,3 @@ This is just a fraction of tools that ImageJS possesses. There are many other pr
 | `mbr`           | `Mbr`        | `mbr: {points, surface, angle, width, height, perimeter, aspectRatio}` |
 | `filledSurface` | `number`     | 1814                                                                   |
 | `centroid`      | `Point`      | `{ column: 1626.577177508269, row: 1570.2546857772877 }`               |
-
-## Getting metadata from TIFF files
-
-Another aspect worth inspecting is extracting image metadata. Metadata represents information about an image itself. It can be something basic such as the date when an image was taken, or something specific like the name of the camera that the image was taken by. You can extract some metadata tags that can provide additional information about an image by using this command:
-
-```ts
-const meta = image.meta;
-```
-
-![Metadata](./images/roiAnalysis/metadata.png)
-
-In ImageJS there are two supported formats for metadata: `exif` and `tiff`. While `exif` is a format used by digital images to store metadata, `tiff` is an image format used for high quality [raster graphics](https://en.wikipedia.org/wiki/Raster_graphics 'wikipedia link for raster graphics') images. Since our image in question is of `tiff` format and `exif` part of returned metadata is empty we will focus on `tiff` part.
-
-```ts
-const meta = image.meta.tiff;
-```
-
-There you will have two other parts: one part will be comprised of a map with fields and then an object of TIFF meta tags which these fields' values are attributed to.
-
-![TIFF Metadata](./images/roiAnalysis/metadataScreen.png)
-
-### Getting extra data
-
-Within metadata, you might be wondering what this huge mix of letters and numbers represents:
-
-![](./images/roiAnalysis/extraData.jpg)
-
-These are custom fields added with additional information about an image. For instance, in this case you can get information about the microscope that was used, or the magnification level or the electrometric tension that was used while the image was taken. However, this data needs to be parsed, as it is difficult to decipher in its raw format.
-To do so you need to identify what is the key id of this text. In our case it is `34682`, but it might not always be the case so check it beforehand.
-
-Next thing we need to do is to parse this text.
-
-```ts
-let metaMisc = [];
-
-let lines = image.meta.tiff.fields.get(34682).split('</Data><Data>');
-//We split each line into three elements:
-//key(name of the tag)
-//value(value of the tag)
-//unit(units in which the value is measured).
-lines.forEach((a) => {
-  var fields = a.split(/<\/Label><Value>|<\/Value><Unit>/);
-  fields[0] = fields[0].replace(/^.*>/, '');
-  fields[2] = fields[2].replace(/<.*$/, '');
-  metaMisc.push({
-    key: fields[0],
-    value: fields[1],
-    unit: fields[2],
-  });
-});
-```
-
-With this the data in the. console should look something like this.
-
-![Parsed extra data](./images/roiAnalysis/parsedExtraData.png)
-
-### Getting pixel size
-
-In this specific scenario we would also like to tell you about the way to calculate image's pixel size. It is an important aspect to deduce image's detail sharpness and display's quality.
-Pixel size can be one of metadata fields but if this isn't the case we would like to show you how you can calculate it from the existing data in this specific scenario.
-
-To calculate pixel size you can calculate DPI resolution and apply it with magnification.
-DPI resolution represents the number of dots per inch. To calculate it we need to look at three lines in our parsed extra data: `XResolution`, `YResolution` and `ResolutionUnit`.
-X and Y resolutions are the number of dots per inch on X and Y axes. So, if they are equal, then DPI resolution equals to one of these values. However, this value might not be measured in inches. To check that we need to look at the value of `ResolutionUnit`.
-If its value equals to 2 then the X and Y resolutions are measured in inches.If it's 3 then it's in centimeters and has to be converted.
-
-![Resolution data](./images/roiAnalysis/resolutionData.png)
-
-```ts
-const DPIResolution = 0;
-const metaTags = image.meta.tiff.tags;
-if (metaTags.XResolution == metaTags.YResolution && metaTags.XResolution) {
-  switch(metaTags.ResolutionUnit)
-    case 2:
-      DPIResolution = metaTags.XResolution;
-      break;
-    case 3:
-      //converted from inches to centimeters
-      DPIResolution = metaTags.XResolution/2.54;
-      break;
-    default:
-      break;
-}
-```
-
-After that we need to get the magnification. In our case it is already known.
-
-![Magnification](./images/roiAnalysis/magnification.png)
-
-All is left is to calculate it through the formula.
-
-```ts
-const newPixelSize = 30000 / magnification[0].value / 1e9;
-//equals 2.7272727272727273e-10
-//We already have an object that stores extra data, so let's add pixel size there.
-metaMisc.push({ key: 'Pixel Size', value: newPixelSize, unit: 'nm' });
-```
