@@ -1,6 +1,10 @@
 In this tutorial we will talk about regions of interest, how to extract them and how to analyze them on an actual example.
 
+## Synopsis
+
 ## Regions' analysis
+
+### Getting ROIs
 
 As a reminder, to get ROIs, first you need to find ROI map. To do so, you can either use `threshold` method:
 
@@ -41,48 +45,73 @@ const rois = roiMap.getRois({ kind: 'black', minSurface: 1000 });
 
 :::
 
+### Getting distribution by size
+
 Now we have all the regions identified and stored. We can work on the analysis of those regions.
 
 ![Get ROIs](./images/roiAnalysis/MBR.jpg)
 
 To do so we need to understand what kind of analysis is necessary. Depending on the answer, different tools can be used. Let's say we want to filter regions by size and shape.
-For filtering by size the process is rather straight-forward. You can use the `getRois()` options, as was mentioned above, or you can use region's perimeter and surface properties to filter the ROIs. We can detect
-In this example let's get the regions which are above an average size of the `rois` sample.
-First we need to find this average. It can be done like this:
+To do that we can use surface and some basics from statistics. Let's calculate the size distribution of our ROIs.  
+First we need to find the limits of our sample.
 
 ```ts
-let surfaceSum = 0;
-for (const roi of rois) {
-  surfaceSum += roi.surface;
-}
-const avgSurface = surfaceSum / rois.length;
+const maxSurface = Math.max(...rois.map((roi) => roi.surface));
+const minSurface = Math.min(...rois.map((roi) => roi.surface));
 ```
 
-After that we can get regions that are above the average size:
+After that we can calculate the span of our sample:
 
 ```ts
-const biggestRois = [];
-const biggestRois = rois.filter((roi) => {
-  return roi.surface >= avgSurface;
-});
-//since our image is of grey color model, we need to convert
-//it into 'RGB' model to color it. Otherwise, we will get an error
-// if we try to put an rgb color to a grey image.
-const coloredRoisImage = image.convertColor('RGB');
-for (const roi of biggestRois) {
-  //The image is of 16 bit depth, so the channel values are
-  //between 0 and 65535. Here we will receive a shade of blue.
-  coloredRoisImage = image.paintMask(roi.getMask(), {
-    color: [0, 0, 50000],
-    origin: { column: roi.origin.column, row: roi.origin.row },
+const span = maxSurface - minSurface;
+```
+
+Then the width of intervals we will have(classes). There is no particular rule of how to choose it, but this formula is a rule of thumb:
+
+```ts
+//We round up the interval for simplicity. You can also make it
+//a multiple of 10 if you want.
+const interval = span / Math.sqrt(rois.length);
+```
+
+After that we can find how many ROIs belong to each interval. To make it more visually clear we will use a map.
+
+```ts
+const bySizeDistribution = new Map();
+
+for (let i = minSurface; i < maxSurface; i += interval) {
+  const count = rois.filter((roi) => {
+    return roi.surface >= i && roi.surface < i + interval;
+  }).length;
+  const intervalString = i + '-' + (i + interval);
+  bySizeDistribution.set(intervalString, {
+    frequency: count,
+    percentage: ((count / rois.length) * 100).toFixed(2),
   });
 }
 ```
 
-:::caution
-It is important to put origin as a parameter. If not specified, the origin of the whole image will be considered as one,so your mask will probably be painted somewhere in the top left
-corner regardless of your ROI position.
-:::
+Now you have a data about size distribution in our sample:
+
+![Distribution by size](distributionGraph.png)
+
+| Interval (points) | Frequency | Percentage (%) |
+| ----------------- | --------- | -------------- |
+| 174-451           | 2         | 1.47           |
+| 451-728           | 13        | 9.56           |
+| 726-1005          | 7         | 5.15           |
+| 1005-1282         | 16        | 11.76          |
+| 1282-1559         | 19        | 13.97          |
+| 1559-1836         | 21        | 15.44          |
+| 1836-2113         | 20        | 14.71          |
+| 2113-2390         | 12        | 8.82           |
+| 2390-2667         | 16        | 11.76          |
+| 2667-2944         | 8         | 5.88           |
+| 2944-3221         | 1         | 0.74           |
+| 3221-3498         | 1         | 0.74           |
+
+However, what if we want to see how the shape differs between classes?
+For that we can use ROI's roundness property. It checks how close the region is to a shape of a perfect circle.
 
 :::info
 You can also use `paintMaskOnImage` function to do the same thing:

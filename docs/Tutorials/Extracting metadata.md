@@ -1,10 +1,10 @@
 [Metadata](../Glossary.md#metadata 'internal link on metadata') represents information about various aspects of an image itself. It can be something basic such as the date when an image was taken, or something more specific like the name of the camera that the image was taken by. You can extract some metadata tags that can provide additional information about an image by using this command:
 
-## Getting metadata from TIFF files
-
 ```ts
 const meta = image.meta;
 ```
+
+## Getting metadata from TIFF files
 
 ![Metadata](./images/roiAnalysis/metadata.png)
 
@@ -20,7 +20,7 @@ There you will have two other parts: one part will be comprised of a map with fi
 
 ### Getting extra data
 
-Within metadata, you might be wondering what this huge mix of letters and numbers represents:
+You might be wondering what this huge mix of letters and numbers represents:
 
 ![](./images/roiAnalysis/extraData.jpg)
 
@@ -49,19 +49,23 @@ lines.forEach((a) => {
 });
 ```
 
-With this the data in the console should look something like this.
+With this the data in the console should look like this.
 
 ![Parsed extra data](./images/roiAnalysis/parsedExtraData.png)
 
 ### Getting pixel size
 
 In this specific scenario we would also like to tell you about the way to calculate image's pixel size. It is an important aspect to deduce image's detail sharpness and display's quality.
-Pixel size can be one of metadata fields but if this isn't the case we would like to show you how you can calculate it from the existing data in this specific scenario.
+Pixel size can be one of metadata fields but if this isn't the case you might be able to calculate it from the existing data.
 
-To calculate pixel size you can calculate DPI resolution and apply it with magnification.
+In this specific scenario to calculate pixel size you can calculate DPI resolution and apply it with magnification.
 DPI resolution represents the number of dots per inch. To calculate it we need to look at three lines in our parsed extra data: `XResolution`, `YResolution` and `ResolutionUnit`.
 X and Y resolutions are the number of dots per inch on X and Y axes. So, if they are equal, then DPI resolution equals to one of these values. However, this value might not be measured in inches. To check that we need to look at the value of `ResolutionUnit`.
 If its value equals to 2 then the X and Y resolutions are measured in inches.If it's 3 then it's in centimeters and has to be converted.
+
+:::info
+`ResolutionUnit` can also be equal to 1. This means that the image doesn't have an absolute unit of measurement. Used for images that may have a non-square aspect ratio, but no meaningful absolute dimensions.
+:::
 
 ![Resolution data](./images/roiAnalysis/resolutionData.png)
 
