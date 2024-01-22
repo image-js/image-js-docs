@@ -2,7 +2,12 @@ If you looked at some of our tutorials, you might have noticed that we apply a b
 
 ## Blur
 
-Blur or box blur is the technique that uses convolution matrix to calculate an average among the surrounding pixels which are within the transformation matrix (kernel). It is a relatively simple and fast technique for computation but it also produces worse results than the other two filters.
+Blur or box blur is the technique that uses convolution matrix to calculate an average among the surrounding pixels which are within the transformation matrix (kernel).
+
+![Convolution process](./images/blurring/2D_Convolution_Animation.gif)
+
+The key advantage of box blur compared to other filters is its speed. It doesn't need to calculate gaussian matrix, based on its sigma, like Gaussian Blur, nor does it need to sort all values within the cells, like median.
+However, this also means that every pixel has the same weight to the algorithm regardless of its position. This means that it's speed comes at the cost of the output quality.
 
 ## Gaussian Blur
 
@@ -26,11 +31,15 @@ $$
 \end{bmatrix}
 $$
 
-The values of the table will probably be floating numbers rather than integers but that's kind of the idea. The closer you are to the value in check, the more weight it will have during average computation.
+The values of the table will probably be floating numbers rather than integers but the idea is this: the closer you are to the pixel in check, the more weight it will have during average computation.
 
-Gaussian blur is good for such process as edge detection. Edge detection's algorithms are sensitive to noise.
+Gaussian blur is good for such process as edge detection. Edge detection's algorithms are sensitive to noise. For instance here is the example of a Canny Edge detector with and without gaussian blur:
+
+![Edge detection with gaussian](./images/blurring/lennaCED.png)
 
 ## Median Filter
 
 Median filter is used differently from blurs. The obvious difference is the fact that median filter looks for a median value in the area, rather than the average like blur does.
-It is
+It is particularly effective against ["salt-and-pepper"](https://en.wikipedia.org/wiki/Salt-and-pepper_noise 'wikipedia link on salt and pepper') effect.
+
+![Denoising with median filter](./images/blurring/tigersBlur.png)
