@@ -62,6 +62,17 @@ Take a look at these images.
 ![](./images/blurring/blurringComp.png)
 
 You could make an argument that after taking a closer look the gaussian blur has a more "natural" blurring than a regular blur. Or that images after median filter have slightly better detailing. But these differences would not be substantial for an average user.
-When it comes to image analysis, however, things are different. Let take a look at the images used in our tutorials.
+When it comes to image analysis, however, things are different. Let take a look at the image used in our tutorials.
+![](./images/blurring/imgTest.jpg)
 
-It is preferable
+Here is the image of particles of high quality. The problem with high quality is that it improves overall quality of the image details, which makes threshold to pick on noise which is undesirable during image analysis. These small dots become regions, they start disrupting data collection the whole analysis goes sideways etc.
+
+![](./images/blurring/isodataNoBlur.jpg)
+
+To improve it, applying blur is necessary. But we don't really have preserving edges as the priority, we want to remove useless dots from our mask. So applying gaussian blur is a reasonable choice.
+
+![](./images/blurring/isodataBlur.jpg)
+
+It was mentioned in the tutorials, but you can get a good result with all three techniques. The question is, however, which of these three to use in what situation.
+
+Therefore the idea is this: if an image is of good quality and you want to focus on well-defined objects, use blur or gaussian blur (if speed is not a pressing issue gaussian blur is preferable). If an image is of decent quality and you want . If you need to preserve edges of the elements or if an image has noise, especially "salt-and-pepper" one, use median filter.
