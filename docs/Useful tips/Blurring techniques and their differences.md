@@ -52,7 +52,7 @@ Gaussian blur is good for edge detection. Edge detection's algorithms are sensit
 Median filter is used differently from blurs. The obvious difference is the fact that median filter looks for a median value in the area, rather than the average like blur does. This means that the values in the surface in check need to be sorted first, which slows the algorithm down. Median filer also needs to treat image borders differently because there are not enough entries to fill the window. But even then, among the three filters, median is the best at preserving objects' edges and details.
 It is particularly effective against ["salt-and-pepper"](https://en.wikipedia.org/wiki/Salt-and-pepper_noise 'wikipedia link on salt and pepper') effect.
 
-![Denoising with median filter](./images/blurring/tigersBlur.png)
+![Remove noise with median filter](./images/blurring/tigersBlur.png)
 
 ## What algorithm to use?
 
