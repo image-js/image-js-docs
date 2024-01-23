@@ -52,3 +52,27 @@ Currently, there are several ways of processing an image:
 - [Morphology](../Features/Morphology/Morphology.md 'internal link on morphology'): enables shape analysis and shape identification.
 
 <ImageDemo />
+
+:::caution
+By default an origin point of the image is top-left corner.
+
+![Image coordinates](./workingWithImages/coordinatesImage.jpg)
+
+So, for example in `transform` function the transformation matrix will look like this:
+
+$$
+\begin{bmatrix}
+a & b & c \\
+d & e & f
+\end{bmatrix}
+$$
+
+Where $$a$$ and $$e$$ control scaling along the x and y axes,
+
+$$b$$ and $$d$$ control shearing
+
+$$c$$ and $$f$$ control translation.
+
+With a different point of origin, the matrix and its application become different as well.
+
+:::

@@ -96,13 +96,6 @@ const data = async () => {
 };
 ```
 
-:::caution
-The image coordinates in ImageJS are inverted. This means that by default an origin point of the image is top-left corner.
-
-![Image coordinates](./images/coordinatesImage.jpg)
-
-:::
-
 ### Bundling your image with Vite
 
 To display an image via [DOM](https://en.wikipedia.org/wiki/Document_Object_Model 'wikipedia link on dom') you can use `writeCanvas` method.
