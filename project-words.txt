@@ -27,3 +27,6 @@ canny
 grayscaled
 exif
 electrometric
+Grayscaling
+
+
