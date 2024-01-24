@@ -96,5 +96,5 @@ All is left is to calculate it through the formula.
 const newPixelSize = 30000 / magnification[0].value / 1e9;
 //equals 2.7272727272727273e-10
 //We already have an object that stores extra data, so let's add pixel size there.
-metaMisc.push({ key: 'Pixel Size', value: newPixelSize, unit: 'nm' });
+metaMisc.push({ key: 'Pixel Size', value: newPixelSize, unit: 'm' });
 ```
