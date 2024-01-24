@@ -93,7 +93,7 @@ for (let i = minSurface; i < maxSurface; i += interval) {
 
 Now you have a data about size distribution in our sample:
 
-![Distribution by size](distributionGraph.png)
+![Distribution by size](./images/roiAnalysis/distributionGraph.png)
 
 | Interval (points) | Frequency | Percentage (%) |
 | ----------------- | --------- | -------------- |
