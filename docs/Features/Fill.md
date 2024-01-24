@@ -12,4 +12,3 @@ mask.fill(1);
 ### Parameters and default values
 
 - `value`
-
