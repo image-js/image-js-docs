@@ -55,7 +55,7 @@ for (const roi of rois) {
 Each region of interest possesses many properties and characteristics (ROIs are highlighted in blue on Image 3).
 Feret diameter is a rather advanced property, but there are also more general and basic ones, like surface or perimeter.
 
-![combination of images](./roiImages/comboImage.png)
+![Combination of images](./roiImages/comboImage.png)
 
 If you need a further insight on ROIs level of elongation and shape, however, you can use Feret diameter by calling it with `roi.feret`.
 In our current example, they are represented as two green segments(Image 4).

@@ -12,7 +12,7 @@ Thresholding is a common image processing technique used to segment an image int
 
 <ThresholdDemo />
 
-With threshold filter there are two ways of passing options: by passing threshold coefficient manually and by calculating threshold with an algorithm.
+With threshold filter there are two ways of passing options: passing by threshold coefficient manually and by calculating threshold with an algorithm.
 
 - `options`
 

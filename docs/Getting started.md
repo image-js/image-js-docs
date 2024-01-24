@@ -83,18 +83,9 @@ const image = decode(new DataView(bufferedData)); // image is ready for usage
 image = image.grey();
 ```
 
+:::info
 To see more methods visit ["Features"](./Features/Features.md 'internal link on features') category.
-
-An image can also be loaded from a local host through a local filepath. You can use the `read` function
-
-```ts
-import { read } from 'image-js';
-
-const data = async () => {
-  const data = await read('file:///path/to/file.jpg');
-  data = image.invert();
-};
-```
+:::
 
 ### Bundling your image with Vite
 
