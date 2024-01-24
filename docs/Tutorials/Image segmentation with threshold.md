@@ -3,20 +3,22 @@ In this tutorial we are going to cover the threshold operation and how to get a 
 ## Synopsis
 
 Here is a quick summary of this tutorial.
-
 Threshold is used for [image segmentation](../Glossary.md#image-segmentation) to locate specific regions of interest (ROI) by separating background and foreground of the image. By doing so, we can create a map of regions, a `RoiMapManager` object.
-:::tip
-Before proceeding with threshold application it is recommended to blur the image. Do not overdo it. With a kernel too big, regions' borders start to deteriorate.
-:::
-An image must be gray. If this isn't the case, it must be grayscaled. After that, you need to choose the way for threshold to be found. It can be an arbitrary value, but we recommend to use one of the algorithms that ImageJS has. It is important to remember that different algorithms serve different purposes, so it is better to try several of them to see which one fits better for the image in question.
+
+After that, you need to choose the way for threshold to be found. It can be an arbitrary value, but we recommend to use one of the algorithms that ImageJS has. It is important to remember that different algorithms serve different purposes, so it is better to try several of them to see which one fits better for the image in question.
 Once threshold is applied, you will get a mask, which will allow you to localize and extract specific objects or regions of interest situated on the image.
 So it will look something like this:
 
 ```ts
+//If an image's color model is not `grey` then it first needs to be grayscaled.
+//Threshold algorithm works only if an image has one channel.
 if (image.colorModel !== 'GREY') {
   image = image.grey();
 }
 const mask = image
+  //Before proceeding with threshold application it is recommended
+  //to blur the image. Do not overdo it. With a kernel too big,
+  //regions' borders start to deteriorate.
   .blur({ width: 3, height: 3 })
   .threshold({ algorithm: 'otsu' });
 const roiMapManager = fromMask(mask);
@@ -35,15 +37,6 @@ For instance here is an image of particles under electronic microscopy.
 Each object is well-defined and separated from each other, while the background is basically a gray-colored canvas. In this case threshold algorithm will fit perfectly.
 
 ## Choosing an algorithm
-
-:::info
-If an image's color model is not `grey` then it first needs to be [grayscaled](../Features/Filters/Grayscale.md 'internal link on grayscale'). Threshold algorithm works only if an image has one channel.
-
-```ts
-image = image.grey();
-```
-
-:::
 
 There are two ways of using threshold: by calling an algorithm name or by directly using a threshold value.
 If you want to use threshold by a threshold value of one of the algorithms, you can use `computeThreshold` function:
