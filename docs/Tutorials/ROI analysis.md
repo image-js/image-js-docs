@@ -1,7 +1,5 @@
 In this tutorial we will talk about regions of interest, how to extract them and how to analyze them on an actual example.
 
-## Synopsis
-
 ## Regions' analysis
 
 ### Getting ROIs
@@ -110,8 +108,28 @@ Now you have a data about size distribution in our sample:
 | 2944-3221         | 1         | 0.74           |
 | 3221-3498         | 1         | 0.74           |
 
-However, what if we want to see how the shape differs between classes?
-For that we can use ROI's roundness property. It checks how close the region is to a shape of a perfect circle.
+We can apply the same algorithm to find the distribution by ROIs roundness coefficient.
+
+Roundness property checks how close the region is to a shape of a perfect circle, where 1 represents perfect circle.
+
+```ts
+const maxRoundness = Math.max(...rois.map((roi) => roi.roundness));
+const minRoundness = Math.min(...rois.map((roi) => roi.roundness));
+const span = maxRoundness - minRoundness;
+const interval = span / Math.sqrt(rois.length);
+const bySizeDistribution = new Map();
+
+for (let i = minRoundness; i < maxRoundness; i += interval) {
+  const count = rois.filter((roi) => {
+    return roi.roundness >= i && roi.roundness < i + interval;
+  }).length;
+  const intervalString = i + '-' + (i + interval);
+  bySizeDistribution.set(intervalString, {
+    frequency: count,
+    percentage: ((count / rois.length) * 100).toFixed(2),
+  });
+}
+```
 
 :::info
 You can also use `paintMaskOnImage` function to do the same thing:
