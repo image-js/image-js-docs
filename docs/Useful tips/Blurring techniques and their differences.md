@@ -66,7 +66,7 @@ When it comes to image analysis, however, things are different. Let take a look 
 
 ![Image from tutorial](./images/blurring/imgTest.jpg)
 
-Here is the image of particles of high quality. The problem with high quality is that it improves overall quality of the image details, which makes threshold to pick on noise which is undesirable during image analysis. These small dots become regions, they start disrupting data collection the whole analysis goes sideways etc.
+Here is the high quality image of particles. The problem with high quality is that it improves overall image details, which makes threshold to pick on noise which is undesirable during image analysis (look at the top-right corner). These small dots become regions, they start disrupting data collection, the whole analysis goes sideways etc.
 
 ![Thresholding with no blur](./images/blurring/isodataNoBlur.jpg)
 
