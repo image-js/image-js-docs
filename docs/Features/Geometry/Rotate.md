@@ -4,13 +4,6 @@ sidebar_position: 20
 
 import RotateDemo from './demos/rotate.demo.tsx'
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-_Rotates an image by a multiple of 90 degrees._
-
-# [🖼️ Image options and parameters of `rotate` method](https://image-js.github.io/image-js-typescript/classes/Image.html#rotate 'github.io link')
-
-=======
 _Rotates an image by a multiple of 90 degrees._
 
 [🖼️ Image options and parameters of `rotate` method](https://image-js.github.io/image-js-typescript/classes/Image.html#rotate 'github.io link')

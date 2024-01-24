@@ -11,4 +11,5 @@ mask.fill(1);
 
 ### Parameters and default values
 
-- [`value`](https://image-js.github.io/image-js-typescript/classes/Mask.html#fill 'github.io link')
+- `value`
+

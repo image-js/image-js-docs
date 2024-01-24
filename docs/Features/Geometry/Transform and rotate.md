@@ -4,20 +4,12 @@ sidebar_position: 50
 
 import TransRotateDemo from './demos/transformRotate.demo.tsx'
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 _Rotates an image by any angle._
 
 [🖼️ Image options and parameters of `transformRotate` method](https://image-js.github.io/image-js-typescript/classes/Image.html#transformRotate 'github.io link')
 
-# =======
+`transformRotate` method rotates image anti-clockwise at any angle that user sets. It applies the same principle as [transform](./Transform.md 'internal link on transform demo') method, but user only needs to pass a rotation angle as a parameter instead of the whole matrix.
 
-_Rotates an image by any angle._
-
-[🖼️ Image options and parameters of `transformRotate` method](https://image-js.github.io/image-js-typescript/classes/Image.html#transformRotate 'github.io link')
-
-> > > > > > > 9e147dd (docs: put backticks in code-like names (#53))
-> > > > > > > `transformRotate` method rotates image anti-clockwise at any angle that user sets. It applies the same principle as [transform](./Transform.md 'internal link on transform demo') method, but user only needs to pass a rotation angle as a parameter instead of the whole matrix.
 
 <TransRotateDemo />
 
