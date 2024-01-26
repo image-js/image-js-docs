@@ -108,32 +108,36 @@ Now you have a data about size distribution in our sample:
 | 2944-3221         | 1         | 0.74           |
 | 3221-3498         | 1         | 0.74           |
 
-### Analyzing regions with roundness and fill ratio
+### Analyzing regions with other properties and features
 
 Size is not the only parameter that can be used to filter and analyze regions.
-Let's take a more trivial example and have a look at how such properties like fill ratio and roundness will work on this image of fasteners:
+Let's take a more trivial example and have a look at how we can group washers and nuts as well as distinguish them from each other.
 
 ![Screws and bolts](./images/roiAnalysis/good.jpg)
 
-The obvious distinction here between washers,nuts and other bolts is the fact that they have holes in them. In this case we can use fill ratio. Fill ratio is the ratio between the actual filled space and the total available space.
-So, if we take and filter regions by, let's say, 0.9 as a fill ratio we will get something like this.
+The obvious distinction here between washers,nuts and other bolts is the fact that they have holes in them. In this case we can use fill ratio or we can apply `holesInfo()` method to see the information about how many holes a region possesses.
+To make sure that we will get only washers and nuts we will also take their form factor into account and use `roundness` property. Roundness quantifies the deviation of an object's shape from a perfect circle. So the roundness of the perfect circle is 1.
+Let's use 0.6 as a measure for our regions.
 
 ```ts
-const mask = sourceImage
+let mask = sourceImage
   .blur({ width: 3, height: 3 })
   .grey()
   //renyiEntropy looks like a better choice of algorithm
   //here. Check multiple algorithms to see which one
   //fits your needs best.
   .threshold({ algorithm: 'renyiEntropy' });
-
+//using clearBorder is a good practice for image analysis
+//because often borderline objects and therefore useless for
+//analysis
+mask = clearBorder(mask, { color: 'black' });
 const roiMap = fromMask(mask);
 const rois = roiMap.getRois({ kind: 'black' });
 //Making a copy to not overwrite the existing image.
 let image = sourceImage;
 
 for (const roi of rois) {
-  if (roi.fillRatio < 0.9) {
+  if (roi.holesInfo().number >= 1 && roundness > 0.6) {
     //paintMask allows painting regions of interest on our
     //image. We recommend using it for highlighting regions
     //and for visual aid.
@@ -145,55 +149,28 @@ for (const roi of rois) {
 }
 ```
 
-![Finding washers and nuts](./images/roiAnalysis/screwsMask.jpg)
+With this we will have our nuts and washers **ready for analysis**.
 
-As you can see the result is decent, but there are two big washers in the bottom-left corner that were not captured. We don't know the correct values for fill ratio of the washer and the size of holes can vary, so it's normal to make some "guesses" for an optimal result.
-But then, as you can see, there is now a bolt that was also considered as a washer/nut.
+![Finding washers and nuts](./images/roiAnalysis/screwsMask4.jpg)
+
+There might be confusion about why some of the regions were left out. There are several reasons for that. Our primary goal here is to analyze specific and separate objects. However, here washers and nuts are adjacent to each other
+and will be considered as one object which defeat the whole purpose of the analysis. Another reason is the fact that regions at the image borders might be represented only partially which is the case with the washer below. Part of it is out of the frame, which
+obviously tampers its ROI properties.
+
+![](./images/roiAnalysis/ignoredGroups.jpg)
 
 ![Fill ratio threshold too high](./images/roiAnalysis/fillRatioOverkill.jpg)
 
-In this case fill ratio is not enough so we will now add another option, which is object's roundness.
-This is a property that checks how close the ROIs shape resembles a perfect circle(which means its roundness equals to 1). It is reasonable to believe that washers and nuts are more round than other objects after all.
-So we slightly modify our code and add another condition:
-
-```ts
-const mask = sourceImage
-  .blur({ width: 3, height: 3 })
-  .grey()
-  //renyiEntropy looks like a better choice of algorithm
-  //here. Check multiple algorithms to see which one
-  //fits your needs best.
-  .threshold({ algorithm: 'renyiEntropy' });
-
-const roiMap = fromMask(mask);
-const rois = roiMap.getRois({ kind: 'black' });
-//Making a copy to not overwrite the existing image.
-let image = sourceImage;
-
-for (const roi of rois) {
-  if (roi.fillRatio < 0.95 && roi.roundness >= 0.3) {
-    //paintMask allows painting regions of interest on our
-    //image. We recommend using it for highlighting regions
-    //and for visual aid.
-    image = image.paintMask(roi.getMask(), {
-      origin: { column: roi.origin.column, row: roi.origin.row },
-      color: [0, 0, 255, 255],
-    });
-  }
-}
-```
-
 ![Finding washers and nuts](./images/roiAnalysis/screwsMask2.jpg)
 
-With this we will get the desired result. All nuts and washers are found. But there is one particularity which should be mentioned. You might have noticed that our roundness limit is rather low. Well, if you put all the roundness values of the ROIs that we found you will see two values that are rather low for circle-shaped objects.
+Now we need to distinguish washers from nuts. To do so, we will use the aspect ratio of [minimum bounding rectangle](../Features/Regions%20of%20interest/MBR.md 'internal link on mbr') (MBR). The MBR is the smallest rectangle that can fit our region. Its aspect ratio will help us deduce whether it is a hexagone or a circle.
+So, we will add some additional conditions to sort our regions.
 
-![Aberration in roundness](./images/roiAnalysis/roundness.png)
+```
 
-This is because of two particular cases right here.
+```
 
-![ROIs in aberration](./images/roiAnalysis/aberration.jpg)
-
-Since these two elements are touching our threshold algorithm considers it as one region, which in turn reduces its roundness value. You should pay attention to those objects.
+With this we will get the desired result. All nuts and washers are found and sorted for analysis.
 
 These are some of the basic elements of ROI analysis. However,this is just a fraction of tools that ImageJS possesses. There are other properties that you can discover more about in our [API features](../Features/Regions%20of%20interest/Regions%20of%20interest.md) section. Here is an example of the properties that you can use with any region of interest:
 
