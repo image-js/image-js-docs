@@ -2,7 +2,7 @@ If you looked at some of our tutorials, you might have noticed that we apply a b
 
 ## Blur
 
-Blur or box blur is a filter that uses convolution matrix to calculate an average among the surrounding pixels which are within the transformation matrix (kernel) and then applies this value.
+To be precise blur is a general term that refers to a reduction in the sharpness or clarity of an image. In ImageJS blur is actually a box blur or mean blur. It is a filter that uses convolution matrix to calculate an average among the surrounding pixels which are within the transformation matrix (kernel) and then applies this value.
 
 ![Convolution process](./images/blurring/2D_Convolution_Animation.gif)
 
@@ -17,7 +17,9 @@ $$
 $$
 
 The key advantage of box blur compared to other filters is its speed. It doesn't need to calculate gaussian matrix, based on its sigma (variance), like Gaussian Blur, nor does it need to sort all values within the cells, like median.
-However, this also means that every pixel has the same weight to the algorithm regardless of its position. This means that it's speed comes at the cost of the output quality.
+However, this also means that every pixel has the same weight to the algorithm regardless of its position. Therefore the blurring quality drops compared to the gaussian blur and the output gets relatively blocky.
+
+![Difference in quality](./images/blurring/MBvsGB.png)
 
 ## Gaussian Blur
 
@@ -76,4 +78,4 @@ To improve it, applying blur is necessary. But we don't really have preserving e
 
 It was mentioned in the tutorials, but you can get a good result with all three techniques. The question is, however, which of these three to use in what situation.
 
-Therefore the idea is this: if an image is of good quality and you want to focus on well-defined objects, use blur or gaussian blur (if speed is not a pressing issue gaussian blur is preferable). If an image is of decent quality and you want . If you need to preserve edges of the elements or if an image has noise, especially "salt-and-pepper" one, use median filter.
+Therefore the idea is this: if an image is of good quality and you want to focus on well-defined objects, use blur or gaussian blur (if speed is not a pressing issue gaussian blur is preferable). If you need to preserve edges of the elements or if an image has noise, especially "salt-and-pepper" one, use median filter.
