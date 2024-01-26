@@ -135,7 +135,7 @@ const roiMap = fromMask(mask);
 const rois = roiMap.getRois({ kind: 'black' });
 //Making a copy to not overwrite the existing image.
 let image = sourceImage;
-
+const washersAndNuts = [];
 for (const roi of rois) {
   if (roi.holesInfo().number >= 1 && roundness > 0.6) {
     //paintMask allows painting regions of interest on our
@@ -159,18 +159,92 @@ obviously tampers its ROI properties.
 
 ![](./images/roiAnalysis/ignoredGroups.jpg)
 
-![Fill ratio threshold too high](./images/roiAnalysis/fillRatioOverkill.jpg)
+Now we need to distinguish washers from nuts. To do so, we will use the aspect ratio of [minimum bounding rectangle](../Features/Regions%20of%20interest/MBR.md 'internal link on mbr') (MBR). The MBR is the smallest rectangle that can fit our region. Its aspect ratio will help us deduce whether it is a hexagon or a circle.
+So, we will add some additional conditions to sort our regions. Methodically looking for the limit aspect ratio, we deduced that the threshold between a nut and a washer is approximately 0.932. So the only thing left is to sort them into different arrays:
 
-![Finding washers and nuts](./images/roiAnalysis/screwsMask2.jpg)
-
-Now we need to distinguish washers from nuts. To do so, we will use the aspect ratio of [minimum bounding rectangle](../Features/Regions%20of%20interest/MBR.md 'internal link on mbr') (MBR). The MBR is the smallest rectangle that can fit our region. Its aspect ratio will help us deduce whether it is a hexagone or a circle.
-So, we will add some additional conditions to sort our regions.
-
-```
-
+```ts
+const washers = [];
+const nuts = [];
+for (const roi of washersAndNuts) {
+  if (roi.mbr.aspectRatio > 0.932) {
+    nuts.push(roi);
+    image = image.paintMask(roi.getMask(), {
+      origin: {
+        column: roi.origin.column,
+        row: roi.origin.row,
+      },
+      color: [0, 255, 0, 255],
+    });
+  } else {
+    washers.push(roi);
+    image = image.paintMask(roi.getMask(), {
+      origin: {
+        column: roi.origin.column,
+        row: roi.origin.row,
+      },
+      color: [255, 0, 0, 255],
+    });
+  }
+}
 ```
 
 With this we will get the desired result. All nuts and washers are found and sorted for analysis.
+
+![](./images/roiAnalysis/result.jpg)
+
+And to get to this point we get a code like this:
+
+```ts
+let mask = sourceImage
+  .gaussianBlur({ sigma: 3, size: 3 })
+  .grey()
+  .threshold({ algorithm: 'renyiEntropy' });
+mask = clearBorder(mask, { allowCorners: false, color: 'black' });
+const roiMap = fromMask(mask);
+const rois = roiMap.getRois({ kind: 'black' });
+let image = sourceImage;
+const washersAndNuts = [];
+// part where elements get picked apart from
+//bolts and screws
+for (const roi of rois) {
+  if (
+    roi.holesInfo.number >= 1 &&
+    roi.roundness > 0.55 &&
+    roi.fillRatio < 0.94
+  ) {
+    console.log(roi.id, roi.roundness, roi.mbr.aspectRatio);
+    image = image.paintMask(roi.getMask(), {
+      origin: { column: roi.origin.column, row: roi.origin.row },
+      color: [255, 0, 0, 255],
+    });
+    washersAndNuts.push(roi);
+  }
+}
+//part where elements are distinguished
+const washers = [];
+const nuts = [];
+for (const roi of washersAndNuts) {
+  if (roi.mbr.aspectRatio > 0.932) {
+    nuts.push(roi);
+    image = image.paintMask(roi.getMask(), {
+      origin: {
+        column: roi.origin.column,
+        row: roi.origin.row,
+      },
+      color: [0, 255, 0, 255],
+    });
+  } else {
+    washers.push(roi);
+    image = image.paintMask(roi.getMask(), {
+      origin: {
+        column: roi.origin.column,
+        row: roi.origin.row,
+      },
+      color: [255, 0, 0, 255],
+    });
+  }
+}
+```
 
 These are some of the basic elements of ROI analysis. However,this is just a fraction of tools that ImageJS possesses. There are other properties that you can discover more about in our [API features](../Features/Regions%20of%20interest/Regions%20of%20interest.md) section. Here is an example of the properties that you can use with any region of interest:
 
