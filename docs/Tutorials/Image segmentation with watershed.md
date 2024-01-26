@@ -177,9 +177,9 @@ const mask = blurredImage.threshold({ algorithm: 'isodata' });
 
 So how to spot the correct ones?
 
-There are two functions that are used for finding extrema: `getExtrema` and `removeClosePoints`.
+There are two functions that are used for finding extrema: [`getExtrema`](../Features/Operations/Get%20extrema.md 'internal link on get extrema function') and [`removeClosePoints`](../Features/Operations/Remove%20points.md 'internal link on remove points function').
 
-#### `getExtrema`
+#### [`getExtrema`](../Features/Operations/Get%20extrema.md 'internal link on get extrema function')
 
 This function searches for all local extrema(minima in case of this image). It checks each point for the values around. If all the neighbors are smaller, the point in-check becomes the minima(for maxima it checks if all values are bigger).
 In the end it returns all extreme points of the image:
@@ -217,7 +217,7 @@ But even with this, `getExtrema` can only give us a smaller number of local extr
 
 ![Different algorithms and extrema](./images/watershed/extremaAlgos.png)
 
-#### `removeClosePoints`
+#### [`removeClosePoints`](../Features/Operations/Remove%20points.md 'internal link on remove points function')
 
 This is where another function can be used: `removeClosePoints`. With `distance` option this function can weed out local minima so that only those points that are within bigger or equal distance are left.
 
