@@ -34,8 +34,7 @@ The method is also available for Masks.
 :::
 
 <details>
-<summary><b>Implementation</b>
-</summary>
+<summary><b>Implementation</b></summary>
 
 Here's how invert filter is implemented in ImageJS:
 

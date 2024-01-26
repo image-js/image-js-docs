@@ -48,8 +48,7 @@ With threshold filter there are two ways of passing options: by passing threshol
 - `yen`
 
 <details>
-<summary><b>Implementation</b>
-</summary>
+<summary><b>Implementation</b></summary>
 
 Here's how thresholding works:
 

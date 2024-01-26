@@ -33,7 +33,8 @@ It can also be a Mask method to calculate its convex hull:
 const convexHull = mask.getConvexHull();
 ```
 
-<details><summary><b>Implementation</b></summary>
+<details>
+<summary><b>Implementation</b></summary>
 
 Here's how convex hull algorithm is implemented in ImageJS:
 

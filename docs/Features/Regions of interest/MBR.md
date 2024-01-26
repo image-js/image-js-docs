@@ -35,7 +35,8 @@ It can also be a Mask method to calculate its mbr:
 const mbr = mask.getMbr();
 ```
 
-<details><summary><b>Implementation</b></summary>
+<details>
+<summary><b>Implementation</b></summary>
 
 Here's how Minimum Bounding Rectangle is calculated in ImageJS:
 

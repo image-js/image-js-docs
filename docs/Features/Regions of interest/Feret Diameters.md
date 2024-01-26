@@ -46,7 +46,8 @@ Each diameter in itself is also an object which has its own properties:
 
 :::
 
-<details><summary><b>Implementation</b></summary>
+<details>
+<summary><b>Implementation</b></summary>
 
 Here's how Feret diameter is implemented in ImageJS:
 

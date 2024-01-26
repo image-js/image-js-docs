@@ -24,7 +24,8 @@ _Reduces the level of detail in an image by replacing groups of pixels with a si
 | [`algorithm`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#algorithm) | no       | `center`      |
 | [`out`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#out)             | no       | -             |
 
-<details><summary><b>Implementation</b></summary>
+<details>
+<summary><b>Implementation</b></summary>
 
 Here's how pixelate filter is implemented in ImageJS:
 
