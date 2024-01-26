@@ -147,14 +147,13 @@ for (const roi of rois) {
 
 ![Finding washers and nuts](./images/roiAnalysis/screwsMask.jpg)
 
-As you can see the result is decent, but there are two big washers in the bottom-left corner that were not captured. We don't know the correct values for fill ratio of the washer, so it's normal to make some "guesses" for optimal result.
+As you can see the result is decent, but there are two big washers in the bottom-left corner that were not captured. We don't know the correct values for fill ratio of the washer and the size of holes can vary, so it's normal to make some "guesses" for an optimal result.
 But then, as you can see, there is now a bolt that was also considered as a washer/nut.
 
 ![Fill ratio threshold too high](./images/roiAnalysis/fillRatioOverkill.jpg)
 
-It's due to the fact that our threshold mask has considered the reflected glow from it as a hole, so it's fill ratio is smaller than 1, even though this is not really the case.
-
-It's fine though, we can be more specific with what we are looking for. We will now add another option, which is object's roundness. This is a property that checks how close the ROIs shape resembles a perfect circle(which means roundness equals to 1). It is reasonable to believe that washers and nuts are more round than other objects after all.
+In this case fill ratio is not enough so we will now add another option, which is object's roundness.
+This is a property that checks how close the ROIs shape resembles a perfect circle(which means its roundness equals to 1). It is reasonable to believe that washers and nuts are more round than other objects after all.
 So we slightly modify our code and add another condition:
 
 ```ts
@@ -186,37 +185,34 @@ for (const roi of rois) {
 
 ![Finding washers and nuts](./images/roiAnalysis/screwsMask2.jpg)
 
-We will get the desired result with this. But I think there are a few things that should be clarified. You might have noticed that roundness limit is rather low. Well, if you put all the roundness values of the ROIs that we found you will see one aberration.
+With this we will get the desired result. All nuts and washers are found. But there is one particularity which should be mentioned. You might have noticed that our roundness limit is rather low. Well, if you put all the roundness values of the ROIs that we found you will see two values that are rather low for circle-shaped objects.
 
 ![Aberration in roundness](./images/roiAnalysis/roundness.png)
 
-This is because of one particular ROI right here.
+This is because of two particular cases right here.
 
-![ROI in aberration](./images/roiAnalysis/aberration.jpg)
+![ROIs in aberration](./images/roiAnalysis/aberration.jpg)
 
-The reason for that is the fact that our threshold algorithm considers it as one region, which in turn reduces its roundness value.
+Since these two elements are touching our threshold algorithm considers it as one region, which in turn reduces its roundness value. You should pay attention to those objects.
 
-/////////////////////////////
-
-An image above highlights the ROIs that we found. Dark blue regions represent the particles that were above the average that we calculated. The light blue particles are the particles with an above average size and roundness above 0.9.
-This is just a fraction of tools that ImageJS possesses. There are many other properties that you can discover more about in our [API features](../Features/Regions%20of%20interest/Regions%20of%20interest.md) section. Here is an example of the properties that you can use with any region of interest:
+These are some of the basic elements of ROI analysis. However,this is just a fraction of tools that ImageJS possesses. There are other properties that you can discover more about in our [API features](../Features/Regions%20of%20interest/Regions%20of%20interest.md) section. Here is an example of the properties that you can use with any region of interest:
 
 | Feature         | Type         | Value                                                                  |
 | --------------- | ------------ | ---------------------------------------------------------------------- |
-| `id`            | `number`     | -128                                                                   |
-| `origin`        | `Point`      | `{ row: 1547, column: 1602 }`                                          |
-| `height`        | `number`     | 48                                                                     |
-| `width`         | `number`     | 50                                                                     |
-| `surface`       | `number`     | 1814                                                                   |
-| `eqpc`          | `number`     | 48.05888611016266                                                      |
-| `ped`           | `number`     | 50.64165599181419                                                      |
+| `id`            | `number`     | -75                                                                    |
+| `origin`        | `Point`      | `{ row: 2390, column: 206 }`                                           |
+| `height`        | `number`     | 411                                                                    |
+| `width`         | `number`     | 358                                                                    |
+| `surface`       | `number`     | 78022                                                                  |
+| `eqpc`          | `number`     | 315.18359056163894                                                     |
+| `ped`           | `number`     | 469.58631480264023                                                     |
 | `feret`         | `Feret`      | `feret: {minDiameter, maxDiameter, aspectRatio}`                       |
-| `fillRatio`     | `number`     | 1                                                                      |
-| `sphericity`    | `number`     | 0.9489991029900559                                                     |
-| `roundness`     | `number`     | 0.8948688625143686,                                                    |
-| `solidity`      | `number`     | 0.9674666666666667                                                     |
-| `perimeter`     | `number`     | 159.095454429505                                                       |
+| `fillRatio`     | `number`     | 0.9239277171210004                                                     |
+| `sphericity`    | `number`     | 0.671194156699617                                                      |
+| `roundness`     | `number`     | 0.5064165481909365                                                     |
+| `solidity`      | `number`     | 0.8081705794917212                                                     |
+| `perimeter`     | `number`     | 1475.2489168102784                                                     |
 | `convexHull`    | `ConvexHull` | `convexHull: {points,perimeter,surface}`                               |
 | `mbr`           | `Mbr`        | `mbr: {points, surface, angle, width, height, perimeter, aspectRatio}` |
-| `filledSurface` | `number`     | 1814                                                                   |
-| `centroid`      | `Point`      | `{ column: 1626.577177508269, row: 1570.2546857772877 }`               |
+| `filledSurface` | `number`     | 84446,                                                                 |
+| `centroid`      | `Point`      | `{ column: 385.2887262566968, row: 2593.7994283663584 }`               |
