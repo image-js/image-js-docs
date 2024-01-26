@@ -108,98 +108,95 @@ Now you have a data about size distribution in our sample:
 | 2944-3221         | 1         | 0.74           |
 | 3221-3498         | 1         | 0.74           |
 
-We can apply the same algorithm to find the distribution by ROIs roundness coefficient.
+### Analyzing regions with roundness and fill ratio
 
-Roundness property checks how close the region is to a shape of a perfect circle, where 1 represents perfect circle.
+Size is not the only parameter that can be used to filter and analyze regions.
+Let's take a more trivial example and have a look at how such properties like fill ratio and roundness will work on this image of fasteners:
 
-```ts
-const maxRoundness = Math.max(...rois.map((roi) => roi.roundness));
-const minRoundness = Math.min(...rois.map((roi) => roi.roundness));
-const span = maxRoundness - minRoundness;
-const interval = span / Math.sqrt(rois.length);
-const bySizeDistribution = new Map();
+![Screws and bolts](./images/roiAnalysis/good.jpg)
 
-for (let i = minRoundness; i < maxRoundness; i += interval) {
-  const count = rois.filter((roi) => {
-    return roi.roundness >= i && roi.roundness < i + interval;
-  }).length;
-  const intervalString = i + '-' + (i + interval);
-  bySizeDistribution.set(intervalString, {
-    frequency: count,
-    percentage: ((count / rois.length) * 100).toFixed(2),
-  });
-}
-```
-
-:::info
-You can also use `paintMaskOnImage` function to do the same thing:
+The obvious distinction here between washers,nuts and other bolts is the fact that they have holes in them. In this case we can use fill ratio. Fill ratio is the ratio between the actual filled space and the total available space.
+So, if we take and filter regions by, let's say, 0.9 as a fill ratio we will get something like this.
 
 ```ts
-coloredRoisImage = paintMaskOnImage(image, roi.getMask(), {
-  color: [0, 0, 50000],
-  origin: { column: roi.origin.column, row: roi.origin.row },
-});
-```
+const mask = sourceImage
+  .blur({ width: 3, height: 3 })
+  .grey()
+  //renyiEntropy looks like a better choice of algorithm
+  //here. Check multiple algorithms to see which one
+  //fits your needs best.
+  .threshold({ algorithm: 'renyiEntropy' });
 
-:::
-
-![Biggest rois](./images/roiAnalysis/biggestCells.jpg)
-
-This provides us with a certain number of regions (colored in blue). The selected regions can be investigated further. For instance, we can use property like `roundness` to see how close the region's shape is to a circle. Let's put 0.9 as a limit (the coefficient for a perfect circle will be 1).
-
-```ts
-let roundestRois = [];
-const roundestRois = biggestRois.filter((roi) => {
-  return roi.roundness > 0.9;
-});
-```
-
-After that we can paint the rois with a different color the same manner we did before to highlight the "roundest" regions.
-
-```ts
-for (const roi of roundestRois) {
-  coloredRoisImage = image.paintMask(roi.getMask(), {
-    color: [0, 50000, 50000],
-    origin: { column: roi.origin.column, row: roi.origin.row },
-  });
-```
-
-![Roundest rois](./images/roiAnalysis/roundAndBig.jpg)
-
-This provides us with a code like this:
-
-```ts
+const roiMap = fromMask(mask);
 const rois = roiMap.getRois({ kind: 'black' });
-// In this example we want to specifically calculate
-//the average surface of rois, so we don't use
-// minSurface option here.
+//Making a copy to not overwrite the existing image.
+let image = sourceImage;
 
-let surfaceSum = 0;
 for (const roi of rois) {
-  surfaceSum += roi.surface;
-}
-const avgSurface = surfaceSum / rois.length;
-
-const biggestRois = rois.filter((roi) => {
-  return roi.surface >= avgSurface;
-});
-const roundestRois = biggestRois.filter((roi) => {
-  return roi.roundness > 0.9;
-});
-const coloredRoisImage = image.convertColor('RGB');
-for (const roi of biggestRois) {
-  coloredRoisImage = image.paintMask(roi.getMask(), {
-    color: [0, 0, 50000],
-    origin: { column: roi.origin.column, row: roi.origin.row },
-  });
-}
-for (const roi of roundestRois) {
-  coloredRoisImage = image.paintMask(roi.getMask(), {
-    color: [0, 50000, 50000],
-    origin: { column: roi.origin.column, row: roi.origin.row },
-  });
+  if (roi.fillRatio < 0.9) {
+    //paintMask allows painting regions of interest on our
+    //image. We recommend using it for highlighting regions
+    //and for visual aid.
+    image = image.paintMask(roi.getMask(), {
+      origin: { column: roi.origin.column, row: roi.origin.row },
+      color: [0, 0, 255, 255],
+    });
+  }
 }
 ```
+
+![Finding washers and nuts](./images/roiAnalysis/screwsMask.jpg)
+
+As you can see the result is decent, but there are two big washers in the bottom-left corner that were not captured. We don't know the correct values for fill ratio of the washer, so it's normal to make some "guesses" for optimal result.
+But then, as you can see, there is now a bolt that was also considered as a washer/nut.
+
+![Fill ratio threshold too high](./images/roiAnalysis/fillRatioOverkill.jpg)
+
+It's due to the fact that our threshold mask has considered the reflected glow from it as a hole, so it's fill ratio is smaller than 1, even though this is not really the case.
+
+It's fine though, we can be more specific with what we are looking for. We will now add another option, which is object's roundness. This is a property that checks how close the ROIs shape resembles a perfect circle(which means roundness equals to 1). It is reasonable to believe that washers and nuts are more round than other objects after all.
+So we slightly modify our code and add another condition:
+
+```ts
+const mask = sourceImage
+  .blur({ width: 3, height: 3 })
+  .grey()
+  //renyiEntropy looks like a better choice of algorithm
+  //here. Check multiple algorithms to see which one
+  //fits your needs best.
+  .threshold({ algorithm: 'renyiEntropy' });
+
+const roiMap = fromMask(mask);
+const rois = roiMap.getRois({ kind: 'black' });
+//Making a copy to not overwrite the existing image.
+let image = sourceImage;
+
+for (const roi of rois) {
+  if (roi.fillRatio < 0.95 && roi.roundness >= 0.3) {
+    //paintMask allows painting regions of interest on our
+    //image. We recommend using it for highlighting regions
+    //and for visual aid.
+    image = image.paintMask(roi.getMask(), {
+      origin: { column: roi.origin.column, row: roi.origin.row },
+      color: [0, 0, 255, 255],
+    });
+  }
+}
+```
+
+![Finding washers and nuts](./images/roiAnalysis/screwsMask2.jpg)
+
+We will get the desired result with this. But I think there are a few things that should be clarified. You might have noticed that roundness limit is rather low. Well, if you put all the roundness values of the ROIs that we found you will see one aberration.
+
+![Aberration in roundness](./images/roiAnalysis/roundness.png)
+
+This is because of one particular ROI right here.
+
+![ROI in aberration](./images/roiAnalysis/aberration.jpg)
+
+The reason for that is the fact that our threshold algorithm considers it as one region, which in turn reduces its roundness value.
+
+/////////////////////////////
 
 An image above highlights the ROIs that we found. Dark blue regions represent the particles that were above the average that we calculated. The light blue particles are the particles with an above average size and roundness above 0.9.
 This is just a fraction of tools that ImageJS possesses. There are many other properties that you can discover more about in our [API features](../Features/Regions%20of%20interest/Regions%20of%20interest.md) section. Here is an example of the properties that you can use with any region of interest:
