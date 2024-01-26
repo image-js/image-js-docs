@@ -40,12 +40,14 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.1.1",
+    "@docusaurus/types": "3.0.0",
     "@docusaurus/tsconfig": "^3.1.1",
     "cspell": "^6.31.1",
     "eslint": "^8.38.0",
     "eslint-config-zakodium": "^7.1.0",
     "prettier": "^2.8.8",
     "raw-loader": "^4.0.2",
+    "@types/react": "^18.2.29",
     "typescript": "~5.2.2"
   },
   "browserslist": {
