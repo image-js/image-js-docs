@@ -2,19 +2,9 @@ If you looked at some of our tutorials, you might have noticed that we apply a b
 
 ## Blur
 
-To be precise blur is a general term that refers to a reduction in the sharpness or clarity of an image. In ImageJS blur is actually a box blur or mean blur. It is a filter that uses convolution matrix to calculate an average among the surrounding pixels which are within the transformation matrix (kernel) and then applies this value.
+To be precise blur is a general term that refers to a reduction in the sharpness or clarity of an image. It also works to reduce som of the noise, such as [gaussian noise](https://en.wikipedia.org/wiki/Gaussian_noise#:~:text=In%20signal%20processing%20theory%2C%20Gaussian,can%20take%20are%20Gaussian%2Ddistributed. 'wikipedia link on gaussian noise') for example. In ImageJS blur is actually a box blur or mean blur. It is a filter that uses convolution matrix to calculate an average among the surrounding pixels which are within the transformation matrix (kernel) and then applies this value.
 
 ![Convolution process](./images/blurring/2D_Convolution_Animation.gif)
-
-in case of mean blur the kernel (for width and height being equal to 3 at least) will look like this:
-
-$$
-\begin{bmatrix}
-1 & 1 & 1 \\
-1 & 1 & 1 \\
-1 & 1 & 1
-\end{bmatrix}
-$$
 
 The key advantage of box blur compared to other filters is its speed. It doesn't need to calculate gaussian matrix, based on its sigma (variance), like Gaussian Blur, nor does it need to sort all values within the cells, like median.
 However, this also means that every pixel has the same weight to the algorithm regardless of its position. Therefore the blurring quality drops compared to the gaussian blur and the output gets relatively blocky.
@@ -23,31 +13,17 @@ However, this also means that every pixel has the same weight to the algorithm r
 
 ## Gaussian Blur
 
-Gaussian blur applies gaussian distribution formula to create a matrix which weighted average for convolution which means that it takes into account the position of the pixel as well. So, if box blur's convolution matrix would look like this:
+Gaussian blur applies gaussian distribution formula to create a matrix which weighted average for convolution which means that it takes into account the position of the pixel as well.
 
-$$
-\begin{bmatrix}
-1 & 1 & 1 \\
-1 & 1 & 1 \\
-1 & 1 & 1
-\end{bmatrix}
-$$
+The idea is that the closer you are to the pixel in check, the more weight it will have during average computation. So, if you put kernels as graphs the picture will look like this and it becomes obvious how gaussian blur prioritizes the center pixel:
 
-Gaussian blur's matrix might look like this:
+![Box And Gaussian Blurs](./images/blurring/boxAndGaussianFunctions.png)
 
-$$
-\begin{bmatrix}
-1 & 2 & 1 \\
-2 & 4 & 2 \\
-1 & 2 & 1
-\end{bmatrix}
-$$
+The main parameter of gaussian blur is called "sigma" and it is responsible for the width of the gaussian bell curve, therefore it controls the overall smoothness of the end result.
 
-The values of the table will probably be floating numbers rather than integers but the idea is this: the closer you are to the pixel in check, the more weight it will have during average computation.
+Gaussian blur is good preparatory tool for edge detection. Edge detection's algorithms are sensitive to noise and small details so blur smoothens them. For instance here is the example of a [Canny Edge detector](../Features/Morphology/Canny%20Edge%20Detector.md 'internal link on canny edge detector') with and without gaussian blur:
 
-Gaussian blur is good for edge detection. Edge detection's algorithms are sensitive to noise and small details and this filter smoothens them. For instance here is the example of a [Canny Edge detector](../Features/Morphology/Canny%20Edge%20Detector.md 'internal link on canny edge detector') with and without gaussian blur:
-
-![Edge detection with gaussian](./images/blurring/lennaCED.png)
+![Edge detection with gaussian](./images/blurring/edgesWithBlurs.png)
 
 ## Median Filter
 
@@ -58,17 +34,12 @@ It is particularly effective against ["salt-and-pepper"](https://en.wikipedia.or
 
 ## What algorithm to use?
 
-Even though it might look clear when to use one algorithm or the other in theory, on practice the end result might not be that obvious.
-Take a look at these images.
-
-![Blurring comparison](./images/blurring/blurringComp.png)
-
-You could make an argument that after taking a closer look the gaussian blur has a more "natural" blurring than a regular blur. Or that images after median filter have slightly better detailing. But these differences would not be substantial for an average user.
+You could make an argument that after taking a closer look the gaussian blur has a more "natural" blurring than a regular blur. Or that images after median filter have slightly better detailing. But there will be moments when these differences would not be substantial for an average user.
 When it comes to image analysis, however, things are different. Let take a look at the image used in our tutorials.
 
 ![Image from tutorial](./images/blurring/imgTest.jpg)
 
-Here is the high quality image of particles. The problem with high quality is that it improves overall image details, which makes threshold to pick on noise which is undesirable during image analysis (look at the top-right corner). These small dots become regions, they start disrupting data collection, the whole analysis goes sideways etc.
+Here is the high quality image of particles. The problem with high quality is that it improves overall image details, but it also makes threshold to pick on noise which is undesirable during image analysis (look at the top-right corner). These small dots become regions, they start disrupting data collection, the whole analysis goes sideways etc.
 
 ![Thresholding with no blur](./images/blurring/isodataNoBlur.jpg)
 
