@@ -5,9 +5,7 @@ In this tutorial we are going to cover the threshold operation and how to get a 
 Here is a quick summary of this tutorial.
 Threshold is used for [image segmentation](../Glossary.md#image-segmentation) to locate specific regions of interest (ROI) by separating background and foreground of the image. By doing so, we can create a map of regions, a `RoiMapManager` object.
 
-After that, you need to choose the way for threshold to be found. It can be an arbitrary value, but we recommend to use one of the algorithms that ImageJS has. It is important to remember that different algorithms serve different purposes, so it is better to try several of them to see which one fits better for the image in question.
 Once threshold is applied, you will get a mask, which will allow you to localize and extract specific objects or regions of interest situated on the image.
-So it will look something like this:
 
 ```ts
 //If an image's color model is not `grey` then it first needs to be grayscaled.
@@ -20,6 +18,8 @@ const mask = image
   //to blur the image. Do not overdo it. With a kernel too big,
   //regions' borders start to deteriorate.
   .blur({ width: 3, height: 3 })
+  //Try several algorithms to see which one fits your
+  //needs the best.
   .threshold({ algorithm: 'otsu' });
 const roiMapManager = fromMask(mask);
 ```
