@@ -44,7 +44,7 @@ hysteresis image.
 
 ### Image segmentation
 
-[Image segmentation](https://en.wikipedia.org/wiki/Image_segmentation 'wikipedia link on image segmentation') is a technique that divides an image into multiple regions or parts based on certain criteria of a pixel. The goal of segmentation is to simplify and/or change the representation of an image into more meaningful and easier-to-analyze parts. Each region typically corresponds to objects or meaningful areas within the image, such as distinct shapes, colors, or textures.
+[Image segmentation](https://en.wikipedia.org/wiki/Image_segmentation 'wikipedia link on image segmentation') is a technique that divides an image into multiple regions or parts. The goal of segmentation is to simplify and/or change the representation of an image into more meaningful and easier-to-analyze parts. Each region typically corresponds to objects or meaningful areas within the image, such as distinct shapes, colors, or textures.
 
 ### Intensity
 
