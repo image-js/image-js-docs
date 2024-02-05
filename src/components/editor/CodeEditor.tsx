@@ -95,6 +95,7 @@ function MonacoEditor({
   }
   function handleBeforeMount(monaco: Monaco) {
     const javascript = monaco.languages.typescript.javascriptDefaults;
+    // @ts-expect-error raw loader loads a string
     javascript.addExtraLib(imageJSTypes, 'image-js.d.ts');
 
     javascript.setDiagnosticsOptions({
