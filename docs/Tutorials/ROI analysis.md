@@ -1,11 +1,11 @@
-ROI (Regions of Interest) analysis is probably a topic too vast to fit it completely in one tutorial. But we will try to give you the basic idea of what image analysis might look like.
-First, let's take an image of particles made by electronic microscope as our example. The idea will be to sort regions by size to see how particles are distributed within different intervals. It is called size distribution, which is an important aspect for particle analysis in a lot of industries, such as geology, pharmaceuticals, cosmetics, food industry etc.
+ROI (Regions of Interest) analysis refers to the process of identifying and analyzing specific regions within an image that are of interest. It is probably a topic too vast to fit it completely in one tutorial. But we will try to give you the basic idea of what image analysis might look like.
+First, let's take an image of particles made by electronic microscope as our example.
 
 ![Particles](./images/roiAnalysis/particles.jpg)
 
 ## Getting Regions of Interest
 
-To get ROIs, first you need to find ROI map. There are two general ways of doing it. First one is `threshold` method which works well for images where background and foreground are well defined and elements are placed separately from each other:
+To get ROIs, first you need to find ROI map. There are two general ways of doing it. First one is `threshold` method which works well for images where elements are placed separately from each other:
 
 ```ts
 const mask = image.threshold();
@@ -34,24 +34,14 @@ First we need to extract regions of interest from a map for further analysis:
 const rois = roiMap.getRois({ kind: 'black' });
 ```
 
-:::tip
-For `getRois()` method you can use options `minSurface` and `maxSurface` to filter the ROIs by surface size.
-
-```ts
-const rois = roiMap.getRois({ kind: 'black', minSurface: 1000 });
-```
-
-If you have specific size interval in mind, this might come in handy.
-
-:::
-
 ## Getting distribution by size
 
 Now we have all the regions identified and stored. We can work on the analysis of those regions.
 
 ![Get ROIs](./images/roiAnalysis/MBR.jpg)
 
-As was mentioned before size distribution analysis can be an important piece of data so we will do that .
+In this case we will take our regions and calculate their distribution by size. Size distribution analysis is a method used to characterize and quantify the range of sizes present within a sample of particles or objects. It can be an important piece of data be it for simple size measurement or particle characterization and biological analysis.
+
 First we need to find the limits of our sample.
 
 ```ts
@@ -68,9 +58,8 @@ const span = maxSurface - minSurface;
 Then we will have the width of intervals (classes). There is no particular rule of how to choose it and you are free to choose your own class sizes, but the rule of thumb would be to use this formula:
 
 ```ts
-//We round up the interval for simplicity. You can also make it
-//a multiple of 10 if you want.
-const interval = span / Math.sqrt(rois.length);
+//We round up the interval for simplicity.
+const interval = Math.round(span / Math.sqrt(rois.length));
 ```
 
 After that we can find how many ROIs belong to each interval.
@@ -109,22 +98,20 @@ Now you have a data about size distribution in our sample:
 | 2944-3221         | 1         | 0.74           |
 | 3221-3498         | 1         | 0.74           |
 
-Here you have a basic example of how to calculate size distribution of particles. Even with this we can receive data like predominant particle size or size range, which can already give insights about properties of a sample. But in ImageJS we are not limited to analyze samples by size, there exist more advanced techniques that we will discuss further.
+Even with this we can receive data like predominant particle size or size range, which can already give insights about properties of a sample. But in ImageJS we are not limited to analyze samples by size, there exist more advanced techniques that we will discuss further.
 
 ## Analyzing regions with other properties and features
 
-Size is not the only parameter that can be used to filter and analyze regions. Analysis tools can also be used to distinguish different regions by their properties.
-For the tutorial's sake let's take a more trivial example. Here we have a bunch of fasteners. Let's take a look at how we can group washers and nuts as well as distinguish them from each other.
+Analysis tools can also be used to distinguish different regions by their properties.
+For the tutorial's sake let's take a more trivial example. Here we have a bunch of fasteners. Let's take a look at how we can identify washers and nuts as well as distinguish them from each other.
 
 ![Screws and bolts](./images/roiAnalysis/good.jpg)
 
 The obvious distinction here between washers, nuts and other elements is the fact that they have holes in them. In this case we can use `fillRatio` property which gives a ratio of ROIs surfaces with and without holes. However, a better solution might be applying `holesInfo()` method to see the information about how many holes a region possesses.
-To make sure that we will get only washers and nuts we will also take their form factor into account and use `roundness` property. Roundness quantifies the deviation of an object's shape from a perfect circle. So, if the roundness of the perfect circle is 1, let's use 0.6 as a measure for our regions.
+To make sure that we will get only washers and nuts we will also take their form factor into account and use `roundness` property. Roundness quantifies the deviation of an object's shape from a perfect circle. So, if the roundness of the perfect circle is 1, we will use 0.6 as a measure for our regions.
 
-:::tip
 It is reasonable to assume that you don't know exactly what is the exact roundness coefficient of a washer, so you will eyeball it to see if your guess is close enough or not.
 To visualize it better you can use `paintMask()` method to paint a mask of a region of interest on the image. Don't forget to indicate ROIs origin and color of your choice, otherwise the result might be subpar.
-:::
 
 ```ts
 let mask = sourceImage
@@ -160,9 +147,7 @@ With this we will have our nuts and washers **ready for analysis**.
 
 ![Finding washers and nuts](./images/roiAnalysis/screwsMask4.jpg)
 
-There might be confusion about why some of the regions were left out. There are several reasons for that. Our primary goal here is to analyze specific and separate objects. However, here washers and nuts are adjacent to each other
-and will be considered as one object which defeat the whole purpose of the analysis. Another reason is the fact that regions at the image borders might be represented only partially which is the case with the washer below. Part of it is out of the frame, which
-obviously tampers its ROI properties.
+There might be confusion about why some of the regions were left out. We consider them not eligible for analysis. The reason is that if objects are stuck to each other, the algorithm considers them as one region. Obviously, it is a problem because two washers put together have completely different properties than a single washer.The data becomes misleading. For the same reason a washer below is not treated as well. Since an object is not captured completely, it reduces it's roundness, tampers with its ratios, surface etc.
 
 ![Ignored groups](./images/roiAnalysis/ignoredGroups.jpg)
 
@@ -201,7 +186,7 @@ With this we will get the desired result. All nuts and washers are found and sor
 
 ![Result](./images/roiAnalysis/result.jpg)
 
-And to get to this point we get a code like this:
+To get to this point we have a code like this:
 
 ```ts
 let mask = sourceImage
