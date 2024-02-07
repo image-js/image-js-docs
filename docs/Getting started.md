@@ -39,24 +39,23 @@ Local loading uses `readSync` function with indicated filepath:
 ```ts
 import { readSync } from 'image-js';
 
-let parsedImage = readSync('../example.jpg');
+const parsedImage = readSync('../example.jpg');
 ```
 
-It gets an image
 :::tip
 Node.js can also load an image via `fetch` function. To get more information take a look at "Browser" part of this section.
 :::
 
-Once the image is loaded, it returns an instance of the `Image` class, so its methods can be applied. For example, if you want to apply an [invert filter](/Features/Filters/Invert.md 'internal link on invert filter') you can use the invert method:
+Once the image is loaded, it returns an instance of the `Image` class, so its methods can be applied.
 
 ```ts
-image = image.invert();
+const image = parsedImage.invert();
 ```
 
 To save an image use `writeSync` function:
 
 ```ts
-writeSync('example.jpg', image);
+writeSync('../example.jpg', image);
 ```
 
 Image format is automatically identified based on the extension typed by the user. In this case it's `'.jpg'`.
@@ -66,9 +65,9 @@ So, in the end you should get a code like this.
 ```ts
 import { readSync, writeSync, Image } from 'image-js';
 
-let image = readSync('../example.jpg');
-image = image.invert();
-writeSync('example.jpg', image);
+const parsedImage = readSync('../example.jpg');
+const image = parsedImage.invert();
+writeSync('../example.jpg', image);
 ```
 
 ### Loading your first image in browser
@@ -78,7 +77,7 @@ To load an image via browser, in order to instantiate it, you need to get an `ar
 ```ts
 const data = await fetch('https:://example.com/image.jpg');
 const bufferedData = await data.arrayBuffer();
-const image = decode(new DataView(bufferedData)); // image is ready for usage
+let image = decode(new DataView(bufferedData)); // image is ready for usage
 
 image = image.grey();
 ```
@@ -135,7 +134,6 @@ In the `<body>` part of your code insert your `image-js` script. For instance, h
   let image = decode(new DataView(bufferedData)); // image is ready for usage
 
   image = image.grey();
-  console.log(Image);
   const canvas = document.getElementById('my_canvas');
   writeCanvas(image, canvas);
 </script>
