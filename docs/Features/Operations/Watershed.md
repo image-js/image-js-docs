@@ -24,7 +24,7 @@ If you look for bright-colored ROIs, then either look for maximum points or inve
 
 | Image property | What it means              | Possible values |
 | -------------- | -------------------------- | --------------- |
-| `bitDepth`     | number of bits per channel | `[8,16]`      |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
 | `components`   | number of components       | `[1]`           |
 | `alpha`        | is alpha channel allowed   | `false`         |
 

@@ -20,7 +20,6 @@ _Rotates an image by any angle._
 | `components`   | number of components       | any             |
 | `alpha`        | is alpha channel allowed   | `true`          |
 
-
 ### Parameters and its default values
 
 - `angle`
