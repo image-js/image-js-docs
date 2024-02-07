@@ -20,6 +20,14 @@ If you look for bright-colored ROIs, then either look for maximum points or inve
 | -------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | ![Image Input](./images/filterPointsOutput/CellsOutputcross17ISODATA5.jpg) | ![Image Output](./images/watershedOutput/CellsOutputISODATA5.jpg) |
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`      |
+| `components`   | number of components       | `[1]`           |
+| `alpha`        | is alpha channel allowed   | `false`         |
+
 ### Parameters and default values
 
 - `image`

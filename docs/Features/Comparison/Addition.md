@@ -26,11 +26,11 @@ Images must have the same size, channel number and bit depth for compatibility r
 
 ### Kinds of images compatible with algorithm
 
-| Image property | What it means                              | Possible values |
-| -------------- | ------------------------------------------ | --------------- |
-| `bitDepth`     | number of bits per channel                 | `[8,16]`        |
-| `components`   | number of components without alpha channel | `[1,3]`         |
-| `alpha`        | is alpha channel allowed                   | `false`         |
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
+| `components`   | number of components       | any             |
+| `alpha`        | is alpha channel allowed   | `false`         |
 
 ### Parameters and default values
 

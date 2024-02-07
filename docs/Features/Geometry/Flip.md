@@ -12,6 +12,14 @@ Flip filter in image processing refers to a transformation that horizontally or 
 
 <FlipDemo />
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
+| `components`   | number of components       | any             |
+| `alpha`        | is alpha channel allowed   | `true`          |
+
 ### Parameters and default values
 
 - `options`
