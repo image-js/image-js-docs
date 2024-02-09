@@ -23,7 +23,7 @@ You can see a good image to use threshold on the left and an image for watershed
 ![Techniques comparison](./images/roiAnalysis/ThresholdOrWatershed.png)
 
 :::caution
-Before taking on the analysis of regions of interest we recommend to take a look at the tutorials for `watershed` and `threshold`.
+Before taking on the analysis of regions of interest we recommend to take a look at the tutorials for `watershed` and `threshold`, notably their options and the blurring techniques to optimize the output.
 :::
 
 First we need to extract regions of interest from a map for further analysis:
@@ -31,14 +31,19 @@ First we need to extract regions of interest from a map for further analysis:
 ```ts
 //in this case we are interested in dark regions of interest, so we
 //specify the kind of ROIs we want to extract.
-const rois = roiMap.getRois({ kind: 'black' });
+let rois = roiMap.getRois({ kind: 'black' });
+//Removes regions that did not fit in the image.
+//It gives you a better data sample.
+rois = clearBorder(mask, { color: 'black' });
 ```
+
+![Get ROIs](./images/roiAnalysis/MBR.jpg)
+
+Notice how the elements at the borders are not included. The reason is that these regions simply did not fit completely into our image ,so, their features, such as size or shape will not be represented correctly. So, we used `clearBorder` function to remove those elements. It is a good practice for regions' analysis.
 
 ## Getting distribution by size
 
 Now we have all the regions identified and stored. We can work on the analysis of those regions.
-
-![Get ROIs](./images/roiAnalysis/MBR.jpg)
 
 In this case we will take our regions and calculate their distribution by size. Size distribution analysis is a method used to characterize and quantify the range of sizes present within a sample of particles or objects. It can be an important piece of data be it for simple size measurement or particle characterization and biological analysis.
 
@@ -71,7 +76,9 @@ for (let i = minSurface; i < maxSurface; i += interval) {
   const count = rois.filter((roi) => {
     return roi.surface >= i && roi.surface < i + interval;
   }).length;
-  const intervalString = i + '-' + (i + interval);
+  //Deducted 1 from upper value so that the intervals
+  //will not look overlapped.
+  const intervalString = i + '-' + (i + interval - 1);
   bySizeDistribution.set(intervalString, {
     frequency: count,
     percentage: ((count / rois.length) * 100).toFixed(2),
@@ -85,20 +92,20 @@ Now you have a data about size distribution in our sample:
 
 | Interval (points) | Frequency | Percentage (%) |
 | ----------------- | --------- | -------------- |
-| 174-451           | 2         | 1.47           |
-| 451-728           | 13        | 9.56           |
-| 726-1005          | 7         | 5.15           |
-| 1005-1282         | 16        | 11.76          |
-| 1282-1559         | 19        | 13.97          |
-| 1559-1836         | 21        | 15.44          |
-| 1836-2113         | 20        | 14.71          |
-| 2113-2390         | 12        | 8.82           |
-| 2390-2667         | 16        | 11.76          |
-| 2667-2944         | 8         | 5.88           |
-| 2944-3221         | 1         | 0.74           |
-| 3221-3498         | 1         | 0.74           |
+| 2-297             | 2         | 1.54           |
+| 298-593           | 1         | 0.77           |
+| 594-889           | 11        | 8.46           |
+| 890-1185          | 10        | 7.69           |
+| 1186-1481         | 22        | 16.92          |
+| 1482-1777         | 19        | 14.62          |
+| 1778-2073         | 26        | 20.00          |
+| 2074-2369         | 13        | 10.00          |
+| 2370-2665         | 17        | 13.08          |
+| 2666-2961         | 7         | 5.38           |
+| 2962-3257         | 1         | 0.77           |
+| 3258-3553         | 1         | 0.77           |
 
-Even with this we can receive data like predominant particle size or size range, which can already give insights about properties of a sample. But in ImageJS we are not limited to analyze samples by size, there exist more advanced techniques that we will discuss further.
+With this we can receive data such as predominant particle size or size range, which can already give insights about properties of a sample. However, in ImageJS we are not limited to analyze samples by size, there exist more advanced techniques that we will discuss further.
 
 ## Analyzing regions with other properties and features
 
@@ -107,11 +114,11 @@ For the tutorial's sake let's take a more trivial example. Here we have a bunch 
 
 ![Screws and bolts](./images/roiAnalysis/good.jpg)
 
-The obvious distinction here between washers, nuts and other elements is the fact that they have holes in them. In this case we can use `fillRatio` property which gives a ratio of ROIs surfaces with and without holes. However, a better solution might be applying `holesInfo()` method to see the information about how many holes a region possesses.
-To make sure that we will get only washers and nuts we will also take their form factor into account and use `roundness` property. Roundness quantifies the deviation of an object's shape from a perfect circle. So, if the roundness of the perfect circle is 1, we will use 0.6 as a measure for our regions.
+What sets nuts and washers apart from other elements is the fact that they have holes in them. In this case we can use `fillRatio` property which gives a ratio of ROIs surfaces with and without holes. We will also be applying `holesInfo()` method to see the information about how many holes a region possesses.
+Finally we will also take their form factor into account and use `roundness` property. Roundness quantifies the deviation of an object's shape from a perfect circle. So, if the roundness of the perfect circle is 1, we will use 0.6 as a measure for our regions.
 
-It is reasonable to assume that you don't know exactly what is the exact roundness coefficient of a washer, so you will eyeball it to see if your guess is close enough or not.
-To visualize it better you can use `paintMask()` method to paint a mask of a region of interest on the image. Don't forget to indicate ROIs origin and color of your choice, otherwise the result might be subpar.
+It is reasonable to assume that you don't know exactly what is the exact roundness coefficient or fill ratio of a washer, so you will eyeball it to see if your guess is close enough or not.
+To visualize it better you can use `paintMask()` method to paint a mask of a region of interest on the image.
 
 ```ts
 let mask = sourceImage
@@ -121,9 +128,6 @@ let mask = sourceImage
   //here. Check multiple algorithms to see which one
   //fits your needs best.
   .threshold({ algorithm: 'renyiEntropy' });
-//We are using clearBorder is a good practice for image analysis
-//because often borderline objects and therefore useless for
-//analysis.
 mask = clearBorder(mask, { color: 'black' });
 const roiMap = fromMask(mask);
 const rois = roiMap.getRois({ kind: 'black' });
@@ -131,7 +135,11 @@ const rois = roiMap.getRois({ kind: 'black' });
 let image = sourceImage;
 const washersAndNuts = [];
 for (const roi of rois) {
-  if (roi.holesInfo().number >= 1 && roundness > 0.6 && ) {
+  if (
+    roi.holesInfo().number >= 1 &&
+    roi.roundness > 0.6 &&
+    roi.fillRatio() < 0.9
+  ) {
     //paintMask allows painting regions of interest on our
     //image. We recommend using it for highlighting regions
     //and for visual aid.
@@ -147,12 +155,12 @@ With this we will have our nuts and washers **ready for analysis**.
 
 ![Finding washers and nuts](./images/roiAnalysis/screwsMask4.jpg)
 
-There might be confusion about why some of the regions were left out. We consider them not eligible for analysis. The reason is that if objects are stuck to each other, the algorithm considers them as one region. Obviously, it is a problem because two washers put together have completely different properties than a single washer.The data becomes misleading. For the same reason a washer below is not treated as well. Since an object is not captured completely, it reduces it's roundness, tampers with its ratios, surface etc.
+Like in previous example, we consider some regions not suited for analysis. One of the reasons here is that if objects are stuck to each other, the algorithm considers them as one region. Obviously, it is a problem because two washers put together have completely different properties than a single washer.The data becomes erroneous. A washer below is not treated as well for the reasons mentioned in the previous example.
 
 ![Ignored groups](./images/roiAnalysis/ignoredGroups.jpg)
 
 Now we need to distinguish washers from nuts. To do so, we will use the aspect ratio of [minimum bounding rectangle](../Features/Regions%20of%20interest/MBR.md 'internal link on mbr') (MBR). The MBR is the smallest rectangle that can fit our region. Its aspect ratio will help us deduce whether it is a hexagon or a circle.
-So, we will add some additional conditions to sort our regions. Methodically looking for the limit aspect ratio, we deduced that the threshold between a nut and a washer is approximately 0.932. It is not the most straight-forward value to find, and we found it empirically, by looking at MBR aspects of all ROIs and deducing the threshold between two kinds of fasteners. So the only thing left is to sort them into different arrays:
+So, we will add some additional conditions to sort our regions. Methodically looking for the limit aspect ratio, we deduced that the threshold between a nut and a washer is approximately 0.932. It is not the most straight-forward value to find, and we found it empirically by looking at MBR aspects of all ROIs and deducing the threshold between two kinds of fasteners. So the only thing left is to sort them into different arrays:
 
 ```ts
 const washers = [];
@@ -190,7 +198,7 @@ To get to this point we have a code like this:
 
 ```ts
 let mask = sourceImage
-  .gaussianBlur({ sigma: 3, size: 3 })
+  .blur({ width: 3, height: 3 })
   .grey()
   .threshold({ algorithm: 'renyiEntropy' });
 mask = clearBorder(mask, { allowCorners: false, color: 'black' });
@@ -198,8 +206,8 @@ const roiMap = fromMask(mask);
 const rois = roiMap.getRois({ kind: 'black' });
 let image = sourceImage;
 const washersAndNuts = [];
-// part where elements get picked apart from
-//bolts and screws
+//Part where elements get picked apart from
+//bolts and screws.
 for (const roi of rois) {
   if (roi.holesInfo.number >= 1 && roi.roundness > 0.6) {
     console.log(roi.id, roi.roundness, roi.mbr.aspectRatio);
@@ -210,7 +218,7 @@ for (const roi of rois) {
     washersAndNuts.push(roi);
   }
 }
-//part where elements are distinguished
+//Part where elements are distinguished.
 const washers = [];
 const nuts = [];
 for (const roi of washersAndNuts) {
@@ -240,39 +248,19 @@ These are some of the basic elements of ROI analysis.
 
 | ID   | MBR Aspect Ratio   | Roundness          | Type of object |
 | ---- | ------------------ | ------------------ | -------------- |
-| -334 | 0.8486055776892426 | 0.7395141926907502 | nut            |
-| -189 | 0.8571428571428572 | 0.6362497879977436 | nut            |
-| -346 | 0.8573883161512026 | 0.6415420901951657 | nut            |
+| -325 | 0.8486055776892426 | 0.7395141926907502 | nut            |
+| -181 | 0.8571428571428572 | 0.6362497879977436 | nut            |
+| -337 | 0.8573883161512026 | 0.6415420901951657 | nut            |
 | -225 | 0.8606205250596659 | 0.620587471293423  | nut            |
-| -233 | 0.9248120300751881 | 0.5964629322266488 | nut            |
-| -262 | 0.9318181818181818 | 0.6843448451890717 | nut            |
-| -356 | 0.9342105263157895 | 0.6633150795404446 | nut            |
-| -297 | 0.9428571428571428 | 0.5931423404475458 | washer         |
-| -311 | 0.9590909090909098 | 0.6970505527744227 | washer         |
-| -337 | 0.9621212121212122 | 0.7566368727646887 | washer         |
-| -289 | 0.9690721649484533 | 0.6784922893542326 | washer         |
-| -268 | 0.9701492537313433 | 0.7137816522045993 | washer         |
-| -296 | 0.9701492537313433 | 0.7268334194156458 | washer         |
-| -255 | 0.9793103448275862 | 0.8277530015726191 | washer         |
+| -217 | 0.8618546845124285 | 0.5964629322266488 | nut            |
+| -254 | 0.9318181818181818 | 0.6841891353266851 | nut            |
+| -347 | 0.9342105263157895 | 0.6633150795404446 | washer         |
+| -289 | 0.9428571428571428 | 0.5931423404475458 | washer         |
+| -303 | 0.9590909090909098 | 0.6970505527744227 | washer         |
+| -328 | 0.9621212121212122 | 0.7566368727646887 | washer         |
+| -281 | 0.9690721649484533 | 0.6784922893542326 | washer         |
+| -260 | 0.9701492537313433 | 0.7137816522045993 | washer         |
+| -288 | 0.9701492537313433 | 0.7268334194156458 | washer         |
+| -247 | 0.9793103448275862 | 0.8277530015726191 | washer         |
 
-However, this is just a fraction of tools that ImageJS possesses. There are other properties that you can discover more about in our [API features](../Features/Regions%20of%20interest/Regions%20of%20interest.md) section. Here is an example of the properties that you can use with any region of interest:
-
-| Feature         | Type         | Value                                                                  |
-| --------------- | ------------ | ---------------------------------------------------------------------- |
-| `id`            | `number`     | -75                                                                    |
-| `origin`        | `Point`      | `{ row: 2390, column: 206 }`                                           |
-| `height`        | `number`     | 411                                                                    |
-| `width`         | `number`     | 358                                                                    |
-| `surface`       | `number`     | 78022                                                                  |
-| `eqpc`          | `number`     | 315.18359056163894                                                     |
-| `ped`           | `number`     | 469.58631480264023                                                     |
-| `feret`         | `Feret`      | `feret: {minDiameter, maxDiameter, aspectRatio}`                       |
-| `fillRatio`     | `number`     | 0.9239277171210004                                                     |
-| `sphericity`    | `number`     | 0.671194156699617                                                      |
-| `roundness`     | `number`     | 0.5064165481909365                                                     |
-| `solidity`      | `number`     | 0.8081705794917212                                                     |
-| `perimeter`     | `number`     | 1475.2489168102784                                                     |
-| `convexHull`    | `ConvexHull` | `convexHull: {points,perimeter,surface}`                               |
-| `mbr`           | `Mbr`        | `mbr: {points, surface, angle, width, height, perimeter, aspectRatio}` |
-| `filledSurface` | `number`     | 84446,                                                                 |
-| `centroid`      | `Point`      | `{ column: 385.2887262566968, row: 2593.7994283663584 }`               |
+However, this is just a fraction of tools that ImageJS possesses. There are other properties that you can discover more about in our [API features](../Features/Regions%20of%20interest/Regions%20of%20interest.md) section.
