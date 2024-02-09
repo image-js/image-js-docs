@@ -24,8 +24,8 @@ You can add a mask as an option to specify locations where to look for extrema.
 | Image property | What it means              | Possible values |
 | -------------- | -------------------------- | --------------- |
 | `bitDepth`     | number of bits per channel | `[8,16]`        |
-| `components`   | number of components       | `[1]`           |
-| `alpha`        | is alpha channel allowed   | `false`         |
+| `components`   | number of components       | any             |
+| `alpha`        | is alpha channel allowed   | `true`          |
 
 ### Parameters and default values
 
