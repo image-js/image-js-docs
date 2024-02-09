@@ -31,11 +31,15 @@ In ImageJS main properties of an image are:
 
 - data: typed array with information about image's pixels.
 
-- [Color model](../Glossary.md#color-model 'internal link on glossary'): the abstract model of how pixel colors are formed.
+- [Color model](../Glossary.md#color-model 'internal link on color model'): the abstract model of how pixel colors are formed.
 
-- [Bit depth](../Glossary.md#bit-depth 'internal link on glossary'): number of bits allocated to each channel.
+- [Bit depth](../Glossary.md#bit-depth 'internal link on bit depth'): number of bits allocated to each channel.
 
-- [Number of channels/components](../Glossary.md#channel 'internal link on glossary'): number of color channels that each pixel has. Grey image has one, RGB-type of image has three.
+- [Number of channels](../Glossary.md#channel 'internal link on channels'): number of color channels that each pixel has. Grey image has one, RGB-type of image has three.
+
+- [Number of components](../Glossary.md#component 'internal link on components'): number of color channels that each pixel has but without alpha channel.
+
+- [Alpha channel](../Glossary.md#alpha-channel 'internal link on alpha-channel'): channel that represents the transparency or opacity levels of pixels.
 
 - [Metadata](../Glossary.md#metadata 'internal link on metadata'): data about data. A basic example would be date and time when an image was taken
 
@@ -52,3 +56,5 @@ Currently, there are several ways of processing an image:
 - [Geometry](../Features/Geometry/Geometry.md 'internal link on geometry'): this part of ImageJS allows rotating and resizing an image.
 
 - [Morphology](../Features/Morphology/Morphology.md 'internal link on morphology'): enables shape analysis and shape identification.
+
+- [ROI analysis](../Features/Regions%20of%20interest/Regions%20of%20interest.md 'internal link on roi analysis'): these features allow targeting and extracting relevant information from specific regions of interest.
