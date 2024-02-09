@@ -115,7 +115,7 @@ For the tutorial's sake let's take a more trivial example. Here we have a bunch 
 ![Screws and bolts](./images/roiAnalysis/good.jpg)
 
 What sets nuts and washers apart from other elements is the fact that they have holes in them. In this case we can use `fillRatio` property which gives a ratio of ROIs surfaces with and without holes. We will also be applying `holesInfo()` method to see the information about how many holes a region possesses.
-Finally we will also take their form factor into account and use `roundness` property. Roundness quantifies the deviation of an object's shape from a perfect circle. So, if the roundness of the perfect circle is 1, we will use 0.6 as a measure for our regions.
+Finally we will also take their form factor into account and use `roundness` property. Roundness quantifies the deviation of an object's shape from a perfect circle. So, if the roundness of the perfect circle is 1, we will use 0.55 as a measure for our regions.
 
 It is reasonable to assume that you don't know exactly what is the exact roundness coefficient or fill ratio of a washer, so you will eyeball it to see if your guess is close enough or not.
 To visualize it better you can use `paintMask()` method to paint a mask of a region of interest on the image.
@@ -137,7 +137,7 @@ const washersAndNuts = [];
 for (const roi of rois) {
   if (
     roi.holesInfo().number >= 1 &&
-    roi.roundness > 0.6 &&
+    roi.roundness > 0.55 &&
     roi.fillRatio() < 0.9
   ) {
     //paintMask allows painting regions of interest on our
@@ -209,7 +209,11 @@ const washersAndNuts = [];
 //Part where elements get picked apart from
 //bolts and screws.
 for (const roi of rois) {
-  if (roi.holesInfo.number >= 1 && roi.roundness > 0.6) {
+  if (
+    roi.holesInfo.number >= 1 &&
+    roi.roundness > 0.55 &&
+    roi.fillRatio() < 0.9
+  ) {
     console.log(roi.id, roi.roundness, roi.mbr.aspectRatio);
     image = image.paintMask(roi.getMask(), {
       origin: { column: roi.origin.column, row: roi.origin.row },
