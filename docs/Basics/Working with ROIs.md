@@ -15,7 +15,7 @@ import { fromMask } from 'image-js';
 const rois = fromMask(mask).getRois();
 ```
 
-In general you don't need to worry about the intermediate object returned by `fromMask()`. You will mostly be working with the list of ROIs returned by `getRois()`. It contains all the useful properties which characterize the regions of interest, such as surface, perimeter, centroid etc.
+In general you don't need to worry about the intermediate object returned by `fromMask()`. You will mostly be working with the list of ROIs returned by `getRois()`. It contains all the properties which characterize the region of interest, such as surface, perimeter, fill ratio, etc.
 
 :::tip
 In the options parameter,`getRois()` has a `kind` option which tells what kind of regions to return.
