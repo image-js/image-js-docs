@@ -12,11 +12,19 @@ Thresholding is a common image processing technique used to segment an image int
 
 <ThresholdDemo />
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
+| `components`   | number of components       | `[1]`           |
+| `alpha`        | is alpha channel allowed   | `false`         |
+
+### Parameters and default values
+
 With threshold filter there are two ways of passing options: by passing threshold coefficient manually and by calculating threshold with an algorithm.
 
 - `options`
-
-### Parameters and default values
 
 #### Threshold Variant:
 

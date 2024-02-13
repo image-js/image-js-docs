@@ -21,6 +21,14 @@ The Canny edge detector is known for its ability to:
 - Handle edges with varying levels of intensity (gradient).
 - Allow for customization through the selection of appropriate threshold values.
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
+| `components`   | number of components       | `[1]`           |
+| `alpha`        | is alpha channel allowed   | `false`         |
+
 ### Parameters and default values
 
 - `options`

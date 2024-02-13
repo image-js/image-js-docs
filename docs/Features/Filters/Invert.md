@@ -23,6 +23,14 @@ Parameters and options for Images and Masks are the same.
 
 - `options`
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[1,8,16]`      |
+| `components`   | number of components       | any             |
+| `alpha`        | is alpha channel allowed   | `true`          |
+
 #### Options
 
 | Property                                                                                  | Required | Default value |

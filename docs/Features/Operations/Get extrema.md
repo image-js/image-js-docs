@@ -19,6 +19,14 @@ You can add a mask as an option to specify locations where to look for extrema.
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
 | ![Minimum](./images/extremaOutput/CellsOutputcrossMinISODATA5.jpg) | ![Maximum](./images/extremaOutput/CellsOutputcrossMaxISODATA5.jpg) |
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
+| `components`   | number of components       | any             |
+| `alpha`        | is alpha channel allowed   | `true`          |
+
 ### Parameters and default values
 
 - `image`

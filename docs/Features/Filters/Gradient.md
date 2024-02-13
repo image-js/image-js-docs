@@ -18,6 +18,14 @@ The gradient filter enhances edges by detecting abrupt changes in pixel intensit
 Keep in mind that gradient filters can be sensitive to noise and might result in false edges or emphasize noise. Smoothing the image (e.g., using Gaussian blur) before applying the gradient filter can help mitigate this issue.
 :::
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
+| `components`   | number of components       | `[1]`           |
+| `alpha`        | is alpha channel allowed   | `true`          |
+
 ### Parameters and default values
 
 - `options`

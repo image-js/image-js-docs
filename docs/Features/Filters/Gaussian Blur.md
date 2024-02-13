@@ -14,6 +14,14 @@ The key idea behind Gaussian blur is that it simulates a diffusion process, wher
 
 <GaussianBlurDemo />
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
+| `components`   | number of components       | any             |
+| `alpha`        | is alpha channel allowed   | `true`          |
+
 ### Parameters and default values
 
 With Gaussian blur there are two ways of passing options: through sigma and through sigmaX and sigmaY. Main difference is that in first case sigma is the same for X and Y directions.
