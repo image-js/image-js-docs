@@ -25,6 +25,14 @@ Matrix cannot be singular. Otherwise it cannot be inverted. Click [here](https:/
 
 <TransformDemo />
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
+| `components`   | number of components       | any             |
+| `alpha`        | is alpha channel allowed   | `true`          |
+
 ### Parameters and its default values
 
 - `transformMatrix`

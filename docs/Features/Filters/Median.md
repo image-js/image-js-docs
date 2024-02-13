@@ -16,6 +16,14 @@ The key advantage of using the median filter, especially for noise reduction, is
 
 However, the median filter also has limitations. It can blur sharp edges and thin lines in the image, as it doesn't consider the spatial relationship between pixels beyond their intensity values. This means that while it's great for removing noise, it might not be suitable for all types of image enhancement tasks.
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
+| `components`   | number of components       | any             |
+| `alpha`        | is alpha channel allowed   | `true`          |
+
 ### Parameters and default values
 
 - `options`

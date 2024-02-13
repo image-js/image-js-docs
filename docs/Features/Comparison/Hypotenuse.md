@@ -14,6 +14,14 @@ $$
 
 Where $$Value1$$ is a value of the pixel in the first image and $$Value2$$ is the value of the second one. The goal is to identify which points in one image correspond to points in another image, which is essential for various computer vision and image processing applications. Calculating hypotenuse value between two pixels is also necessary for image aligning and feature matching.
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
+| `components`   | number of components       | any             |
+| `alpha`        | is alpha channel allowed   | `true`          |
+
 ### Parameters and default values
 
 - `otherImage`
