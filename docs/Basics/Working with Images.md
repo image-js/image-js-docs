@@ -43,8 +43,6 @@ In ImageJS main properties of an image are:
 
 - [Metadata](../Glossary.md#metadata 'internal link on metadata'): data about data. A basic example would be date and time when an image was taken
 
-The former ones matter most in features that involve two images, like [hypotenuse method](../Features/Comparison/Hypotenuse.md 'internal link on hypotenuse') or [subtraction method](../Features/Comparison/Subtraction.md 'internal link on subtraction method'). It simply will not work if images are not compatible by bit depth, color model or size.
-
 ### Features
 
 Currently, there are several ways of processing an image:

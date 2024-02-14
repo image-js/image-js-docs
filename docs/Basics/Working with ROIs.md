@@ -28,7 +28,8 @@ In the options parameter,`getRois()` has a `kind` option which tells what kind o
 
 :::
 Let's take a look at a real life example.  
-Here you have an image of particles under electron microscopy magnified at 1px = 0.2727 nm. Let's say we want to sort the data by size and observe its distribution. Such analysis is widely used for understanding
+Here you have an image of particles under electron microscopy magnified at 1px = 0.2727 nm. Let's say we want to sort the data by size and observe its distribution. Size distribution analysis is a statistical concept that calculates the frequency of a certain size in a sample.
+It can be use in various fields, whether it is for quality control to see if all products have the same features and characteristics or for physical properties of material such as surface area and reactivity.
 
 ![input image](./roiImages/inputImage.png)
 
