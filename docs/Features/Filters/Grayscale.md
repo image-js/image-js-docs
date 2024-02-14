@@ -14,6 +14,14 @@ _Converts color image into shades of gray._
 
 The grayscale filter essentially eliminates the color information from the image and retains only the luminance or brightness values. This type of image is often used in situations where color is not essential for understanding or conveying the visual information. Grayscale images can emphasize the tonal contrast and structural details of a scene, making them particularly useful for tasks like analyzing textures, patterns, and lighting conditions.
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
+| `components`   | number of components       | `[3]`           |
+| `alpha`        | is alpha channel allowed   | `true`          |
+
 ### Parameters and default values
 
 - `options`

@@ -24,6 +24,14 @@ mask = mask.add(mask2);
 Images must have the same size, channel number and bit depth for compatibility reasons.
 :::
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
+| `components`   | number of components       | any             |
+| `alpha`        | is alpha channel allowed   | `false`         |
+
 ### Parameters and default values
 
 - [`otherImage`](https://image-js.github.io/image-js-typescript/classes/Mask.html#subtract 'github.io link')
