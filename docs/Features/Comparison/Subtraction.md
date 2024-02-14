@@ -25,6 +25,14 @@ mask = mask.subtract(mask2);
 Both masks must have the same size for compatibility reasons. Images must have the same size, channel number and bit depth.
 :::
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[1,8,16]`      |
+| `components`   | number of components       | any             |
+| `alpha`        | is alpha channel allowed   | `false`         |
+
 ### Parameters and default values
 
 :::info

@@ -15,6 +15,14 @@ Blur, also known as average blur or box blur, is a simple image processing techn
 Box blur is particularly effective in reducing [salt-and-pepper](https://en.wikipedia.org/wiki/Salt-and-pepper_noise 'wikipedia link on salt and pepper noise') noise (random black and white pixels) and minor imperfections in an image. However, it also leads to loss of finer details, so the choice of [kernel](../../Glossary.md#kernel) size is important.
 More advanced blurring techniques, such as [Gaussian blur](./Gaussian%20Blur.md 'internal link to gaussian blur') or [bilateral filter](https://en.wikipedia.org/wiki/Bilateral_filter 'wikipedia link on bilateral filters'), are often used for better results in various applications.
 
+### Kinds of images compatible with algorithm
+
+| Image property | What it means              | Possible values |
+| -------------- | -------------------------- | --------------- |
+| `bitDepth`     | number of bits per channel | `[8,16]`        |
+| `components`   | number of components       | any             |
+| `alpha`        | is alpha channel allowed   | `true`          |
+
 ### Parameters and default values
 
 - `options`
