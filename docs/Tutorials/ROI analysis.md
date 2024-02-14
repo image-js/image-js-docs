@@ -1,3 +1,7 @@
+:::note
+Before taking on the analysis of regions of interest we recommend to take a look at the tutorials for `watershed` and `threshold`, notably their options and the blurring techniques to optimize the output.
+:::
+
 ROI (Regions of Interest) analysis refers to the process of identifying and analyzing specific regions within an image that are of interest. It is probably a topic too vast to fit it completely in one tutorial. But we will try to give you the basic idea of what image analysis might look like.
 First, let's take an image of particles made by electronic microscope as our example.
 
@@ -21,10 +25,6 @@ const roiMap = watershed(image, { points, mask });
 You can see a good image to use threshold on the left and an image for watershed on the right.
 
 ![Techniques comparison](./images/roiAnalysis/ThresholdOrWatershed.png)
-
-:::caution
-Before taking on the analysis of regions of interest we recommend to take a look at the tutorials for `watershed` and `threshold`, notably their options and the blurring techniques to optimize the output.
-:::
 
 First we need to extract regions of interest from a map for further analysis:
 
@@ -248,23 +248,9 @@ for (const roi of washersAndNuts) {
 }
 ```
 
+And the elements sorted by MBR aspect ratio will be in this order:
+
+![MBR aspect ratios](./images/roiAnalysis/mbrArGraph.png)
+
 These are some of the basic elements of ROI analysis.
-
-| ID   | MBR Aspect Ratio   | Roundness          | Type of object |
-| ---- | ------------------ | ------------------ | -------------- |
-| -325 | 0.8486055776892426 | 0.7395141926907502 | nut            |
-| -181 | 0.8571428571428572 | 0.6362497879977436 | nut            |
-| -337 | 0.8573883161512026 | 0.6415420901951657 | nut            |
-| -225 | 0.8606205250596659 | 0.620587471293423  | nut            |
-| -217 | 0.8618546845124285 | 0.5964629322266488 | nut            |
-| -254 | 0.9318181818181818 | 0.6841891353266851 | nut            |
-| -347 | 0.9342105263157895 | 0.6633150795404446 | washer         |
-| -289 | 0.9428571428571428 | 0.5931423404475458 | washer         |
-| -303 | 0.9590909090909098 | 0.6970505527744227 | washer         |
-| -328 | 0.9621212121212122 | 0.7566368727646887 | washer         |
-| -281 | 0.9690721649484533 | 0.6784922893542326 | washer         |
-| -260 | 0.9701492537313433 | 0.7137816522045993 | washer         |
-| -288 | 0.9701492537313433 | 0.7268334194156458 | washer         |
-| -247 | 0.9793103448275862 | 0.8277530015726191 | washer         |
-
 However, this is just a fraction of tools that ImageJS possesses. There are other properties that you can discover more about in our [API features](../Features/Regions%20of%20interest/Regions%20of%20interest.md) section.
