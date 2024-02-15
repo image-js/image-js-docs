@@ -33,5 +33,5 @@ This function sorts an array of points by intensity and then calculates euclidea
 | Property                                                                                                       | Required | Default value |
 | -------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
 | [`distance`](https://image-js.github.io/image-js-typescript/interfaces/RemoveClosePointsOptions.html#distance) | yes      | -             |
-| [`kind`](https://image-js.github.io/image-js-typescript/interfaces/RemoveClosePointsOptions.html#distance)     | yes      | -             |
+| [`kind`](https://image-js.github.io/image-js-typescript/interfaces/RemoveClosePointsOptions.html#kind)         | yes      | -             |
 | [`channel`](https://image-js.github.io/image-js-typescript/interfaces/RemoveClosePointsOptions.html#channel)   | no       | `0`           |
