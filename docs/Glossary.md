@@ -83,3 +83,7 @@ A Region of Interest (ROI) refers to a specific area within a space or image tha
 ### Roi map
 
 A ROI (Region of Interest) map, also known as segmentation map, is a binary image that highlights regions of interest within a larger image. It is a concept in image processing and computer vision for isolation and identification of certain objects, features, or regions for further analysis, manipulation, or processing.
+
+### Structuring element
+
+A structuring element is a shape or pattern used in morphological image processing operations such as dilation, erosion, opening, and closing. Unlike a kernel, a structuring element is not a matrix of numerical coefficients but rather a binary or grayscale pattern used for reshaping or modifying the overall structure of objects in an image.
