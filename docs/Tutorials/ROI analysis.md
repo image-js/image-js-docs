@@ -90,27 +90,12 @@ Now you have a data about size distribution in our sample:
 
 ![Distribution by size](./images/roiAnalysis/distributionGraph.png)
 
-| Interval (points) | Frequency | Percentage (%) |
-| ----------------- | --------- | -------------- |
-| 2-297             | 2         | 1.54           |
-| 298-593           | 1         | 0.77           |
-| 594-889           | 11        | 8.46           |
-| 890-1185          | 10        | 7.69           |
-| 1186-1481         | 22        | 16.92          |
-| 1482-1777         | 19        | 14.62          |
-| 1778-2073         | 26        | 20.00          |
-| 2074-2369         | 13        | 10.00          |
-| 2370-2665         | 17        | 13.08          |
-| 2666-2961         | 7         | 5.38           |
-| 2962-3257         | 1         | 0.77           |
-| 3258-3553         | 1         | 0.77           |
-
-With this we can receive data such as predominant particle size or size range, which can already give insights about properties of a sample. However, in ImageJS we are not limited to analyze samples by size, there exist more advanced techniques that we will discuss further.
+With this we can receive data such as predominant particle size or size range, which can already give insights about properties of a sample. However, in ImageJS we are not limited to analyzing samples by size, there exist more advanced techniques that we will discuss further.
 
 ## Analyzing regions with other properties and features
 
 Analysis tools can also be used to distinguish different regions by their properties.
-For the tutorial's sake let's take a more trivial example. Here we have a bunch of fasteners. Let's take a look at how we can identify washers and nuts as well as distinguish them from each other.
+Let's take another example. Here we have a bunch of fasteners. Let's take a look at how we can identify washers and nuts as well as distinguish them from each other.
 
 ![Screws and bolts](./images/roiAnalysis/good.jpg)
 
@@ -155,19 +140,23 @@ With this we will have our nuts and washers **ready for analysis**.
 
 ![Finding washers and nuts](./images/roiAnalysis/screwsMask4.jpg)
 
-Like in previous example, we consider some regions not suited for analysis. One of the reasons here is that if objects are stuck to each other, the algorithm considers them as one region. Obviously, it is a problem because two washers put together have completely different properties than a single washer.The data becomes erroneous. A washer below is not treated as well for the reasons mentioned in the previous example.
+Like in previous example, we consider some regions not suited for analysis. One of the reasons here is that if objects are stuck to each other, the algorithm considers them as one region. Obviously, it is a problem because two washers put together have completely different properties than a single washer. The data becomes erroneous. A washer below is not treated as well for the reasons mentioned in the previous example.
 
 ![Ignored groups](./images/roiAnalysis/ignoredGroups.jpg)
 
 Now we need to distinguish washers from nuts. To do so, we will use the aspect ratio of [minimum bounding rectangle](../Features/Regions%20of%20interest/MBR.md 'internal link on mbr') (MBR). The MBR is the smallest rectangle that can fit our region. Its aspect ratio will help us deduce whether it is a hexagon or a circle.
-So, we will add some additional conditions to sort our regions. Methodically looking for the limit aspect ratio, we deduced that the threshold between a nut and a washer is approximately 0.932. It is not the most straight-forward value to find, and we found it empirically by looking at MBR aspects of all ROIs and deducing the threshold between two kinds of fasteners. So the only thing left is to sort them into different arrays:
+So, we will add some additional conditions to sort our regions.
 
 ```ts
+//We put each roi into corresponding
+//array.
 const washers = [];
 const nuts = [];
 for (const roi of washersAndNuts) {
-  //to see each aspect ratio you can
-  //use console.log(roi.mbr.aspectRatio);
+  //In this case we found the threshold
+  //aspect ratio in empirical manner.
+  //To see each aspect ratio you can
+  //use console.log(roi.mbr.aspectRatio);.
   if (roi.mbr.aspectRatio > 0.932) {
     nuts.push(roi);
     image = image.paintMask(roi.getMask(), {
@@ -190,7 +179,13 @@ for (const roi of washersAndNuts) {
 }
 ```
 
-With this we will get the desired result. All nuts and washers are found and sorted for analysis.
+And the elements sorted by MBR aspect ratio will be in this order:
+
+![MBR aspect ratios](./images/roiAnalysis/mbrArGraph.png)
+
+As you can see in this case the threshold aspect ratio is too specific to make general conclusions. There is a high risk that with a different image or different setup of fasteners the result will not produce the correct output, although such approach can serve as a basis for [machine learning classifier](https://en.wikipedia.org/wiki/Machine_learning 'wikipedia link on machine learning').
+
+Still, with this we will get the desired result. All nuts and washers are found and sorted for analysis.
 
 ![Result](./images/roiAnalysis/result.jpg)
 
@@ -247,10 +242,6 @@ for (const roi of washersAndNuts) {
   }
 }
 ```
-
-And the elements sorted by MBR aspect ratio will be in this order:
-
-![MBR aspect ratios](./images/roiAnalysis/mbrArGraph.png)
 
 These are some of the basic elements of ROI analysis.
 However, this is just a fraction of tools that ImageJS possesses. There are other properties that you can discover more about in our [API features](../Features/Regions%20of%20interest/Regions%20of%20interest.md) section.
