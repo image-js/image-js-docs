@@ -15,7 +15,7 @@ import { fromMask } from 'image-js';
 const rois = fromMask(mask).getRois();
 ```
 
-In general you don't need to worry about the intermediate object returned by `fromMask()`. You will mostly be working with the list of ROIs returned by `getRois()`. It contains all the useful properties which characterize the regions of interest, such as surface, perimeter, centroid etc.
+In general you don't need to worry about the intermediate object returned by `fromMask()`. You will mostly be working with the list of ROIs returned by `getRois()`. It contains all the properties which characterize the region of interest, such as surface, perimeter, fill ratio, etc.
 
 :::tip
 In the options parameter,`getRois()` has a `kind` option which tells what kind of regions to return.
@@ -28,7 +28,8 @@ In the options parameter,`getRois()` has a `kind` option which tells what kind o
 
 :::
 Let's take a look at a real life example.  
-Here you have an image of particles under electron microscopy magnified where 1px = 0.2727 nm. Let's say we want to get the data about all the regions presented on the image and calculate their Feret diameters.
+Here you have an image of particles under electron microscopy magnified at 1px = 0.2727 nm. Let's say we want to sort the data by size and observe its distribution.
+It can be use in various fields, whether it is for quality control to see if all products have the same features and characteristics or for physical properties of material such as surface area and reactivity.
 
 ![input image](./roiImages/inputImage.png)
 
@@ -37,27 +38,41 @@ It can be done with with following code:
 ```ts
 import { Image, fromMask } from 'image-js';
 
-//Convert image to grayscale, then apply a blur on it. This will smooth out the noise and avoid creating many small ROIs in the next steps(image 1).
+//Convert image to grayscale, then apply a blur on it. This will
+// smooth out the noise and avoid creating many small ROIs in the next steps(image 1).
 const image = sourceImage.grey().blur({ width: 5, height: 5 });
-//Use threshold to convert the grayscale image to a Mask. The default threshold algorithm is Otsu which  will automatically determine the threshold between black and white pixels by minimizing intra-class intensity variance(image 2).
-const mask = image.threshold();
+//Clear border excludes border regions from mask if they don't
+//fit completely on an image.
+const mask = clearBorder(image.threshold(), { color: 'black' });
 
 //Receive all the regions of interest from mask(colored on image 3).
 const roiMap = fromMask(mask);
 const rois = roiMap.getRois({ kind: 'black' });
 
-for (const roi of rois) {
-  //Get Feret diameters for each ROI(colored on image 4)
-  const feret = roi.feret;
+//Distribute regions by size(surface).
+//First we find limits and intervals for our size classes.
+const maxSurface = Math.max(...rois.map((roi) => roi.surface));
+const minSurface = Math.min(...rois.map((roi) => roi.surface));
+const span = maxSurface - minSurface;
+const interval = Math.round(span / Math.sqrt(rois.length));
+
+const bySizeDistribution = new Map();
+//We count number of regions that belong to each interval separately.
+for (let i = minSurface; i < maxSurface; i += interval) {
+  const count = rois.filter((roi) => {
+    return roi.surface >= i && roi.surface < i + interval;
+  }).length;
+  const intervalString = i + '-' + (i + interval - 1);
+
+  bySizeDistribution.set(intervalString, {
+    frequency: count,
+    percentage: ((count / rois.length) * 100).toFixed(2),
+  });
 }
 ```
 
-Each region of interest possesses many properties and characteristics (ROIs are highlighted in blue on Image 3).
-Feret diameter is a rather advanced property, but there are also more general and basic ones, like surface or perimeter.
+This will give us a map with stored number of regions per each size interval. This may be a basic example but such analysis is widely used in biology and medicine. It can provide valuable information about predominant cell size or find abnormalities in cells ratio.
 
-![combination of images](./roiImages/comboImage.png)
+![Combination of images](./roiImages/comboImage2.png)
 
-If you need a further insight on ROIs level of elongation and shape, however, you can use Feret diameter by calling it with `roi.feret`.
-In our current example, they are represented as two green segments(Image 4).
-
-Properties shown here only represent a part of what ImageJS analysis is capable of. To learn more about our analysis tools you can visit Analysis section.
+To learn more about our analysis tools you can visit our ROI Analysis section.
