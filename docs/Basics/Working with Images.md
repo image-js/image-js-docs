@@ -19,6 +19,20 @@ In the context of digital technology and computing, images are represented as a 
 | **Can be loaded in this format** | &#9989;                    | &#9989;                | &#9989;           |
 | **Can be saved in this format**  | &#10060;                   | &#9989;                | &#9989;           |
 
+### Image coordinates
+
+The origin point has coordinates (0,0) and is located in the top-left corner of an image.
+
+![Image coordinates](./workingWithImages/coordinatesImage.jpg)
+
+So, if we want to get a certain pixel on the image we will be counting the distance from image's top-left corner.
+
+```ts
+//We will receive 20th row and 10th column
+//from the top-left corner.
+const pixel = image.getPixel(10, 20);
+```
+
 ### Properties
 
 In ImageJS main properties of an image are:
