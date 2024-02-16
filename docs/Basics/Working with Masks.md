@@ -24,7 +24,7 @@ const mask = new Mask(500, 500); // Creates a simple mask filled with 0s of size
 Another approach is to obtain a mask by using [`threshold` method](../Features/Operations/Threshold.md 'internal link on threshold') on an image.
 
 ```ts
-image = image.threshold(); // returns a mask
+const mask = image.threshold(); // returns a mask
 ```
 
 In most cases, thresholding is your go-to method to get a mask from an image.
@@ -40,7 +40,7 @@ In most cases, thresholding is your go-to method to get a mask from an image.
 There is also a third way to get a mask. It is to use [`cannyEdgeDetector` method](../Features/Morphology/Canny%20Edge%20Detector.md).
 
 ```ts
-image = image.cannyEdgeDetector(); // returns a mask
+const mask = image.cannyEdgeDetector(); // returns a mask
 ```
 
 <CannyMaskDemo />
