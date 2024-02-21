@@ -28,7 +28,7 @@ You might be wondering what this huge mix of letters and numbers represents:
 
 ![](./images/roiAnalysis/extraData.jpg)
 
-Well, the TIFF format has a feature of adding custom metadata fields and this is the way they are stored. For instance, in this case you can get information about the microscope that was used, or the magnification level that was used while the image was taken. However, this data needs to be parsed, as it is difficult to decipher in its raw format.
+Well, the TIFF format has a feature of adding custom [XML](https://en.wikipedia.org/wiki/XML 'wikipedia link on xml') metadata fields and this is the way they are stored. For instance, in this case you can get information about the microscope that was used, or the magnification level that was used while the image was taken. However, this data needs to be parsed, as it is difficult to decipher in its raw format.
 To do so you need to identify what is the key id of this text. In our case it is `34682`, but it might not always be the case so check it beforehand.
 
 Next thing we need to do is to parse this text.
@@ -65,7 +65,7 @@ Pixel size can be one of metadata fields but if this isn't the case you might be
 In this specific scenario to calculate pixel size you can calculate DPI resolution and apply it with magnification.
 DPI resolution represents the number of dots per inch. To calculate it we need to look at three lines in our parsed extra data: `XResolution`, `YResolution` and `ResolutionUnit`.
 X and Y resolutions are the number of dots per inch on X and Y axes. So, if they are equal, then DPI resolution equals to one of these values. However, this value might not be measured in inches. To check that we need to look at the value of `ResolutionUnit`.
-If its value equals to 2 then the X and Y resolutions are measured in inches.If it's 3 then it's in centimeters and has to be converted.
+If its value equals to 2 then the X and Y resolutions are measured in inches. If it's 3 then it's in centimeters and has to be converted.
 
 :::info
 `ResolutionUnit` can also be equal to 1. This means that the image doesn't have an absolute unit of measurement. Used for images that may have a non-square aspect ratio, but no meaningful absolute dimensions.
