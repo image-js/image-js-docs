@@ -25,5 +25,8 @@ ROIs
 Feret
 canny
 grayscaled
+exif
+electrometric
 Grayscaling
+
 
