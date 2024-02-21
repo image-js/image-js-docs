@@ -183,7 +183,7 @@ And the elements sorted by MBR aspect ratio will be in this order:
 
 ![MBR aspect ratios](./images/roiAnalysis/mbrArGraph.png)
 
-As you can see in this case the threshold aspect ratio is too specific to make general conclusions. There is a high risk that with a different image or different setup of fasteners the result will not produce the correct output, although such approach can serve as a basis for [machine learning classifier](https://en.wikipedia.org/wiki/Machine_learning 'wikipedia link on machine learning').
+As you can see in this case the threshold aspect ratio is too specific to make general conclusions. There is a high risk that with a different image or different setup of fasteners the result will not produce the correct output, although such approach can serve as a basis for [machine learning classifier](https://en.wikipedia.org/wiki/Statistical_classification 'wikipedia link on statistical classification').
 
 Still, with this we will get the desired result. All nuts and washers are found and sorted for analysis.
 
