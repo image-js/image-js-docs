@@ -4,7 +4,7 @@ There are currently two ways ROIs can be generated in ImageJS:
 
 - From [masks](./Working%20with%20Masks.md 'internal link on working with mask') by identifying contiguous black or white pixels within it.
 <!-- TODO: add links to the relevant sections once they exist -->
-- By identifying starting points of interest (for example by finding and filtering local extrema) and running the watershed algorithm on them.
+- By identifying starting points of interest (for example by finding and filtering local extrema) and running the [watershed algorithm](../Features/Operations/Watershed.md 'internal link on watershed') on them.
 
 ROIs identify and characterize regions within images, which has wide applications in image analysis.
 

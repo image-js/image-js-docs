@@ -55,7 +55,7 @@ In ImageJS main properties of an image are:
 
 - [Alpha channel](../Glossary.md#alpha-channel 'internal link on alpha-channel'): channel that represents the transparency or opacity levels of pixels.
 
-- [Metadata](../Glossary.md#metadata 'internal link on metadata'): data about data. A basic example would be date and time when an image was taken
+- [Metadata](../Glossary.md#metadata 'internal link on metadata'): data about data. A basic example would be date and time when an image was taken.
 
 ### Features
 
