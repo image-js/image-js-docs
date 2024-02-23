@@ -2,7 +2,7 @@ If you looked at some of our tutorials, you might have noticed that we apply a b
 
 ## Blur
 
-To be precise blur is a general term that refers to a reduction in the sharpness or clarity of an image. It also works to reduce some of the noise, such as [gaussian noise](https://en.wikipedia.org/wiki/Gaussian_noise#:~:text=In%20signal%20processing%20theory%2C%20Gaussian,can%20take%20are%20Gaussian%2Ddistributed. 'wikipedia link on gaussian noise') for example. In ImageJS blur is actually a box blur or mean blur. It is a filter that uses convolution matrix to calculate an average among the surrounding pixels which are within the transformation matrix (kernel) and then applies this value.
+To be precise blur is a general term that refers to a reduction in the sharpness or clarity of an image. It also works to reduce some of the noise, such as [gaussian noise](https://en.wikipedia.org/wiki/Gaussian_noise#:~:text=In%20signal%20processing%20theory%2C%20Gaussian,can%20take%20are%20Gaussian%2Ddistributed. 'wikipedia link on gaussian noise') for example. In ImageJS blur is actually a box blur or mean blur. It is a filter that uses convolution matrix to calculate an average among the surrounding pixels which are within the transformation matrix ([kernel](../Glossary.md#kernel 'glossary link on kernel')) and then applies this value.
 
 ![Convolution process](./images/blurring/2D_Convolution_Animation.gif)
 

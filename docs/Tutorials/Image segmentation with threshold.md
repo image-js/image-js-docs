@@ -3,7 +3,7 @@ In this tutorial we are going to cover the threshold operation and how to get a 
 ## Synopsis
 
 Here is a quick summary of this tutorial.
-Threshold is used for [image segmentation](../Glossary.md#image-segmentation) to locate specific regions of interest (ROI) by separating background and foreground of the image. By doing so, we can create a map of regions, a `RoiMapManager` object.
+Threshold is used for [image segmentation](../Glossary.md#image-segmentation 'glossary link on image segmentation') to locate specific regions of interest (ROI) by separating background and foreground of the image. By doing so, we can create a map of regions, a `RoiMapManager` object.
 
 Once threshold is applied, you will get a mask, which will allow you to localize and extract specific objects or regions of interest situated on the image.
 
@@ -29,7 +29,7 @@ const roiMapManager = fromMask(mask);
 One of the ImageJS features is the ability to extract and analyze specific regions of the image(regions of interest or ROI).
 However, to get these regions you need to localize them first. This is where thresholding comes in.
 
-Thresholding is an [image segmentation](../Glossary.md#image-segmentation) technique. It separates image's foreground objects from their background based on pixel intensity value. It works especially well when background is rather simple and well-defined.
+Thresholding is an [image segmentation](../Glossary.md#image-segmentation 'glossary link on image segmentation') technique. It separates image's foreground objects from their background based on pixel intensity value. It works especially well when background is rather simple and well-defined.
 For instance here is an image of particles under electronic microscopy.
 
 ![Particles image](./images/threshold/greys.png)
@@ -53,7 +53,7 @@ The output result will be identical to a result with a threshold algorithm as a 
 ![Otsu histogram](./images/threshold/OtsuVisualization.png)
 
 The default algorithm is [`otsu`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu'). It is a popular technique that uses weighted variance between two classes of pixels.
-In ImageJS we use [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function 'wikipedia link to cumulative distribution function') to compute cumulative probability of encountering pixel intensities up to a certain level. This allows calculating between-class variance between the two created classes and find an optimal threshold value.
+In ImageJS we use [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function 'wikipedia link on cumulative distribution function') to compute cumulative probability of encountering pixel intensities up to a certain level. This allows calculating between-class variance between the two created classes and find an optimal threshold value.
 After that it checks each pixel whether its intensity value is smaller or bigger than the calculated threshold. You can see a histogram of otsu's output above.
 
 ![Different algorithm outputs](./images/threshold/MaskCombosThreshold.png)

@@ -6,7 +6,7 @@ This section is dedicated to regions' analysis of mask and its specific regions.
 | ----------------------------------------------------------------------------------- | ------- | -------- |
 | [Convex Hull(`convexHull`)](./Convex%20Hull.md 'internal link on convex hull')      | &#9989; | &#9989;  |
 | [Feret diameter(`feret`)](./Feret%20Diameters.md 'internal link on feret diameter') | &#9989; | &#9989;  |
-| [Minimum Bounding Rectangle( `mbr` )](./MBR.md 'internal link on mbr')              | &#9989; | &#9989;  |
+| [Minimum Bounding Rectangle(`mbr`)](./MBR.md 'internal link on mbr')                | &#9989; | &#9989;  |
 | [Perimeter(`perimeter`)](./Perimeter.md 'internal link on perimeter')               | &#9989; | &#10060; |
 | [EQPC(`eqpc`)](./EQPC.md 'internal link on eqpc')                                   | &#9989; | &#10060; |
 | [PED(`ped`)](./PED.md 'internal link on ped')                                       | &#9989; | &#10060; |
