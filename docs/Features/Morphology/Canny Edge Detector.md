@@ -39,9 +39,9 @@ The Canny edge detector is known for its ability to:
 | ---------------------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
 | [`gaussianBlurOptions`](https://image-js.github.io/image-js-typescript/interfaces/CannyEdgeOptions.html#gaussianBlurOptions) | no       | `1`           |
 | [`highThreshold`](https://image-js.github.io/image-js-typescript/interfaces/CannyEdgeOptions.html#highThreshold)             | no       | `0.1`         |
-| [`lowThreshold`](https://image-js.github.io/image-js-typescript/interfaces/CannyEdgeOptions.html#hysteresis)                 | no       | `0.04`        |
+| [`lowThreshold`](https://image-js.github.io/image-js-typescript/interfaces/CannyEdgeOptions.html#lowThreshold)               | no       | `0.04`        |
 | [`hysteresis`](https://image-js.github.io/image-js-typescript/interfaces/CannyEdgeOptions.html#hysteresis)                   | no       | `true`        |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/CannyEdgeOptions.html#hysteresis)                          | no       | -             |
+| [`out`](https://image-js.github.io/image-js-typescript/interfaces/CannyEdgeOptions.html#out)                                 | no       | -             |
 
 <details>
 <summary>
@@ -57,7 +57,7 @@ _Non-maximum Suppression_: In this step, the gradient magnitude is examined at e
 
 **(optional)**
 
-_Edge Tracking by [Hysteresis](../../Glossary.md#hysteresis "internal link on hysteresis)_: This step involves tracking edges by applying two thresholds: a high threshold and a low threshold. Pixels with gradient magnitude values above the high threshold are considered strong edges, while those between the low and high thresholds are considered potential edges. The algorithm then connects potential edges to strong edges, forming continuous edge contours.
+_Edge Tracking by [Hysteresis](../../Glossary.md#hysteresis 'internal link on hysteresis')_ : This step involves tracking edges by applying two thresholds: a high threshold and a low threshold. Pixels with gradient magnitude values above the high threshold are considered strong edges, while those between the low and high thresholds are considered potential edges. The algorithm then connects potential edges to strong edges, forming continuous edge contours.
 
 Finally, edge tracking by hysteresis is performed to link weak edges to strong edges. This helps in forming continuous edges and eliminating isolated weak edges caused by noise.
 
