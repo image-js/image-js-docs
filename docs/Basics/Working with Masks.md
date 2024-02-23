@@ -37,7 +37,7 @@ In most cases, thresholding is your go-to method to get a mask from an image.
 
 ### Use `cannyEdgeDetector()` method
 
-There is also a third way to get a mask. It is to use [`cannyEdgeDetector` method](../Features/Morphology/Canny%20Edge%20Detector.md).
+There is also a third way to get a mask. It is to use [`cannyEdgeDetector` method](../Features/Morphology/Canny%20Edge%20Detector.md 'internal link on canny edge detector').
 
 ```ts
 const mask = image.cannyEdgeDetector(); // returns a mask

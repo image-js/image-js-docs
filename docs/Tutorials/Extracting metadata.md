@@ -2,7 +2,7 @@ In this tutorial we will discuss metadata extraction with an image that we alrea
 
 ![Particles](./images/roiAnalysis/particles.jpg)
 
-[Metadata](../Glossary.md#metadata 'internal link on metadata') represents information about various aspects of an image itself. It can be something basic such as the date when an image was taken, or something more specific like the name of the camera that the image was taken by. You can extract metadata tags that can provide additional information about an image by using this command:
+[Metadata](../Glossary.md#metadata 'glossary link on metadata') represents information about various aspects of an image itself. It can be something basic such as the date when an image was taken, or something more specific like the name of the camera that the image was taken by. You can extract metadata tags that can provide additional information about an image by using this command:
 
 ```ts
 const meta = image.meta;

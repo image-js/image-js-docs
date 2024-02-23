@@ -8,7 +8,7 @@ _Separates and identifies distinct regions or objects within an image through gr
 
 [Watershed filter](<https://en.wikipedia.org/wiki/Watershed_(image_processing)> 'wikipedia link on watershed') is a way of identifying objects by finding image's extreme points (minima or maxima) in terms of intensity and filling these spaces with color (label). The process reminds geological [watershed](https://en.wikipedia.org/wiki/Drainage_divide 'wikipedia link on drainage divide'), which is the origin of algorithm's name. In order for the "water" not to go overboard and stay within the limits of the region, these limits must be set.
 
-There are two ways to do so. One way is to limit the [intensity](../../Glossary.md#intensity 'internal link on glossary') by threshold value. Another way is to apply a mask which can set the area where watershed will be implemented.
+There are two ways to do so. One way is to limit the [intensity](../../Glossary.md#intensity 'glossary link on intensity') by threshold value. Another way is to apply a mask which can set the area where watershed will be implemented.
 
 The watershed algorithm is particularly useful for segmenting objects in images, especially when objects are close to each other.
 

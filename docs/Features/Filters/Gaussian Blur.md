@@ -8,7 +8,7 @@ _A blur filter that uses gaussian function for smoothing._
 
 [🖼️ Image options and parameters of `gaussianBlur` method](https://image-js.github.io/image-js-typescript/classes/Image.html#gaussianBlur 'link on github io')
 
-[Gaussian blur](https://en.wikipedia.org/wiki/Gaussian_blur 'Wikipedia link on gaussian blur') is a widely used image processing technique that smooths an image by reducing high-frequency noise and fine details while preserving the overall structure and larger features. It's named after the [Gaussian function](https://en.wikipedia.org/wiki/Gaussian_function 'wikipedia link on Gaussian function'), which is a mathematical function that represents a bell-shaped curve. Gaussian blur is often applied to images before other processing steps like edge detection to improve their quality and reliability.
+[Gaussian blur](https://en.wikipedia.org/wiki/Gaussian_blur 'Wikipedia link on gaussian blur') is a widely used image processing technique that smooths an image by reducing high-frequency noise and fine details while preserving the overall structure and larger features. It's named after the [Gaussian function](https://en.wikipedia.org/wiki/Gaussian_function 'wikipedia link on gaussian function'), which is a mathematical function that represents a bell-shaped curve. Gaussian blur is often applied to images before other processing steps like edge detection to improve their quality and reliability.
 
 The key idea behind Gaussian blur is that it simulates a diffusion process, where each pixel's value is influenced by the values of its neighbors. Because the weights are determined by the Gaussian function, pixels that are closer to the central pixel have a larger impact on the smoothed value, while pixels that are farther away contribute less.
 
@@ -48,7 +48,7 @@ With Gaussian blur there are two ways of passing options: through sigma and thro
 | [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurXYOptions.html#borderType) | no       | `reflect101`                    |
 | [`out`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurXYOptions.html#out)               | no       | -                               |
 | [`sizeX`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurXYOptions.html#sizeX)           | no       | `2 * Math.ceil(2 * sigmaX) + 1` |
-| [`sizeX`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurXYOptions.html#sizeY)           | no       | `2 * Math.ceil(2 * sigmaY) + 1` |
+| [`sizeY`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurXYOptions.html#sizeY)           | no       | `2 * Math.ceil(2 * sigmaY) + 1` |
 
 The size of the Gaussian kernel and the standard deviation parameter (which controls the spread of the Gaussian curve) influence the degree of smoothing. A larger kernel or a higher standard deviation will produce more pronounced smoothing, but might also result in a loss of fine details.
 
