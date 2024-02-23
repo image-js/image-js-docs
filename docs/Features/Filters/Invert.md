@@ -54,7 +54,7 @@ $$New Intensity = Max Intensity - Original Intensity$$
 Where $$Max Intensity$$ is the maximum possible intensity value for the color channel.
 
 :::warning
-ImageJS uses components to calculate each pixel value and leaves alpha channel unchanged. For more information about channels and components visit [this link](../../Useful%20tips/Channel%20vs%20component.md 'internal link on channel vs component').
+ImageJS uses components to calculate each pixel value and leaves alpha channel unchanged.
 :::
 
 </details>
