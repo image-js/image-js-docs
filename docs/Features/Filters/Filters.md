@@ -8,9 +8,9 @@ sidebar_position: 0
 
 | Can be applied on                                                                | Images  | Masks    |
 | -------------------------------------------------------------------------------- | ------- | -------- |
-| [Invert(`add`)](./Invert.md 'internal link on invert')                           | &#9989; | &#9989;  |
-| [Grayscale( `grey` )](./Grayscale.md 'internal link on grayscale')               | &#9989; | &#10060; |
-| [Gradient(`gradient` )](./Gradient.md 'internal link on gradient')               | &#9989; | &#10060; |
+| [Invert(`invert`)](./Invert.md 'internal link on invert')                        | &#9989; | &#9989;  |
+| [Grayscale(`grey`)](./Grayscale.md 'internal link on grayscale')                 | &#9989; | &#10060; |
+| [Gradient(`gradient`)](./Gradient.md 'internal link on gradient')               | &#9989; | &#10060; |
 | [Derivative(`derivative`)](./Derivative.md 'internal link on derivative')        | &#9989; | &#10060; |
 | [Median(`median`)](./Median.md 'internal link on median')                        | &#9989; | &#10060; |
 | [Pixelate(`pixelate`)](./Pixelate.md 'internal link on pixelate')                | &#9989; | &#10060; |
