@@ -11,7 +11,7 @@ _The longest and shortest distances between two parallel lines that touch a regi
 This measurement is commonly employed for the analysis of shapes and structures in images.
 
 :::tip
-Feret diameters can be defined by the points as if the object was measured by [caliper](https://en.wikipedia.org/wiki/Calipers 'wikipedia link on caliper'). Therefore its other name, caliper diameter.
+Feret diameters can be defined by the points as if the object was measured by [calliper](https://en.wikipedia.org/wiki/Calipers 'wikipedia link on caliper'). Therefore its other name, calliper diameter.
 :::
 
 ![Feret output](./img/feret.svg)

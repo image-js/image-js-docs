@@ -4,6 +4,8 @@ sidebar_position: 30
 
 _Filters close points by minimum distance between each other._
 
+[🖼️ Image options and parameters of `removeClosePoints` function](https://image-js.github.io/image-js-typescript/functions/removeClosePoints.html 'github.io link')
+
 `removeClosePoints` function is used for filtering points that are close to each other.
 
 This function sorts an array of points by intensity and then calculates euclidean distance between the points. If the distance between points is smaller than the `removeClosePoints` option the compared point gets removed.
@@ -32,6 +34,6 @@ This function sorts an array of points by intensity and then calculates euclidea
 
 | Property                                                                                                       | Required | Default value |
 | -------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`distance`](https://image-js.github.io/image-js-typescript/interfaces/RemoveClosePointsOptions.html#distance) | yes      | -             |
-| [`kind`](https://image-js.github.io/image-js-typescript/interfaces/RemoveClosePointsOptions.html#distance)     | yes      | -             |
+| [`distance`](https://image-js.github.io/image-js-typescript/interfaces/RemoveClosePointsOptions.html#distance) | yes      | `0`           |
+| [`kind`](https://image-js.github.io/image-js-typescript/interfaces/RemoveClosePointsOptions.html#kind)         | yes      | `'maximum'`   |
 | [`channel`](https://image-js.github.io/image-js-typescript/interfaces/RemoveClosePointsOptions.html#channel)   | no       | `0`           |

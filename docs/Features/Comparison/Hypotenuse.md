@@ -30,10 +30,9 @@ Where $$Value1$$ is a value of the pixel in the first image and $$Value2$$ is th
 
 #### Options
 
-| Property                                                                                                | Required | Default value    |
-| ------------------------------------------------------------------------------------------------------- | -------- | ---------------- |
-| [`bitDepth`](https://image-js.github.io/image-js-typescript/interfaces/HypotenuseOptions.html#bitDepth) | no       | `image.bitDepth` |
-| [`channels`](https://image-js.github.io/image-js-typescript/interfaces/HypotenuseOptions.html#channels) | no       | -                |
+| Property                                                                                                | Required | Default value |
+| ------------------------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`channels`](https://image-js.github.io/image-js-typescript/interfaces/HypotenuseOptions.html#channels) | no       | -             |
 
 :::caution
 Images must be compatible by size, bit depth, number of channels and number of alpha channels. However, for the resulting image user can choose the bit depth of the resulting image as well as channels which the algorithm will be applied to.

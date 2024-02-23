@@ -17,12 +17,6 @@ _Reverses the colors of an image, transforming dark areas into light and vice ve
 
 ### Parameters and default values
 
-:::info
-Parameters and options for Images and Masks are the same.
-:::
-
-- `options`
-
 ### Kinds of images compatible with algorithm
 
 | Image property | What it means              | Possible values |
@@ -30,6 +24,12 @@ Parameters and options for Images and Masks are the same.
 | `bitDepth`     | number of bits per channel | `[1,8,16]`      |
 | `components`   | number of components       | any             |
 | `alpha`        | is alpha channel allowed   | `true`          |
+
+:::info
+Parameters and options for Images and Masks are the same.
+:::
+
+- `options`
 
 #### Options
 
@@ -53,7 +53,7 @@ $$New Intensity = Max Intensity - Original Intensity$$
 Where $$Max Intensity$$ is the maximum possible intensity value for the color channel.
 
 :::warning
-ImageJS uses components to calculate each pixel value and leaves alpha channel unchanged. For more information about channels and components visit [this link](../../Useful%20tips/Channel%20vs%20component.md).
+ImageJS uses components to calculate each pixel value and leaves alpha channel unchanged.
 :::
 
 </details>

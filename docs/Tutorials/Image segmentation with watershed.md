@@ -1,4 +1,4 @@
-In this tutorial we will talk about watershed algorithm, why it is used and the basics of how it is implemented. We will also cover some pitfalls that you might encounter during its use.
+In this tutorial we will talk about [watershed algorithm](../Features/Operations/Watershed.md 'internal link on watershed'), why it is used and the basics of how it is implemented. We will also cover some pitfalls that you might encounter during its use.
 
 ## Synopsis
 
@@ -7,7 +7,7 @@ Watershed algorithm is an advanced image segmentation technique to identify obje
 
 ![Input image](./images/watershed/input.jpg)
 
-First you must have a grayscale image. If this is not the case, use `grey()` method to grayscale it. Then blur the image. The choice of a blurring technique depends on what kind of image is to blur, but regular blur will do. Be careful while setting the kernel size. If it gets too big, objects' edges and minor details start to deteriorate.
+First you must have a grayscale image. If this is not the case, use [`grey()`](../Features/Filters/Grayscale.md 'internal link on grayscale') method to grayscale it. Then blur the image. The choice of a blurring technique depends on what kind of image is to blur, but regular blur will do. Be careful while setting the kernel size. If it gets too big, objects' edges and minor details start to deteriorate.
 
 After that, a threshold needs to be defined. It can be defined as an arbitrary value, but we recommend to compute a threshold mask from the image of interest.
 Result can vary from one threshold algorithm to another so take a look at a few of them to see which one fits your needs.
@@ -87,7 +87,7 @@ Let's have a look at the necessary elements for a correct regions output.
 
 :::info
 
-Before starting, check the [color model](../Glossary.md#color-model 'internal link on glossary') of an image. If the image is colored, you need to apply grayscale filter, otherwise the watershed algorithm will not work.
+Before starting, check the [color model](../Glossary.md#color-model 'glossary link on color model') of an image. If the image is colored, you need to apply grayscale filter, otherwise the watershed algorithm will not work.
 
 ```ts
 let image = image.grey();
@@ -102,11 +102,11 @@ First thing that you possibly need to do is to remove [image noise](https://en.w
 
 ImageJS has several kinds of blurring:
 
-- [blur filter](../Features/Filters/Blur.md)
+- [blur filter](../Features/Filters/Blur.md 'internal link on blur')
 
-- [gaussian blur filter](../Features/Filters/Gaussian%20Blur.md)
+- [gaussian blur filter](../Features/Filters/Gaussian%20Blur.md 'internal link on gaussian blur')
 
-- [median filter](../Features/Filters/Median.md)
+- [median filter](../Features/Filters/Median.md 'internal link on median')
 
 Each filter serves its own purpose, which we will briefly explain.
 
@@ -119,6 +119,8 @@ To use it you need to specify width and height of the kernel:
 let blurredImage = image.blur({ width: 3, height: 3 });
 ```
 
+To discover more options you can visit our ["Features"](../Features/Features.md 'internal link on features main page') section about [blur](../Features/Filters/Blur.md 'internal link on blur').
+
 #### Gaussian blur
 
 As the name suggests it is similar to blur. However, Gaussian blur uses **weighted** average. This means, that the intensity value is also taken into account during computation. It works better than regular blur but it can be slower. It is effective against high-frequency noise.
@@ -128,7 +130,7 @@ To use it you need to specify the size of the kernel. This is one of the ways of
 let blurredImage = image.gaussianBlur({ sigma: 3 });
 ```
 
-To discover more options you can visit our "Features" page about [gaussian blur](../Features/Filters/Gaussian%20Blur.md 'internal link on gaussian blur').
+To discover more options you can visit our ["Features"](../Features/Features.md 'internal link on features main page') section about [gaussian blur](../Features/Filters/Gaussian%20Blur.md 'internal link on gaussian blur').
 
 #### Median
 
@@ -142,7 +144,7 @@ let blurredImage = image.medianFilter({
 });
 ```
 
-To discover more options you can visit our "Features" page about [median filter](../Features/Filters/Median.md 'internal link on median').
+To discover more options you can visit our ["Features"](../Features/Features.md 'internal link on features main page') section about [median filter](../Features/Filters/Median.md 'internal link on median').
 
 :::caution
 For each technique, kernel size must be an odd number in order for algorithm to find the center correctly!
