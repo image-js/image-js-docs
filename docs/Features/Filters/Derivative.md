@@ -4,6 +4,8 @@ sidebar_position: 70
 
 import DerivativeDemo from './demos//derivative.demo.tsx'
 
+# Derivative
+
 _Gradient filter but using predefined kernels._
 
 [🖼️ Image options and parameters of `derivative` method](https://image-js.github.io/image-js-typescript/classes/Image.html#derivativeFilter 'link on github io')

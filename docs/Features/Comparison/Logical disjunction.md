@@ -2,6 +2,8 @@
 sidebar_position: 110
 ---
 
+# Logical disjunction
+
 _Makes a logical disjunction between masks._
 
 [🎭 Mask options and parameters of `or` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#or 'github.io link')

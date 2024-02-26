@@ -4,6 +4,8 @@ sidebar_position: 10
 
 import ErodeDemo from './demos/erode.mask.demo.tsx'
 
+# Erosion
+
 _Reduces the size of foreground objects by iteratively shrinking their boundaries._
 
 [🖼️ Image options and parameters of `erode` method](https://image-js.github.io/image-js-typescript/classes/Image.html#erode 'github.io link')  

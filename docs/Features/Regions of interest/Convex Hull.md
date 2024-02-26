@@ -2,6 +2,8 @@
 sidebar_position: 0
 ---
 
+# Convex Hull
+
 _Smallest convex polygon or polyhedron that contains region of interest._
 
 [🎭 Mask options and parameters `getConvexHull` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#getConvexHull 'github.io link')  

@@ -1,5 +1,7 @@
 import ImageDemo from './image.demo.tsx'
 
+# Working with Images
+
 <!-- TODO add analysis section once it is merged -->
 
 ### What is an Image?

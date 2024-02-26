@@ -2,6 +2,8 @@
 sidebar_position: 10
 ---
 
+# Feret Diameters
+
 _The longest and shortest distances between two parallel lines that touch a region of interest._
 
 [🎭 Mask options and parameters of `getFeret` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#getFeret 'github.io link')  

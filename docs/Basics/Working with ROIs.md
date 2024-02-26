@@ -1,3 +1,5 @@
+# Working with ROIs
+
 _A region of interest (ROI) represents an area of contiguous pixels within the dimensions of an image._
 
 There are currently two ways ROIs can be generated in ImageJS:

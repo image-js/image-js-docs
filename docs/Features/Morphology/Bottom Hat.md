@@ -4,6 +4,8 @@ sidebar_position: 60
 
 import BottomHatDemo from './demos/bottomHat.mask.demo.tsx'
 
+# Bottom Hat
+
 _Enhances the fine details or small objects within an image by subtracting an opened version of the image from the original._
 
 [🖼️ Image options and parameters of `bottomHat` method](https://image-js.github.io/image-js-typescript/classes/Image.html#bottomHat 'github.io link')  

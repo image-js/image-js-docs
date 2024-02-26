@@ -4,6 +4,8 @@ sidebar_position: 0
 
 import ThresholdDemo from './demos/threshold.demo.tsx'
 
+# Threshold
+
 _Grayscale image into a binary image by setting a specific threshold value or algorithm._
 
 [🖼️ Image options and parameters of `threshold` method](https://image-js.github.io/image-js-typescript/classes/Image.html#threshold 'github.io link')
