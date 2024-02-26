@@ -2,6 +2,8 @@
 sidebar_position: 90
 ---
 
+# Solidity
+
 _Measure of the compactness of a region or object._
 
 [🔎 ROI options and parameters of `solidity` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#solidity 'github.io link')

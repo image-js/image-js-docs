@@ -1,4 +1,6 @@
-In this tutorial we will talk about [watershed algorithm](../Features/Operations/Watershed.md 'internal link on watershed'), why it is used and the basics of how it is implemented. We will also cover some pitfalls that you might encounter during its use.
+# Image segmentation with watershed
+
+In this tutorial we will talk about watershed algorithm, why it is used and the basics of how it is implemented. We will also cover some pitfalls that you might encounter during its use.
 
 ## Synopsis
 

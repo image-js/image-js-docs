@@ -2,6 +2,8 @@
 sidebar_position: 40
 ---
 
+# Perimeter
+
 _Total length of the object's outer borders._
 
 [🔎 ROI options and parameters of `perimeter` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#perimeter 'github.io link')

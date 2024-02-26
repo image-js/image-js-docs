@@ -4,6 +4,8 @@ sidebar_position: 30
 
 import BlurDemo from './demos/blur.demo.tsx'
 
+# Blur
+
 _Reduces image details and sharpness by averaging or mixing neighboring pixel values._
 
 [🖼️ Image options and parameters of `blur` method](https://image-js.github.io/image-js-typescript/classes/Image.html#blur 'link on github io')

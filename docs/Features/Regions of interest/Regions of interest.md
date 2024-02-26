@@ -1,4 +1,6 @@
-This section is dedicated to regions' analysis of mask and its specific regions. Regions of Interest (ROI) are areas or regions within an image that are selected for further analysis, processing, or attention due to their relevance to a particular task or objective. ImageJS can be an analyzer of particles and analysis of regions of interest. Therefore there are tools that help detecting particles as well as determining their size, shape position and direction.
+# Regions of interest
+
+This section is dedicated to analysis of mask and its specific regions. ImageJS is first and foremost an analyzer of particles and analysis of regions of interest. Therefore there are tools that help detecting particles as well as determining their size, shape position and direction.
 
 ### Methods
 

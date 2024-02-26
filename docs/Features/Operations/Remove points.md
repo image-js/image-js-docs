@@ -2,6 +2,8 @@
 sidebar_position: 30
 ---
 
+# Remove points
+
 _Filters close points by minimum distance between each other._
 
 [🖼️ Image options and parameters of `removeClosePoints` function](https://image-js.github.io/image-js-typescript/functions/removeClosePoints.html 'github.io link')

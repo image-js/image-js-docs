@@ -2,8 +2,8 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 const path = require('path');
 
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-const lightCodeTheme = require('prism-react-renderer/themes/github');
+const darkCodeTheme = require('prism-react-renderer').themes.dracula;
+const lightCodeTheme = require('prism-react-renderer').themes.github;
 const katex = require('rehype-katex');
 const math = require('remark-math');
 
@@ -56,7 +56,7 @@ const config = {
   organizationName: 'Zakodium', // Usually your GitHub org/user name.
   projectName: 'image-js', // Usually your repo name.
 
-  plugins: [demoLoaderPlugin, '@orama/plugin-docusaurus'],
+  plugins: [demoLoaderPlugin, '@orama/plugin-docusaurus-v3'],
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',

@@ -2,6 +2,8 @@
 sidebar_position: 30
 ---
 
+# Hypotenuse
+
 _Calculates the euclidean distance of two points between two images._
 
 [🖼️ Image options and parameters of `hypotenuse` method](https://image-js.github.io/image-js-typescript/classes/Image.html#hypotenuse 'github.io link')

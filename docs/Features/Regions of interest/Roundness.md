@@ -2,6 +2,8 @@
 sidebar_position: 100
 ---
 
+# Roundness
+
 _Quantifies the deviation of an object's shape from a perfect circle._
 
 [🔎 ROI options and parameters of `roundness` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#roundness 'github.io link')

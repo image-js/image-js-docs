@@ -4,6 +4,8 @@ sidebar_position: 50
 
 import TopHatDemo from './demos/topHat.mask.demo.tsx'
 
+# Top Hat
+
 _Enhances the fine details or small objects within an image by subtracting an opened version of the image from the original._
 
 [🖼️ Image options and parameters of `topHat` method](https://image-js.github.io/image-js-typescript/classes/Image.html#topHat 'github.io link')  

@@ -4,6 +4,8 @@ sidebar_position: 20
 
 import GrayDemo from './demos/grayscale.demo.tsx'
 
+# Grayscale
+
 _Converts color image into shades of gray._
 
 [🖼️ Image options and parameters of `grayscale` method](https://image-js.github.io/image-js-typescript/classes/Image.html#grey 'github.io link')

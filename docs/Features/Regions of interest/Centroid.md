@@ -2,6 +2,8 @@
 sidebar_position: 70
 ---
 
+# Centroid
+
 _Center of mass of the current ROI._
 
 [🔎 ROI options and parameters of `centroid` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#centroid 'github.io link')
