@@ -15,3 +15,4 @@ For instance, threshold is used to go from Image to Mask, while watershed is use
 | [Watershed(`waterShed`)](./Watershed.md 'internal link on watershed')                 | &#9989;  | &#10060; |
 | [Clear border(`clearBorder`)](./Clear%20border.md 'internal link on clear border')    | &#10060; | &#9989;  |
 | [Paint mask(`paintMask`)](./Paint%20mask.md 'internal link on paint mask')            | &#9989;  | &#9989;  |
+
