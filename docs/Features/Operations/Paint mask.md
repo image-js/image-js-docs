@@ -46,7 +46,7 @@ for (const roi of rois) {
 | Property                                                                                                  | Required | Default value      |
 | --------------------------------------------------------------------------------------------------------- | -------- | ------------------ |
 | [`blend`](https://image-js.github.io/image-js-typescript/interfaces/PaintMaskOnImageOptions.html#blend)   | no       | `true`             |
-| [`color`](https://image-js.github.io/image-js-typescript/interfaces/PaintMaskOnImageOptions.html#color)   | no       | 'opaque black'     |
+| [`color`](https://image-js.github.io/image-js-typescript/interfaces/PaintMaskOnImageOptions.html#color)   | no       | black              |
 | [`origin`](https://image-js.github.io/image-js-typescript/interfaces/PaintMaskOnImageOptions.html#origin) | no       | `{column:0,row:0}` |
 | [`out`](https://image-js.github.io/image-js-typescript/interfaces/PaintMaskOnImageOptions.html#out)       | no       | -                  |
 
