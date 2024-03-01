@@ -11,7 +11,6 @@ This method allows painting a mask on the image or on the mask. It can serve as 
 
 ```ts
 for (const roi of rois) {
-  // Add variables for better readability.
   const { column, row } = roi.origin;
   const mask = roi.getMask();
   // This paints blue the mask of a roi.
