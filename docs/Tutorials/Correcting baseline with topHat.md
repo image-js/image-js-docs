@@ -26,6 +26,10 @@ image = image.topHat({ kernel });
 
 Therefore if we look at the histograms of these two images at a given point we will see that the intensities are spread more evenly after topHat, rather than before.
 
-![](./images/topHat%20correction/pointHistogramDefault.svg)
+### Histogram before applying topHat
 
-![](./images/topHat%20correction/pointHistogramTopHat.svg)
+![](./images/topHat%20correction/histBeforeTopHat.svg)
+
+### Histogram after applying topHat
+
+![](./images/topHat%20correction/histAfterTopHat.svg)

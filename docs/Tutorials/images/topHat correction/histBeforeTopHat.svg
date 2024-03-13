@@ -1,0 +1,3051 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg:svg
+   font-family="'Myriad Pro', Helvetica, Arial"
+   font-size="12px"
+   data-jsgraph-version="v2.2.36"
+   tabindex="0"
+   width="456.12164"
+   height="320.83334"
+   version="1.1"
+   id="svg10509"
+   sodipodi:docname="graph (9).svg"
+   inkscape:version="1.2.1 (9c6d41e, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview10511"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.1721733"
+     inkscape:cx="155.26714"
+     inkscape:cy="144.17663"
+     inkscape:window-width="1309"
+     inkscape:window-height="638"
+     inkscape:window-x="31"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg10509" />
+  <svg:defs
+     id="defs10143">
+    <svg:clipPath
+       id="_clipplota5f3577f-588f-489a-8d99-569a486f3bd8"
+       clipPathUnits="userSpaceOnUse">
+      <svg:rect
+         y="0"
+         x="30.03125"
+         width="429.96875"
+         height="120"
+         id="rect10131" />
+    </svg:clipPath>
+    <marker
+       viewBox="0 0 10 10"
+       id="arrowa5f3577f-588f-489a-8d99-569a486f3bd8"
+       refX="6"
+       refY="5"
+       markerUnits="strokeWidth"
+       markerWidth="8"
+       markerHeight="6"
+       orient="auto">
+      <svg:path
+         d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+    <svg:marker
+       viewBox="0 0 6 8"
+       id="horionzalsplit_a5f3577f-588f-489a-8d99-569a486f3bd8"
+       refX="3"
+       refY="4"
+       markerUnits="strokeWidth"
+       markerWidth="6"
+       markerHeight="8">
+      <svg:line
+         x1="0"
+         y1="8"
+         x2="6"
+         y2="0"
+         stroke="#000000"
+         id="line10134" />
+    </svg:marker>
+    <svg:marker
+       viewBox="0 0 8 6"
+       id="verticalsplit_a5f3577f-588f-489a-8d99-569a486f3bd8"
+       refX="4"
+       refY="3"
+       markerUnits="strokeWidth"
+       markerWidth="8"
+       markerHeight="6">
+      <svg:line
+         x1="0"
+         y1="0"
+         x2="8"
+         y2="6"
+         stroke="#000000"
+         id="line10137" />
+    </svg:marker>
+    <svg:marker
+       viewBox="0 0 10 10"
+       id="verticallinea5f3577f-588f-489a-8d99-569a486f3bd8"
+       refX="0"
+       refY="5"
+       markerUnits="strokeWidth"
+       markerWidth="20"
+       markerHeight="10"
+       orient="auto"
+       stroke-width="1px">
+      <svg:path
+         d="M 0,-10 V 10"
+         stroke="#000000"
+         id="path10140" />
+    </svg:marker>
+    <svg:clipPath
+       id="_clipplot104800d2-28e9-4b3a-80e7-9d236efa7100"
+       clipPathUnits="userSpaceOnUse">
+      <svg:rect
+         y="0"
+         x="30.03125"
+         width="429.96875"
+         height="120"
+         id="rect9596" />
+    </svg:clipPath>
+    <svg:clipPath
+       id="clipPath13343"
+       clipPathUnits="userSpaceOnUse">
+      <svg:rect
+         y="0"
+         x="30.03125"
+         width="429.96875"
+         height="120"
+         id="rect13341" />
+    </svg:clipPath>
+    <svg:clipPath
+       id="clipPath13347"
+       clipPathUnits="userSpaceOnUse">
+      <svg:rect
+         y="0"
+         x="30.03125"
+         width="429.96875"
+         height="120"
+         id="rect13345" />
+    </svg:clipPath>
+    <svg:clipPath
+       id="clipPath13351"
+       clipPathUnits="userSpaceOnUse">
+      <svg:rect
+         y="0"
+         x="30.03125"
+         width="429.96875"
+         height="120"
+         id="rect13349" />
+    </svg:clipPath>
+    <svg:clipPath
+       id="clipPath13355"
+       clipPathUnits="userSpaceOnUse">
+      <svg:rect
+         y="0"
+         x="30.03125"
+         width="429.96875"
+         height="120"
+         id="rect13353" />
+    </svg:clipPath>
+    <svg:clipPath
+       id="clipPath13359"
+       clipPathUnits="userSpaceOnUse">
+      <svg:rect
+         y="0"
+         x="30.03125"
+         width="429.96875"
+         height="120"
+         id="rect13357" />
+    </svg:clipPath>
+    <svg:clipPath
+       id="clipPath13363"
+       clipPathUnits="userSpaceOnUse">
+      <svg:rect
+         y="0"
+         x="30.03125"
+         width="429.96875"
+         height="120"
+         id="rect13361" />
+    </svg:clipPath>
+    <svg:clipPath
+       id="clipPath13367"
+       clipPathUnits="userSpaceOnUse">
+      <svg:rect
+         y="0"
+         x="30.03125"
+         width="429.96875"
+         height="120"
+         id="rect13365" />
+    </svg:clipPath>
+  </svg:defs>
+  <svg:g
+     id="g10507"
+     style="fill:none;stroke:#000000;stroke-opacity:1"
+     transform="translate(-25.448593,-8.7595825)">
+    <svg:rect
+       pointer-events="fill"
+       fill="transparent"
+       y="30"
+       x="50.03125"
+       width="429.96875"
+       height="120"
+       id="rect10145"
+       style="fill:none;stroke:#000000;stroke-opacity:1" />
+    <svg:text
+       text-anchor="middle"
+       y="20"
+       x="250"
+       id="text10147"
+       style="fill:none;stroke:#000000;stroke-opacity:1" />
+    <svg:g
+       transform="translate(20,30)"
+       id="g10501"
+       style="fill:none;stroke:#000000;stroke-opacity:1">
+      <svg:g
+         id="g10443"
+         style="fill:none;stroke:#000000;stroke-opacity:1">
+        <svg:g
+           id="g10161"
+           style="fill:none;stroke:#000000;stroke-opacity:1">
+          <svg:g
+             id="g10153"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:path
+               shape-rendering="crispEdges"
+               stroke="#F0F0F0"
+               stroke-width="1"
+               stroke-opacity="undefined"
+               clip-path="url(#_clipplota5f3577f-588f-489a-8d99-569a486f3bd8)"
+               d=""
+               id="path10149"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:path
+               shape-rendering="crispEdges"
+               stroke="#F0F0F0"
+               stroke-width="1"
+               stroke-opacity="undefined"
+               clip-path="url(#_clipplota5f3577f-588f-489a-8d99-569a486f3bd8)"
+               d=""
+               id="path10151"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+          </svg:g>
+          <svg:g
+             id="g10159"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:path
+               shape-rendering="crispEdges"
+               stroke="#DADADA"
+               stroke-width="1"
+               stroke-opacity="undefined"
+               clip-path="url(#_clipplota5f3577f-588f-489a-8d99-569a486f3bd8)"
+               d=""
+               id="path10155"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:path
+               shape-rendering="crispEdges"
+               stroke="#DADADA"
+               stroke-width="1"
+               stroke-opacity="undefined"
+               clip-path="url(#_clipplota5f3577f-588f-489a-8d99-569a486f3bd8)"
+               d=""
+               id="path10157"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+          </svg:g>
+        </svg:g>
+        <svg:g
+           transform="translate(0,120)"
+           id="g10299"
+           style="fill:none;stroke:#000000;stroke-opacity:1">
+          <svg:rect
+             pointer-events="fill"
+             fill="transparent"
+             id="rect10163"
+             style="fill:none;stroke:#000000;stroke-opacity:1"
+             width="0"
+             height="0"
+             x="0"
+             y="0" />
+          <svg:g
+             id="g10269"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="38.462009"
+               x2="38.462009"
+               id="line10165"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="46.892769"
+               x2="46.892769"
+               id="line10167"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="55.323528"
+               x2="55.323528"
+               id="line10169"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="63.754288"
+               x2="63.754288"
+               id="line10171"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-4"
+               stroke="black"
+               display="visible"
+               x1="72.185051"
+               x2="72.185051"
+               id="line10173"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="80.615807"
+               x2="80.615807"
+               id="line10175"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="89.04657"
+               x2="89.04657"
+               id="line10177"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="97.477325"
+               x2="97.477325"
+               id="line10179"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="105.90809"
+               x2="105.90809"
+               id="line10181"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-6"
+               stroke="black"
+               display="visible"
+               x1="30.03125"
+               x2="30.03125"
+               id="line10183"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="122.76961"
+               x2="122.76961"
+               id="line10185"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="131.20036"
+               x2="131.20036"
+               id="line10187"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="139.63113"
+               x2="139.63113"
+               id="line10189"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="148.06189"
+               x2="148.06189"
+               id="line10191"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-4"
+               stroke="black"
+               display="visible"
+               x1="156.49265"
+               x2="156.49265"
+               id="line10193"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="164.9234"
+               x2="164.9234"
+               id="line10195"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="173.35417"
+               x2="173.35417"
+               id="line10197"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="181.78493"
+               x2="181.78493"
+               id="line10199"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="190.21568"
+               x2="190.21568"
+               id="line10201"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-6"
+               stroke="black"
+               display="visible"
+               x1="114.33884"
+               x2="114.33884"
+               id="line10203"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="207.07721"
+               x2="207.07721"
+               id="line10205"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="215.50797"
+               x2="215.50797"
+               id="line10207"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="223.93872"
+               x2="223.93872"
+               id="line10209"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="232.36949"
+               x2="232.36949"
+               id="line10211"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-4"
+               stroke="black"
+               display="visible"
+               x1="240.80025"
+               x2="240.80025"
+               id="line10213"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="249.231"
+               x2="249.231"
+               id="line10215"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="257.66177"
+               x2="257.66177"
+               id="line10217"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="266.09253"
+               x2="266.09253"
+               id="line10219"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="274.52328"
+               x2="274.52328"
+               id="line10221"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-6"
+               stroke="black"
+               display="visible"
+               x1="198.64644"
+               x2="198.64644"
+               id="line10223"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="291.3848"
+               x2="291.3848"
+               id="line10225"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="299.81555"
+               x2="299.81555"
+               id="line10227"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="308.24634"
+               x2="308.24634"
+               id="line10229"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="316.67709"
+               x2="316.67709"
+               id="line10231"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-4"
+               stroke="black"
+               display="visible"
+               x1="325.10785"
+               x2="325.10785"
+               id="line10233"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="333.5386"
+               x2="333.5386"
+               id="line10235"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="341.96936"
+               x2="341.96936"
+               id="line10237"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="350.40012"
+               x2="350.40012"
+               id="line10239"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="358.83087"
+               x2="358.83087"
+               id="line10241"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-6"
+               stroke="black"
+               display="visible"
+               x1="282.95404"
+               x2="282.95404"
+               id="line10243"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="375.69241"
+               x2="375.69241"
+               id="line10245"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="384.12317"
+               x2="384.12317"
+               id="line10247"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="392.55392"
+               x2="392.55392"
+               id="line10249"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="400.98468"
+               x2="400.98468"
+               id="line10251"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-4"
+               stroke="black"
+               display="visible"
+               x1="409.41544"
+               x2="409.41544"
+               id="line10253"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="417.84619"
+               x2="417.84619"
+               id="line10255"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="426.27695"
+               x2="426.27695"
+               id="line10257"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="434.70773"
+               x2="434.70773"
+               id="line10259"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="443.13849"
+               x2="443.13849"
+               id="line10261"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-6"
+               stroke="black"
+               display="visible"
+               x1="367.26163"
+               x2="367.26163"
+               id="line10263"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="460"
+               x2="460"
+               id="line10265"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-6"
+               stroke="black"
+               display="visible"
+               x1="451.56924"
+               x2="451.56924"
+               id="line10267"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+          </svg:g>
+          <svg:g
+             id="g10283"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:text
+               y="8"
+               text-anchor="middle"
+               display="visible"
+               x="30.03125"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text10271">0</svg:text>
+            <svg:text
+               y="8"
+               text-anchor="middle"
+               display="visible"
+               x="114.33884"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text10273">50</svg:text>
+            <svg:text
+               y="8"
+               text-anchor="middle"
+               display="visible"
+               x="198.64644"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text10275">100</svg:text>
+            <svg:text
+               y="8"
+               text-anchor="middle"
+               display="visible"
+               x="282.95404"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text10277">150</svg:text>
+            <svg:text
+               y="8"
+               text-anchor="middle"
+               display="visible"
+               x="367.26163"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text10279">200</svg:text>
+            <svg:text
+               y="8"
+               text-anchor="middle"
+               display="visible"
+               x="451.56924"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text10281">250</svg:text>
+          </svg:g>
+          <svg:line
+             stroke="black"
+             shape-rendering="crispEdges"
+             stroke-linecap="square"
+             display="block"
+             x1="30.03125"
+             x2="460"
+             y1="0"
+             y2="0"
+             id="line10285"
+             style="fill:none;stroke:#000000;stroke-opacity:1" />
+          <svg:text
+             text-anchor="middle"
+             fill="undefined"
+             style="fill:none;stroke:#000000;stroke-opacity:1"
+             x="245.01562"
+             y="22"
+             id="text10295"><svg:tspan
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="tspan10287" /><svg:tspan
+               display="none"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="tspan10289" /><svg:tspan
+               dx="6"
+               display="none"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="tspan10291" /><svg:tspan
+               dy="-5"
+               font-size="9.6px"
+               display="none"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="tspan10293" /></svg:text>
+          <svg:g
+             id="g10297"
+             style="fill:none;stroke:#000000;stroke-opacity:1" />
+        </svg:g>
+        <svg:g
+           transform="translate(30.03125)"
+           id="g10441"
+           style="fill:none;stroke:#000000;stroke-opacity:1">
+          <svg:rect
+             pointer-events="fill"
+             fill="transparent"
+             id="rect10301"
+             style="fill:none;stroke:#000000;stroke-opacity:1"
+             width="0"
+             height="0"
+             x="0"
+             y="0" />
+          <svg:g
+             id="g10411"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="116.66666"
+               y2="116.66666"
+               id="line10303"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="108.33334"
+               y2="108.33334"
+               id="line10305"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="104.16666"
+               y2="104.16666"
+               id="line10307"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="100"
+               y2="100"
+               id="line10309"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="4"
+               stroke="black"
+               display="visible"
+               y1="112.5"
+               y2="112.5"
+               id="line10311"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="95.833336"
+               y2="95.833336"
+               id="line10313"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="87.5"
+               y2="87.5"
+               id="line10315"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="83.333336"
+               y2="83.333336"
+               id="line10317"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="79.166664"
+               y2="79.166664"
+               id="line10319"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="6"
+               stroke="black"
+               display="visible"
+               y1="91.666664"
+               y2="91.666664"
+               id="line10321"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="75"
+               y2="75"
+               id="line10323"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="66.666664"
+               y2="66.666664"
+               id="line10325"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="62.5"
+               y2="62.5"
+               id="line10327"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="58.333332"
+               y2="58.333332"
+               id="line10329"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="4"
+               stroke="black"
+               display="visible"
+               y1="70.833336"
+               y2="70.833336"
+               id="line10331"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="54.166668"
+               y2="54.166668"
+               id="line10333"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="45.833332"
+               y2="45.833332"
+               id="line10335"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="41.666668"
+               y2="41.666668"
+               id="line10337"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="37.5"
+               y2="37.5"
+               id="line10339"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="6"
+               stroke="black"
+               display="visible"
+               y1="50"
+               y2="50"
+               id="line10341"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="33.333332"
+               y2="33.333332"
+               id="line10343"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="25"
+               y2="25"
+               id="line10345"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="20.833334"
+               y2="20.833334"
+               id="line10347"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="16.666666"
+               y2="16.666666"
+               id="line10349"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="4"
+               stroke="black"
+               display="visible"
+               y1="29.166666"
+               y2="29.166666"
+               id="line10351"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="12.5"
+               y2="12.5"
+               id="line10353"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="4.1666665"
+               y2="4.1666665"
+               id="line10355"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="0"
+               y2="0"
+               id="line10357"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="0"
+               y2="0"
+               id="line10359"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="6"
+               stroke="black"
+               display="visible"
+               y1="8.333333"
+               y2="8.333333"
+               id="line10361"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="50.097088"
+               y2="50.097088"
+               id="line10363"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="47.766991"
+               y2="47.766991"
+               id="line10365"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="45.436893"
+               y2="45.436893"
+               id="line10367"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="43.106796"
+               y2="43.106796"
+               id="line10369"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="4"
+               stroke="black"
+               display="none"
+               y1="29.126213"
+               y2="29.126213"
+               id="line10371"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="38.446602"
+               y2="38.446602"
+               id="line10373"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="36.116505"
+               y2="36.116505"
+               id="line10375"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="33.786407"
+               y2="33.786407"
+               id="line10377"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="31.45631"
+               y2="31.45631"
+               id="line10379"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="6"
+               stroke="black"
+               display="none"
+               y1="40.776699"
+               y2="40.776699"
+               id="line10381"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="26.796116"
+               y2="26.796116"
+               id="line10383"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="24.466019"
+               y2="24.466019"
+               id="line10385"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="22.135921"
+               y2="22.135921"
+               id="line10387"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="19.805826"
+               y2="19.805826"
+               id="line10389"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="4"
+               stroke="black"
+               display="none"
+               y1="5.8252425"
+               y2="5.8252425"
+               id="line10391"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="15.145631"
+               y2="15.145631"
+               id="line10393"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="12.815534"
+               y2="12.815534"
+               id="line10395"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="10.485436"
+               y2="10.485436"
+               id="line10397"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="6"
+               stroke="black"
+               display="none"
+               y1="17.475729"
+               y2="17.475729"
+               id="line10399"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="8.1553402"
+               y2="8.1553402"
+               id="line10401"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="6"
+               stroke="black"
+               display="none"
+               y1="2.3529413"
+               y2="2.3529413"
+               id="line10403"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="3.4951456"
+               y2="3.4951456"
+               id="line10405"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="1.1650486"
+               y2="1.1650486"
+               id="line10407"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="4"
+               stroke="black"
+               display="none"
+               y1="0"
+               y2="0"
+               id="line10409"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+          </svg:g>
+          <svg:g
+             id="g10425"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:text
+               x="-5"
+               text-anchor="end"
+               display="visible"
+               y="91.666664"
+               style="dominant-baseline:central;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text10413">50</svg:text>
+            <svg:text
+               x="-5"
+               text-anchor="end"
+               display="visible"
+               y="50"
+               style="dominant-baseline:central;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text10415">100</svg:text>
+            <svg:text
+               x="-5"
+               text-anchor="end"
+               display="visible"
+               y="8.333333"
+               style="dominant-baseline:central;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text10417">150</svg:text>
+            <svg:text
+               x="-5"
+               text-anchor="end"
+               display="none"
+               y="40.776699"
+               style="dominant-baseline:central;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text10419">220</svg:text>
+            <svg:text
+               x="-5"
+               text-anchor="end"
+               display="none"
+               y="17.475729"
+               style="dominant-baseline:central;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text10421">240</svg:text>
+            <svg:text
+               x="-5"
+               text-anchor="end"
+               display="none"
+               y="2.3529413"
+               style="dominant-baseline:central;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text10423">100</svg:text>
+          </svg:g>
+          <svg:line
+             stroke="black"
+             shape-rendering="crispEdges"
+             stroke-linecap="square"
+             display="block"
+             y1="120"
+             y2="0"
+             x1="0"
+             x2="0"
+             id="line10427"
+             style="fill:none;stroke:#000000;stroke-opacity:1" />
+          <svg:text
+             text-anchor="middle"
+             transform="rotate(-90,14.984375,45.015625)"
+             fill="undefined"
+             dominant-baseline="auto"
+             id="text10437"
+             style="fill:none;stroke:#000000;stroke-opacity:1"><svg:tspan
+               id="tspan10429"
+               style="fill:none;stroke:#000000;stroke-opacity:1" /><svg:tspan
+               display="none"
+               id="tspan10431"
+               style="fill:none;stroke:#000000;stroke-opacity:1" /><svg:tspan
+               dx="6"
+               display="none"
+               id="tspan10433"
+               style="fill:none;stroke:#000000;stroke-opacity:1" /><svg:tspan
+               dy="-5"
+               font-size="9.6px"
+               display="none"
+               id="tspan10435"
+               style="fill:none;stroke:#000000;stroke-opacity:1" /></svg:text>
+          <svg:g
+             id="g10439"
+             style="fill:none;stroke:#000000;stroke-opacity:1" />
+        </svg:g>
+      </svg:g>
+      <svg:g
+         id="g10491"
+         style="fill:none;stroke:#000000;stroke-opacity:1">
+        <svg:g
+           data-layer="1"
+           id="g10489"
+           style="fill:none;stroke:#000000;stroke-opacity:1">
+          <svg:g
+             id="g10461"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:g
+               id="g10459"
+               style="fill:none;stroke:#000000;stroke-opacity:1">
+              <svg:g
+                 id="g10445"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+              <svg:g
+                 id="g10449"
+                 style="fill:none;stroke:#000000;stroke-opacity:1">
+                <svg:path
+                   stroke="rgba(156,156,156,1)"
+                   stroke-width="1"
+                   fill="none"
+                   d="M 30,85.8 31.6,103.2 33.4,94 35,94.8 36.6,93.2 H 38.4 L 40,92.4 41.8,91.6 H 43.4 L 45.2,90.8 46.8,89.8 H 48.4 50.2 L 51.8,89 H 53.6 55.2 L 57,89.8 58.6,91.6 60.2,98.2 62,114 63.6,116.6 65.4,105.8 67,94 68.8,90.8 70.4,88.2 72,86.6 73.8,89.8 75.4,93.2 77.2,90.8 78.8,88.2 80.6,87.4 82.2,88.2 83.8,92.4 85.6,100.8 87.2,114 89,119.8 90.6,113.2 92.4,98.2 94,84.8 95.6,83.2 H 97.4 L 99,84.8 100.8,88.2 102.4,89 104.2,84 105.8,83.2 107.4,82.4 109.2,81.6 110.8,80.8 112.6,79.8 H 114.2 116 L 117.6,80.8 H 119.2 121 122.6 L 124.4,79.8 126,79 127.8,77.4 129.4,75.8 131.2,74.8 H 132.8 L 134.4,75.8 136.2,77.4 137.8,75.8 139.6,76.6 141.2,79 143,82.4 144.6,81.6 146.2,74.8 148,73.2 H 149.6 151.4 L 153,72.4 154.8,73.2 156.4,74 H 158 159.8 161.4 L 163.2,74.8 164.8,74 H 166.6 L 168.2,73.2 H 169.8 L 171.6,72.4 173.2,69.8 175,70.8 176.6,72.4 178.4,71.6 180,72.4 181.6,94.8 183.4,105.8 185,99 186.8,77.4 188.4,71.6 190.2,69 191.8,68.2 193.4,67.4 195.2,66.6 H 196.8 198.6 200.2 L 202,65.8 203.6,64.8 205.2,64 207,63.2 208.6,62.4 210.4,61.6 H 212 213.8 L 215.4,59.8 217,59 H 218.8 L 220.4,59.8 222.2,64.8 223.8,67.4 225.6,64 227.2,56.6 228.8,54 230.6,55.8 232.2,56.6 234,58.2 235.6,61.6 H 237.4 L 239,59 240.8,57.4 242.4,55.8 244,54 245.8,53.2 247.4,54 H 249.2 250.8 L 252.6,53.2 H 254.2 L 255.8,52.4 257.6,51.6 259.2,50.8 261,52.4 262.6,62.4 264.4,64 266,59.8 267.6,55.8 269.4,54 271,52.4 272.8,49.8 274.4,48.2 H 276.2 277.8 L 279.4,47.4 H 281.2 L 282.8,46.6 284.6,45.8 286.2,44 288,43.2 289.6,41.6 H 291.2 293 294.6 L 296.4,40.8 298,38.2 299.8,39 301.4,58.2 303,86.6 304.8,97.4 306.4,61.6 308.2,44 309.8,37.4 311.6,34 313.2,33.2 314.8,37.4 316.6,38.2 318.2,37.4 320,40.8 321.6,58.2 323.4,74 325,90.8 326.6,101.6 328.4,99 330,70.8 331.8,48.2 333.4,37.4 335.2,36.6 336.8,38.2 338.4,29 340.2,30.8 341.8,34 343.6,40.8 345.2,46.6 347,34.8 348.6,32.4 350.4,30.8 352,29.8 353.6,30.8 355.4,29.8 357,31.6 358.8,29.8 360.4,28.2 362.2,27.4 H 363.8 365.4 L 367.2,24.8 368.8,23.2 370.6,22.4 H 372.2 L 374,23.2 375.6,19.8 H 377.2 L 379,23.2 380.6,17.4 382.4,19.8 384,28.2 385.8,37.4 387.4,39 389,18.2 390.8,16.6 392.4,17.4 H 394.2 395.8 L 397.6,20.8 399.2,36.6 400.8,75.8 402.6,99 404.2,89 406,69 407.6,62.4 409.4,68.2 411,82.4 412.6,94 414.4,80.8 416,44 417.8,19 419.4,9.8 421.2,15.8 H 422.8 L 424.4,44.8 426.2,74 427.8,72.4 429.6,32.4 431.2,19.8 433,30.8 434.6,49 436.2,57.4 438,45.8 439.6,22.4 441.4,9 443,17.4 444.8,36.6 446.4,54 448,46.6 449.8,12.4 451.4,0 453.2,2.4 454.8,4 456.6,19 458.2,70.8"
+                   id="path10447"
+                   style="fill:none;stroke:#000000;stroke-opacity:1" />
+              </svg:g>
+              <svg:circle
+                 fill="black"
+                 r="3"
+                 display="none"
+                 id="circle10451"
+                 style="fill:none;stroke:#000000;stroke-opacity:1"
+                 cx="0"
+                 cy="0" />
+              <svg:g
+                 id="g10453"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+              <svg:rect
+                 fill="white"
+                 id="rect10455"
+                 style="fill:none;stroke:#000000;stroke-opacity:1"
+                 width="0"
+                 height="0"
+                 x="0"
+                 y="0" />
+              <svg:text
+                 id="text10457"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+            </svg:g>
+          </svg:g>
+          <svg:g
+             id="g10487"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:g
+               clip-path="url(#_clipplota5f3577f-588f-489a-8d99-569a486f3bd8)"
+               id="g10467"
+               style="fill:none;stroke:#000000;stroke-opacity:1">
+              <svg:rect
+                 data-label-i="0"
+                 display="initial"
+                 id="rect10463"
+                 style="fill:none;stroke:#000000;stroke-opacity:1"
+                 width="0"
+                 height="0"
+                 x="0"
+                 y="0" />
+              <svg:text
+                 data-label-i="0"
+                 display="initial"
+                 id="text10465"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+            </svg:g>
+            <svg:g
+               clip-path="url(#_clipplota5f3577f-588f-489a-8d99-569a486f3bd8)"
+               id="g10473"
+               style="fill:none;stroke:#000000;stroke-opacity:1">
+              <svg:rect
+                 data-label-i="0"
+                 display="initial"
+                 id="rect10469"
+                 style="fill:none;stroke:#000000;stroke-opacity:1"
+                 width="0"
+                 height="0"
+                 x="0"
+                 y="0" />
+              <svg:text
+                 data-label-i="0"
+                 display="initial"
+                 id="text10471"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+            </svg:g>
+            <svg:g
+               clip-path="url(#_clipplota5f3577f-588f-489a-8d99-569a486f3bd8)"
+               id="g10479"
+               style="fill:none;stroke:#000000;stroke-opacity:1">
+              <svg:rect
+                 data-label-i="0"
+                 display="initial"
+                 id="rect10475"
+                 style="fill:none;stroke:#000000;stroke-opacity:1"
+                 width="0"
+                 height="0"
+                 x="0"
+                 y="0" />
+              <svg:text
+                 data-label-i="0"
+                 display="initial"
+                 id="text10477"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+            </svg:g>
+            <svg:g
+               clip-path="url(#_clipplota5f3577f-588f-489a-8d99-569a486f3bd8)"
+               id="g10485"
+               style="fill:none;stroke:#000000;stroke-opacity:1">
+              <svg:rect
+                 data-label-i="0"
+                 display="initial"
+                 id="rect10481"
+                 style="fill:none;stroke:#000000;stroke-opacity:1"
+                 width="0"
+                 height="0"
+                 x="0"
+                 y="0" />
+              <svg:text
+                 data-label-i="0"
+                 display="initial"
+                 id="text10483"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+            </svg:g>
+          </svg:g>
+        </svg:g>
+      </svg:g>
+      <svg:line
+         stroke="black"
+         shape-rendering="crispEdges"
+         stroke-linecap="square"
+         display="none"
+         id="line10493"
+         style="fill:none;stroke:#000000;stroke-opacity:1"
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="0" />
+      <svg:line
+         stroke="black"
+         shape-rendering="crispEdges"
+         stroke-linecap="square"
+         display="none"
+         id="line10495"
+         style="fill:none;stroke:#000000;stroke-opacity:1"
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="0" />
+      <svg:line
+         stroke="black"
+         shape-rendering="crispEdges"
+         stroke-linecap="square"
+         display="none"
+         id="line10497"
+         style="fill:none;stroke:#000000;stroke-opacity:1"
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="0" />
+      <svg:line
+         stroke="black"
+         shape-rendering="crispEdges"
+         stroke-linecap="square"
+         display="none"
+         id="line10499"
+         style="fill:none;stroke:#000000;stroke-opacity:1"
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="0" />
+    </svg:g>
+    <svg:g
+       id="g10505"
+       style="fill:none;stroke:#000000;stroke-opacity:1">
+      <svg:rect
+         display="none"
+         fill="rgba(171,12,12,0.2)"
+         stroke="rgba(171,12,12,1)"
+         shape-rendering="crispEdges"
+         x="0"
+         y="0"
+         height="0"
+         width="0"
+         pointer-events="none"
+         id="rect10503"
+         style="fill:none;stroke:#000000;stroke-opacity:1" />
+    </svg:g>
+  </svg:g>
+  <svg:g
+     id="g9972"
+     style="fill:none;stroke:#000000;stroke-opacity:1"
+     transform="translate(-25.658203,154.27807)">
+    <svg:rect
+       pointer-events="fill"
+       fill="transparent"
+       y="30"
+       x="50.03125"
+       width="429.96875"
+       height="120"
+       id="rect9610"
+       style="fill:none;stroke:#000000;stroke-opacity:1" />
+    <svg:text
+       text-anchor="middle"
+       y="20"
+       x="250"
+       id="text9612"
+       style="fill:none;stroke:#000000;stroke-opacity:1" />
+    <svg:g
+       transform="translate(20,30)"
+       id="g9966"
+       style="fill:none;stroke:#000000;stroke-opacity:1">
+      <svg:g
+         id="g9908"
+         style="fill:none;stroke:#000000;stroke-opacity:1">
+        <svg:g
+           id="g9626"
+           style="fill:none;stroke:#000000;stroke-opacity:1">
+          <svg:g
+             id="g9618"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:path
+               shape-rendering="crispEdges"
+               stroke="#F0F0F0"
+               stroke-width="1"
+               stroke-opacity="undefined"
+               clip-path="url(#_clipplot104800d2-28e9-4b3a-80e7-9d236efa7100)"
+               d=""
+               id="path9614"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:path
+               shape-rendering="crispEdges"
+               stroke="#F0F0F0"
+               stroke-width="1"
+               stroke-opacity="undefined"
+               clip-path="url(#_clipplot104800d2-28e9-4b3a-80e7-9d236efa7100)"
+               d=""
+               id="path9616"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+          </svg:g>
+          <svg:g
+             id="g9624"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:path
+               shape-rendering="crispEdges"
+               stroke="#DADADA"
+               stroke-width="1"
+               stroke-opacity="undefined"
+               clip-path="url(#_clipplot104800d2-28e9-4b3a-80e7-9d236efa7100)"
+               d=""
+               id="path9620"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:path
+               shape-rendering="crispEdges"
+               stroke="#DADADA"
+               stroke-width="1"
+               stroke-opacity="undefined"
+               clip-path="url(#_clipplot104800d2-28e9-4b3a-80e7-9d236efa7100)"
+               d=""
+               id="path9622"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+          </svg:g>
+        </svg:g>
+        <svg:g
+           transform="translate(0,120)"
+           id="g9764"
+           style="fill:none;stroke:#000000;stroke-opacity:1">
+          <svg:rect
+             pointer-events="fill"
+             fill="transparent"
+             id="rect9628"
+             style="fill:none;stroke:#000000;stroke-opacity:1"
+             width="0"
+             height="0"
+             x="0"
+             y="0" />
+          <svg:g
+             id="g9734"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="38.429077"
+               x2="38.429077"
+               id="line9630"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="46.826904"
+               x2="46.826904"
+               id="line9632"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="55.224731"
+               x2="55.224731"
+               id="line9634"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="63.622559"
+               x2="63.622559"
+               id="line9636"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-4"
+               stroke="black"
+               display="visible"
+               x1="72.020386"
+               x2="72.020386"
+               id="line9638"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="80.418213"
+               x2="80.418213"
+               id="line9640"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="88.81604"
+               x2="88.81604"
+               id="line9642"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="97.213867"
+               x2="97.213867"
+               id="line9644"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="105.61169"
+               x2="105.61169"
+               id="line9646"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-6"
+               stroke="black"
+               display="visible"
+               x1="30.03125"
+               x2="30.03125"
+               id="line9648"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="122.40735"
+               x2="122.40735"
+               id="line9650"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="130.80518"
+               x2="130.80518"
+               id="line9652"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="139.203"
+               x2="139.203"
+               id="line9654"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="147.60083"
+               x2="147.60083"
+               id="line9656"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-4"
+               stroke="black"
+               display="visible"
+               x1="155.99866"
+               x2="155.99866"
+               id="line9658"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="164.39648"
+               x2="164.39648"
+               id="line9660"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="172.79431"
+               x2="172.79431"
+               id="line9662"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="181.19214"
+               x2="181.19214"
+               id="line9664"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="189.58997"
+               x2="189.58997"
+               id="line9666"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-6"
+               stroke="black"
+               display="visible"
+               x1="114.00952"
+               x2="114.00952"
+               id="line9668"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="206.38562"
+               x2="206.38562"
+               id="line9670"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="214.78345"
+               x2="214.78345"
+               id="line9672"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="223.18127"
+               x2="223.18127"
+               id="line9674"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="231.5791"
+               x2="231.5791"
+               id="line9676"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-4"
+               stroke="black"
+               display="visible"
+               x1="239.97693"
+               x2="239.97693"
+               id="line9678"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="248.37476"
+               x2="248.37476"
+               id="line9680"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="256.77258"
+               x2="256.77258"
+               id="line9682"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="265.17041"
+               x2="265.17041"
+               id="line9684"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="273.56824"
+               x2="273.56824"
+               id="line9686"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-6"
+               stroke="black"
+               display="visible"
+               x1="197.98779"
+               x2="197.98779"
+               id="line9688"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="290.36389"
+               x2="290.36389"
+               id="line9690"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="298.76172"
+               x2="298.76172"
+               id="line9692"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="307.15955"
+               x2="307.15955"
+               id="line9694"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="315.55737"
+               x2="315.55737"
+               id="line9696"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-4"
+               stroke="black"
+               display="visible"
+               x1="323.9552"
+               x2="323.9552"
+               id="line9698"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="332.35303"
+               x2="332.35303"
+               id="line9700"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="340.75085"
+               x2="340.75085"
+               id="line9702"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="349.14868"
+               x2="349.14868"
+               id="line9704"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="357.54651"
+               x2="357.54651"
+               id="line9706"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-6"
+               stroke="black"
+               display="visible"
+               x1="281.96606"
+               x2="281.96606"
+               id="line9708"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="374.34216"
+               x2="374.34216"
+               id="line9710"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="382.73999"
+               x2="382.73999"
+               id="line9712"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="391.13782"
+               x2="391.13782"
+               id="line9714"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="399.53564"
+               x2="399.53564"
+               id="line9716"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-4"
+               stroke="black"
+               display="visible"
+               x1="407.93347"
+               x2="407.93347"
+               id="line9718"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="416.3313"
+               x2="416.3313"
+               id="line9720"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="424.72913"
+               x2="424.72913"
+               id="line9722"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="433.12695"
+               x2="433.12695"
+               id="line9724"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="441.52478"
+               x2="441.52478"
+               id="line9726"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-6"
+               stroke="black"
+               display="visible"
+               x1="365.94434"
+               x2="365.94434"
+               id="line9728"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-2"
+               stroke="black"
+               display="visible"
+               x1="458.32043"
+               x2="458.32043"
+               id="line9730"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               y1="0"
+               y2="-6"
+               stroke="black"
+               display="visible"
+               x1="449.92261"
+               x2="449.92261"
+               id="line9732"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+          </svg:g>
+          <svg:g
+             id="g9748"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:text
+               y="8"
+               text-anchor="middle"
+               display="visible"
+               x="30.03125"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text9736">0</svg:text>
+            <svg:text
+               y="8"
+               text-anchor="middle"
+               display="visible"
+               x="114.00952"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text9738">50</svg:text>
+            <svg:text
+               y="8"
+               text-anchor="middle"
+               display="visible"
+               x="197.98779"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text9740">100</svg:text>
+            <svg:text
+               y="8"
+               text-anchor="middle"
+               display="visible"
+               x="281.96606"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text9742">150</svg:text>
+            <svg:text
+               y="8"
+               text-anchor="middle"
+               display="visible"
+               x="365.94434"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text9744">200</svg:text>
+            <svg:text
+               y="8"
+               text-anchor="middle"
+               display="visible"
+               x="449.92261"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text9746">250</svg:text>
+          </svg:g>
+          <svg:line
+             stroke="black"
+             shape-rendering="crispEdges"
+             stroke-linecap="square"
+             display="block"
+             x1="30.03125"
+             x2="460"
+             y1="0"
+             y2="0"
+             id="line9750"
+             style="fill:none;stroke:#000000;stroke-opacity:1" />
+          <svg:text
+             text-anchor="middle"
+             fill="undefined"
+             style="fill:none;stroke:#000000;stroke-opacity:1"
+             x="245.01562"
+             y="22"
+             id="text9760"><svg:tspan
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="tspan9752" /><svg:tspan
+               display="none"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="tspan9754" /><svg:tspan
+               dx="6"
+               display="none"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="tspan9756" /><svg:tspan
+               dy="-5"
+               font-size="9.6px"
+               display="none"
+               style="dominant-baseline:hanging;fill:none;stroke:#000000;stroke-opacity:1"
+               id="tspan9758" /></svg:text>
+          <svg:g
+             id="g9762"
+             style="fill:none;stroke:#000000;stroke-opacity:1" />
+        </svg:g>
+        <svg:g
+           transform="translate(30.03125)"
+           id="g9906"
+           style="fill:none;stroke:#000000;stroke-opacity:1">
+          <svg:rect
+             pointer-events="fill"
+             fill="transparent"
+             id="rect9766"
+             style="fill:none;stroke:#000000;stroke-opacity:1"
+             width="0"
+             height="0"
+             x="0"
+             y="0" />
+          <svg:g
+             id="g9876"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="117.12"
+               y2="117.12"
+               id="line9768"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="107.52"
+               y2="107.52"
+               id="line9770"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="102.72"
+               y2="102.72"
+               id="line9772"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="97.919998"
+               y2="97.919998"
+               id="line9774"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="4"
+               stroke="black"
+               display="visible"
+               y1="112.32"
+               y2="112.32"
+               id="line9776"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="93.120003"
+               y2="93.120003"
+               id="line9778"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="83.519997"
+               y2="83.519997"
+               id="line9780"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="78.720001"
+               y2="78.720001"
+               id="line9782"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="73.919998"
+               y2="73.919998"
+               id="line9784"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="6"
+               stroke="black"
+               display="visible"
+               y1="88.32"
+               y2="88.32"
+               id="line9786"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="69.120003"
+               y2="69.120003"
+               id="line9788"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="59.52"
+               y2="59.52"
+               id="line9790"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="54.720001"
+               y2="54.720001"
+               id="line9792"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="49.919998"
+               y2="49.919998"
+               id="line9794"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="4"
+               stroke="black"
+               display="visible"
+               y1="64.32"
+               y2="64.32"
+               id="line9796"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="45.119999"
+               y2="45.119999"
+               id="line9798"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="35.52"
+               y2="35.52"
+               id="line9800"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="30.719999"
+               y2="30.719999"
+               id="line9802"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="25.92"
+               y2="25.92"
+               id="line9804"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="6"
+               stroke="black"
+               display="visible"
+               y1="40.32"
+               y2="40.32"
+               id="line9806"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="21.120001"
+               y2="21.120001"
+               id="line9808"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="11.52"
+               y2="11.52"
+               id="line9810"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="6.7199998"
+               y2="6.7199998"
+               id="line9812"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="visible"
+               y1="1.92"
+               y2="1.92"
+               id="line9814"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="4"
+               stroke="black"
+               display="visible"
+               y1="16.32"
+               y2="16.32"
+               id="line9816"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="1.8897638"
+               y2="1.8897638"
+               id="line9818"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="6"
+               stroke="black"
+               display="none"
+               y1="34.285713"
+               y2="34.285713"
+               id="line9820"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="4.2857141"
+               y2="4.2857141"
+               id="line9822"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="0"
+               y2="0"
+               id="line9824"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="51.923077"
+               y2="51.923077"
+               id="line9826"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="47.307693"
+               y2="47.307693"
+               id="line9828"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="45"
+               y2="45"
+               id="line9830"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="42.692307"
+               y2="42.692307"
+               id="line9832"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="40.384617"
+               y2="40.384617"
+               id="line9834"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="4"
+               stroke="black"
+               display="none"
+               y1="49.615383"
+               y2="49.615383"
+               id="line9836"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="35.76923"
+               y2="35.76923"
+               id="line9838"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="33.46154"
+               y2="33.46154"
+               id="line9840"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="31.153847"
+               y2="31.153847"
+               id="line9842"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="28.846153"
+               y2="28.846153"
+               id="line9844"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="24.23077"
+               y2="24.23077"
+               id="line9846"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="21.923077"
+               y2="21.923077"
+               id="line9848"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="19.615385"
+               y2="19.615385"
+               id="line9850"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="17.307692"
+               y2="17.307692"
+               id="line9852"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="4"
+               stroke="black"
+               display="none"
+               y1="26.538462"
+               y2="26.538462"
+               id="line9854"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="12.692307"
+               y2="12.692307"
+               id="line9856"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="6"
+               stroke="black"
+               display="none"
+               y1="38.076923"
+               y2="38.076923"
+               id="line9858"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="6"
+               stroke="black"
+               display="none"
+               y1="15"
+               y2="15"
+               id="line9860"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="10.384615"
+               y2="10.384615"
+               id="line9862"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="8.0769234"
+               y2="8.0769234"
+               id="line9864"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="5.7692308"
+               y2="5.7692308"
+               id="line9866"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="6"
+               stroke="black"
+               display="none"
+               y1="3.4951456"
+               y2="3.4951456"
+               id="line9868"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="1.1538461"
+               y2="1.1538461"
+               id="line9870"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="2"
+               stroke="black"
+               display="none"
+               y1="1.1650486"
+               y2="1.1650486"
+               id="line9872"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+            <svg:line
+               x1="0"
+               x2="4"
+               stroke="black"
+               display="none"
+               y1="3.4615386"
+               y2="3.4615386"
+               id="line9874"
+               style="fill:none;stroke:#000000;stroke-opacity:1" />
+          </svg:g>
+          <svg:g
+             id="g9890"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:text
+               x="-5"
+               text-anchor="end"
+               display="visible"
+               y="88.32"
+               style="dominant-baseline:central;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text9878">50</svg:text>
+            <svg:text
+               x="-5"
+               text-anchor="end"
+               display="visible"
+               y="40.32"
+               style="dominant-baseline:central;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text9880">100</svg:text>
+            <svg:text
+               x="-5"
+               text-anchor="end"
+               display="none"
+               y="34.285713"
+               style="dominant-baseline:central;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text9882">100</svg:text>
+            <svg:text
+               x="-5"
+               text-anchor="end"
+               display="none"
+               y="38.076923"
+               style="dominant-baseline:central;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text9884">100</svg:text>
+            <svg:text
+               x="-5"
+               text-anchor="end"
+               display="none"
+               y="15"
+               style="dominant-baseline:central;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text9886">120</svg:text>
+            <svg:text
+               x="-5"
+               text-anchor="end"
+               display="none"
+               y="3.4951456"
+               style="dominant-baseline:central;fill:none;stroke:#000000;stroke-opacity:1"
+               id="text9888">100</svg:text>
+          </svg:g>
+          <svg:line
+             stroke="black"
+             shape-rendering="crispEdges"
+             stroke-linecap="square"
+             display="block"
+             y1="120"
+             y2="0"
+             x1="0"
+             x2="0"
+             id="line9892"
+             style="fill:none;stroke:#000000;stroke-opacity:1" />
+          <svg:text
+             text-anchor="middle"
+             transform="rotate(-90,14.984375,45.015625)"
+             fill="undefined"
+             dominant-baseline="auto"
+             id="text9902"
+             style="fill:none;stroke:#000000;stroke-opacity:1"><svg:tspan
+               id="tspan9894"
+               style="fill:none;stroke:#000000;stroke-opacity:1" /><svg:tspan
+               display="none"
+               id="tspan9896"
+               style="fill:none;stroke:#000000;stroke-opacity:1" /><svg:tspan
+               dx="6"
+               display="none"
+               id="tspan9898"
+               style="fill:none;stroke:#000000;stroke-opacity:1" /><svg:tspan
+               dy="-5"
+               font-size="9.6px"
+               display="none"
+               id="tspan9900"
+               style="fill:none;stroke:#000000;stroke-opacity:1" /></svg:text>
+          <svg:g
+             id="g9904"
+             style="fill:none;stroke:#000000;stroke-opacity:1" />
+        </svg:g>
+      </svg:g>
+      <svg:g
+         id="g9956"
+         style="fill:none;stroke:#000000;stroke-opacity:1">
+        <svg:g
+           data-layer="1"
+           id="g9954"
+           style="fill:none;stroke:#000000;stroke-opacity:1">
+          <svg:g
+             id="g9926"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:g
+               id="g9924"
+               style="fill:none;stroke:#000000;stroke-opacity:1">
+              <svg:g
+                 id="g9910"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+              <svg:g
+                 id="g9914"
+                 style="fill:none;stroke:#000000;stroke-opacity:1">
+                <svg:path
+                   stroke="rgba(156,156,156,1)"
+                   stroke-width="1"
+                   fill="none"
+                   d="M 30,56.6 31.6,9.4 33.2,0 35,1.8 36.6,3.8 38.4,4.8 H 40 L 41.6,5.6 43.4,6.6 45,5.6 H 46.8 L 48.4,6.6 50,10.4 51.8,12.4 53.4,11.4 55.2,10.4 56.8,7.6 58.4,3.8 60.2,6.6 61.8,11.4 63.6,13.4 65.2,14.4 66.8,22 68.6,37.4 70.2,44 72,56.6 73.6,71 75.2,80.6 77,67 78.6,58.4 80.4,64.2 82,74.8 83.6,76.8 85.4,56.6 87,48.8 88.8,43.2 90.4,35.4 92,26.8 93.8,46 95.4,70 97.2,58.4 98.8,24.8 100.4,13.4 102.2,10.4 H 103.8 L 105.6,11.4 H 107.2 L 108.8,9.4 H 110.6 L 112.2,10.4 114,11.4 H 115.6 L 117.2,9.4 119,10.4 H 120.6 L 122.4,11.4 124,13.4 125.6,19.2 127.4,17.2 129,10.4 130.8,8.6 132.4,10.4 134,7.6 H 135.8 137.4 L 139.2,8.6 140.8,9.4 H 142.4 L 144.2,11.4 145.8,12.4 147.6,13.4 H 149.2 L 150.8,11.4 152.6,9.4 154.2,11.4 155.8,16.2 157.6,22 159.2,23 161,14.4 162.6,9.4 164.2,10.4 166,12.4 167.6,13.4 169.4,11.4 H 171 L 172.6,10.4 174.4,11.4 176,12.4 177.8,13.4 179.4,14.4 181,15.2 H 182.8 L 184.4,14.4 186.2,13.4 187.8,16.2 189.4,34.4 191.2,63.2 192.8,87.2 194.6,42.2 196.2,20 197.8,19.2 199.6,36.4 201.2,71 203,84.4 204.6,65.2 206.2,36.4 208,16.2 209.6,17.2 211.4,11.4 213,37.4 214.6,71 216.4,92 218,88.2 219.8,96.8 221.4,82.4 223,50.8 224.8,17.2 226.4,18.2 228.2,19.2 229.8,16.2 231.4,13.4 233.2,10.4 H 234.8 L 236.6,12.4 238.2,11.4 239.8,10.4 241.6,11.4 243.2,13.4 245,15.2 246.6,16.2 H 248.2 L 250,17.2 251.6,18.2 253.4,19.2 255,18.2 256.6,17.2 258.4,18.2 H 260 L 261.8,19.2 263.4,27.8 265,34.4 H 266.8 L 268.4,23 270.2,18.2 271.8,20 273.4,26.8 275.2,39.2 276.8,69 278.6,91 280.2,78.6 281.8,51.8 283.6,30.6 285.2,38.2 287,30.6 288.6,31.6 290.2,34.4 292,36.4 293.6,39.2 295.4,35.4 297,32.6 298.6,30.6 300.4,40.2 302,85.4 303.8,97.8 305.4,67 307,34.4 308.8,28.6 310.4,35.4 312,32.6 313.8,33.6 315.4,34.4 317.2,33.6 H 318.8 L 320.4,32.6 322.2,33.6 323.8,34.4 H 325.6 327.2 L 328.8,33.6 330.6,34.4 332.2,35.4 334,38.2 335.6,40.2 337.2,41.2 H 339 L 340.6,47 342.4,54.6 344,50.8 345.6,43.2 347.4,41.2 349,40.2 350.8,39.2 H 352.4 L 354,42.2 355.8,43.2 357.4,44 359.2,45 H 360.8 362.4 L 364.2,46 365.8,47 367.6,47.8 369.2,48.8 370.8,47.8 372.6,47 374.2,47.8 376,48.8 377.6,50.8 379.2,48.8 381,55.6 382.6,66.2 384.4,70 386,53.6 H 387.6 L 389.4,52.6 H 391 L 392.8,54.6 394.4,56.6 H 396 397.8 399.4 401.2 402.8 404.4 406.2 L 407.8,57.4 409.6,58.4 H 411.2 412.8 414.6 L 416.2,59.4 418,61.4 419.6,62.4 421.2,85.4 423,107.4 424.6,110.2 426.4,86.4 428,61.4 429.6,60.4 H 431.4 L 433,59.4 434.8,60.4 H 436.4 438 L 439.8,63.2 441.4,75.8 443.2,96.8 444.8,105.4 446.4,100.6 H 448.2 L 449.8,104.6 451.6,108.4 453.2,109.4 454.8,114.2 456.6,119.8 458.2,84.4"
+                   id="path9912"
+                   style="fill:none;stroke:#000000;stroke-opacity:1" />
+              </svg:g>
+              <svg:circle
+                 fill="black"
+                 r="3"
+                 display="none"
+                 id="circle9916"
+                 style="fill:none;stroke:#000000;stroke-opacity:1"
+                 cx="0"
+                 cy="0" />
+              <svg:g
+                 id="g9918"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+              <svg:rect
+                 fill="white"
+                 id="rect9920"
+                 style="fill:none;stroke:#000000;stroke-opacity:1"
+                 width="0"
+                 height="0"
+                 x="0"
+                 y="0" />
+              <svg:text
+                 id="text9922"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+            </svg:g>
+          </svg:g>
+          <svg:g
+             id="g9952"
+             style="fill:none;stroke:#000000;stroke-opacity:1">
+            <svg:g
+               clip-path="url(#_clipplot104800d2-28e9-4b3a-80e7-9d236efa7100)"
+               id="g9932"
+               style="fill:none;stroke:#000000;stroke-opacity:1">
+              <svg:rect
+                 data-label-i="0"
+                 display="initial"
+                 id="rect9928"
+                 style="fill:none;stroke:#000000;stroke-opacity:1"
+                 width="0"
+                 height="0"
+                 x="0"
+                 y="0" />
+              <svg:text
+                 data-label-i="0"
+                 display="initial"
+                 id="text9930"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+            </svg:g>
+            <svg:g
+               clip-path="url(#_clipplot104800d2-28e9-4b3a-80e7-9d236efa7100)"
+               id="g9938"
+               style="fill:none;stroke:#000000;stroke-opacity:1">
+              <svg:rect
+                 data-label-i="0"
+                 display="initial"
+                 id="rect9934"
+                 style="fill:none;stroke:#000000;stroke-opacity:1"
+                 width="0"
+                 height="0"
+                 x="0"
+                 y="0" />
+              <svg:text
+                 data-label-i="0"
+                 display="initial"
+                 id="text9936"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+            </svg:g>
+            <svg:g
+               clip-path="url(#_clipplot104800d2-28e9-4b3a-80e7-9d236efa7100)"
+               id="g9944"
+               style="fill:none;stroke:#000000;stroke-opacity:1">
+              <svg:rect
+                 data-label-i="0"
+                 display="initial"
+                 id="rect9940"
+                 style="fill:none;stroke:#000000;stroke-opacity:1"
+                 width="0"
+                 height="0"
+                 x="0"
+                 y="0" />
+              <svg:text
+                 data-label-i="0"
+                 display="initial"
+                 id="text9942"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+            </svg:g>
+            <svg:g
+               clip-path="url(#_clipplot104800d2-28e9-4b3a-80e7-9d236efa7100)"
+               id="g9950"
+               style="fill:none;stroke:#000000;stroke-opacity:1">
+              <svg:rect
+                 data-label-i="0"
+                 display="initial"
+                 id="rect9946"
+                 style="fill:none;stroke:#000000;stroke-opacity:1"
+                 width="0"
+                 height="0"
+                 x="0"
+                 y="0" />
+              <svg:text
+                 data-label-i="0"
+                 display="initial"
+                 id="text9948"
+                 style="fill:none;stroke:#000000;stroke-opacity:1" />
+            </svg:g>
+          </svg:g>
+        </svg:g>
+      </svg:g>
+      <svg:line
+         stroke="black"
+         shape-rendering="crispEdges"
+         stroke-linecap="square"
+         display="none"
+         id="line9958"
+         style="fill:none;stroke:#000000;stroke-opacity:1"
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="0" />
+      <svg:line
+         stroke="black"
+         shape-rendering="crispEdges"
+         stroke-linecap="square"
+         display="none"
+         id="line9960"
+         style="fill:none;stroke:#000000;stroke-opacity:1"
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="0" />
+      <svg:line
+         stroke="black"
+         shape-rendering="crispEdges"
+         stroke-linecap="square"
+         display="none"
+         id="line9962"
+         style="fill:none;stroke:#000000;stroke-opacity:1"
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="0" />
+      <svg:line
+         stroke="black"
+         shape-rendering="crispEdges"
+         stroke-linecap="square"
+         display="none"
+         id="line9964"
+         style="fill:none;stroke:#000000;stroke-opacity:1"
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="0" />
+    </svg:g>
+    <svg:g
+       id="g9970"
+       style="fill:none;stroke:#000000;stroke-opacity:1">
+      <svg:rect
+         display="none"
+         fill="rgba(171,12,12,0.2)"
+         stroke="rgba(171,12,12,1)"
+         shape-rendering="crispEdges"
+         x="0"
+         y="0"
+         height="0"
+         width="0"
+         pointer-events="none"
+         id="rect9968"
+         style="fill:none;stroke:#000000;stroke-opacity:1" />
+    </svg:g>
+  </svg:g>
+  <svg:text
+     xml:space="preserve"
+     style="font-size:29.3333px;font-family:Avenir;-inkscape-font-specification:Avenir;fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.944882;stroke-opacity:1"
+     x="24.582657"
+     y="21.240417"
+     id="text15138"><svg:tspan
+       sodipodi:role="line"
+       id="tspan15136"
+       x="24.582657"
+       y="21.240417">Row</svg:tspan></svg:text>
+  <svg:text
+     xml:space="preserve"
+     style="font-size:29.3333px;font-family:Avenir;-inkscape-font-specification:Avenir;fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.944882;stroke-opacity:1"
+     x="24.832666"
+     y="183.38884"
+     id="text36323"><svg:tspan
+       sodipodi:role="line"
+       id="tspan36321"
+       x="24.832666"
+       y="183.38884">Column</svg:tspan></svg:text>
+</svg:svg>
