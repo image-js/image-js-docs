@@ -20,11 +20,11 @@
     "write-translations": "docusaurus write-translations"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.2.1",
-    "@docusaurus/preset-classic": "^3.2.1",
+    "@docusaurus/core": "^3.3.2",
+    "@docusaurus/preset-classic": "^3.3.2",
     "@mdx-js/react": "^3.0.0",
     "@monaco-editor/react": "^4.5.0",
-    "@orama/plugin-docusaurus-v3": "^2.0.16",
+    "@orama/plugin-docusaurus-v3": "^2.0.18",
     "clsx": "^1.2.1",
     "hast-util-is-element": "^1.1.0",
     "image-js": "0.0.0-next-646dc2b006",
@@ -40,14 +40,14 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.2.1",
-    "@docusaurus/types": "3.2.1",
     "@docusaurus/tsconfig": "^3.2.1",
+    "@docusaurus/types": "3.2.1",
+    "@types/react": "^18.3.1",
     "cspell": "^6.31.1",
     "eslint": "^8.56.0",
     "eslint-config-zakodium": "^7.1.0",
     "prettier": "^2.8.8",
     "raw-loader": "^4.0.2",
-    "@types/react": "^18.3.1",
     "typescript": "~5.2.2"
   },
   "browserslist": {
