@@ -1,3 +1,5 @@
+# ROI analysis
+
 :::note
 Before taking on the analysis of regions of interest we recommend to take a look at the tutorials for `watershed` and `threshold`, notably their options and the blurring techniques to optimize the output.
 :::

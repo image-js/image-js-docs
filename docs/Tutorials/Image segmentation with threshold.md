@@ -1,3 +1,5 @@
+# Image segmentation with threshold
+
 In this tutorial we are going to cover the threshold operation and how to get a map of regions from the threshold's mask.
 
 ## Synopsis

@@ -2,6 +2,8 @@
 sidebar_position: 40
 ---
 
+# Watershed
+
 _Separates and identifies distinct regions or objects within an image through gradient information and marker-based segmentation._
 
 [🖼️ Image options and parameters of `waterShed` function](https://image-js.github.io/image-js-typescript/functions/waterShed.html 'github io link')

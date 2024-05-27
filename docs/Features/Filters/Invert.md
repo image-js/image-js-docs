@@ -4,6 +4,8 @@ sidebar_position: 10
 
 import InvertDemo from './demos/invert.demo.tsx'
 
+# Invert
+
 _Reverses the colors of an image, transforming dark areas into light and vice versa._
 
 [🖼️ Image options and parameters of `invert` method](https://image-js.github.io/image-js-typescript/classes/Image.html#invert 'github.io link')  
@@ -42,8 +44,7 @@ The method is also available for Masks.
 :::
 
 <details>
-<summary><b>Implementation</b>
-</summary>
+<summary><b>Implementation</b></summary>
 
 Here's how invert filter is implemented in ImageJS:
 

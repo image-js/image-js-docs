@@ -1,6 +1,8 @@
 import ThresholdMaskDemo from './thresholdMask.demo.tsx'
 import CannyMaskDemo from './cannyEdgeMask.demo.tsx'
 
+# Working with Masks
+
 Masks are binary images which are used for filtering or isolating specific regions of interest within an image for processing and analysis.
 
 ### Create a Mask object

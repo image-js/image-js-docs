@@ -2,6 +2,8 @@
 sidebar_position: 0
 ---
 
+# Convex Hull
+
 _Smallest convex polygon or polyhedron that contains region of interest._
 
 [🎭 Mask options and parameters `getConvexHull` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#getConvexHull 'github.io link')  
@@ -33,7 +35,8 @@ It can also be a Mask method to calculate its convex hull:
 const convexHull = mask.getConvexHull();
 ```
 
-<details><summary><b>Implementation</b></summary>
+<details>
+<summary><b>Implementation</b></summary>
 
 Here's how convex hull algorithm is implemented in ImageJS:
 

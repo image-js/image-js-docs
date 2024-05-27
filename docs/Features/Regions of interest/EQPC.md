@@ -2,6 +2,8 @@
 sidebar_position: 60
 ---
 
+# EQPC
+
 _Diameter of a circle that has the same area as the projection area of the region of interest._
 
 [🔎 ROI options and parameters of `eqpc` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#eqpc 'github.io link')

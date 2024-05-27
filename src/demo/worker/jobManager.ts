@@ -22,7 +22,6 @@ class JobManagerClass {
   private _runningJobs = new Map<string, Job>();
   private _runningJobName: string | null = null;
   constructor() {
-    // @ts-expect-error we don't augment import.meta
     this._worker = new Worker(new URL('./worker.ts', import.meta.url));
     this._callback = (event) => {
       const job = this._runningJobs.get(event.data.name);
@@ -73,7 +72,6 @@ class JobManagerClass {
       this._worker.terminate();
 
       // Recreate the worker
-      // @ts-expect-error we don't augment import.meta
       this._worker = new Worker(new URL('./worker.ts', import.meta.url));
       this._worker.addEventListener('message', this._callback);
     }

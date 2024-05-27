@@ -2,6 +2,8 @@
 sidebar_position: 0
 ---
 
+# Operations
+
 Operations section is dedicated to elements of ImageJS that are mostly used to help with or to transition from one image data type to another.
 For instance, threshold is used to go from Image to Mask, while watershed is used to create ROI map. It can also be helper functions that can be useful during analysis.
 

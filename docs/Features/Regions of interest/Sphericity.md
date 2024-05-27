@@ -2,6 +2,8 @@
 sidebar_position: 110
 ---
 
+# Sphericity
+
 _Ratio that assesses how closely an object approaches the shape of a perfect sphere._
 
 [🔎 ROI options and parameters of `sphericity` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#sphericity 'github.io link')

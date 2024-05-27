@@ -4,6 +4,8 @@ sidebar_position: 90
 
 import PixelateDemo from './demos/pixelate.demo.tsx'
 
+# Pixelate
+
 _Reduces the level of detail in an image by replacing groups of pixels with a single representative pixel, creating a blocky or mosaic-like appearance._
 
 [🖼️ Image options and parameters of `pixelate` method](https://image-js.github.io/image-js-typescript/classes/Image.html#pixelate 'github.io link')
@@ -32,7 +34,8 @@ _Reduces the level of detail in an image by replacing groups of pixels with a si
 | [`algorithm`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#algorithm) | no       | `center`      |
 | [`out`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#out)             | no       | -             |
 
-<details><summary><b>Implementation</b></summary>
+<details>
+<summary><b>Implementation</b></summary>
 
 Here's how pixelate filter is implemented in ImageJS:
 

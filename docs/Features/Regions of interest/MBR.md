@@ -2,6 +2,8 @@
 sidebar_position: 20
 ---
 
+# MBR
+
 _Smallest rectangle that fully encloses a region of interest, providing a bounding box with minimal area._
 
 [🎭 Mask options and parameters of `getMbr` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#getMbr 'github.io link')  
@@ -35,7 +37,8 @@ It can also be a Mask method to calculate its mbr:
 const mbr = mask.getMbr();
 ```
 
-<details><summary><b>Implementation</b></summary>
+<details>
+<summary><b>Implementation</b></summary>
 
 Here's how Minimum Bounding Rectangle is calculated in ImageJS:
 

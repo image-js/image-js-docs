@@ -4,6 +4,8 @@ sidebar_position: 30
 
 import FlipDemo from './demos/flip.demo.tsx'
 
+# Flip
+
 _Mirrors or reverses an image horizontally or vertically._
 
 [🖼️ Image options and parameters of `flip` method](https://image-js.github.io/image-js-typescript/classes/Image.html#flip 'github.io link')

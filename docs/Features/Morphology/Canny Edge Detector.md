@@ -4,6 +4,8 @@ sidebar_position: 80
 
 import CannyEdgeDemo from './demos/cannyEdgeDetector.demo.tsx'
 
+# Canny Edge Detector
+
 _Identifies edges in an image by detecting areas of rapid intensity changes, highlighting object boundaries and edges with thin and accurate lines._
 
 [🖼️ Image options and parameters of `cannyEdgeDetector` method](https://image-js.github.io/image-js-typescript/classes/Image.html#cannyEdgeDetector 'github.io link')

@@ -2,6 +2,8 @@
 sidebar_position: 50
 ---
 
+# PED
+
 _Diameter of a circle that has the same perimeter as the region of interest._
 
 [🔎 ROI options and parameters of `ped` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#ped 'github.io link')

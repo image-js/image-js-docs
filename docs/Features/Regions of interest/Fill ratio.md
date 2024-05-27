@@ -2,6 +2,8 @@
 sidebar_position: 80
 ---
 
+# Fill ratio
+
 _Ratio of the actual filled space to the total available space._
 
 [🔎 ROI options and parameters of `fillRatio` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#fillRatio 'github.io link')
