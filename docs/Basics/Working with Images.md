@@ -14,14 +14,14 @@ In the context of digital technology and computing, images are represented as a 
 
 - Currently ImageJS supports images with these characteristics:
 
-|                                  | TIFF                       | JPEG                   | PNG               |
-| -------------------------------- | -------------------------- | ---------------------- | ----------------- |
-| **Bits per channel**             | 8 or 16 bits               | 8 bits                 | 8 or 16 bits      |
-| **Bits per Alpha**               | 8 or 16 bits               | N/A                    | 8 or 16 bits      |
-| **Compression**                  | yes/no(may be destructive) | no(may be destructive) | yes               |
-| **Color Model**                  | RGB and grayscale          | RGB and grayscale      | RGB and grayscale |
-| **Can be loaded in this format** | &#9989;                    | &#9989;                | &#9989;           |
-| **Can be saved in this format**  | &#10060;                   | &#9989;                | &#9989;           |
+|                                  | TIFF             | JPEG    | PNG              | BMP      |
+| -------------------------------- | ---------------- | ------- | ---------------- | -------- |
+| **Bits per channel**             | 8 or 16 bits     | 8 bits  | 8 or 16 bits     | 1 bit    |
+| **Alpha channel**                | yes              | no      | yes              | no       |
+| **Lossy compression**            | can be either    | yes     | no               | no       |
+| **Color Model**                  | RGB or grayscale | RGB     | RGB or grayscale | N/A      |
+| **Can be loaded in this format** | &#9989;          | &#9989; | &#9989;          | &#10060; |
+| **Can be saved in this format**  | &#10060;         | &#9989; | &#9989;          | &#9989;  |
 
 ### Image coordinates
 
