@@ -28,6 +28,16 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+#frontPage {
+  min-height: 85vh;
+  width: 100%;
+  height: 100%;
+}
+.footer {
+  min-height: 15vh;
+  width: 100%;
+  height: auto;
+}
 
 button {
   background: none;

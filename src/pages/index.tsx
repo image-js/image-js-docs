@@ -9,7 +9,10 @@ import styles from './index.module.css';
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header
+      id="frontPage"
+      className={clsx('hero hero--primary', styles.heroBanner)}
+    >
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
@@ -45,7 +48,7 @@ export default function Home(): JSX.Element {
       title={`Welcome to ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />"
     >
-      <main>
+      <main className="main-wrapper">
         <HomepageHeader />
       </main>
     </Layout>
