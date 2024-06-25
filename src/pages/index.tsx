@@ -32,21 +32,21 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/Getting started"
+            to="docs/Getting started"
           >
             Getting started
           </Link>
 
           <Link
             className="button button--secondary button--lg"
-            to="/docs/Tutorials/Tutorials"
+            to="docs/Tutorials"
           >
             Tutorials
           </Link>
 
           <Link
             className="button button--secondary button--lg"
-            to="/docs/Features/Features"
+            to="docs/Features"
           >
             Features
           </Link>
