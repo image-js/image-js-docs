@@ -42,7 +42,7 @@ async function demoLoaderPlugin() {
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'ImageJS',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Advanced image processing and manipulation in JavaScript.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
