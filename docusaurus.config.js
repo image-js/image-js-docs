@@ -136,8 +136,28 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Getting started',
                 to: '/docs/Getting started',
+              },
+              {
+                label: 'Basics',
+                to: '/docs/Basics',
+              },
+              {
+                label: 'Features',
+                to: '/docs/Features',
+              },
+              {
+                label: 'Tutorials',
+                to: '/docs/Tutorials',
+              },
+              {
+                label: 'Useful tips',
+                to: '/docs/Useful tips',
+              },
+              {
+                label: 'Glossary',
+                to: '/docs/Glossary',
               },
             ],
           },
@@ -146,7 +166,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/image-js/image-js-typescript',
               },
             ],
           },
