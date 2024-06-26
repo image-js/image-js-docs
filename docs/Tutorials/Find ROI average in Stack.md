@@ -1,13 +1,14 @@
 The point of this tutorial is to show how to decode a stack of images and how to do some basic analysis.
 
-ImageJS has the ability to decode a `tiff` stack of images and analyze each image further. Images in stack can represent frame-by-frame successive changes. This way we can take a look dynamically at changes that happen to regions of interest.
-In our specific case here, we have a stack of pulsar kind of images. ImageJS can help us figure out when the region is shown in the image and when it isn't by looking at the average value of the region.
+ImageJS has the ability to decode a `tiff` stack of images. Images in stack can represent frame-by-frame successive changes. This way we can take a look dynamically at changes that happen to regions of interest.
+In our specific case here, we have a stack of pulsar kind of images. We can use ImageJS to figure out when the region is shown in the image and when it isn't by looking at the average value of said region.
 
 Here's how it is done.
 
 ### Decode the Stack
 
-Just like any image, after getting our stack needs to be parsed fo us to work with data.
+Just like any image, after getting our stack needs to be parsed fo us to work with data. ImageJS doesn't have a built-in function to parse tiff stack, so you will have to use
+`fs` library.
 
 ```ts
 const buffer = fs.readFileSync();
@@ -35,7 +36,7 @@ const roiMap = fromMask(maxValueMask);
 const rois = roiMap.getRois();
 ```
 
-# maxValueMask
+![Mask](./images/stackAvg/maxMask.png);
 
 ### Find average value of each ROI on each image
 
