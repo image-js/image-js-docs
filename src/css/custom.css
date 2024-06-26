@@ -38,6 +38,11 @@
   width: 100%;
   height: auto;
 }
+p {
+  padding: 1rem;
+  max-width: 70%;
+  margin: auto;
+}
 
 button {
   background: none;

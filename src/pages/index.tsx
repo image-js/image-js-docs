@@ -21,9 +21,9 @@ function HomepageHeader() {
           processing and manipulation. ImageJS provides a wide range of features
           for developers to enhance, analyze, and transform images seamlessly.
           It includes functions for common tasks such as resizing, cropping,
-          filtering, and color adjustments, all performed client-side without
-          the need for server-side processing. This makes it an ideal tool for
-          web applications that require real-time image editing capabilities.
+          filtering, and color adjustments.
+        </p>
+        <p>
           ImageJS is optimized for performance, ensuring quick and efficient
           operations even with high-resolution images, and is easy to integrate
           into existing projects with its intuitive API.
@@ -34,21 +34,7 @@ function HomepageHeader() {
             className="button button--secondary button--lg"
             to="docs/Getting started"
           >
-            Getting started
-          </Link>
-
-          <Link
-            className="button button--secondary button--lg"
-            to="docs/Tutorials"
-          >
-            Tutorials
-          </Link>
-
-          <Link
-            className="button button--secondary button--lg"
-            to="docs/Features"
-          >
-            Features
+            Let&apos;s get started
           </Link>
         </div>
       </div>
