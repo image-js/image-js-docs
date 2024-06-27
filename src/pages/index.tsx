@@ -16,17 +16,12 @@ function HomepageHeader() {
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <p>
+        <p className="front_page__text">
           ImageJS is a JavaScript library designed to facilitate image
           processing and manipulation. It provides a wide range of features for
           developers to enhance, analyze, and transform images seamlessly. It
           includes functions for common tasks such as resizing, cropping,
           filtering, and color adjustments.
-        </p>
-        <p>
-          ImageJS is optimized for performance, ensuring quick and efficient
-          operations even with high-resolution images, and is easy to integrate
-          into existing projects with its intuitive API.
         </p>
 
         <div className={styles.buttons}>

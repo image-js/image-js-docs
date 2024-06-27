@@ -29,19 +29,22 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 #frontPage {
-  min-height: 85vh;
+  min-height: 80vh;
   width: 100%;
   height: 100%;
 }
 .footer {
-  min-height: 15vh;
+  min-height: 20vh;
   width: 100%;
   height: auto;
 }
 p {
   padding: 1rem;
-  max-width: 70%;
+  max-width: 65%;
   margin: auto;
+}
+.front_page__text {
+  font-size: 18px;
 }
 
 button {
