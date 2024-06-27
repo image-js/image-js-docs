@@ -4,9 +4,10 @@ The point of this tutorial is to show how to decode a stack of images and how to
 
 This tutorial demonstrates how to use ImageJS to decode a TIFF stack of images and analyze frame-by-frame changes, particularly focusing on regions of interest (ROIs) in pulsar images. The process involves:
 Using the fs library we read and decode the TIFF stack.
-Then,utilizing the maxImage() function to get the image with the maximum pixel values across the stack.
+Then,utilizing the `maxImage()` function to get the image with the maximum pixel values across the stack.
 We identify regions of interest from the maximum value image using a threshold mask and obtaining their coordinates.
-Finally we compute the average pixel value for each ROI across all images in the stack, storing the results in a map, and using this data to analyze changes in intensity over time.
+Finally we compute the average pixel value for each ROI across all images in the stack, storing the results in a map.
+We can use this data to analyze changes in intensity over time.
 
 ```ts
 const buffer = fs.readFileSync('/path/to/file.tiff');
@@ -14,7 +15,7 @@ const stack = decodeStack(stack);
 const maxValueImage = stack.maxImage();
 const maxValueMask = maxValueImage.threshold();
 const roiMap = fromMask(maxValueMask);
-//Provides all the regions of interest
+//Provides all the regions of interest.
 const rois = roiMap.getRois();
 const stackGrays = new Map<number, number[]>();
 for (const roi of rois) {
@@ -22,7 +23,7 @@ for (const roi of rois) {
   const roiPoints = roi.absolutePoints;
   for (const image of stack) {
     const avgValue = image.mean({ points: roiPoints });
-    //gets value from one channel since it is grayscaled.
+    //Gets value from one channel since it is grayscaled.
     stackAvgs.push(avgValue[0]);
   }
   stackGrays.set(roi.id, stackAvgs);
@@ -59,7 +60,7 @@ From our "maxValues" image we can find all the regions of interest. To be precis
 ```ts
 const maxValueMask = maxValueImage.threshold();
 const roiMap = fromMask(maxValueMask);
-//Provides all the regions of interest
+//Provides all the regions of interest.
 const rois = roiMap.getRois();
 ```
 
@@ -77,7 +78,7 @@ for (const roi of rois) {
   const roiPoints = roi.absolutePoints;
   for (const image of stack) {
     const avgValue = image.mean({ points: roiPoints });
-    //gets value from one channel since it is grayscaled.
+    //Gets value from one channel since it is grayscaled.
     stackAvgs.push(avgValue[0]);
   }
   stackGrays.set(roi.id, stackAvgs);
