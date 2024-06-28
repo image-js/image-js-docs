@@ -147,6 +147,11 @@ const config = {
                 label: 'Features',
                 to: '/docs/Features',
               },
+            ],
+          },
+          {
+            title: 'Learn',
+            items: [
               {
                 label: 'Tutorials',
                 to: '/docs/Tutorials',
@@ -165,8 +170,12 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/image-js/image-js-typescript',
+                label: 'API',
+                href: 'https://image-js.github.io/image-js-typescript/',
+              },
+              {
+                label: 'Zakodium',
+                href: 'https://www.zakodium.com/',
               },
             ],
           },
