@@ -106,8 +106,8 @@ for (const roi of rois) {
 
 This will create a map where each key is an ROI ID, and each value is an array of average pixel intensities across the image stack.
 This way we can take a look at the changes in intensity of ROI from one image to another.
-For instance here we have a graph of intensity of region with ID being equal to 9.
+For instance here we have a graph of intensity of region with ID equal to 9.
 We can see that there is a rising pulse between images 1 and 4, but then it disappears.
 
 ![ROI 9](./images/stackAvg/ROI9.png)
-![ROI 9 graph](./images/stackAvg/graphROI9.svg)
+![ROI 9 graph](./images/stackAvg/graphROI9.png)
