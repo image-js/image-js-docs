@@ -170,7 +170,7 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Github',
+                label: 'GitHub',
                 href: 'https://github.com/image-js/image-js-typescript',
               },
               {
