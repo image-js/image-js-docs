@@ -170,8 +170,8 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'API',
-                href: 'https://image-js.github.io/image-js-typescript/',
+                label: 'Github',
+                href: 'https://github.com/image-js/image-js-typescript',
               },
               {
                 label: 'Zakodium',
