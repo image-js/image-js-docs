@@ -5,14 +5,14 @@ The point of this tutorial is to show how to decode a stack of images and how to
 This tutorial demonstrates how to use ImageJS to decode a TIFF stack of images and analyze frame-by-frame changes, particularly focusing on regions of interest (ROIs) in pulsar images.
 
 - Using the `fs` library we read and decode the TIFF stack.
-- Then,utilizing the `maxImage()` function, we get the image with the maximum pixel values across the stack. Since we need to use `threshold()`to find ROI, we must check if its `colorModel` is `"GREY"`. If not, image must be grayscaled.
-- We identify regions of interest from the maximum value image using a threshold algorithm and obtain their coordinates.
+- Then, utilizing the `maxImage()` function, we get the image with the maximum pixel values across the stack. Since we need to use `threshold()`to find ROI, we must check if its `colorModel` is `"GREY"`. If not, image must be grayscaled.
+- We identify regions of interest from the maximum value image using a `threshold()` algorithm and applying `fromMask()`and `getRois()` functions. We obtain their coordinates.
 - Finally we compute the average pixel value for each ROI across all images in the stack, storing the results in a map.
   We can use this data to analyze changes in intensity over time or compare changes in its position.
 
 ```ts
 const buffer = fs.readFileSync('/path/to/file.tiff');
-const stack = decodeStack(stack);
+const stack = decodeStack(buffer);
 
 let maxValueImage = stack.maxImage();
 //We will use `threshold()` to find ROIs
@@ -40,8 +40,8 @@ Here is a more detailed review of these steps.
 
 ## Decode the Stack
 
-ImageJS has the ability to decode a TIFF stack of images. Images in stack can represent frame-by-frame successive changes. This way we can take a look at dynamic changes that happen to regions of interest.
-In our specific case here, we have a stack of pulsar kind of images. We can use ImageJS to figure out when the region is shown in the image and when it isn't by looking at the average value of said region.
+ImageJS has the ability to decode a TIFF stack of images. A TIFF stack is a TIFF file that contains multiple images. In our specific case here, we have a stack of pulsar kind of images. They represent frame-by-frame successive changes. This way we can take a look at dynamic changes that happen to regions of interest.
+We can use ImageJS to figure out when the region is visible and when it isn't by looking at the average value of said region.
 
 Just like any image, after getting our stack needs to be parsed fo us to work with data.
 
@@ -49,7 +49,7 @@ Just like any image, after getting our stack needs to be parsed fo us to work wi
 //ImageJS doesn't have a built-in function to parse TIFF stack,
 //so use `fs` library.
 const buffer = fs.readFileSync('/path/to/file.tiff');
-const stack = decodeStack(stack);
+const stack = decodeStack(buffer);
 ```
 
 ## Find the image with maximum values:
@@ -69,7 +69,7 @@ if (maxValueImage.colorModel !== 'GREY') {
 
 ## Locate ROIs
 
-From our `maxValueImage` image we can find all the regions of interest. To be precise we need their coordinates to apply them to other images.
+From our `maxValueImage` we can find all regions of interest. To be precise we need their coordinates to apply them to other images.
 
 ```ts
 const maxValueMask = maxValueImage.threshold();
@@ -104,10 +104,10 @@ for (const roi of rois) {
 }
 ```
 
-This will create a map where keys are IDs of each ROI, and values are an array of pixels with average intensity across all the images in the stack.
+This will create a map where each key is an ROI ID, and each value is an array of average pixel intensities across the image stack.
 This way we can take a look at the changes in intensity of ROI from one image to another.
-This will give us the graph of intensities across all the images in the stack for each ROI.
-For instance here we have a graph of intensity of region with ID of 9. We can see that there is a rising pulse between images 1 and 4, but then it disappears.
+For instance here we have a graph of intensity of region with ID being equal to 9.
+We can see that there is a rising pulse between images 1 and 4, but then it disappears.
 
 ![ROI 9](./images/stackAvg/ROI9.png)
 ![ROI 9 graph](./images/stackAvg/graphROI9.svg)
