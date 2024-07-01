@@ -42,7 +42,7 @@ async function demoLoaderPlugin() {
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'ImageJS',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Advanced image processing and manipulation in JavaScript.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -125,7 +125,7 @@ const config = {
           {
             href: 'https://image-js.github.io/image-js-typescript/',
             label: 'API reference',
-            position: 'right',
+            position: 'left',
           },
         ],
       },
@@ -136,25 +136,33 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Getting started',
                 to: '/docs/Getting started',
+              },
+              {
+                label: 'Basics',
+                to: '/docs/Basics',
+              },
+              {
+                label: 'Features',
+                to: '/docs/Features',
               },
             ],
           },
           {
-            title: 'Community',
+            title: 'Learn',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Tutorials',
+                to: '/docs/Tutorials',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Useful tips',
+                to: '/docs/Useful tips',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: 'Glossary',
+                to: '/docs/Glossary',
               },
             ],
           },
@@ -163,12 +171,19 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/image-js/image-js-typescript',
+              },
+              {
+                label: 'API reference',
+                href: 'https://image-js.github.io/image-js-typescript/',
+              },
+              {
+                label: 'Zakodium',
+                href: 'https://www.zakodium.com/',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
