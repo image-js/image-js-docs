@@ -125,7 +125,7 @@ const config = {
           {
             href: 'https://image-js.github.io/image-js-typescript/',
             label: 'API reference',
-            position: 'right',
+            position: 'left',
           },
         ],
       },
