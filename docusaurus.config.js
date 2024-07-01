@@ -174,6 +174,10 @@ const config = {
                 href: 'https://github.com/image-js/image-js-typescript',
               },
               {
+                label: 'API reference',
+                href: 'https://image-js.github.io/image-js-typescript/',
+              },
+              {
                 label: 'Zakodium',
                 href: 'https://www.zakodium.com/',
               },
