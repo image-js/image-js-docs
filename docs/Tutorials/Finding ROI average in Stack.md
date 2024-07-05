@@ -2,20 +2,24 @@ The point of this tutorial is to show how to decode a stack of images and how to
 
 ## Synopsis
 
-This tutorial demonstrates how to use ImageJS to decode a TIFF stack of images and analyze frame-by-frame changes, particularly focusing on regions of interest (ROIs) in pulsar images.
+This tutorial demonstrates how to use ImageJS to decode a TIFF stack of images with similar properties and analyze frame-by-frame changes, particularly focusing on regions of interest (ROIs) and their changes in pulsar images.
 
-- Using the `fs` library we read and decode the TIFF stack.
-- Then, utilizing the `maxImage()` function, we get the image with the maximum pixel values across the stack. Since we need to use `threshold()`to find ROI, we must check if its `colorModel` is `"GREY"`. If not, image must be grayscaled.
-- We identify regions of interest from the maximum value image using a `threshold()` algorithm and applying `fromMask()`and `getRois()` functions. We obtain their coordinates.
-- Finally we compute the average pixel value for each ROI across all images in the stack, storing the results in a map.
-  We can use this data to analyze changes in intensity over time or compare changes in its position.
+- We read and decode the TIFF stack.
+- Then, utilizing the `maxImage()` function, we get the image with the maximum pixel values across the stack.
+- We identify regions of interest from the maximum value image. First we segment an image using a global threshold algorithm ([`otsu`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu thresholding') algorithm by default). From obtained binary image we get coordinates of ROIs.
+- Finally we compute the average pixel value for each ROI across all images in the stack. We store results of each ROI across all the images in the stack.
+
+We can use this data to analyze changes in intensity over time or compare changes in its position.
 
 ```ts
-const buffer = fs.readFileSync('/path/to/file.tiff');
+import * as fs from 'node:fs';
+
+const buffer = fs.readFileSync('./path/to/file.tiff');
 const stack = decodeStack(buffer);
 
 let maxValueImage = stack.maxImage();
-//We will use `threshold()` to find ROIs
+//We will segment image through
+// `threshold()` to find ROIs,
 //therefore color model has to be "GREY".
 if (maxValueImage.colorModel !== 'GREY') {
   maxValueImage = maxValueImage.grey();
@@ -38,40 +42,49 @@ for (const roi of rois) {
 
 Here is a more detailed review of these steps.
 
+## Introduction
+
+ImageJS has the ability to decode a TIFF stack of images. A TIFF stack is a TIFF file that contains multiple images. In our specific case here, we have a stack of pulsar kind of images. They represent dynamic changes that happen to regions of interest frame-by-frame.
+We can use ImageJS to figure out when the region is visible and when it isn't by looking at the average value of said region compared to its maximum value in the stack.
+
+Let's go step by step together to figure out how it works.
+
 ## Decode the Stack
 
-ImageJS has the ability to decode a TIFF stack of images. A TIFF stack is a TIFF file that contains multiple images. In our specific case here, we have a stack of pulsar kind of images. They represent frame-by-frame successive changes. This way we can take a look at dynamic changes that happen to regions of interest.
-We can use ImageJS to figure out when the region is visible and when it isn't by looking at the average value of said region.
-
-Just like any image, after getting our stack needs to be parsed fo us to work with data.
+Just like any image, our stack needs to be decoded for us to work with data.
 
 ```ts
-//ImageJS doesn't have a built-in function to parse TIFF stack,
-//so use `fs` library.
+import * as fs from 'node:fs';
+
 const buffer = fs.readFileSync('/path/to/file.tiff');
 const stack = decodeStack(buffer);
 ```
 
+:::warning
+`Stack` class works only with images that share same properties. Particularly, values for [bit depth](../Glossary.md#bit-depth 'internal link on bit depth'), [color model](../Glossary.md#color-model 'internal link on color model'), width and height must be the same.
+:::
+
 ## Find the image with maximum values:
 
-Stack class has a function called `maxImage()`. It will give us the maximum value of each pixel throughout the stack. We will use this image as a reference for all other images to locate their ROIs.
+Stack class has a function called `maxImage()`. It will give us the maximum value of each pixel throughout the stack. In our particular example we use `maxImage()`. The reason for it is that we want to look at the evaluation of pulsing particles. Therefore we need to detect all the appeared particles throughout the stack. We will use this image as a reference for all other images to locate their ROIs.
 
 ```ts
 const maxValueImage = stack.maxImage();
-//We will use `threshold()` to find ROIs
-//therefore color model has to be "GREY".
-if (maxValueImage.colorModel !== 'GREY') {
-  maxValueImage = maxValueImage.grey();
-}
 ```
 
-![Image](./images/stackAvg/maxImage.png);
+![Image](./images/stackAvg/maxImage.png)
 
 ## Locate ROIs
 
 From our `maxValueImage` we can find all regions of interest. To be precise we need their coordinates to apply them to other images.
 
 ```ts
+//We will segment image through
+// `threshold()` to find ROIs,
+//therefore color model has to be "GREY".
+if (maxValueImage.colorModel !== 'GREY') {
+  maxValueImage = maxValueImage.grey();
+}
 const maxValueMask = maxValueImage.threshold();
 const roiMap = fromMask(maxValueMask);
 ```
