@@ -5,28 +5,26 @@ The point of this tutorial is to show how to decode a stack of images and how to
 This tutorial demonstrates how to use ImageJS to decode a TIFF stack of images with similar properties and analyze frame-by-frame changes, particularly focusing on regions of interest (ROIs) and their changes in pulsar images.
 
 - We read and decode the TIFF stack.
-- Then, utilizing the `maxImage()` function, we get the image with the maximum pixel values across the stack.
+- Then, we get the image with the maximum pixel values across the stack.
 - We identify regions of interest from the maximum value image. First we segment an image using a global threshold algorithm ([`otsu`](https://en.wikipedia.org/wiki/Otsu%27s_method 'wikipedia link on otsu thresholding') algorithm by default). From obtained binary image we get coordinates of ROIs.
-- Finally we compute the average pixel value for each ROI across all images in the stack. We store results of each ROI across all the images in the stack.
+- Finally we compute the average pixel value for each ROI across all the images of the stack.
 
-We can use this data to analyze changes in intensity over time or compare changes in its position.
+We can use this data to analyze changes in intensity over time in each region of interest.
 
 ```ts
-import * as fs from 'node:fs';
+import { readFileSync } from 'node:fs';
 
-const buffer = fs.readFileSync('./path/to/file.tiff');
+const buffer = readFileSync('./path/to/file.tiff');
 const stack = decodeStack(buffer);
 
 let maxValueImage = stack.maxImage();
-//We will segment image through
-// `threshold()` to find ROIs,
-//therefore color model has to be "GREY".
+// Convert to grey image to prepare for thresholding
 if (maxValueImage.colorModel !== 'GREY') {
   maxValueImage = maxValueImage.grey();
 }
 const maxValueMask = maxValueImage.threshold();
 const roiMap = fromMask(maxValueMask);
-//Provides all the regions of interest.
+// Detect objects (regions of interest) in the image
 const rois = roiMap.getRois();
 const stackGrays = new Map<number, number[][]>();
 for (const roi of rois) {
@@ -45,7 +43,7 @@ Here is a more detailed review of these steps.
 ## Introduction
 
 ImageJS has the ability to decode a TIFF stack of images. A TIFF stack is a TIFF file that contains multiple images. In our specific case here, we have a stack of pulsar kind of images. They represent dynamic changes that happen to regions of interest frame-by-frame.
-We can use ImageJS to figure out when the region is visible and when it isn't by looking at the average value of said region compared to its maximum value in the stack.
+We can use ImageJS to figure out when the region is visible and when it isn't by looking at the average value of said region compared to its maximum value across the stack.
 
 Let's go step by step together to figure out how it works.
 
@@ -54,9 +52,9 @@ Let's go step by step together to figure out how it works.
 Just like any image, our stack needs to be decoded for us to work with data.
 
 ```ts
-import * as fs from 'node:fs';
+import { readFileSync } from 'node:fs';
 
-const buffer = fs.readFileSync('/path/to/file.tiff');
+const buffer = readFileSync('/path/to/file.tiff');
 const stack = decodeStack(buffer);
 ```
 
@@ -79,9 +77,7 @@ const maxValueImage = stack.maxImage();
 From our `maxValueImage` we can find all regions of interest. To be precise we need their coordinates to apply them to other images.
 
 ```ts
-//We will segment image through
-// `threshold()` to find ROIs,
-//therefore color model has to be "GREY".
+// Convert to grey image to prepare for thresholding
 if (maxValueImage.colorModel !== 'GREY') {
   maxValueImage = maxValueImage.grey();
 }
@@ -92,7 +88,7 @@ const roiMap = fromMask(maxValueMask);
 ![Mask](./images/stackAvg/maxMask.png)
 
 ```ts
-//Provides all the regions of interest.
+// Detect objects (regions of interest) in the image
 const rois = roiMap.getRois();
 ```
 
@@ -117,7 +113,8 @@ for (const roi of rois) {
 }
 ```
 
-This will create a map where each key is an ROI ID, and each value is an array of average ROI intensities across the image stack.
+For each detected ROI, we compute the average value of the pixels in the ROI for each image in the stack.
+This gives us a time serie of intensities, which gives us an insight about when in time the detected objects appeared.
 This way we can take a look at the changes in intensity of ROI from one image to another.
 For instance here we have a graph of intensity of region with ID equal to 9.
 We can see that there is a rising pulse between images 1 and 4, but then it disappears.
