@@ -114,7 +114,7 @@ for (const roi of rois) {
 ```
 
 For each detected ROI, we compute the average value of the pixels in the ROI for each image in the stack.
-This gives us a time serie of intensities, which gives us an insight about when in time the detected objects appeared.
+This gives us a time sequence of intensities, which gives us an insight about when in time the detected objects appeared.
 This way we can take a look at the changes in intensity of ROI from one image to another.
 For instance here we have a graph of intensity of region with ID equal to 9.
 We can see that there is a rising pulse between images 1 and 4, but then it disappears.
