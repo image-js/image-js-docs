@@ -13,3 +13,4 @@ jobs:
       lint-check-types: true
       npm-test-command: npm run build
       node-version-matrix: '[18]'
+      upload-coverage: false
