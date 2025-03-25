@@ -43,7 +43,7 @@ const parsedImage = readSync('../example.jpg');
 ```
 
 :::tip
-Node.js can also load an image via `fetchURL`. To get more information take a look at "Browser" part of this section.
+Node.js can also load an image via `fetchURL`. To get more information take a look at ["Browser"](#loading-your-first-image-in-browser) part of this section.
 :::
 
 Once the image is loaded, it returns an instance of the `Image` class, so its methods can be applied.
