@@ -43,7 +43,7 @@ const parsedImage = readSync('../example.jpg');
 ```
 
 :::tip
-Node.js can also load an image via `fetch` function. To get more information take a look at "Browser" part of this section.
+Node.js can also load an image via `fetchURL`. To get more information take a look at ["Browser"](#loading-your-first-image-in-browser) part of this section.
 :::
 
 Once the image is loaded, it returns an instance of the `Image` class, so its methods can be applied.
@@ -72,13 +72,12 @@ writeSync('../example.jpg', image);
 
 ### Loading your first image in browser
 
-To load an image via browser, in order to instantiate it, you need to get an `arrayBuffer`. One of the ways :
+To load an image via browser, in order to instantiate it, you may use `fetchURL` function:
 
 ```ts
-const data = await fetch('https:://example.com/image.jpg');
-const bufferedData = await data.arrayBuffer();
-let image = decode(new DataView(bufferedData)); // image is ready for usage
+import { fetchURL } from 'image-js';
 
+let image = await fetchURL('https:://example.com/image.jpg'); // image is ready for usage
 image = image.grey();
 ```
 
@@ -129,10 +128,7 @@ In the `<body>` part of your code insert your `image-js` script. For instance, h
 ```html
 <script type="module">
   import {(Image, writeCanvas)} from 'image-js';
-  const data = await fetch('https:://example.com/image.jpg');
-  const bufferedData = await data.arrayBuffer();
-  let image = decode(new DataView(bufferedData)); // image is ready for usage
-
+  let image = await fetchURL('https:://example.com/image.jpg'); // image is ready for usage
   image = image.grey();
   const canvas = document.getElementById('my_canvas');
   writeCanvas(image, canvas);
@@ -159,12 +155,9 @@ Thus, in the end your html page should look like this:
     <canvas id="my_canvas" />
     <script type="module">
   import {Image, writeCanvas,decode} from 'image-js';
-  const data = await fetch('https:://example.com/image.jpg');
-  const bufferedData = await data.arrayBuffer();
-  let image = decode(new DataView(bufferedData)); // image is ready for usage
+  let image = await fetchURL('https:://example.com/image.jpg'); // image is ready for usage
 
   image = image.grey();
-  console.log(Image);
   const canvas = document.getElementById('my_canvas');
   writeCanvas(image, canvas);
 </script>
