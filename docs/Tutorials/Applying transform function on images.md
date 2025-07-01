@@ -163,15 +163,15 @@ To rotate around the image center instead of the origin, combine translation wit
 
 ```ts
 const angle = Math.PI / 4; //45 degrees
-const [centerX, centerY] = image.getCoordinates('center');
+const center = image.getCoordinates('center');
 
 const cos = Math.cos(angle);
 const sin = Math.sin(angle);
 
 // Translate to origin, rotate, translate back
 const matrix = [
-  [cos, -sin, centerX * (1 - cos) + centerY * sin],
-  [sin, cos, centerY * (1 - cos) - centerX * sin],
+  [cos, -sin, center.column * (1 - cos) + center.row * sin],
+  [sin, cos, center.row * (1 - cos) - center.column * sin],
 ];
 
 return image.transform(matrix);
@@ -262,31 +262,41 @@ const perspectiveImage = image.transform(perspectiveMatrix);
 
 The most common use of projective transformation is mapping an image to fit within four corner points:
 
+![Corrected perspective](./images/transformations/card.png);
+
 ```ts
-// Define source corners (original image corners)
+const image = readSync('path/to/file.png');
+// Define source corners (original image points) and destination image width and height.
+// Width and height can be omitted. In this case width and height will be calculated from points.
 const sourcePoints = [
-  [0, 0], // Top-left
-  [image.width, 0], // Top-right
-  [image.width, image.height], // Bottom-right
-  [0, image.height], // Bottom-left
+  [
+    { column: 55, row: 140 },
+    { column: 680, row: 38 },
+    { column: 840, row: 340 },
+    { column: 145, row: 460 },
+  ],
+  { width: 725, height: 425 },
 ];
 
-// Define destination corners (where you want them to appear)
-const destPoints = [
-  [50, 100], // Top-left moved
-  [300, 80], // Top-right
-  [320, 250], // Bottom-right
-  [30, 280], // Bottom-left
-];
-
-// Get transformation matrix using 4 points
+// Get transformation matrix using 4 points and `getPerspectiveWarp` function.
 const projectionMatrix = getPerspectiveWarp(sourcePoints);
-const projectedImage = image.transform(projectionMatrix);
+const projectedImage = image.transform(matrix.matrix, {
+  width: matrix.width,
+  height: matrix.height,
+  inverse: true,
+});
 ```
+
+![Corrected perspective](./images/transformations/card-perspectiveWarp.png);
 
 ### Keystone Correction
 
-Correcting perspective distortion (like photographing a screen at an angle):
+Correcting perspective distortion (like photographing a screen at an angle). Let's take this image
+as an example.
+
+![Keystone image](./images/transformations/buildings.jpg)
+
+A common problem when taking photos of tall buildings is that they can look as if they're leaning backwards. This is known as the "keystone effect" (or the "tombstone effect"), and it can be a very distracting form of distortion in your images.
 
 ```ts
 // Correct keystone effect - make trapezoid into rectangle
@@ -297,55 +307,4 @@ const keystoneMatrix = [
 ];
 
 const correctedImage = image.transform(keystoneMatrix);
-```
-
-## Practical Examples and Use Cases
-
-### Creating Thumbnails with Proper Aspect Ratio
-
-```ts
-function createThumbnail(image, maxWidth, maxHeight) {
-  const scaleX = maxWidth / image.width;
-  const scaleY = maxHeight / image.height;
-  const scale = Math.min(scaleX, scaleY); // Maintain aspect ratio
-
-  const thumbnailMatrix = [
-    [scale, 0, 0],
-    [0, scale, 0],
-  ];
-
-  return image.transform(thumbnailMatrix);
-}
-```
-
-### Photo Straightening
-
-```ts
-function straightenPhoto(image, angleDegrees) {
-const angle = (angleDegrees \* Math.PI) / 180;
-const centerX = image.width / 2;
-const centerY = image.height / 2;
-
-const cos = Math.cos(-angle); // Negative for correction
-const sin = Math.sin(-angle);
-
-const matrix = [
-[cos, -sin, centerX * (1 - cos) + centerY * sin],
-[sin, cos, centerY * (1 - cos) - centerX * sin],
-];
-
-return image.transform(matrix);
-}
-```
-
-### Document Scanning Perspective Correction
-
-```ts
-function correctDocumentPerspective(image, corners) {
-  // corners should be [topLeft, topRight, bottomRight, bottomLeft]
-  const [tl, tr, br, bl] = corners;
-
-  const matrix = getPerspectiveWarp(corners{});
-  return image.transform(matrix);
-}
 ```
