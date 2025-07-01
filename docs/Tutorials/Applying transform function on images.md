@@ -37,11 +37,11 @@ $$
 
 Each parameter controls specific aspects of the transformation:
 
-`a`, `e`: Scaling (horizontal and vertical)
-`b`, `d`: Shearing and rotation
-`c`, `f`: Translation (horizontal and vertical)
-`g`, `h`: Perspective distortion
-`i`: Normalization factor (usually 1)
+- `a`, `e`: Scaling (horizontal and vertical)
+- `b`, `d`: Shearing and rotation
+- `c`, `f`: Translation (horizontal and vertical)
+- `g`, `h`: Perspective distortion
+- `i`: Normalization factor (usually 1)
 
 ## Getting Started
 
@@ -55,13 +55,12 @@ const image = readSync('/path/to/image.png');
 
 ## Affine Transformations
 
-1. Scaling
-   Scaling changes the size of your image. Parameters a and e control horizontal and vertical scaling respectively.
+### Scaling
 
-Uniform Scaling (Maintaining Aspect Ratio)
+Scaling changes the size of your image. Parameters a and e control horizontal and vertical scaling respectively.
 
 ```ts
-// Scale image by factor of 2 (double the size)
+// Scale image by factor of 2 (Maintaining Aspect Ratio)
 const transformationMatrix = [
   [2, 0, 0], // a=2 (horizontal scale), b=0, c=0
   [0, 2, 0], // d=0, e=2 (vertical scale), f=0
@@ -69,6 +68,8 @@ const transformationMatrix = [
 
 const scaledImage = image.transform(transformationMatrix);
 ```
+
+![Scaled image](./images/transformations/lennaScaled.png)
 
 ### Non-uniform Scaling
 
@@ -82,6 +83,8 @@ const transformationMatrix = [
 const stretchedImage = image.transform(transformationMatrix);
 ```
 
+![Stretched image](./images/transformations/lennaStretched.png)
+
 #### Common Scaling Examples
 
 ```ts
@@ -90,19 +93,29 @@ const shrinkMatrix = [
   [0.5, 0, 0],
   [0, 0.5, 0],
 ];
+```
 
+![Shrunk image](./images/transformations/lennaShrunk.png)
+
+```ts
 // Mirror horizontally (flip left-right)
 const mirrorMatrix = [
   [-1, 0, 0],
   [0, 1, 0],
 ];
+```
 
+![Mirrored image](./images/transformations/lennaMirrorred.png)
+
+```ts
 // Mirror vertically (flip up-down)
 const flipMatrix = [
   [1, 0, 0],
   [0, -1, 0],
 ];
 ```
+
+![Flipped image](./images/transformations/lennaFlipped.png)
 
 ### Translation
 
@@ -116,24 +129,20 @@ const translationMatrix = [
 ];
 
 const translatedImage = image.transform(translationMatrix);
-
-// Move image 100 pixels left and 50 pixels up
-const moveMatrix = [
-  [1, 0, -100], // Negative values move left
-  [0, 1, -50], // Negative values move up
-];
 ```
+
+![Translated image](./images/transformations/lennaTranslated.png)
 
 ### Rotation
 
-Rotation transforms your image around a point (typically the origin). It uses a combination of parameters a, b, d, and e.
+Rotation transforms your image around a point (typically the origin). It uses a combination of parameters `a`, `b`, `d`, and `e`.
 
 For rotation by angle θ (in radians):
 
-`a` = cos(θ)
-`b` = -sin(θ)
-`d` = sin(θ)
-`e` = cos(θ)
+- `a` = cos(θ)
+- `b` = -sin(θ)
+- `d` = sin(θ)
+- `e` = cos(θ)
 
 ```ts
 // Rotate 45 degrees clockwise
@@ -144,37 +153,37 @@ const rotationMatrix = [
 ];
 
 const rotatedImage = image.transform(rotationMatrix);
-
-// Rotate 90 degrees counter-clockwise
-const rotation90Matrix = [
-  [0, 1, 0], // cos(90°)=0, -sin(90°)=-(-1)=1
-  [-1, 0, 0], // sin(90°)=1, cos(90°)=0
-];
 ```
+
+![Rotated image](./images/transformations/lennaRotated.png)
 
 ### Rotation Around Image Center
 
 To rotate around the image center instead of the origin, combine translation with rotation:
 
 ```ts
-function rotateAroundCenter(image, angle) {
-  const centerX = image.width / 2;
-  const centerY = image.height / 2;
+const angle = Math.PI / 4; //45 degrees
+const [centerX, centerY] = image.getCoordinates('center');
 
-  const cos = Math.cos(angle);
-  const sin = Math.sin(angle);
+const cos = Math.cos(angle);
+const sin = Math.sin(angle);
 
-  // Translate to origin, rotate, translate back
-  const matrix = [
-    [cos, -sin, centerX * (1 - cos) + centerY * sin],
-    [sin, cos, centerY * (1 - cos) - centerX * sin],
-  ];
+// Translate to origin, rotate, translate back
+const matrix = [
+  [cos, -sin, centerX * (1 - cos) + centerY * sin],
+  [sin, cos, centerY * (1 - cos) - centerX * sin],
+];
 
-  return image.transform(matrix);
-}
-
-const centeredRotation = rotateAroundCenter(image, Math.PI / 6); // 30 degrees
+return image.transform(matrix);
 ```
+
+:::note
+Image-js has functions `rotate()` and `transformRotate()`. `rotate()` function allows rotating an image by multiple of 90 degrees.
+`transformRotate()` allows rotating an image by any degree. It also allows choosing the axe of rotation. So, for rotation, you have other functions that allow you to perform it.
+Current tutorial just demonstrates the basic principle behind transformation of such kind.
+:::
+
+![Rotated by center image](./images/transformations/lennaRotatedCenter.png)
 
 ### Shearing
 
@@ -186,19 +195,29 @@ const horizontalShearMatrix = [
   [1, 0.5, 0], // b=0.5 creates horizontal shear
   [0, 1, 0],
 ];
+```
 
+![Horizontally sheared image](./images/transformations/lennaHorizontalShear.png)
+
+```ts
 // Vertical shear - lean the image upward
 const verticalShearMatrix = [
   [1, 0, 0],
   [0.3, 1, 0], // d=0.3 creates vertical shear
 ];
+```
 
+![Vertically sheared image](./images/transformations/lennaVerticalShear.png)
+
+```ts
 // Combined shearing
 const combinedShearMatrix = [
   [1, 0.5, 0], // Horizontal shear
   [0.3, 1, 0], // Vertical shear
 ];
 ```
+
+![Combined shearing](./images/transformations/lennaCombinedShear.png)
 
 ### Complex Affine Transformations
 
@@ -260,8 +279,8 @@ const destPoints = [
   [30, 280], // Bottom-left
 ];
 
-// Calculate transformation matrix (implementation depends on library)
-const projectionMatrix = calculateProjectionMatrix(sourcePoints, destPoints);
+// Get transformation matrix using 4 points
+const projectionMatrix = getPerspectiveWarp(sourcePoints);
 const projectedImage = image.transform(projectionMatrix);
 ```
 
@@ -326,23 +345,7 @@ function correctDocumentPerspective(image, corners) {
   // corners should be [topLeft, topRight, bottomRight, bottomLeft]
   const [tl, tr, br, bl] = corners;
 
-  // Calculate document dimensions
-  const width = Math.max(distance(tl, tr), distance(bl, br));
-  const height = Math.max(distance(tl, bl), distance(tr, br));
-
-  // Target rectangle corners
-  const targetCorners = [
-    [0, 0],
-    [width, 0],
-    [width, height],
-    [0, height],
-  ];
-
-  const matrix = calculateProjectionMatrix(corners, targetCorners);
+  const matrix = getPerspectiveWarp(corners{});
   return image.transform(matrix);
-}
-
-function distance(p1, p2) {
-  return Math.sqrt((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2);
 }
 ```
