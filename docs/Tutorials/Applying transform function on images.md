@@ -1,17 +1,21 @@
-Image transformations are fundamental operations in computer graphics and image processing that allow you to manipulate the position, size, shape, and perspective of images. This tutorial covers both affine and projective transformations, providing practical examples and clear explanations of how each parameter affects your image.
+In a broader sense of the term, image transformation refers to the process of modifying or converting images from one form to another. This can involve changes to the image's appearance, format, size, or mathematical representation. Therefore converting image's color model from "RGB" format to grayscale can also be considered a transformation.
 
-![Affine transformations](./images/transformations/affine-transform.gif);
+In ImageJS, however, `transform()` function does transformations that can be accomplished through [matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication).
+
+In this tutorial we will cover and explain basic transformation techniques as well as explain how `transform()` function allows us to modify images.
 
 ## Types of transformation
 
-In this tutorial, we distinguish between two primary types of transformations:
+Here, we distinguish between two primary types of transformations:
 
 ### Affine Transformations
+
+![Affine transformations](./images/transformations/affine-transform.gif);
 
 - **Preserve**: Collinearity and ratios of distances
 - **Properties**: Parallel lines remain parallel, straight lines remain straight
 - **Use cases**: Scaling, rotation, translation, shearing
-- **Matrix size**: 2×3(the bottom row [0, 0, 1] is implied)
+- **Matrix size**: 2×3(the bottom row `[0, 0, 1]` is implied)
 
 ### Projective Transformations
 
@@ -39,7 +43,7 @@ Each parameter controls specific aspects of the transformation:
 - `a`, `e`: Scaling (horizontal and vertical)
 - `b`, `d`: Shearing and rotation
 - `c`, `f`: Translation (horizontal and vertical)
-- `g`, `h`: Perspective distortion
+- `g`, `h`: Perspective distortion (horizontal and vertical)
 - `i`: Normalization factor (usually 1)
 
 For affine transformation 2x3 matrix will be used, because last row is not necessary for this kind of transformation.
@@ -221,7 +225,7 @@ return image.transform(matrix);
 ![Rotated by center image](./images/transformations/lennaRotatedCenter.png)
 
 :::note
-Image-js has functions `rotate()` and `transformRotate()`. `rotate()` function allows rotating an image by multiple of 90 degrees.
+Image-js also has `rotate()` and `transformRotate()` functions. `rotate()` function allows rotating an image by multiple of 90 degrees.
 `transformRotate()` allows rotating an image by any degree. It also allows choosing the axe of rotation. So, for rotation, you have other functions that allow you to perform it.
 Current tutorial just demonstrates the basic principle behind transformation of such kind.
 :::
@@ -232,12 +236,12 @@ Projective transformations use the full 3×3 matrix, including the bottom row pa
 
 ### Understanding Perspective Parameters
 
-- `g`, `h`: control horizontal and vertical perspective distortion.
+- `g`, `h`: control horizontal and vertical perspective distortions. They allow
 - `i`: Normalization factor (typically 1). It simulates what happens in real vision:
 
-1. `i` < 1: Objects farther away appear smaller
-2. `i` > 1: Objects closer appear larger
-3. The division by w' mathematically recreates this effect
+1. `i` < 1: Objects appear larger
+2. `i` > 1: Objects appear smaller
+3. The division by `i` mathematically recreates this effect
 
 The normalization factor is essentially artificial depth - it makes flat 2D coordinates behave as if they exist in 3D space with varying distances from the viewer.
 The distortion allows modifying the angle under which you look at the image.
