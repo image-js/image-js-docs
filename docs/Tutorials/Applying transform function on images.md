@@ -1,10 +1,6 @@
-## Synopsis
-
 Image transformations are fundamental operations in computer graphics and image processing that allow you to manipulate the position, size, shape, and perspective of images. This tutorial covers both affine and projective transformations, providing practical examples and clear explanations of how each parameter affects your image.
 
 ![Affine transformations](./images/transformations/affine-transform.gif);
-
-## Understanding Transformation Types
 
 In this tutorial, we distinguish between two primary types of transformations:
 
@@ -13,7 +9,7 @@ In this tutorial, we distinguish between two primary types of transformations:
 - **Preserve**: Collinearity and ratios of distances
 - **Properties**: Parallel lines remain parallel, straight lines remain straight
 - **Use cases**: Scaling, rotation, translation, shearing
-- **Matrix size**: 2×3 (the bottom row [0, 0, 1] is implied)
+- **Matrix size**: 2×3(the bottom row [0, 0, 1] is implied)
 
 ### Projective Transformations
 
@@ -21,7 +17,8 @@ In this tutorial, we distinguish between two primary types of transformations:
 - **Properties**: Parallel lines may converge, creates perspective effects
 - **Use cases**: Perspective correction, 3D projections, keystone correction
 - **Matrix size**: 3×3 (full matrix required)
-- **The key difference**: affine transformations might stretch, rotate, or shift a rectangle, but parallel lines remain parallel. Projective transformations can make a rectangle appear tilted or receding into the distance, with parallel lines converging to vanishing points.
+
+**The key difference** is that affine transformations might stretch, rotate, or shift a rectangle, but parallel lines remain parallel. Projective transformations can make a rectangle appear tilted or receding into the distance, with parallel lines converging to vanishing points.
 
 ## The Transformation Matrix
 
@@ -43,21 +40,13 @@ Each parameter controls specific aspects of the transformation:
 - `g`, `h`: Perspective distortion
 - `i`: Normalization factor (usually 1)
 
-## Getting Started
-
-First, let's load an image:
-
-```ts
-import { readSync } from 'image-processing-library';
-
-const image = readSync('/path/to/image.png');
-```
+For affine transformation 2x3 matrix will be used, because last row is not necessary for this kind of transformation.
 
 ## Affine Transformations
 
 ### Scaling
 
-Scaling changes the size of your image. Parameters a and e control horizontal and vertical scaling respectively.
+Scaling changes the size of your image. Parameters `a` and `e` control horizontal and vertical scaling respectively.
 
 ```ts
 // Scale image by factor of 2 (Maintaining Aspect Ratio)
@@ -93,6 +82,7 @@ const shrinkMatrix = [
   [0.5, 0, 0],
   [0, 0.5, 0],
 ];
+const shrunkImage = image.transform(shrinkMatrix);
 ```
 
 ![Shrunk image](./images/transformations/lennaShrunk.png)
@@ -103,6 +93,7 @@ const mirrorMatrix = [
   [-1, 0, 0],
   [0, 1, 0],
 ];
+const mirrorredImage = image.transform(mirrorMatrix);
 ```
 
 ![Mirrored image](./images/transformations/lennaMirrorred.png)
@@ -113,6 +104,7 @@ const flipMatrix = [
   [1, 0, 0],
   [0, -1, 0],
 ];
+const flippedImage = image.transform(flipMatrix);
 ```
 
 ![Flipped image](./images/transformations/lennaFlipped.png)
@@ -157,9 +149,56 @@ const rotatedImage = image.transform(rotationMatrix);
 
 ![Rotated image](./images/transformations/lennaRotated.png)
 
-### Rotation Around Image Center
+### Shearing
 
-To rotate around the image center instead of the origin, combine translation with rotation:
+Shearing skews the image, making rectangles appear as parallelograms. Parameters `b` and `d` control shearing.
+
+#### Horizontal shearing
+
+```ts
+// Horizontal shear - lean the image to the right
+const horizontalShearMatrix = [
+  [1, 0.5, 0], // b=0.5 creates horizontal shear
+  [0, 1, 0],
+];
+
+const horizontalShearImage = image.transform(horizontalShearMatrix);
+```
+
+![Horizontally sheared image](./images/transformations/lennaHorizontalShear.png)
+
+#### Vertical shearing
+
+```ts
+// Vertical shear - lean the image upward
+const verticalShearMatrix = [
+  [1, 0, 0],
+  [0.3, 1, 0], // d=0.3 creates vertical shear
+];
+
+const verticalShearImage = image.transform(vertcialShearMatrix);
+```
+
+![Vertically sheared image](./images/transformations/lennaVerticalShear.png)
+
+#### Combined shearing
+
+```ts
+// Combined shearing
+const combinedShearMatrix = [
+  [1, 0.5, 0], // Horizontal shear
+  [0.3, 1, 0], // Vertical shear
+];
+
+const combinedShearImage = image.transform(combinedShearMatrix);
+```
+
+![Combined shearing](./images/transformations/lennaCombinedShear.png)
+
+### Complex Affine Transformations
+
+You can combine multiple transformations by multiplying matrices or applying them sequentially:
+For example, to rotate around the image center instead of the origin, combine translation with rotation:
 
 ```ts
 const angle = Math.PI / 4; //45 degrees
@@ -177,66 +216,13 @@ const matrix = [
 return image.transform(matrix);
 ```
 
+![Rotated by center image](./images/transformations/lennaRotatedCenter.png)
+
 :::note
 Image-js has functions `rotate()` and `transformRotate()`. `rotate()` function allows rotating an image by multiple of 90 degrees.
 `transformRotate()` allows rotating an image by any degree. It also allows choosing the axe of rotation. So, for rotation, you have other functions that allow you to perform it.
 Current tutorial just demonstrates the basic principle behind transformation of such kind.
 :::
-
-![Rotated by center image](./images/transformations/lennaRotatedCenter.png)
-
-### Shearing
-
-Shearing skews the image, making rectangles appear as parallelograms. Parameters b and d control shearing.
-
-```ts
-// Horizontal shear - lean the image to the right
-const horizontalShearMatrix = [
-  [1, 0.5, 0], // b=0.5 creates horizontal shear
-  [0, 1, 0],
-];
-```
-
-![Horizontally sheared image](./images/transformations/lennaHorizontalShear.png)
-
-```ts
-// Vertical shear - lean the image upward
-const verticalShearMatrix = [
-  [1, 0, 0],
-  [0.3, 1, 0], // d=0.3 creates vertical shear
-];
-```
-
-![Vertically sheared image](./images/transformations/lennaVerticalShear.png)
-
-```ts
-// Combined shearing
-const combinedShearMatrix = [
-  [1, 0.5, 0], // Horizontal shear
-  [0.3, 1, 0], // Vertical shear
-];
-```
-
-![Combined shearing](./images/transformations/lennaCombinedShear.png)
-
-### Complex Affine Transformations
-
-You can combine multiple transformations by multiplying matrices or applying them sequentially:
-
-```ts
-// Scale, rotate, and translate in one transformation
-const angle = Math.PI / 4;
-const scale = 1.5;
-const translateX = 100;
-const translateY = 50;
-
-const complexMatrix = [
-  [scale * Math.cos(angle), -scale * Math.sin(angle), translateX],
-  [scale * Math.sin(angle), scale * Math.cos(angle), translateY],
-];
-
-const complexTransform = image.transform(complexMatrix);
-```
 
 ## Projective Transformations
 
@@ -244,19 +230,33 @@ Projective transformations use the full 3×3 matrix, including the bottom row pa
 
 ### Understanding Perspective Parameters
 
-`g`, `h`: Control perspective distortion
-`i`: Normalization factor (typically 1)
+- `g`, `h`: control horizontal and vertical perspective distortion.
+- `i`: Normalization factor (typically 1). It simulates what happens in real vision:
+
+1. `i` < 1: Objects farther away appear smaller
+2. `i` > 1: Objects closer appear larger
+3. The division by w' mathematically recreates this effect
+
+The normalization factor is essentially artificial depth - it makes flat 2D coordinates behave as if they exist in 3D space with varying distances from the viewer.
+The distortion allows modifying the angle under which you look at the image.
 
 ```ts
-// Simple perspective transformation
 const perspectiveMatrix = [
-  [1, 0, 0], // Standard scaling and translation
+  [1, 0, 0],
   [0, 1, 0],
-  [0.001, 0, 1], // g=0.001 creates horizontal perspective
+  [0.001, -0.0002, 1],
 ];
-
-const perspectiveImage = image.transform(perspectiveMatrix);
+const perspectiveImage = newImage.transform(perspectiveMatrix, {
+  //using fullImage:true to show all the pixels.
+  fullImage: true,
+  // using bicubic interpolation for a more detailed image.
+  interpolationType: 'bicubic',
+});
 ```
+
+![Perspective image](./images/transformations/buildingsPerspective.png)
+
+Now, let's take a look at practical uses of such transformation.
 
 ### Four-Point Mapping
 
@@ -267,7 +267,7 @@ The most common use of projective transformation is mapping an image to fit with
 ```ts
 const image = readSync('path/to/file.png');
 // Define source corners (original image points) and destination image width and height.
-// Width and height can be omitted. In this case width and height will be calculated from points.
+//  In this case they correspond to credit card's corner points.
 const sourcePoints = [
   [
     { column: 55, row: 140 },
@@ -289,22 +289,38 @@ const projectedImage = image.transform(matrix.matrix, {
 
 ![Corrected perspective](./images/transformations/card-perspectiveWarp.png);
 
+:::note
+For calculating perspective warp matrix, width and height can be omitted as options.
+In that case, they will be calculated from source points.
+:::
+
 ### Keystone Correction
 
-Correcting perspective distortion (like photographing a screen at an angle). Let's take this image
-as an example.
+Let's take this image again as an example.
 
 ![Keystone image](./images/transformations/buildings.jpg)
 
-A common problem when taking photos of tall buildings is that they can look as if they're leaning backwards. This is known as the "keystone effect" (or the "tombstone effect"), and it can be a very distracting form of distortion in your images.
+A common problem when taking photos of tall buildings is that they can look as if they're leaning backwards. This is known as the "[keystone effect](https://en.wikipedia.org/wiki/Keystone_effect)" (or the "tombstone effect"), and it can be a very distracting form of distortion in your images.
 
 ```ts
-// Correct keystone effect - make trapezoid into rectangle
-const keystoneMatrix = [
-  [1.2, 0.1, -50],
-  [0.05, 1.1, -20],
-  [0.0002, 0.0001, 1],
-];
+// Correcting keystone effect - make trapezoid into rectangle. These points work for an image with
+//buildings. For more automatic approach you need to use something more advanced.
+const keystoneMatrix = getPerspectiveWarp([
+  { column: 60, row: 0 },
+  { column: newImage.width - 59, row: 0 },
+  { column: newImage.width - 1, row: newImage.height - 1 },
+  { column: 0, row: newImage.height - 1 },
+]);
+
+const correctedImage = newImage.transform(keystoneMatrix.matrix, {
+  inverse: true,
+  width: newImage.width,
+  height: newImage.height,
+  // Using bicubic interpolation for better image quality.
+  interpolationType: 'bicubic',
+});
 
 const correctedImage = image.transform(keystoneMatrix);
 ```
+
+![Corrected keystone effect](./images/transformations/buildingsCorrected.png)
