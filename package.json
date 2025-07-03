@@ -2,6 +2,11 @@
   "name": "image-js-docs",
   "version": "0.0.0",
   "private": true,
+  "main": "docusaurus.config.js",
+  "exports": {
+    ".": "./docusaurus.config.js",
+    "./config": "./docusaurus.config.js"
+  },
   "scripts": {
     "build": "docusaurus build",
     "clear": "docusaurus clear",
