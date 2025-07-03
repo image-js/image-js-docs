@@ -2,6 +2,8 @@ Image transformations are fundamental operations in computer graphics and image 
 
 ![Affine transformations](./images/transformations/affine-transform.gif);
 
+## Types of transformation
+
 In this tutorial, we distinguish between two primary types of transformations:
 
 ### Affine Transformations
