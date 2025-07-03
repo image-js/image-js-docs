@@ -93,7 +93,7 @@ const mirrorMatrix = [
   [-1, 0, 0],
   [0, 1, 0],
 ];
-const mirrorredImage = image.transform(mirrorMatrix);
+const mirroredImage = image.transform(mirrorMatrix);
 ```
 
 ![Mirrored image](./images/transformations/lennaMirrorred.png)
@@ -176,7 +176,7 @@ const verticalShearMatrix = [
   [0.3, 1, 0], // d=0.3 creates vertical shear
 ];
 
-const verticalShearImage = image.transform(vertcialShearMatrix);
+const verticalShearImage = image.transform(verticalShearMatrix);
 ```
 
 ![Vertically sheared image](./images/transformations/lennaVerticalShear.png)
