@@ -45,7 +45,7 @@ const projectedImage = image.transform(matrix.matrix, {
 
 #### Options
 
-| Property                                                                                           | Required | Default value |
-| -------------------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`width`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#borderType) | no       | -             |
-| [`height`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#height)    | no       | -             |
+| Property                                                                                                    | Required | Default value |
+| ----------------------------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`width`](https://image-js.github.io/image-js-typescript/interfaces/GetPerspectiveWarpOptions.html#width)   | no       | -             |
+| [`height`](https://image-js.github.io/image-js-typescript/interfaces/GetPerspectiveWarpOptions.html#height) | no       | -             |
