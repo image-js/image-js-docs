@@ -2,7 +2,72 @@ In a broader sense of the term, image transformation refers to the process of mo
 
 In ImageJS, however, `transform()` function does transformations that can be accomplished through [matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication).
 
-In this tutorial we will cover and explain basic transformation techniques as well as explain how `transform()` function allows us to modify images.
+In this tutorial we will cover and explain basic geometric transformation techniques as well as explain how `transform()` function allows us to modify images.
+
+## How image transformations work
+
+[Geometric transformation](https://www.geeksforgeeks.org/electronics-engineering/geometric-transformation-in-image-processing-1/) modifies the location of pixels in an image. It consists of two main steps:
+
+- Spatial transformation of pixels or coordinates and intensity interpolation.
+- Intensity interpolation is used to assign the intensity value of pixels after spatial transformation.
+
+In a geometric transformation a pixel at coordinate $$(x, y)$$ will be moved to coordinate $$(x', y')$$. That is the coordinate (x', y') of the output image which will have the intensity value of the coordinate (x, y) in the input image.
+
+In this tutorial we will focus more on spatial transformation and talk more about interpolation another time. Basic geometric transformation is given by the equation in matrix form:
+
+$$
+\begin{bmatrix}
+x' \\
+y' \\
+z'
+\end{bmatrix} = A \begin{bmatrix}
+x \\
+y \\
+z\end{bmatrix}
+=\begin{bmatrix}
+a & b & c\\
+d & e & f \\
+g & h & i\\
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix}
+$$
+
+where
+
+- $$(x, y,z)$$ is the input coordinate
+- $$(x', y',z')$$ is the output coordinate
+- $$A$$ is the affine transformation matrix
+
+:::note
+
+### Example of matrix multiplication
+
+If you are interested to look a bit deeper into matrix multiplications, take a look at the [`ml-matrix`](https://mljs.github.io/matrix/index.html 'link on ml-matrix api') package.
+It facilitates basic matrix operations in ImageJS, as well as something more advanced like inverting a matrix.
+Here is a basic demo on how to upscale a pixel coordinate by 2 using `ml-matrix` library.
+
+```ts
+import { Matrix } from 'ml-matrix';
+
+const matrix = new Matrix([[10], [10], [1]]);
+
+const transform = new Matrix([
+  [2, 0, 0],
+  [0, 2, 0],
+  [0, 0, 1],
+]);
+
+const result = transform.mmul(matrix);
+/*
+gives [20,20,1] as a new coordinate of a pixel.
+*/
+```
+
+:::
 
 ## Types of transformation
 
@@ -80,6 +145,11 @@ const stretchedImage = image.transform(transformationMatrix);
 
 ![Stretched image](./images/transformations/lennaStretched.png)
 
+:::note
+ImageJS also has [`resize`](../Features/Geometry/Resize.md) function that allows to scale an image.
+Current tutorial just demonstrates the basic principle behind transformation of such kind.
+:::
+
 #### Common Scaling Examples
 
 ```ts
@@ -114,6 +184,10 @@ const flippedImage = image.transform(flipMatrix);
 ```
 
 ![Flipped image](./images/transformations/lennaFlipped.png)
+:::note
+ImageJS also has [`flip`](../Features/Geometry/Flip.md) function that allows to flip an image.
+Current tutorial just demonstrates the basic principle behind transformation of such kind.
+:::
 
 ### Translation
 
@@ -225,9 +299,8 @@ return image.transform(matrix);
 ![Rotated by center image](./images/transformations/lennaRotatedCenter.png)
 
 :::note
-Image-js also has `rotate()` and `transformRotate()` functions. `rotate()` function allows rotating an image by multiple of 90 degrees.
+Image-js also has [`rotate()`](../Features/Geometry/Rotate.md) and [`transformRotate()`](../Features/Geometry/Transform%20and%20Rotate.md) functions. `rotate()` function allows rotating an image by multiple of 90 degrees.
 `transformRotate()` allows rotating an image by any degree. It also allows choosing the axe of rotation. So, for rotation, you have other functions that allow you to perform it.
-Current tutorial just demonstrates the basic principle behind transformation of such kind.
 :::
 
 ## Projective Transformations
@@ -286,9 +359,9 @@ const sourcePoints = [
 
 // Get transformation matrix using 4 points and `getPerspectiveWarp` function.
 const projectionMatrix = getPerspectiveWarp(sourcePoints);
-const projectedImage = image.transform(matrix.matrix, {
-  width: matrix.width,
-  height: matrix.height,
+const projectedImage = image.transform(projectionMatrix.matrix, {
+  width: projectionMatrix.width,
+  height: projectionMatrix.height,
   inverse: true,
 });
 ```

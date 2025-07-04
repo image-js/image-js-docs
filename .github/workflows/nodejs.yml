@@ -14,3 +14,4 @@ jobs:
       npm-test-command: npm run build
       node-version-matrix: '[18]'
       upload-coverage: false
+      disable-test-package: true
