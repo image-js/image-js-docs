@@ -6,6 +6,8 @@ sidebar_position: 41
 
 _Returns a perspective transformation matrix from source points that transforms a quadrilateral._
 
+[Options and parameters of `getPerspectiveWarp` function](https://image-js.github.io/image-js-typescript/functions/getPerspectiveWarp.html)
+
 `getPerspectiveWarp` function takes 4 corner points (source quadrilateral) and then calculates the 3×3 perspective transformation matrix that allows removing [perspective distortion](https://en.wikipedia.org/wiki/Perspective_distortion).
 The function also returns width and height of the new image.
 If they were put as option's parameters it just returns indicated width and height, otherwise it calculates new width and height from given source points.
@@ -39,7 +41,7 @@ const projectedImage = image.transform(matrix.matrix, {
 
 ### Parameters and default values
 
-- `sourcePoints`
+- `pts`
 
 - `options`
 
