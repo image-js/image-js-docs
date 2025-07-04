@@ -42,6 +42,8 @@ where
 - $$(x', y',z')$$ is the output coordinate
 - $$A$$ is the affine transformation matrix
 
+It is worth mentioning that we will be working with 2D coordinates, so $$z$$ will be 1 in most cases.
+
 :::note
 
 ### Example of matrix multiplication
