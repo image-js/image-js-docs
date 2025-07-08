@@ -29,4 +29,5 @@ exif
 electrometric
 Grayscaling
 Avgs
-
+Collinearity
+mmul
