@@ -253,39 +253,8 @@ const combinedShearImage = image.transform(combinedShearMatrix);
 ### Complex Affine Transformations
 
 You can combine multiple transformations by multiplying matrices or applying them sequentially:
-For example, to rotate around the image center instead of the origin, combine translation with rotation:
-
-```ts
-const angle = Math.PI / 4; //45 degrees
-const center = image.getCoordinates('center');
-
-const cos = Math.cos(angle);
-const sin = Math.sin(angle);
-
-// Translate to origin, rotate, translate back
-const matrix = [
-  [cos, -sin, center.column * (1 - cos) + center.row * sin],
-  [sin, cos, center.row * (1 - cos) - center.column * sin],
-];
-
-return image.transform(matrix);
-```
-
-![Rotated by center image](./images/transformations/lennaRotatedCenter.png)
-
-:::note
-Image-js also has [`rotate()`](../Features/Geometry/Rotate.md) and [`transformRotate()`](../Features/Geometry/Transform%20and%20Rotate.md) functions. `rotate()` function allows rotating an image by multiple of 90 degrees.
-`transformRotate()` allows rotating an image by any degree. It also allows choosing the axe of rotation. So, for rotation, you have other functions that allow you to perform it.
-:::
-
-<details>
-<summary>
-<b> Example of matrix multiplication</b>
-</summary>
-As mentioned previously, to rotate an image around its center, you need to translate your image to the origin, rotate it, and translate it back to its original position.
-
-Performing these operations separately would require three different matrix multiplications on your image, which is computationally expensive. The optimal solution is to combine all three transformations into a single matrix by multiplying the transformation matrices together first, then applying the result to your image, as was shown in the previous example.
-
+For example, to rotate around the image center instead of the origin, combine translation with rotation. So, you need to translate the image to the center, rotate it and translate it back. You can obviously use a separate matrix for each of the transformations.
+But a more optimized approach is to create a matrix which combines all three transformations into one.
 To accomplish this, you can use the [`ml-matrix`](https://mljs.github.io/matrix/index.html 'link on ml-matrix api') package. It facilitates basic matrix operations in ImageJS, as well as more advanced operations like matrix inversion.
 
 Here's a step-by-step code example showing how to create a complex transformation matrix:
@@ -328,7 +297,12 @@ const rotateAroundCenterImage = image.transform(
 );
 ```
 
-</details>
+![Rotated by center image](./images/transformations/lennaRotatedCenter.png)
+
+:::note
+Image-js also has [`rotate()`](../Features/Geometry/Rotate.md) and [`transformRotate()`](../Features/Geometry/Transform%20and%20Rotate.md) functions. `rotate()` function allows rotating an image by multiple of 90 degrees.
+`transformRotate()` allows rotating an image by any degree. It also allows choosing the axe of rotation. So, for rotation, you have other functions that allow you to perform it.
+:::
 
 ## Projective Transformations
 

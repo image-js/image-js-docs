@@ -30,9 +30,6 @@ If 2x3 matrix is passed, the algorithm will consider it as [affine transformatio
 
 For more information take a look at the tutorial about [image transformations](../../Tutorials/Applying%20transform%20function%20on%20images.md)
 
-:::note
-`transform()` function can accept 2x3 as well as 3x3 matrix. If matrix's size is 2x3 that it becomes an affine transformation. This means that transformation happens on the same
-:::
 :::caution
 Matrix cannot be singular. Otherwise it cannot be inverted. Click [here](https://en.wikipedia.org/wiki/Invertible_matrix 'wikipedia link on invertible matrices') to learn more.
 :::
