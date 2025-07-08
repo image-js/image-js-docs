@@ -44,33 +44,6 @@ where
 
 It is worth mentioning that we will be working with 2D coordinates, so $$z$$ will be 1 in most cases.
 
-:::note
-
-### Example of matrix multiplication
-
-If you are interested to look a bit deeper into matrix multiplications, take a look at the [`ml-matrix`](https://mljs.github.io/matrix/index.html 'link on ml-matrix api') package.
-It facilitates basic matrix operations in ImageJS, as well as something more advanced like inverting a matrix.
-Here is a basic demo on how to upscale a pixel coordinate by 2 using `ml-matrix` library.
-
-```ts
-import { Matrix } from 'ml-matrix';
-
-const matrix = new Matrix([[10], [10], [1]]);
-
-const transform = new Matrix([
-  [2, 0, 0],
-  [0, 2, 0],
-  [0, 0, 1],
-]);
-
-const result = transform.mmul(matrix);
-/*
-gives [20,20,1] as a new coordinate of a pixel.
-*/
-```
-
-:::
-
 ## Types of transformation
 
 Here, we distinguish between two primary types of transformations:
@@ -304,6 +277,58 @@ return image.transform(matrix);
 Image-js also has [`rotate()`](../Features/Geometry/Rotate.md) and [`transformRotate()`](../Features/Geometry/Transform%20and%20Rotate.md) functions. `rotate()` function allows rotating an image by multiple of 90 degrees.
 `transformRotate()` allows rotating an image by any degree. It also allows choosing the axe of rotation. So, for rotation, you have other functions that allow you to perform it.
 :::
+
+<details>
+<summary>
+<b> Example of matrix multiplication</b>
+</summary>
+As mentioned previously, to rotate an image around its center, you need to translate your image to the origin, rotate it, and translate it back to its original position.
+
+Performing these operations separately would require three different matrix multiplications on your image, which is computationally expensive. The optimal solution is to combine all three transformations into a single matrix by multiplying the transformation matrices together first, then applying the result to your image, as was shown in the previous example.
+
+To accomplish this, you can use the [`ml-matrix`](https://mljs.github.io/matrix/index.html 'link on ml-matrix api') package. It facilitates basic matrix operations in ImageJS, as well as more advanced operations like matrix inversion.
+
+Here's a step-by-step code example showing how to create a complex transformation matrix:
+
+```ts
+import { Matrix } from 'ml-matrix';
+
+const angle = Math.PI / 4;
+const center = image.getCoordinates('center');
+
+const cos = Math.cos(angle);
+const sin = Math.sin(angle);
+// Step 1: Translate to center.
+const translateToOrigin = new Matrix([
+  [1, 0, center.column],
+  [0, 1, center.row],
+  [0, 0, 1],
+]);
+
+// Step 2: Rotation matrix
+const rotation = new Matrix([
+  [cos, -sin, 0],
+  [sin, cos, 0],
+  [0, 0, 1],
+]);
+
+// Step 3: Translate back
+const translateBack = new Matrix([
+  [1, 0, -center.column],
+  [0, 1, -center.row],
+  [0, 0, 1],
+]);
+
+const rotateAroundCenterMatrix = translateToOrigin
+  .mmul(rotation)
+  .mmul(translateBack);
+
+const rotateAroundCenterImage = image.transform(
+  rotateAroundCenterMatrix.to2DArray(),
+);
+```
+
+</details>
 
 ## Projective Transformations
 
