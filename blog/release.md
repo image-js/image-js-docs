@@ -126,7 +126,7 @@ High-quality image scaling is now available with [bicubic interpolation](https:/
 const resized = img.resize(800, 600, { interpolation: 'bicubic' });
 ```
 
-**Use case**: Better quality when upscaling images, especially for photographs.
+**Use case**: In many cases it gives a better quality when scaling images, especially for photographs.
 
 ### Canny Edge Detection
 
