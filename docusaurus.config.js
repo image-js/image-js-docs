@@ -94,10 +94,12 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          blogTitle: 'Docusaurus blog!',
+          blogDescription: 'A Docusaurus powered blog!',
+          postsPerPage: 'ALL',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/image-js/image-js-docs/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -132,6 +134,7 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://image-js.github.io/image-js-typescript/',
             label: 'API reference',
