@@ -2,7 +2,6 @@
 slug: Release of a new version
 title: Release Notes
 date: 2025-07-19
-tags: [release, v1, image-js]
 ---
 
 We're excited to announce the release of image-js-typescript, a complete rewrite of the popular image-js library. This new version brings TypeScript support and a more intuitive API while maintaining the powerful image processing capabilities you love.
@@ -73,7 +72,7 @@ const sobelX = img.derivative({ filter: 'sobel' });
 const sobelY = img.derivative({ filter: 'scharr' });
 ```
 
-This filter also now accepts only grayscale images, since filters like sobel or scharr are used mainly on grayscale images to detect edges.
+This filter also now accepts only grayscale images, since filters like Sobel or Scharr are used mainly on grayscale images to detect edges.
 
 ### Enhanced TypeScript Support
 
@@ -117,7 +116,7 @@ const matrix = getPerspectiveWarp(sourcePoints);
 const warped = img.transform(matrix);
 ```
 
-For more details visit our [tutorial](../docs/Tutorials/Applying%20transform%20function%20on%20images) on how image transformations work.
+For more details visit our [tutorial](/docs/Tutorials/Applying transform function on images.md) on how image transformations work.
 
 ### Bicubic Interpolation
 
@@ -131,7 +130,7 @@ const resized = img.resize(800, 600, { interpolation: 'bicubic' });
 
 ### Canny Edge Detection
 
-[Canny Edge Detector](../docs/Features/Morphology/Canny%20Edge%20Detector) is an advanced edge detection filter for computer vision applications:
+[Canny Edge Detector](https://en.wikipedia.org/wiki/Canny_edge_detector.md) is an advanced edge detection filter for computer vision applications:
 
 ```ts
 const edges = img.cannyEdgeDetector({
@@ -140,7 +139,7 @@ const edges = img.cannyEdgeDetector({
 });
 ```
 
-**Use case**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Canny%20Edge%20Detector.md).
+**Use case**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Canny Edge Detector.md).
 
 ### Prewitt filter
 
@@ -150,11 +149,11 @@ const edges = img.cannyEdgeDetector({
 const prewitt = img.derivative({ filter: 'prewitt' });
 ```
 
-**Use case**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Morphological%20Gradient).
+**Use case**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Morphological Gradient.md).
 
 ### Migration from deprecated methods:
 
-`warpingFourPoints` function has been deprecated.Now you have [`getPerspectiveWarp`](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix) function that returns a matrix that can be applied on an image of interest in a new `transform` function.
+`warpingFourPoints` function has been deprecated.Now you have [`getPerspectiveWarp`](../docs/Features/Geometry/Get Perspective Warp Matrix.md) function that returns a matrix that can be applied on an image of interest in a new `transform` function.
 
 ```ts
 // Before
@@ -165,7 +164,7 @@ const matrix = getPerspectiveWarp(corners);
 const warped = img.transform(matrix);
 ```
 
-**Use case**: Rectification of a perspective angle of an image. You can learn more about it [here](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix).
+**Use case**: Rectification of a perspective angle of an image. You can learn more about it [here](../docs/Features/Geometry/Get Perspective Warp Matrix.md).
 
 # 🗑️ Removed Features
 
@@ -182,7 +181,7 @@ The following deprecated features have been removed:
 
 # 🚀 Getting Started
 
-To get started with ImageJS, we recommend visiting our ["Get started"](../docs/Getting%20started) guide
+To get started with ImageJS, we recommend visiting our [\"Get started\"](../docs/Getting started.md) guide
 
 # 📚 Resources
 
