@@ -176,8 +176,8 @@ The following deprecated features have been removed:
 
 # 🔧 Compatibility & Requirements
 
-- Node.js: 16+ (previously 14+)
-- TypeScript: 4.5+ (if using TypeScript)
+- Node.js: 18+ (previously 14+)
+- TypeScript: 5.2.2+ (if using TypeScript)
 
 # 🚀 Getting Started
 
