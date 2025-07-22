@@ -72,7 +72,7 @@ const sobelX = img.derivative({ filter: 'sobel' });
 const sobelY = img.derivative({ filter: 'scharr' });
 ```
 
-This filter also now accepts only grayscale images, since filters like Sobel or Scharr are used mainly on grayscale images to detect edges.
+This filter now also accepts only grayscale images, since filters,like Sobel or Scharr, are used mainly on grayscale images to detect edges.
 
 ### Enhanced TypeScript Support
 
@@ -85,6 +85,8 @@ const pixel = img.getPixel(x, y); // any[]
 // After: strict typing
 const pixel = img.getPixel(x, y); // number[] with proper channel count
 ```
+
+This eliminates runtime type errors and provides better IntelliSense, autocomplete, and refactoring support in your IDE. Developers can now catch bugs at compile time rather than discovering them in production.
 
 ### Method Renaming
 
