@@ -26,7 +26,9 @@ This eliminates runtime type errors and provides better IntelliSense, autocomple
 
 ## ⚠️ Breaking changes
 
-### Loading and saving images
+### Images
+
+#### Loading and saving
 
 `load()` and `save()` have been replaced with dedicated functions `read()` and `write()`.
 
@@ -54,7 +56,7 @@ writeSync('newCat.jpg', img);
 
 The new approach allows for better TypeScript inference, smaller bundle sizes through tree-shaking, and clearer API design where I/O operations are separate from image manipulation.
 
-### Creating images
+#### Creating
 
 When creating a new image, unlike before, image's width and height must be specified.
 
@@ -68,6 +70,20 @@ const image2 = new Image(10, 10);
 ```
 
 This change makes the Image constructor more explicit by requiring you to specify the dimensions upfront, preventing potential errors from working with uninitialized or undefined-sized images
+
+#### Image position
+
+Images now include an `origin` property that tracks their position relative to their parent image. When you crop an image, the cropped section remembers where it came from in the original image.
+
+```ts
+const croppedImage = img.crop({
+  origin: { column: 10, row: 10 },
+  width: 10,
+  height: 10,
+});
+
+console.log(croppedImage.origin); // { column: 10, row: 10 }
+```
 
 ### Masks
 
@@ -86,6 +102,27 @@ const mask = new Mask(10, 10);
 `Mask` provides better type safety, clearer API, and optimized performance for binary operations.
 
 The new `Mask` class uses 1 byte per pixel (vs 8 pixels per byte), trading ~8x memory usage for significantly faster bit operations and simpler data manipulation.
+
+### Points
+
+Coordinates are now represented using `Point` objects instead of arrays. This change affects methods that require coordinate input like cropping, drawing, and pixel manipulation.
+
+```ts
+// Before
+const croppedImage = img.crop({
+  origin: [10, 10],
+  width: 10,
+  height: 10,
+});
+// After
+const croppedImage = img.crop({
+  origin: { column: 10, row: 10 },
+  width: 10,
+  height: 10,
+});
+```
+
+It is a more explicit and self-documenting code and it also eliminates confusion about array order (column vs row).
 
 ### Sobel and Scharr filters
 
@@ -143,12 +180,12 @@ The following deprecated features have been removed:
 - `countAlphaPixel()` - Use custom pixel counting with `getPixel()`
 - `paintLabels()` - Feature was removed due to dependency issues. We plan to add it back in the future updates.
 - `warpingFourPoints()` - Use `getPerspectiveWarp()` + `transform()`.
-- 32-bit color depth has been currently deprecated. We plan to add it back in the future updates as well.
-- `CMYK` and `HSL` color models have been deprecated. We plan to add it in the future updates.
-- `insert()` has been deprecated. We plan to add it in the future updates.
-- `abs()` has been deprecated. Currently 32-bit images are not supported.
-- `paintMasks()` has been deprecated. Use `paintMask()`+ `for` loop.
-- `mergeRois()` has been deprecated. We plan to add it in the future updates.
+- 32-bit color depth has been currently removed. We plan to add it back in the future updates as well.
+- `CMYK` and `HSL` color models have been removed.
+- `insert()` has been removed.
+- `abs()` has been removed.
+- `paintMasks()` has been removed. Use `paintMask()`+ `for` loop.
+- `mergeRois()` has been removed.
 
 ## 🆕 New Features
 
