@@ -1,6 +1,6 @@
 ---
-slug: Release of a new version
-title: Release Notes
+slug: v1-release
+title: Release notes v1
 date: 2025-07-19
 ---
 
@@ -10,11 +10,25 @@ We're excited to announce the release of a new major version of ImageJS. This ve
 
 # API Changes
 
+## 🔷 TypeScript Support
+
+All APIs now have strict TypeScript definitions:
+
+```ts
+// Before: loose typing
+const pixel = img.getPixel(x, y); // any[]
+
+// After: strict typing
+const pixel = img.getPixel(x, y); // number[] with proper channel count
+```
+
+This eliminates runtime type errors and provides better IntelliSense, autocomplete, and refactoring support in your IDE. Developers can now catch bugs at compile time rather than discovering them in production.
+
 ## ⚠️ Breaking changes
 
-### Changes in the way images are loaded and created
+### Loading and saving images
 
-Static method `load()` for reading and method `save()` for writing images have been replaced with dedicated functions `read()` and `write()`.
+`load()` and `save()` have been replaced with dedicated functions `read()` and `write()`.
 
 ```ts
 //Before
@@ -40,9 +54,24 @@ writeSync('newCat.jpg', img);
 
 The new approach allows for better TypeScript inference, smaller bundle sizes through tree-shaking, and clearer API design where I/O operations are separate from image manipulation.
 
-### Distinction between Image and Mask objects
+### Creating images
 
-Binary images are now handled by a dedicated Mask class instead of Image with `kind: 'BINARY'`.
+When creating a new image, unlike before, image's width and height must be specified.
+
+```ts
+import { Image } from 'image-js';
+
+// Would work before, will throw an error in a new version.
+const image = new Image();
+// Works fine.
+const image2 = new Image(10, 10);
+```
+
+This change makes the Image constructor more explicit by requiring you to specify the dimensions upfront, preventing potential errors from working with uninitialized or undefined-sized images
+
+### Masks
+
+Binary images are now handled by a dedicated `Mask` class instead of Image with `kind: 'BINARY'`.
 
 ```ts
 // Before
@@ -54,13 +83,13 @@ const mask = new Image(10, 10, { kind: 'BINARY' });
 const mask = new Mask(10, 10);
 ```
 
-Dedicated `Mask` class provides better type safety, clearer API, and optimized performance for binary operations.
+`Mask` provides better type safety, clearer API, and optimized performance for binary operations.
 
 The new `Mask` class uses 1 byte per pixel (vs 8 pixels per byte), trading ~8x memory usage for significantly faster bit operations and simpler data manipulation.
 
-### Modification of Sobel and Scharr filters
+### Sobel and Scharr filters
 
-[Sobel](https://en.wikipedia.org/wiki/Sobel_operator),[Scharr](https://en.wikipedia.org/wiki/Sobel_operator#Alternative_operators) filters are now combined into a single `derivative()` method.
+[Sobel](https://en.wikipedia.org/wiki/Sobel_operator), [Scharr](https://en.wikipedia.org/wiki/Sobel_operator#Alternative_operators) filters are now combined into a single `derivative()` method.
 
 ```ts
 // Before
@@ -72,21 +101,7 @@ const sobelX = img.derivative({ filter: 'sobel' });
 const sobelY = img.derivative({ filter: 'scharr' });
 ```
 
-This filter now also accepts only grayscale images, since filters,like Sobel or Scharr, are used mainly on grayscale images to detect edges.
-
-### Enhanced TypeScript Support
-
-All APIs now have strict TypeScript definitions:
-
-```ts
-ts; // Before: loose typing
-const pixel = img.getPixel(x, y); // any[]
-
-// After: strict typing
-const pixel = img.getPixel(x, y); // number[] with proper channel count
-```
-
-This eliminates runtime type errors and provides better IntelliSense, autocomplete, and refactoring support in your IDE. Developers can now catch bugs at compile time rather than discovering them in production.
+This filter now also accepts only grayscale images, since filters, like Sobel or Scharr, are used mainly on grayscale images to detect edges.
 
 ### Method Renaming
 
@@ -110,20 +125,34 @@ Several methods have been renamed for consistency:
 
 `img.getChannel()` ➡️ `img.extractChannel()`
 
-Consistent naming follows common conventions (draw\* for rendering, clone for copying objects).
+Consistent naming follows common conventions ("draw\*" for rendering, "clone" for copying objects).
+
+### Compatibility requirements
+
+- Node.js: 18+ (previously 14+)
+- TypeScript: 5.2.2+ (if using TypeScript)
+
+### Removed Features
+
+The following deprecated features have been removed:
+
+- `countAlphaPixel()` - Use custom pixel counting with `getPixel()`
+- `paintLabels()` - Feature was removed due to dependency issues. We plan to add it back in the future updates.
+- `warpingFourPoints()` - Use `getPerspectiveWarp()` + `transform()`.
+- 32-bit color depth has been currently deprecated. We plan to add it back in the future updates as well.
 
 ## 🆕 New Features
 
-### `transform()` function
+### `transform()`
 
-The `transform()` function allows applying transformation matrix on the image. Which means that the image can now be translated or sheared or warped based on the matrix that the user entered. `transform()` function accepts both 2x3 and 3x3 matrices, depending on whether you want an affine transformation or a perspective one.
+`transform()` allows applying a transformation matrix on the image. Which means that the image can now be translated, sheared, or warped based on the matrix that the user entered. `transform()` accepts both 2x3 and 3x3 matrices, depending on whether you want an affine transformation or a perspective one.
 
 ```ts
 const matrix = getPerspectiveWarp(sourcePoints);
 const warped = img.transform(matrix);
 ```
 
-For more details visit our [tutorial](/docs/Tutorials/Applying%20transform%20function%20on%20images) on how image transformations work.
+For more details, visit our [tutorial](/docs/Tutorials/Applying%20transform%20function%20on%20images) on how image transformations work.
 
 ### Bicubic Interpolation
 
@@ -137,7 +166,7 @@ const resized = img.resize(800, 600, { interpolation: 'bicubic' });
 
 ### Canny Edge Detection
 
-[Canny Edge Detector](https://en.wikipedia.org/wiki/Canny_edge_detector) is an advanced edge detection filter for computer vision applications:
+[The Canny Edge Detector](https://en.wikipedia.org/wiki/Canny_edge_detector) is an advanced edge detection filter for computer vision applications:
 
 ```ts
 const edges = img.cannyEdgeDetector({
@@ -158,9 +187,9 @@ const prewitt = img.derivative({ filter: 'prewitt' });
 
 **Use case**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Morphological%20Gradient).
 
-### Migration from deprecated methods:
+### Migration from deprecated methods
 
-`warpingFourPoints()` function has been deprecated. Now you have [`getPerspectiveWarp()`](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix) function that returns a matrix that can be applied on an image of interest in a new `transform()` function.
+`warpingFourPoints()` has been deprecated. Now you have [`getPerspectiveWarp()`](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix) that returns a matrix that can be applied on the image of interest in a new `transform()`.
 
 ```ts
 // Before
@@ -173,23 +202,9 @@ const warped = img.transform(matrix);
 
 **Use case**: Rectification of a perspective angle of an image. You can learn more about it [here](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix).
 
-## 🗑️ Removed Features
-
-The following deprecated features have been removed:
-
-- `countAlphaPixel()` - Use custom pixel counting with `getPixel()`
-- `paintLabels()` - Feature was removed due to dependency issues. We plan to add it back in the future updates.
-- `warpingFourPoints()` - Use `getPerspectiveWarp()` + `transform()`.
-- 32-bit color depth has been currently deprecated. We plan to add it back in the future updates as well.
-
-## 🔧 Compatibility & Requirements
-
-- Node.js: 18+ (previously 14+)
-- TypeScript: 5.2.2+ (if using TypeScript)
-
 ## 🚀 Getting Started
 
-To get started with ImageJS, we recommend visiting our [\"Get started\"](../docs/Getting%20started) guide
+To get started with ImageJS, we recommend visiting our ["Get started"](../docs/Getting%20started) guide
 
 ## 📚 Resources
 
