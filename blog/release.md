@@ -125,6 +125,10 @@ Several methods have been renamed for consistency:
 
 `img.getChannel()` ➡️ `img.extractChannel()`
 
+`img.rotateLeft()` and `img.rotateRight()` ➡️ `img.rotate()`
+
+`img.flipX()` and `img.flipY()` ➡️ `img.flip()`
+
 Consistent naming follows common conventions ("draw\*" for rendering, "clone" for copying objects).
 
 ### Compatibility requirements
@@ -140,6 +144,11 @@ The following deprecated features have been removed:
 - `paintLabels()` - Feature was removed due to dependency issues. We plan to add it back in the future updates.
 - `warpingFourPoints()` - Use `getPerspectiveWarp()` + `transform()`.
 - 32-bit color depth has been currently deprecated. We plan to add it back in the future updates as well.
+- `CMYK` and `HSL` color models have been deprecated. We plan to add it in the future updates.
+- `insert()` has been deprecated. We plan to add it in the future updates.
+- `abs()` has been deprecated. Currently 32-bit images are not supported.
+- `paintMasks()` has been deprecated. Use `paintMask()`+ `for` loop.
+- `mergeRois()` has been deprecated. We plan to add it in the future updates.
 
 ## 🆕 New Features
 
@@ -201,6 +210,21 @@ const warped = img.transform(matrix);
 ```
 
 **Use case**: Rectification of a perspective angle of an image. You can learn more about it [here](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix).
+
+### `merge()`
+
+`merge()` allows combining several one-channel images into one image. It is the opposite of `split()`:
+
+```ts
+// Creates 3  grayscale images;
+const img2 = new Image(2, 2, { colorModel: 'GREY', bitDepth: 8 }).fill(0);
+const img1 = new Image(2, 2, { colorModel: 'GREY', bitDepth: 8 }).fill(0);
+const img3 = new Image(2, 2, { colorModel: 'GREY', bitDepth: 8 }).fill(255);
+// Creates RGB image. In this case, it creates blue 2x2 image.
+const img4 = merge([img1, img2, img3]);
+```
+
+**Use case**: Combination of multiple channels into one image after they were.
 
 ## 🚀 Getting Started
 
