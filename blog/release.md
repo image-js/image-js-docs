@@ -4,17 +4,17 @@ title: Release Notes
 date: 2025-07-19
 ---
 
-We're excited to announce the release of image-js-typescript, a complete rewrite of the popular image-js library. This new version brings TypeScript support and a more intuitive API while maintaining the powerful image processing capabilities you love.
+We're excited to announce the release of a new major version of ImageJS. This version brings TypeScript support and a more intuitive API while maintaining the powerful image processing capabilities you love.
 
-<!--- truncate --->
+<!-- truncate -->
 
 # API Changes
 
 ## ⚠️ Breaking changes
 
-### Changed the way images are loaded and created
+### Changes in the way images are loaded and created
 
-Static method `load` for reading and method `save` for writing images have been replaced with dedicated functions `read` and `write`.
+Static method `load()` for reading and method `save()` for writing images have been replaced with dedicated functions `read()` and `write()`.
 
 ```ts
 //Before
@@ -30,7 +30,7 @@ const img2 = await read('cat.jpg');
 await write('newCat.jpg', img);
 ```
 
-There are also synchronous versions of these functions.(add more explanation)
+There are also synchronous versions of these functions.
 
 ```ts
 import { readSync, writeSync } from 'image-js';
@@ -54,9 +54,9 @@ const mask = new Image(10, 10, { kind: 'BINARY' });
 const mask = new Mask(10, 10);
 ```
 
-Dedicated Mask class provides better type safety, clearer API, and optimized performance for binary operations.
+Dedicated `Mask` class provides better type safety, clearer API, and optimized performance for binary operations.
 
-The new Mask class uses 1 byte per pixel (vs 8 pixels per byte), trading ~8x memory usage for significantly faster bit operations and simpler data manipulation.
+The new `Mask` class uses 1 byte per pixel (vs 8 pixels per byte), trading ~8x memory usage for significantly faster bit operations and simpler data manipulation.
 
 ### Modification of Sobel and Scharr filters
 
@@ -92,16 +92,21 @@ Several methods have been renamed for consistency:
 
 **Drawing methods**:
 
-img.paintPolyline() → img.drawPolyline()
-img.paintPolygon() → img.drawPolygon()
-img.paintCircle() → img.drawCircle()
+`img.paintPolyline()` ➡️ `img.drawPolyline()`
+
+`img.paintPolygon()` ➡️ `img.drawPolygon()`
+
+`img.paintCircle()` ➡️ `img.drawCircle()`
 
 **Other methods**:
 
-img.copy() → img.clone()
-img.clearBit() → img.setBit()
-img.getLocalMaxima() → img.getExtrema()
-img.getChannel() → img.extractChannel()
+`img.copy()` ➡️ `img.clone()`
+
+`img.clearBit()` ➡️ `img.setBit()`
+
+`img.getLocalMaxima()` ➡️ `img.getExtrema()`
+
+`img.getChannel()` ➡️ `img.extractChannel()`
 
 Consistent naming follows common conventions (draw\* for rendering, clone for copying objects).
 
@@ -109,14 +114,14 @@ Consistent naming follows common conventions (draw\* for rendering, clone for co
 
 ### `transform()` function
 
-The `transform` function allows applying transformation matrix on the image. Which means that the image can now be translated or sheared or warped based on the matrix that the user entered. `transform()` function accepts both 2x3 and 3x3 matrices, depending on whether you want an affine transformation or a perspective one.
+The `transform()` function allows applying transformation matrix on the image. Which means that the image can now be translated or sheared or warped based on the matrix that the user entered. `transform()` function accepts both 2x3 and 3x3 matrices, depending on whether you want an affine transformation or a perspective one.
 
 ```ts
 const matrix = getPerspectiveWarp(sourcePoints);
 const warped = img.transform(matrix);
 ```
 
-For more details visit our [tutorial](/docs/Tutorials/Applying transform function on images.md) on how image transformations work.
+For more details visit our [tutorial](/docs/Tutorials/Applying%20transform%20function%20on%20images) on how image transformations work.
 
 ### Bicubic Interpolation
 
@@ -130,7 +135,7 @@ const resized = img.resize(800, 600, { interpolation: 'bicubic' });
 
 ### Canny Edge Detection
 
-[Canny Edge Detector](https://en.wikipedia.org/wiki/Canny_edge_detector.md) is an advanced edge detection filter for computer vision applications:
+[Canny Edge Detector](https://en.wikipedia.org/wiki/Canny_edge_detector) is an advanced edge detection filter for computer vision applications:
 
 ```ts
 const edges = img.cannyEdgeDetector({
@@ -139,7 +144,7 @@ const edges = img.cannyEdgeDetector({
 });
 ```
 
-**Use case**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Canny Edge Detector.md).
+**Use case**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Canny%20Edge%20Detector).
 
 ### Prewitt filter
 
@@ -149,11 +154,11 @@ const edges = img.cannyEdgeDetector({
 const prewitt = img.derivative({ filter: 'prewitt' });
 ```
 
-**Use case**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Morphological Gradient.md).
+**Use case**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Morphological%20Gradient).
 
 ### Migration from deprecated methods:
 
-`warpingFourPoints` function has been deprecated.Now you have [`getPerspectiveWarp`](../docs/Features/Geometry/Get Perspective Warp Matrix.md) function that returns a matrix that can be applied on an image of interest in a new `transform` function.
+`warpingFourPoints()` function has been deprecated. Now you have [`getPerspectiveWarp()`](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix) function that returns a matrix that can be applied on an image of interest in a new `transform()` function.
 
 ```ts
 // Before
@@ -164,37 +169,36 @@ const matrix = getPerspectiveWarp(corners);
 const warped = img.transform(matrix);
 ```
 
-**Use case**: Rectification of a perspective angle of an image. You can learn more about it [here](../docs/Features/Geometry/Get Perspective Warp Matrix.md).
+**Use case**: Rectification of a perspective angle of an image. You can learn more about it [here](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix).
 
-# 🗑️ Removed Features
+## 🗑️ Removed Features
 
 The following deprecated features have been removed:
 
-- `countAlphaPixel()` - Use custom pixel counting with getPixel()
-- `paintLabels()` - Feature was removed due to poor performance.
+- `countAlphaPixel()` - Use custom pixel counting with `getPixel()`
+- `paintLabels()` - Feature was removed due to dependency issues. We plan to add it back in the future updates.
 - `warpingFourPoints()` - Use `getPerspectiveWarp()` + `transform()`.
+- 32-bit color depth has been currently deprecated. We plan to add it back in the future updates as well.
 
-# 🔧 Compatibility & Requirements
+## 🔧 Compatibility & Requirements
 
 - Node.js: 18+ (previously 14+)
 - TypeScript: 5.2.2+ (if using TypeScript)
 
-# 🚀 Getting Started
+## 🚀 Getting Started
 
-To get started with ImageJS, we recommend visiting our [\"Get started\"](../docs/Getting started.md) guide
+To get started with ImageJS, we recommend visiting our [\"Get started\"](../docs/Getting%20started) guide
 
-# 📚 Resources
+## 📚 Resources
 
 - [API Documentation](https://image-js.github.io/image-js-typescript/)
 - [Examples and Tutorials](https://image-js-docs.pages.dev/)
 - [GitHub Repository](https://github.com/image-js/image-js-typescript)
 
-# 🤝 Contributing
+## 🤝 Contributing
 
-We welcome contributions! The new TypeScript codebase makes it easier than ever to contribute. Check out our contributing guide to get started.
+We welcome contributions! The new TypeScript codebase makes it easier than ever to contribute.
 
-# 🙏 Acknowledgments
+## 🙏 Acknowledgments
 
 Special thanks to all contributors who made this release possible and to the community for their feedback and support during the development process.
-
-Ready to upgrade? Check out our migration guide to get started with image-js-typescript today!

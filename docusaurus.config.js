@@ -96,7 +96,8 @@ const config = {
           showReadingTime: true,
           blogTitle: 'Docusaurus blog!',
           blogDescription: 'A Docusaurus powered blog!',
-          postsPerPage: 'ALL',
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: 'https://github.com/image-js/image-js-docs/tree/main/',
