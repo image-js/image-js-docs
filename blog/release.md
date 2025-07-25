@@ -1,7 +1,7 @@
 ---
 slug: v1-release
 title: Release notes v1
-date: 2025-07-19
+date: 2025-07-25
 ---
 
 We're excited to announce the release of a new major version of ImageJS. This version brings TypeScript support and a more intuitive API while maintaining the powerful image processing capabilities you love.
@@ -71,9 +71,26 @@ const image2 = new Image(10, 10);
 
 This change makes the Image constructor more explicit by requiring you to specify the dimensions upfront, preventing potential errors from working with uninitialized or undefined-sized images
 
-#### Image position
+#### Coordinate System Changes
 
-Images now include an `origin` property that tracks their position relative to their parent image. When you crop an image, the cropped section remembers where it came from in the original image.
+Coordinates are now represented using `Point` objects instead of arrays. This change affects methods that require coordinate input like cropping, drawing, and pixel manipulation.
+
+```ts
+// Before
+const croppedImage = img.crop({
+  origin: [10, 10],
+  width: 10,
+  height: 10,
+});
+// After
+const croppedImage = img.crop({
+  origin: { column: 10, row: 10 },
+  width: 10,
+  height: 10,
+});
+```
+
+Images also include an `origin` that tracks their position relative to their parent image. When you crop an image, the cropped section remembers where it came from in the original image.
 
 ```ts
 const croppedImage = img.crop({
@@ -84,6 +101,8 @@ const croppedImage = img.crop({
 
 console.log(croppedImage.origin); // { column: 10, row: 10 }
 ```
+
+It is a more explicit and self-documenting code.It also eliminates confusion about array order (column vs row).
 
 ### Masks
 
@@ -104,25 +123,6 @@ const mask = new Mask(10, 10);
 The new `Mask` class uses 1 byte per pixel (vs 8 pixels per byte), trading ~8x memory usage for significantly faster bit operations and simpler data manipulation.
 
 ### Points
-
-Coordinates are now represented using `Point` objects instead of arrays. This change affects methods that require coordinate input like cropping, drawing, and pixel manipulation.
-
-```ts
-// Before
-const croppedImage = img.crop({
-  origin: [10, 10],
-  width: 10,
-  height: 10,
-});
-// After
-const croppedImage = img.crop({
-  origin: { column: 10, row: 10 },
-  width: 10,
-  height: 10,
-});
-```
-
-It is a more explicit and self-documenting code and it also eliminates confusion about array order (column vs row).
 
 ### Sobel and Scharr filters
 
@@ -152,9 +152,15 @@ Several methods have been renamed for consistency:
 
 `img.paintCircle()` ➡️ `img.drawCircle()`
 
-**Other methods**:
+**Stack methods**
 
-`img.copy()` ➡️ `img.clone()`
+`stack.getMinImage()` ➡️ `stack.minImage()`
+
+`stack.getMinImage()` ➡️ `stack.maxImage()`
+
+`stack.getAverageImage()` ➡️ `stack.meanImage()`
+
+**Other methods**:
 
 `img.clearBit()` ➡️ `img.setBit()`
 
@@ -162,9 +168,13 @@ Several methods have been renamed for consistency:
 
 `img.getChannel()` ➡️ `img.extractChannel()`
 
-`img.rotateLeft()` and `img.rotateRight()` ➡️ `img.rotate()`
+`img.rotateLeft()` & `img.rotateRight()` ➡️ `img.rotate()`
 
-`img.flipX()` and `img.flipY()` ➡️ `img.flip()`
+`img.flipX()` & `img.flipY()` ➡️ `img.flip()`
+
+`img.colorDepth()` ➡️ `img.convertBitDepth()`
+
+`img.fromWatershed()` ➡️ `img.watershed()`
 
 Consistent naming follows common conventions ("draw\*" for rendering, "clone" for copying objects).
 
@@ -186,6 +196,9 @@ The following deprecated features have been removed:
 - `abs()` has been removed.
 - `paintMasks()` has been removed. Use `paintMask()`+ `for` loop.
 - `mergeRois()` has been removed.
+- `clearBit()` and `toggleBit()` have been removed, due to changes in `Mask`
+  data representation (see ["Masks"](#masks)).
+- `colsInfo()` and `rowsInfo()` in `Roi` have been removed.
 
 ## 🆕 New Features
 
@@ -250,18 +263,90 @@ const warped = img.transform(matrix);
 
 ### `merge()`
 
-`merge()` allows combining several one-channel images into one image. It is the opposite of `split()`:
+`merge()`is the opposite of `split()`. It allows combining several one-channel images into one multi-channel image:
 
 ```ts
 // Creates 3  grayscale images;
-const img2 = new Image(2, 2, { colorModel: 'GREY', bitDepth: 8 }).fill(0);
 const img1 = new Image(2, 2, { colorModel: 'GREY', bitDepth: 8 }).fill(0);
+const img2 = new Image(2, 2, { colorModel: 'GREY', bitDepth: 8 }).fill(0);
 const img3 = new Image(2, 2, { colorModel: 'GREY', bitDepth: 8 }).fill(255);
 // Creates RGB image. In this case, it creates blue 2x2 image.
 const img4 = merge([img1, img2, img3]);
 ```
 
-**Use case**: Combination of multiple channels into one image after they were.
+**Use case**: Combination of multiple channels into one image after they were modified.
+
+### `Stack` features
+
+The Stack class has been significantly expanded with new methods for batch processing and statistical analysis of image collections.
+
+#### Array-like Operations
+
+A user can now filter images based on custom criteria using `filter()`:
+
+```ts
+// Create sample images
+const img1 = new Image(2, 2, { colorModel: 'GREY', bitDepth: 8 }).fill(0);
+const img2 = new Image(2, 2, { colorModel: 'GREY', bitDepth: 8 }).fill(0);
+const img3 = new Image(2, 2, { colorModel: 'GREY', bitDepth: 8 }).fill(255);
+
+const stack = new Stack([img1, img2, img3]);
+
+// Filter images where top-left pixel is white (255)
+const brightImages = stack.filter((img) => img.getValue(0, 0, 0) === 255);
+// Result: [img3]
+```
+
+One can also apply the same operation to every image in the stack with `map()`:
+
+```ts
+// Set top-left corner to gray (125) on all images
+const modifiedStack = stack.map((img) => {
+  img.setValue(0, 0, 0, 125);
+  return img;
+});
+```
+
+#### Statistical Operations
+
+It is now possible to generate a median image from the entire stack - useful for noise reduction and background subtraction:
+
+```ts
+const medianImage = stack.medianImage();
+```
+
+or create a cumulative sum of all images in the stack:
+
+```ts
+const summedImage = stack.sum();
+```
+
+Access specific pixel values from any image in the stack using two convenient methods:
+
+_By Coordinates_
+
+```ts
+const stackIndex = 1; // Second image in stack.
+const row = 0;
+const column = 0;
+const channel = 0;
+
+// Get pixel value at specific coordinates.
+const pixelValue = stack.getValue(stackIndex, row, column, channel);
+```
+
+_By Linear Index_
+
+```ts
+const stackIndex = 1;
+const pixelIndex = row * image.width + column; // Convert 2D to 1D index.
+const channel = 0;
+
+// Get the same pixel value using linear indexing.
+const pixelValue = stack.getValueByIndex(stackIndex, pixelIndex, channel);
+```
+
+**Use Cases**: Time-lapse analysis, scientific imaging.
 
 ## 🚀 Getting Started
 
