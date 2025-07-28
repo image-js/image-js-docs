@@ -73,12 +73,13 @@ This change makes the Image constructor more explicit by requiring you to specif
 
 #### Coordinate System Changes
 
-Coordinates are now represented using `Point` objects instead of arrays. This change affects methods that require coordinate input like cropping, drawing, and pixel manipulation.
+Coordinates are now represented using `Point` objects instead of arrays. This change affects methods that require coordinate input like cropping, drawing, pixel manipulation etc.
 
 ```ts
 // Before
 const croppedImage = img.crop({
-  origin: [10, 10],
+  x:10,
+  y:10
   width: 10,
   height: 10,
 });
@@ -90,7 +91,7 @@ const croppedImage = img.crop({
 });
 ```
 
-Images also include an `origin` that tracks their position relative to their parent image. When you crop an image, the cropped section remembers where it came from in the original image.
+Images also include an `origin` that tracks their position relative to their parent's `origin`. When you crop an image, the cropped section remembers where it came from in the original image.
 
 ```ts
 const croppedImage = img.crop({
@@ -102,7 +103,7 @@ const croppedImage = img.crop({
 console.log(croppedImage.origin); // { column: 10, row: 10 }
 ```
 
-It is a more explicit and self-documenting code.It also eliminates confusion about array order (column vs row).
+It is a more explicit and self-documenting code. It also eliminates confusion about array order (column vs row).
 
 ### Masks
 
@@ -122,7 +123,34 @@ const mask = new Mask(10, 10);
 
 The new `Mask` class uses 1 byte per pixel (vs 8 pixels per byte), trading ~8x memory usage for significantly faster bit operations and simpler data manipulation.
 
-### Points
+### Regions of Interest
+
+API for handling of regions of interest has also been changed.
+ROI creation methods like `fromMask()` and `fromWatershed()` are now standalone functions `fromMask()` and `watershed()`.
+
+```ts
+//Before
+import { Image } from 'image-js';
+
+const roiManager = mask.getRoiManager();
+roiManager.fromMask(mask);
+const rois = roiManager.getRois();
+```
+
+```ts
+//After
+import { Image, fromMask } from 'image-js';
+
+const roiManager = fromMask(mask);
+const rois = roiManager.getRois();
+```
+
+This simplifies the process of creating a map of regions of interest and eliminates the need for a separate initialization step, providing a more direct and functional approach to ROI creation.
+
+For more information, please, visit these tutorials:
+
+- [Image segmentation with `threshold()` and `fromMask()`](../docs/Tutorials/Image%20segmentation%20with%20threshold)
+- [Image segmentation with `watershed()`](../docs/Tutorials/Image%20segmentation%20with%20watershed)
 
 ### Sobel and Scharr filters
 
@@ -174,9 +202,7 @@ Several methods have been renamed for consistency:
 
 `img.colorDepth()` ➡️ `img.convertBitDepth()`
 
-`img.fromWatershed()` ➡️ `img.watershed()`
-
-Consistent naming follows common conventions ("draw\*" for rendering, "clone" for copying objects).
+`img.mask()` ➡️ `img.threshold()`
 
 ### Compatibility requirements
 
@@ -187,18 +213,29 @@ Consistent naming follows common conventions ("draw\*" for rendering, "clone" fo
 
 The following deprecated features have been removed:
 
+#### Images
+
 - `countAlphaPixel()` - Use custom pixel counting with `getPixel()`
-- `paintLabels()` - Feature was removed due to dependency issues. We plan to add it back in the future updates.
+- `paintLabels()` and `roi.paint()` - Features were removed due to dependency issues. We plan to add it back in the future updates.
 - `warpingFourPoints()` - Use `getPerspectiveWarp()` + `transform()`.
 - 32-bit color depth has been currently removed. We plan to add it back in the future updates as well.
 - `CMYK` and `HSL` color models have been removed.
 - `insert()` has been removed.
 - `abs()` has been removed.
 - `paintMasks()` has been removed. Use `paintMask()`+ `for` loop.
-- `mergeRois()` has been removed.
 - `clearBit()` and `toggleBit()` have been removed, due to changes in `Mask`
   data representation (see ["Masks"](#masks)).
-- `colsInfo()` and `rowsInfo()` in `Roi` have been removed.
+
+  #### ROIs and its management
+
+- `colsInfo()` and `rowsInfo()` have been removed.
+- `fromPoints()` has been removed.
+- `fromMaxima()` has been removed.
+- `fromMaskConnectedComponentLabelingAlgorithm()` and `getAnalysisMasks()` have been removed.
+- `findCorrespondingRoi()` has been removed.
+- `resetPainted()` has been removed.
+- `mergeRoi()` and `mergeRois()` have been removed.
+- `minX`,`minY`,`meanX`,`meanY`,`maxX`,`maxY` have been removed. Use ROI's `position`, combined with its `width` and `height`.
 
 ## 🆕 New Features
 
@@ -248,7 +285,7 @@ const prewitt = img.derivative({ filter: 'prewitt' });
 
 ### Migration from deprecated methods
 
-`warpingFourPoints()` has been deprecated. Now you have [`getPerspectiveWarp()`](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix) that returns a matrix that can be applied on the image of interest in a new `transform()`.
+`warpingFourPoints()` has been removed. Now you have [`getPerspectiveWarp()`](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix) that returns a matrix that can be applied on the image of interest in a new `transform()`.
 
 ```ts
 // Before
