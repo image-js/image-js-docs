@@ -506,7 +506,7 @@ const pixelValue = stack.getValueByIndex(stackIndex, pixelIndex, channel);
 ### Image comparison features
 
 ImageJS now has several methods to check feature similarities between two images. For instance, let's take `computeSsim()`.
-SSIM (Structural Similarity Index) is a value between -1 and 1 that measures how similar two images are in terms of:
+SSIM ([Structural Similarity Index](https://en.wikipedia.org/wiki/Structural_similarity_index_measure)) is a value between -1 and 1 that measures how similar two images are in terms of:
 
 - Luminance
 
