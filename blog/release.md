@@ -224,6 +224,8 @@ Several methods have been renamed for consistency:
 
 `img.convolution()` ➡️ `img.directConvolution()`
 
+`img.getBestMatch()` ➡️ `alignMinDifference()`
+
 ### Compatibility requirements
 
 - Node.js: 18+ (previously 14+)
@@ -250,7 +252,7 @@ The following deprecated features have been removed:
 - `histograms()` and `colorHistogram()` have been removed.
 - `getPixelGrid()` has been removed.
 - `getClosestCommonParent()` has been removed.
-- `getBestMatch()`,`getSimilarity()` and `getIntersection()` have been removed.
+- `getSimilarity()` and `getIntersection()` have been removed.
 
 #### ROIs and its management
 
