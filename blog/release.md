@@ -91,18 +91,6 @@ const croppedImage = img.crop({
 });
 ```
 
-Images also include an `origin` that tracks their position relative to their parent's `origin`. When you crop an image, the cropped section remembers where it came from in the original image.
-
-```ts
-const croppedImage = img.crop({
-  origin: { column: 10, row: 10 },
-  width: 10,
-  height: 10,
-});
-
-console.log(croppedImage.origin); // { column: 10, row: 10 }
-```
-
 It is a more explicit and self-documenting code. It also eliminates confusion about array order (column vs row).
 
 ### Masks
@@ -188,9 +176,33 @@ Several methods have been renamed for consistency:
 
 `stack.getAverageImage()` ➡️ `stack.meanImage()`
 
-**Other methods**:
+**Pixel and value getters/setters**:
 
-`img.clearBit()` ➡️ `img.setBit()`
+`img.getBitXY()` ➡️ `mask.getBit()`
+
+`img.getBit()` ➡️ `mask.getBitByIndex()`
+
+`img.getPixelXY()` ➡️ `img.getPixel()`
+
+`img.getPixel()` ➡️ `img.getPixelByIndex()`
+
+`img.getValueXY()` ➡️ `img.getValue()`
+
+`img.getValue()` ➡️ `img.getValueByIndex()`
+
+`img.setBitXY()` ➡️ `mask.setBit()`
+
+`img.setBit()` ➡️ `mask.setBitByIndex()`
+
+`img.setPixelXY()` ➡️ `img.setPixel()`
+
+`img.setPixel()` ➡️ `img.setPixelByIndex()`
+
+`img.setValueXY()` ➡️ `img.setValue()`
+
+`img.setValue()` ➡️ `img.setValueByIndex()`
+
+**Other methods**:
 
 `img.getLocalMaxima()` ➡️ `img.getExtrema()`
 
@@ -204,6 +216,14 @@ Several methods have been renamed for consistency:
 
 `img.mask()` ➡️ `img.threshold()`
 
+`img.cannyEdge()` ➡️ `img.cannyEdgeDetector()`
+
+`img.blurFilter()` ➡️ `img.blur()`
+
+`img.insert()` ➡️ `img.copyTo()`
+
+`img.convolution()` ➡️ `img.directConvolution()`
+
 ### Compatibility requirements
 
 - Node.js: 18+ (previously 14+)
@@ -216,17 +236,23 @@ The following deprecated features have been removed:
 #### Images
 
 - `countAlphaPixel()` - Use custom pixel counting with `getPixel()`
-- `paintLabels()` and `roi.paint()` - Features were removed due to dependency issues. We plan to add it back in the future updates.
+- `paintLabels()` and `roi.paint()` - Features have been removed due to dependency issues. We plan to add it back in the future updates.
 - `warpingFourPoints()` - Use `getPerspectiveWarp()` + `transform()`.
 - 32-bit color depth has been currently removed. We plan to add it back in the future updates as well.
 - `CMYK` and `HSL` color models have been removed.
-- `insert()` has been removed.
 - `abs()` has been removed.
 - `paintMasks()` has been removed. Use `paintMask()`+ `for` loop.
 - `clearBit()` and `toggleBit()` have been removed, due to changes in `Mask`
   data representation (see ["Masks"](#masks)).
+- `combineChannels()` has been removed.
+- `rgba8()` and `rgba()` have been removed. Use combination of `convertColorModel()` and `convertBitDepth()`.
+- `getRelativePosition()` has been removed.
+- `histograms()` and `colorHistogram()` have been removed.
+- `getPixelGrid()` has been removed.
+- `getClosestCommonParent()` has been removed.
+- `getBestMatch()`,`getSimilarity()` and `getIntersection()` have been removed.
 
-  #### ROIs and its management
+#### ROIs and its management
 
 - `colsInfo()` and `rowsInfo()` have been removed.
 - `fromPoints()` has been removed.
@@ -236,6 +262,15 @@ The following deprecated features have been removed:
 - `resetPainted()` has been removed.
 - `mergeRoi()` and `mergeRois()` have been removed.
 - `minX`,`minY`,`meanX`,`meanY`,`maxX`,`maxY` have been removed. Use ROI's `position`, combined with its `width` and `height`.
+
+## 🚀 Performance fixes
+
+Performance of multiple functions has been improved:
+
+- `cannyEdgeDetector()`:
+- `resize()`
+- `transform()`
+- `drawCircle()`
 
 ## 🆕 New Features
 
@@ -248,7 +283,7 @@ const matrix = getPerspectiveWarp(sourcePoints);
 const warped = img.transform(matrix);
 ```
 
-For more details, visit our [tutorial](/docs/Tutorials/Applying%20transform%20function%20on%20images) on how image transformations work.
+For more details, visit our [tutorial](/docs/Tutorials/Applying%20transform%20function%20on%20images) on how image transformations work how they can be used.
 
 ### Bicubic Interpolation
 
@@ -258,20 +293,7 @@ High-quality image scaling is now available with [bicubic interpolation](https:/
 const resized = img.resize(800, 600, { interpolation: 'bicubic' });
 ```
 
-**Use case**: In many cases it gives a better quality when scaling images, especially for photographs.
-
-### Canny Edge Detection
-
-[The Canny Edge Detector](https://en.wikipedia.org/wiki/Canny_edge_detector) is an advanced edge detection filter for computer vision applications:
-
-```ts
-const edges = img.cannyEdgeDetector({
-  lowThreshold: 50,
-  highThreshold: 150,
-});
-```
-
-**Use case**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Canny%20Edge%20Detector).
+**Use cases**: In many cases it gives a better quality when scaling images, especially for photographs.
 
 ### Prewitt filter
 
@@ -281,7 +303,7 @@ const edges = img.cannyEdgeDetector({
 const prewitt = img.derivative({ filter: 'prewitt' });
 ```
 
-**Use case**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Morphological%20Gradient).
+**Use cases**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Morphological%20Gradient).
 
 ### Migration from deprecated methods
 
@@ -296,7 +318,7 @@ const matrix = getPerspectiveWarp(corners);
 const warped = img.transform(matrix);
 ```
 
-**Use case**: Rectification of a perspective angle of an image. You can learn more about it [here](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix).
+**Use cases**: Rectification of a perspective angle of an image. You can learn more about it [here](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix).
 
 ### `merge()`
 
@@ -311,7 +333,103 @@ const img3 = new Image(2, 2, { colorModel: 'GREY', bitDepth: 8 }).fill(255);
 const img4 = merge([img1, img2, img3]);
 ```
 
-**Use case**: Combination of multiple channels into one image after they were modified.
+**Use cases**: Combination of multiple channels into one image after they were modified.
+
+### `correctColor()`
+
+This function performs color correction using machine learning to match an image's colors to reference standards.
+
+```ts
+const measured = [
+  { r: 180, g: 120, b: 90 }, // Colors sampled from the image
+  { r: 200, g: 200, b: 180 },
+];
+const reference = [
+  { r: 255, g: 128, b: 64 }, // What those colors should actually be
+  { r: 255, g: 255, b: 255 },
+];
+const corrected = image.correctColor(measured, reference);
+```
+
+**Use cases**: Camera calibration, white balance correction, matching images from different devices, scientific imaging standardization.
+
+### `increaseContrast()`
+
+This function increases image contrast by stretching the pixel value range to use the full available dynamic range.
+
+```ts
+const highContrast = image.increaseContrast();
+```
+
+The function automatically handles different color models, processing only relevant channels (excludes alpha in RGBA, processes only luminance in GREYA). Works with 8-bit and 16-bit images.
+
+**Use cases**: Enhancing low-contrast images, improving visibility of subtle details, preparing images for analysis, correcting underexposed photographs.
+
+### `pixelate()`
+
+`pixelate()` creates a [pixelated effect](https://en.wikipedia.org/wiki/Pixelation 'wikipedia link on pixelation') by dividing the image into square cells and filling each cell with a representative value.
+
+```ts
+const pixelatedImage = image.pixelate({
+  cellSize: 8,
+});
+```
+
+**Use cases**: Creating retro 8-bit effects, reducing image detail for artistic purposes, or preparing images for low-resolution displays.
+
+### `cropRectangle()`
+
+While `crop()` and `cropRectangle()` might appear similar. However, they provide provide different approaches to extracting image regions.
+`crop()` - Standard rectangular cropping that maintains the original image orientation:
+
+```ts
+const cropped = image.crop({
+  column: 10,
+  row: 10,
+  width: 50,
+  height: 50,
+});
+// Returns a piece of image with the same
+// orientation as the parent image.
+```
+
+`cropRectangle()` - Advanced cropping that extracts rotated rectangular regions defined by four corner points:
+
+```ts
+const points = [
+  { row: 30, column: 30 },
+  { row: 60, column: 60 },
+  { row: 90, column: 30 },
+  { row: 60, column: 0 },
+];
+const rotatedCrop = image.cropRectangle(points);
+// Returns a cropped oriented rectangle.
+```
+
+Use `crop()` for simple rectangular selections aligned with image axes, and `cropRectangle()` when you need to extract tilted or rotated rectangular regions.
+
+### `drawMarkers()`
+
+Similarly to `drawPoints()`, `drawMarkers()` allows user to annotate an image. However,`drawMarkers()` creates visible markers (crosses, circles, squares, triangles)
+which gives a more prominent visual annotation. This gives a better alternative for highlighting or marking features.
+
+```ts
+const points = [
+  { row: 50, column: 100 },
+  { row: 150, column: 200 },
+];
+
+const annotated = image.drawMarkers(points, {
+  shape: 'circle', // Shape of a marker
+  size: 5,
+  color: [255, 0, 0], // Red markers
+  filled: true,
+});
+```
+
+Each marker is drawn centered on the specified point coordinates. The function creates a new image without modifying the original, making it ideal for creating annotated versions while preserving source data.
+
+**Use cases**: Marking detected features, annotating regions of interest, visualizing analysis results, creating overlays for presentations.
 
 ### `Stack` features
 
@@ -384,6 +502,42 @@ const pixelValue = stack.getValueByIndex(stackIndex, pixelIndex, channel);
 ```
 
 **Use Cases**: Time-lapse analysis, scientific imaging.
+
+### Image comparison features
+
+ImageJS now has several methods to check feature similarities between two images. For instance, let's take `computeSsim()`.
+SSIM (Structural Similarity Index) is a value between -1 and 1 that measures how similar two images are in terms of:
+
+- Luminance
+
+- Contrast
+
+- Structure
+
+`computeSsim()` also has an opposite function `computeDssim()`. It checks _dissimilarities_ between two images.
+
+```ts
+// 3x3 grayscale image
+const image = new Image(3, 3, {
+  colorModel: 'GREY',
+  data: new Uint8Array([5, 5, 5, 10, 10, 10, 15, 15, 15]),
+});
+const other = image;
+
+console.log(computeSsim(image, other).mssim); // equals to 1, since images are the same.
+console.log(computeDssim(image, other)); // equals to 0, since function is the opposite of SSIM.
+```
+
+ImageJS also includes such metrics like RMSE([Root Mean Square Error](https://en.wikipedia.org/wiki/Root-mean-square_deviation),measures the average magnitude of pixel differences between two images, giving more weight to larger errors) and PSNR( [Peak Signal-to-Noise Ratio](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio), derived from MSE. It expresses the ratio between the maximum possible pixel value and the error (MSE))
+
+```ts
+// Rmse check
+computeRmse(image, other);
+//PSNR check
+computePsnr(image, other);
+```
+
+**Use cases**: image quality measurement, detection of changes, or to evaluate visual similarity in tasks like compression, restoration, recognition, and tracking.
 
 ## 🚀 Getting Started
 
