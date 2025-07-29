@@ -54,7 +54,7 @@ const img = readSync('cat.jpg');
 writeSync('newCat.jpg', img);
 ```
 
-The new approach allows for better TypeScript inference, smaller bundle sizes through tree-shaking, and clearer API design where I/O operations are separate from image manipulation.
+Those changes separates I/O operations from image manipulation for a clearer API design.
 
 #### Creating
 
@@ -63,13 +63,13 @@ When creating a new image, unlike before, image's width and height must be speci
 ```ts
 import { Image } from 'image-js';
 
-// Would work before, will throw an error in a new version.
+// Would work before, will throw an error in the new version.
 const image = new Image();
 // Works fine.
 const image2 = new Image(10, 10);
 ```
 
-This change makes the Image constructor more explicit by requiring you to specify the dimensions upfront, preventing potential errors from working with uninitialized or undefined-sized images
+This change makes the Image constructor more explicit by requiring you to specify the dimensions upfront, preventing potential errors from working with uninitialized or undefined-sized images.
 
 #### Coordinate System Changes
 
@@ -107,7 +107,7 @@ const mask = new Image(10, 10, { kind: 'BINARY' });
 const mask = new Mask(10, 10);
 ```
 
-`Mask` provides better type safety, clearer API, and optimized performance for binary operations.
+`Mask` provides better type safety and clearer API.
 
 The new `Mask` class uses 1 byte per pixel (vs 8 pixels per byte), trading ~8x memory usage for significantly faster bit operations and simpler data manipulation.
 
@@ -168,6 +168,8 @@ Several methods have been renamed for consistency:
 
 `img.paintCircle()` ➡️ `img.drawCircle()`
 
+`img.paintPoints()` ➡️ `img.drawMarkers()`
+
 **Stack methods**
 
 `stack.getMinImage()` ➡️ `stack.minImage()`
@@ -226,10 +228,15 @@ Several methods have been renamed for consistency:
 
 `img.getBestMatch()` ➡️ `alignMinDifference()`
 
+`img.pad()` ➡️ `img.extendBorder()`
+
+`img.minimalBoundingRectangle()` ➡️ `mask.getMbr()`
+
+`img.monotoneChainConvexHull()` ➡️ `mask.getConvexHull()`
+
 ### Compatibility requirements
 
 - Node.js: 18+ (previously 14+)
-- TypeScript: 5.2.2+ (if using TypeScript)
 
 ### Removed Features
 
@@ -237,22 +244,21 @@ The following deprecated features have been removed:
 
 #### Images
 
-- `countAlphaPixel()` - Use custom pixel counting with `getPixel()`
-- `paintLabels()` and `roi.paint()` - Features have been removed due to dependency issues. We plan to add it back in the future updates.
-- `warpingFourPoints()` - Use `getPerspectiveWarp()` + `transform()`.
-- 32-bit color depth has been currently removed. We plan to add it back in the future updates as well.
+- `countAlphaPixel()` - Use custom pixel counting with [`getPixel()`](https://image-js.github.io/image-js/classes/index.Image.html#getpixel 'API link on getPixel').
+- `paintLabels()` and `roi.paint()` - Features have been removed due to dependency issues. We plan to add it back in future updates.
+- `warpingFourPoints()` - Use [`getPerspectiveWarpMatrix()`](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix 'internal link on getPerspectiveWarp') + [`transform()`](release.md#transform) instead.
+- 32-bit color depth support and `abs()` have been removed.
 - `CMYK` and `HSL` color models have been removed.
-- `abs()` has been removed.
-- `paintMasks()` has been removed. Use `paintMask()`+ `for` loop.
+- `paintMasks()` has been removed. Use [`paintMask()`](https://image-js.github.io/image-js/classes/index.Image.html#paintmask 'API link on paintMask')+ a `for` loop.
 - `clearBit()` and `toggleBit()` have been removed, due to changes in `Mask`
-  data representation (see ["Masks"](#masks)).
+  data representation (see ["Masks"](#masks)). Use [`setBit()`](https://image-js.github.io/image-js/classes/index.Mask.html#setbit 'API link on setBit') or [`setValue()`](https://image-js.github.io/image-js/classes/index.Image.html#setvalue 'API link on setValue') instead.
 - `combineChannels()` has been removed.
-- `rgba8()` and `rgba()` have been removed. Use combination of `convertColorModel()` and `convertBitDepth()`.
-- `getRelativePosition()` has been removed.
+- `rgba8()` and `rgba()` have been removed. Use a combination of [`convertColor()`](https://image-js.github.io/image-js/classes/index.Image.html#convertcolor 'API link on convertColor') and [`convertBitDepth()`](https://image-js.github.io/image-js/classes/index.Image.html#convertbitdepth 'API link on convertBitDepth') instead.
 - `histograms()` and `colorHistogram()` have been removed.
 - `getPixelGrid()` has been removed.
-- `getClosestCommonParent()` has been removed.
+- `getClosestCommonParent()` and `getRelativePosition()` have been removed.
 - `getSimilarity()` and `getIntersection()` have been removed.
+- `paintPolygons()` and `paintPolylines()`have been removed. Use [`drawPolygon()`](https://image-js.github.io/image-js/classes/index.Image.html#drawpolygon 'API link on drawPolygon')/ [`drawPolyline()`](https://image-js.github.io/image-js/classes/index.Image.html#drawpolyline 'API link on drawPolyline') + a `for` loop.
 
 #### ROIs and its management
 
@@ -263,16 +269,7 @@ The following deprecated features have been removed:
 - `findCorrespondingRoi()` has been removed.
 - `resetPainted()` has been removed.
 - `mergeRoi()` and `mergeRois()` have been removed.
-- `minX`,`minY`,`meanX`,`meanY`,`maxX`,`maxY` have been removed. Use ROI's `position`, combined with its `width` and `height`.
-
-## 🚀 Performance fixes
-
-Performance of multiple functions has been improved:
-
-- `cannyEdgeDetector()`:
-- `resize()`
-- `transform()`
-- `drawCircle()`
+- `minX`,`minY`,`meanX`,`meanY`,`maxX`,`maxY` have been removed. Use [ROI's `position`, combined with its `width` and `height`](https://image-js.github.io/image-js/classes/index.Roi.html 'API link on ROI').
 
 ## 🆕 New Features
 
@@ -285,11 +282,11 @@ const matrix = getPerspectiveWarp(sourcePoints);
 const warped = img.transform(matrix);
 ```
 
-For more details, visit our [tutorial](/docs/Tutorials/Applying%20transform%20function%20on%20images) on how image transformations work how they can be used.
+For more details, visit our [tutorial](/docs/Tutorials/Applying%20transform%20function%20on%20images 'internal link on transform function tutorial') on how image transformations work how they can be used.
 
 ### Bicubic Interpolation
 
-High-quality image scaling is now available with [bicubic interpolation](https://en.wikipedia.org/wiki/Bicubic_interpolation):
+High-quality image scaling is now available with [bicubic interpolation](https://en.wikipedia.org/wiki/Bicubic_interpolation 'wikipedia link on bicubic interpolation'):
 
 ```ts
 const resized = img.resize(800, 600, { interpolation: 'bicubic' });
@@ -299,17 +296,17 @@ const resized = img.resize(800, 600, { interpolation: 'bicubic' });
 
 ### Prewitt filter
 
-[Prewitt](https://en.wikipedia.org/wiki/Prewitt_operator) filter has been added to the `derivative()` filter.
+[Prewitt](https://en.wikipedia.org/wiki/Prewitt_operator 'wikipedia link on prewitt operator') filter has been added to the `derivative()` filter.
 
 ```ts
 const prewitt = img.derivative({ filter: 'prewitt' });
 ```
 
-**Use cases**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Morphological%20Gradient).
+**Use cases**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Morphological%20Gradient 'internal link on morphological gradient').
 
 ### Migration from deprecated methods
 
-`warpingFourPoints()` has been removed. Now you have [`getPerspectiveWarp()`](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix) that returns a matrix that can be applied on the image of interest in a new `transform()`.
+`warpingFourPoints()` has been removed. Now you have [`getPerspectiveWarp()`](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix 'internal link on perspective warp') that returns a matrix that can be applied on the image of interest in a new `transform()`.
 
 ```ts
 // Before
@@ -320,7 +317,7 @@ const matrix = getPerspectiveWarp(corners);
 const warped = img.transform(matrix);
 ```
 
-**Use cases**: Rectification of a perspective angle of an image. You can learn more about it [here](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix).
+**Use cases**: Rectification of a perspective angle of an image. You can learn more about it [here](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix 'internal link on perspective warp').
 
 ### `merge()`
 
@@ -339,7 +336,7 @@ const img4 = merge([img1, img2, img3]);
 
 ### `correctColor()`
 
-This function performs color correction using machine learning to match an image's colors to reference standards.
+This function performs color correction matches image's colors to reference standards.
 
 ```ts
 const measured = [
@@ -377,11 +374,12 @@ const pixelatedImage = image.pixelate({
 });
 ```
 
-**Use cases**: Creating retro 8-bit effects, reducing image detail for artistic purposes, or preparing images for low-resolution displays.
+**Use cases**: Creating retro 8-bit effects, preparing images for low-resolution displays or anonymization.
 
 ### `cropRectangle()`
 
 While `crop()` and `cropRectangle()` might appear similar. However, they provide provide different approaches to extracting image regions.
+
 `crop()` - Standard rectangular cropping that maintains the original image orientation:
 
 ```ts
@@ -410,10 +408,9 @@ const rotatedCrop = image.cropRectangle(points);
 
 Use `crop()` for simple rectangular selections aligned with image axes, and `cropRectangle()` when you need to extract tilted or rotated rectangular regions.
 
-### `drawMarkers()`
+### `drawPoints()`
 
-Similarly to `drawPoints()`, `drawMarkers()` allows user to annotate an image. However,`drawMarkers()` creates visible markers (crosses, circles, squares, triangles)
-which gives a more prominent visual annotation. This gives a better alternative for highlighting or marking features.
+This function draws individual 1x1 pixel points at the specified coordinates. Unlike drawMarker() which creates shaped markers (circles, crosses, etc.), drawPoints() renders simple single-pixel points, making it ideal for dense point visualization or precise coordinate marking.
 
 ```ts
 const points = [
@@ -421,23 +418,60 @@ const points = [
   { row: 150, column: 200 },
 ];
 
-const annotated = image.drawMarkers(points, {
-  shape: 'circle', // Shape of a marker
-  size: 5,
-  color: [255, 0, 0], // Red markers
-  filled: true,
+const annotated = image.drawPoints(points, {
+  color: [255, 0, 0], // Red dots
 });
 ```
 
-Each marker is drawn centered on the specified point coordinates. The function creates a new image without modifying the original, making it ideal for creating annotated versions while preserving source data.
+Each point is drawn centered on the specified point coordinates. The function creates a new image without modifying the original, making it ideal for creating annotated versions while preserving source data.
 
-**Use cases**: Marking detected features, annotating regions of interest, visualizing analysis results, creating overlays for presentations.
+**Use cases**: Plotting data points, marking precise coordinates, creating scatter plot overlays, visualizing pixel-level analysis results, dense feature visualization.
+
+### `Mask` features
+
+The `Mask` has been enhanced with new methods for geometric analysis and border processing.
+
+#### `getFeret()`
+
+Computes the [Feret diameters](https://en.wikipedia.org/wiki/Feret_diameter 'wikipedia link on Feret diameters') of the mask region, which are fundamental measurements in particle analysis and shape characterization. The Feret diameter represents the distance between two parallel lines that are tangent to the object's boundary.
+
+```ts
+const feretDiameters = mask.getFeret();
+/*An object containing:
+minDiameter: The minimum Feret diameter (narrowest width)
+maxDiameter: The maximum Feret diameter (longest distance between any two boundary points)
+aspectRatio: Ratio of minimum to maximum diameter (minDiameter.length / maxDiameter.length)*/
+```
+
+**Use cases**: Particle size analysis, shape characterization, elongation measurement, quality control in manufacturing, biological specimen analysis.
+
+#### `getBorderPoints()`
+
+Extracts all points that lie on the border/perimeter of the mask regions. This method identifies pixels that are part of the mask but have at least one neighboring pixel that is not part of the mask.
+
+```ts
+const borderPoints = mask.getBorderPoints();
+// Returns: Array of {row: number, column: number} objects
+```
+
+**Use cases**: Contour extraction, perimeter analysis, shape boundary detection.
+
+#### `clearBorders()`
+
+Removes mask regions that are connected to the image borders. This operation uses flood fill to eliminate any connected components that have pixels touching the edge of the image, useful for removing incomplete objects that extend beyond the image boundaries.
+
+```ts
+const clearedMask = mask.clearBorder();
+// Returns a mask with removed borders.
+```
+
+**Use cases**: Object segmentation cleanup, removing partial objects, preparing masks for complete object analysis, eliminating edge artifacts, preprocessing for particle analysis.
 
 ### `Stack` features
 
 The Stack class has been significantly expanded with new methods for batch processing and statistical analysis of image collections.
 
-#### Array-like Operations
+### Filtering and Transformations
 
 A user can now filter images based on custom criteria using `filter()`:
 
@@ -464,7 +498,7 @@ const modifiedStack = stack.map((img) => {
 });
 ```
 
-#### Statistical Operations
+### Stack Analysis Operations
 
 It is now possible to generate a median image from the entire stack - useful for noise reduction and background subtraction:
 
@@ -477,6 +511,10 @@ or create a cumulative sum of all images in the stack:
 ```ts
 const summedImage = stack.sum();
 ```
+
+**Use Cases**: Time-lapse analysis, scientific imaging.
+
+### Stack Pixel Value Access
 
 Access specific pixel values from any image in the stack using two convenient methods:
 
@@ -503,57 +541,24 @@ const channel = 0;
 const pixelValue = stack.getValueByIndex(stackIndex, pixelIndex, channel);
 ```
 
-**Use Cases**: Time-lapse analysis, scientific imaging.
+## 🚀 Bug fixes
 
-### Image comparison features
+Bugs in multiple functions have been fixed:
 
-ImageJS now has several methods to check feature similarities between two images. For instance, let's take `computeSsim()`.
-SSIM ([Structural Similarity Index](https://en.wikipedia.org/wiki/Structural_similarity_index_measure)) is a value between -1 and 1 that measures how similar two images are in terms of:
-
-- Luminance
-
-- Contrast
-
-- Structure
-
-`computeSsim()` also has an opposite function `computeDssim()`. It checks _dissimilarities_ between two images.
-
-```ts
-// 3x3 grayscale image
-const image = new Image(3, 3, {
-  colorModel: 'GREY',
-  data: new Uint8Array([5, 5, 5, 10, 10, 10, 15, 15, 15]),
-});
-const other = image;
-
-console.log(computeSsim(image, other).mssim); // equals to 1, since images are the same.
-console.log(computeDssim(image, other)); // equals to 0, since function is the opposite of SSIM.
-```
-
-ImageJS also includes such metrics like RMSE([Root Mean Square Error](https://en.wikipedia.org/wiki/Root-mean-square_deviation),measures the average magnitude of pixel differences between two images, giving more weight to larger errors) and PSNR( [Peak Signal-to-Noise Ratio](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio), derived from MSE. It expresses the ratio between the maximum possible pixel value and the error (MSE))
-
-```ts
-// Rmse check
-computeRmse(image, other);
-//PSNR check
-computePsnr(image, other);
-```
-
-**Use cases**: image quality measurement, detection of changes, or to evaluate visual similarity in tasks like compression, restoration, recognition, and tracking.
-
-## 🚀 Getting Started
-
-To get started with ImageJS, we recommend visiting our ["Get started"](../docs/Getting%20started) guide
+- `cannyEdgeDetector()`
+- `resize()`
+- `drawCircle()`
 
 ## 📚 Resources
 
-- [API Documentation](https://image-js.github.io/image-js-typescript/)
-- [Examples and Tutorials](https://image-js-docs.pages.dev/)
-- [GitHub Repository](https://github.com/image-js/image-js-typescript)
+- [API Documentation](https://image-js.github.io/image-js-typescript/ 'link on API')
+- [Examples and Tutorials](https://image-js-docs.pages.dev/ 'link on image-js tutorials and tips')
 
 ## 🤝 Contributing
 
 We welcome contributions! The new TypeScript codebase makes it easier than ever to contribute.
+
+- [GitHub Repository](https://github.com/image-js/image-js-typescript 'link on github repository')
 
 ## 🙏 Acknowledgments
 
