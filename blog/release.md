@@ -204,6 +204,8 @@ Several methods have been renamed for consistency:
 
 `img.setValue()` ➡️ `img.setValueByIndex()`
 
+`img.setChannel()` ➡️ `img.fillChannel()`
+
 **Other methods**:
 
 `img.getLocalMaxima()` ➡️ `img.getExtrema()`
@@ -234,6 +236,12 @@ Several methods have been renamed for consistency:
 
 `img.monotoneChainConvexHull()` ➡️ `mask.getConvexHull()`
 
+`img.getMin()` & `img.getMax()` ➡️ `img.getMinMax()`
+
+`img.getMean()` ➡️ `img.mean()`
+
+`img.getMedian()` ➡️ `img.median()`
+
 ### Compatibility requirements
 
 - Node.js: 18+ (previously 14+)
@@ -259,6 +267,7 @@ The following deprecated features have been removed:
 - `getClosestCommonParent()` and `getRelativePosition()` have been removed.
 - `getSimilarity()` and `getIntersection()` have been removed.
 - `paintPolygons()` and `paintPolylines()`have been removed. Use [`drawPolygon()`](https://image-js.github.io/image-js/classes/index.Image.html#drawpolygon 'API link on drawPolygon')/ [`drawPolyline()`](https://image-js.github.io/image-js/classes/index.Image.html#drawpolyline 'API link on drawPolyline') + a `for` loop.
+- `getMoment()` has been removed.
 
 #### ROIs and its management
 
@@ -351,6 +360,20 @@ const corrected = image.correctColor(measured, reference);
 ```
 
 **Use cases**: Camera calibration, white balance correction, matching images from different devices, scientific imaging standardization.
+
+### `variance()`
+
+A function that calculates image's [variance](https://en.wikipedia.org/wiki/Variance 'wikipedia link on variance') has been added.
+
+```ts
+// Calculate variance for entire image
+const variance = img.variance();
+// Returns: Array of variance values for each channel [R_variance, G_variance, B_variance]
+```
+
+It computes the variance of pixel values for each channel in the image. Variance measures how spread out the pixel values are from the mean - higher variance indicates greater variation in pixel intensities, while lower variance suggests more uniform regions.
+
+**Use cases**: Image quality assessment, texture analysis, noise detection, region comparison.
 
 ### `increaseContrast()`
 

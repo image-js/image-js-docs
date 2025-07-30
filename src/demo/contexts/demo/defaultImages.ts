@@ -9,8 +9,8 @@ const morphologyMaskUrl =
 export const defaultImages: UrlOption[] = [
   {
     type: 'url',
-    value: `${standardUrl}/lenna.png`,
-    label: 'Lenna',
+    value: `${standardUrl}/mandrill.png`,
+    label: 'Mandrill',
     imageType: 'image',
   },
   {
@@ -27,12 +27,6 @@ export const defaultImages: UrlOption[] = [
   },
   {
     type: 'url',
-    value: `${standardUrl}/mandrill.png`,
-    label: 'Mandrill',
-    imageType: 'image',
-  },
-  {
-    type: 'url',
     value: `${standardUrl}/peppers.png`,
     label: 'Peppers',
     imageType: 'image',
@@ -41,6 +35,12 @@ export const defaultImages: UrlOption[] = [
     type: 'url',
     value: `${standardUrl}/house.png`,
     label: 'House',
+    imageType: 'image',
+  },
+  {
+    type: 'url',
+    value: `${standardUrl}/lenna.png`,
+    label: 'Lenna',
     imageType: 'image',
   },
 ];
