@@ -114,7 +114,7 @@ The new `Mask` class uses 1 byte per pixel (vs 8 pixels per byte), trading ~8x m
 ### Regions of Interest
 
 API for handling of regions of interest has also been changed.
-ROI creation methods like `fromMask()` and `fromWatershed()` are now standalone functions `fromMask()` and `watershed()`.
+ROI map creation methods like `fromMask()` and `fromWatershed()` are now standalone functions `fromMask()` and `watershed()`.
 
 ```ts
 //Before
@@ -134,6 +134,21 @@ const rois = roiManager.getRois();
 ```
 
 This simplifies the process of creating a map of regions of interest and eliminates the need for a separate initialization step, providing a more direct and functional approach to ROI creation.
+
+The `RoiMap` data structure has also been modernized with clearer property names:
+
+```ts
+// Before
+const colsData = roiMap.colsInfo();
+const rowsData = roiMap.rowsInfo();
+// Provide information about ROIs per column and per row.
+// After
+const blackRegions = roiMap.blackRois;
+const whiteRegions = roiMap.whiteRois;
+// Provide information based on ROI's value.
+```
+
+The new `blackRois` and `whiteRois` properties provide more intuitive access to region data based on pixel values rather than geometric dimensions.
 
 For more information, please, visit these tutorials:
 
