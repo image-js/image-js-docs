@@ -31,3 +31,11 @@ Grayscaling
 Avgs
 Collinearity
 mmul
+Rmse
+Psnr
+Ssim
+Dssim
+mssim 
+GREYA
+Polylines
+anonymization
