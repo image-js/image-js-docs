@@ -22,13 +22,13 @@ const pixel = img.getPixel(x, y); // any[]
 const pixel = img.getPixel(x, y); // number[] with proper channel count
 ```
 
-This eliminates runtime type errors and provides better IntelliSense, autocomplete, and refactoring support in your IDE. Developers can now catch bugs at compile time rather than discovering them in production.
+This helps preventing runtime type errors and enables better IntelliSense, autocomplete, and refactoring support in your IDE. Developers can now catch bugs at compile time rather than discovering them in production.
 
 ## ⚠️ Breaking changes
 
 ### Images
 
-#### Loading and saving
+#### Loading and saving images
 
 `load()` and `save()` have been replaced with dedicated functions `read()` and `write()`.
 
@@ -56,7 +56,7 @@ writeSync('newCat.jpg', img);
 
 Those changes separates I/O operations from image manipulation for a clearer API design.
 
-#### Creating
+#### Creating images
 
 When creating a new image, unlike before, image's width and height must be specified.
 
@@ -71,7 +71,7 @@ const image2 = new Image(10, 10);
 
 This change makes the Image constructor more explicit by requiring you to specify the dimensions upfront, preventing potential errors from working with uninitialized or undefined-sized images.
 
-#### Coordinate System Changes
+#### Coordinate system changes
 
 Coordinates are now represented using `Point` objects instead of arrays. This change affects methods that require coordinate input like cropping, drawing, pixel manipulation etc.
 
@@ -118,17 +118,13 @@ ROI map creation methods like `fromMask()` and `fromWatershed()` are now standal
 
 ```ts
 //Before
-import { Image } from 'image-js';
-
-const roiManager = mask.getRoiManager();
-roiManager.fromMask(mask);
+const roiManager = img.getRoiManager();
+roiManager.fromMask(img);
 const rois = roiManager.getRois();
 ```
 
 ```ts
 //After
-import { Image, fromMask } from 'image-js';
-
 const roiManager = fromMask(mask);
 const rois = roiManager.getRois();
 ```
@@ -171,7 +167,7 @@ const sobelY = img.derivative({ filter: 'scharr' });
 
 This filter now also accepts only grayscale images, since filters, like Sobel or Scharr, are used mainly on grayscale images to detect edges.
 
-### Method Renaming
+### Renamed methods
 
 Several methods have been renamed for consistency:
 
@@ -293,7 +289,7 @@ The following deprecated features have been removed:
 - `findCorrespondingRoi()` has been removed.
 - `resetPainted()` has been removed.
 - `mergeRoi()` and `mergeRois()` have been removed.
-- `minX`,`minY`,`meanX`,`meanY`,`maxX`,`maxY` have been removed. Use [ROI's `position`, combined with its `width` and `height`](https://image-js.github.io/image-js/classes/index.Roi.html 'API link on ROI').
+- `minX`,`minY`,`meanX`,`meanY`,`maxX`,`maxY` have been removed. Use [ROI's `origin`, combined with its `width` and `height`](https://image-js.github.io/image-js/classes/index.Roi.html 'API link on ROI').
 
 ## 🆕 New Features
 
@@ -306,7 +302,7 @@ const matrix = getPerspectiveWarp(sourcePoints);
 const warped = img.transform(matrix);
 ```
 
-For more details, visit our [tutorial](/docs/Tutorials/Applying%20transform%20function%20on%20images 'internal link on transform function tutorial') on how image transformations work how they can be used.
+For more details, [visit our tutorial](/docs/Tutorials/Applying%20transform%20function%20on%20images 'internal link on transform function tutorial') on how image transformations work how they can be used.
 
 ### Bicubic Interpolation
 
@@ -326,7 +322,7 @@ const resized = img.resize(800, 600, { interpolation: 'bicubic' });
 const prewitt = img.derivative({ filter: 'prewitt' });
 ```
 
-**Use cases**: Object detection, image segmentation, feature extraction. You can learn more about it [here](../docs/Features/Morphology/Morphological%20Gradient 'internal link on morphological gradient').
+**Use cases**: Object detection, image segmentation, feature extraction. You can [learn more about it here](../docs/Features/Morphology/Morphological%20Gradient 'internal link on morphological gradient').
 
 ### Migration from deprecated methods
 
