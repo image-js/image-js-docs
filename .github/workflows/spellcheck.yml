@@ -6,21 +6,18 @@ on:
       - main
   pull_request:
 
-env:
-  NODE_VERSION: 18.x
-
 jobs:
   spellcheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: package.json
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - uses: streetsidesoftware/cspell-action@v2
+      - uses: streetsidesoftware/cspell-action@v7
         with:
           files: |
             **/*.md
