@@ -4,7 +4,7 @@ sidebar_position: 10
 
 # Addition
 
-_Add two images together._
+_Add two imagecs together._
 
 [🖼️ Image options and parameters of `add` method](https://image-js.github.io/image-js-typescript/classes/Image.html#add 'github.io link')
 
