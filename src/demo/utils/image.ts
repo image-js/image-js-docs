@@ -1,4 +1,6 @@
-import { Image } from 'image-js';
+import type { Image } from 'image-js';
+
+import { assertUnreachable } from '../utils/assert';
 
 export function imageToMask(image: Image) {
   switch (image.colorModel) {
@@ -8,7 +10,10 @@ export function imageToMask(image: Image) {
       return image.threshold();
     case 'GREYA':
       return image.convertColor('GREY').threshold();
-    default:
+    case 'RGB':
+    case 'RGBA':
       return image.grey().threshold();
+    default:
+      assertUnreachable(image.colorModel);
   }
 }

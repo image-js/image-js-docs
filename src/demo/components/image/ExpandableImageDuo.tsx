@@ -2,7 +2,8 @@ import React from 'react';
 
 import { useDemoStateContext } from '../../contexts/demo/demoContext';
 
-import { ExpandableImages, ImageSrc } from './ExpandableImages';
+import type { ImageSrc } from './ExpandableImages';
+import { ExpandableImages } from './ExpandableImages';
 
 export default function ExpandableImageDuo() {
   const { run } = useDemoStateContext();

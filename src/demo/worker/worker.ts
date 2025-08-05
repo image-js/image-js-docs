@@ -2,7 +2,11 @@
 // The global should be that of a dedicated worker.
 import { convertCodeToFunction } from '@site/src/demo/utils/convertCodeToFunction';
 import { imageToMask } from '@site/src/demo/utils/image';
-import { ComputeData, ProcessImage, WorkerResponse } from '@site/src/types/IJS';
+import type {
+  ComputeData,
+  ProcessImage,
+  WorkerResponse,
+} from '@site/src/types/IJS';
 import * as IJS from 'image-js';
 
 onmessage = (event: MessageEvent<ComputeData>) => {
@@ -13,14 +17,14 @@ onmessage = (event: MessageEvent<ComputeData>) => {
         ? imageToMask(IJS.decode(data.data))
         : IJS.decode(data.data)
       : data.type === 'decoded-image'
-      ? new IJS.Image(data.decoded.width, data.decoded.height, {
-          colorModel: data.decoded.colorModel,
-          bitDepth: data.decoded.bitDepth,
-          data: data.decoded.data,
-        })
-      : new IJS.Mask(data.decoded.width, data.decoded.height, {
-          data: data.decoded.data,
-        });
+        ? new IJS.Image(data.decoded.width, data.decoded.height, {
+            colorModel: data.decoded.colorModel,
+            bitDepth: data.decoded.bitDepth,
+            data: data.decoded.data,
+          })
+        : new IJS.Mask(data.decoded.width, data.decoded.height, {
+            data: data.decoded.data,
+          });
 
   const isMask = image instanceof IJS.Mask;
 
@@ -75,9 +79,9 @@ onmessage = (event: MessageEvent<ComputeData>) => {
 
 function postResponse(response: WorkerResponse) {
   if (response.type === 'error') {
-    postMessage(response);
+    globalThis.postMessage(response);
   } else {
     // @ts-expect-error - this is actually how it is supposed to be sent
-    postMessage(response, [response.data.data.buffer]);
+    globalThis.postMessage(response, [response.data.data.buffer]);
   }
 }

@@ -36,7 +36,7 @@ export default function CodeEditorAddon(props: { defaultEditorCode: string }) {
       try {
         convertCodeToFunction(debouncedEditorValue, isMask);
         runCode(debouncedEditorValue);
-      } catch (e) {
+      } catch {
         // Ignore
         // The code editor should highlight the syntax error
       }

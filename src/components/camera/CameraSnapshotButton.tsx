@@ -1,35 +1,18 @@
-import { Image, readCanvas } from 'image-js';
-import React, { RefObject } from 'react';
+import type { MouseEventHandler } from 'react';
+import React from 'react';
 
 interface CameraSnapshotButtonProps {
-  videoRef: RefObject<HTMLVideoElement | null>;
-  canvasRef: RefObject<HTMLCanvasElement | null>;
-  onSnapshot: (image: Image) => void;
+  onSnapshot: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
 }
 
 export default function CameraSnapshotButton(props: CameraSnapshotButtonProps) {
-  const { videoRef, onSnapshot, canvasRef, disabled } = props;
-  function handleClick() {
-    if (videoRef.current && canvasRef.current) {
-      const canvasInput = canvasRef.current;
-      const video = videoRef.current;
-
-      canvasInput.height = video.videoHeight;
-      canvasInput.width = video.videoWidth;
-      const inputContext = canvasInput.getContext(
-        '2d',
-      ) as CanvasRenderingContext2D;
-      inputContext.drawImage(video, 0, 0);
-      const image = readCanvas(canvasInput);
-      onSnapshot(image);
-    }
-  }
+  const { onSnapshot, disabled } = props;
   return (
     <div>
       <button
         type="button"
-        onClick={handleClick}
+        onClick={onSnapshot}
         disabled={disabled}
         className="button button--primary"
       >

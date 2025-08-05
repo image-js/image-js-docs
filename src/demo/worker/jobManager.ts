@@ -1,4 +1,4 @@
-import { ComputeData, WorkerResponse } from '@site/src/types/IJS';
+import type { ComputeData, WorkerResponse } from '@site/src/types/IJS';
 import { Image, Mask } from 'image-js';
 
 type WorkerMessageHandler = (event: MessageEvent<WorkerResponse>) => void;

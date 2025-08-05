@@ -1,4 +1,4 @@
-import * as IJS from 'image-js';
+import type * as IJS from 'image-js';
 
 type IJSType = typeof IJS;
 
