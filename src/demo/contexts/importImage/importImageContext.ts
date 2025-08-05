@@ -1,5 +1,5 @@
 import type { Image, Mask } from 'image-js';
-import type { DispatchWithoutAction} from 'react';
+import type { DispatchWithoutAction } from 'react';
 import { createContext, useContext } from 'react';
 
 export interface UrlOption {

@@ -1,8 +1,6 @@
-import type { Image, Mask} from 'image-js';
+import type { Image, Mask } from 'image-js';
 import { writeCanvas } from 'image-js';
-import type {
-  Dispatch,
-  SetStateAction} from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import React, {
   createContext,
   useCallback,

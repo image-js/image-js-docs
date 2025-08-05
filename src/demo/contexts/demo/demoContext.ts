@@ -1,5 +1,5 @@
 import { useImportImageContext } from '@site/src/demo/contexts/importImage/importImageContext';
-import type { Dispatch} from 'react';
+import type { Dispatch } from 'react';
 import { createContext, useContext, useMemo } from 'react';
 
 import type { DemoAction, DemoState } from './demoReducer';

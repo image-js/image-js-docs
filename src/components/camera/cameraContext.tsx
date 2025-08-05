@@ -1,11 +1,5 @@
-import type {
-  Dispatch,
-  RefObject} from 'react';
-import {
-  createContext,
-  useContext,
-  useEffect,
-} from 'react';
+import type { Dispatch, RefObject } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 
 export interface CameraState {
   cameras: MediaDeviceInfo[];
