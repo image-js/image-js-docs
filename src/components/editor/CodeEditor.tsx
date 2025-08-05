@@ -4,7 +4,7 @@ import imageJSTypes from '!!raw-loader!../../../node_modules/image-js/dist-types
 import { useColorMode } from '@docusaurus/theme-common';
 import type { Monaco, OnMount } from '@monaco-editor/react';
 import { Editor } from '@monaco-editor/react';
-import type { Dispatch, SetStateAction} from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import React, { useEffect, useRef } from 'react';
 
 type EditorInstance = Parameters<OnMount>[0];
@@ -97,7 +97,6 @@ function MonacoEditor({
   }
   function handleBeforeMount(monaco: Monaco) {
     const javascript = monaco.languages.typescript.javascriptDefaults;
-    // @ts-expect-error raw loader loads a string
     javascript.addExtraLib(imageJSTypes, 'image-js.d.ts');
 
     javascript.setDiagnosticsOptions({
