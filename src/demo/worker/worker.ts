@@ -13,14 +13,14 @@ onmessage = (event: MessageEvent<ComputeData>) => {
         ? imageToMask(IJS.decode(data.data))
         : IJS.decode(data.data)
       : data.type === 'decoded-image'
-      ? new IJS.Image(data.decoded.width, data.decoded.height, {
-          colorModel: data.decoded.colorModel,
-          bitDepth: data.decoded.bitDepth,
-          data: data.decoded.data,
-        })
-      : new IJS.Mask(data.decoded.width, data.decoded.height, {
-          data: data.decoded.data,
-        });
+        ? new IJS.Image(data.decoded.width, data.decoded.height, {
+            colorModel: data.decoded.colorModel,
+            bitDepth: data.decoded.bitDepth,
+            data: data.decoded.data,
+          })
+        : new IJS.Mask(data.decoded.width, data.decoded.height, {
+            data: data.decoded.data,
+          });
 
   const isMask = image instanceof IJS.Mask;
 
