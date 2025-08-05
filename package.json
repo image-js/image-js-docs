@@ -16,6 +16,7 @@
     "dev": "docusaurus start",
     "swizzle": "docusaurus swizzle",
     "check-types": "tsc",
+    "test": "npm run prettier && npm run eslint && npm run check-types",
     "write-heading-ids": "docusaurus write-heading-ids",
     "write-translations": "docusaurus write-translations"
   },

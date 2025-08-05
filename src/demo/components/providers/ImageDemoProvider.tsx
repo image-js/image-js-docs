@@ -4,11 +4,8 @@ import {
   demoDispatchContext,
   demoStateContext,
 } from '../../contexts/demo/demoContext';
-import type {
-  DemoInitialConfig} from '../../contexts/demo/demoReducer';
-import {
-  useDemoReducer,
-} from '../../contexts/demo/demoReducer';
+import type { DemoInitialConfig } from '../../contexts/demo/demoReducer';
+import { useDemoReducer } from '../../contexts/demo/demoReducer';
 
 export default function ImageDemoProvider(props: {
   children: React.ReactNode;

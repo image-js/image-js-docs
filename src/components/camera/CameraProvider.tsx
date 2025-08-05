@@ -1,11 +1,8 @@
 import { produce } from 'immer';
-import type { ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import React, { useEffect, useMemo, useReducer } from 'react';
 
-import type {
-  CameraAction,
-  CameraContext,
-  CameraState} from './cameraContext';
+import type { CameraAction, CameraContext, CameraState } from './cameraContext';
 import {
   cameraContext,
   defaultCameraState,
