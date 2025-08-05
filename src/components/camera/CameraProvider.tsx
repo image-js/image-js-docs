@@ -1,4 +1,4 @@
-import produce from 'immer';
+import { produce } from 'immer';
 import React, { ReactNode, useEffect, useMemo, useReducer } from 'react';
 
 import {

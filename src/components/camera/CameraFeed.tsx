@@ -6,7 +6,7 @@ import { useCameraContext, useVideoStream } from './cameraContext';
 export default function CameraFeed({
   videoRef,
 }: {
-  videoRef: RefObject<HTMLVideoElement>;
+  videoRef: RefObject<HTMLVideoElement | null>;
 }) {
   const {
     cameraState: { selectedCamera },

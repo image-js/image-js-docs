@@ -1,4 +1,10 @@
-import { createContext, Dispatch, useContext, useEffect } from 'react';
+import {
+  createContext,
+  Dispatch,
+  RefObject,
+  useContext,
+  useEffect,
+} from 'react';
 
 export interface CameraState {
   cameras: MediaDeviceInfo[];
@@ -49,7 +55,7 @@ export function isSameCamera(
   return false;
 }
 
-export function useVideoStream(videoRef: React.RefObject<HTMLVideoElement>) {
+export function useVideoStream(videoRef: RefObject<HTMLVideoElement | null>) {
   const {
     cameraState: { selectedCamera },
     dispatch,

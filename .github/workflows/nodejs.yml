@@ -10,9 +10,9 @@ jobs:
   nodejs:
     uses: zakodium/workflows/.github/workflows/nodejs.yml@nodejs-v1
     with:
-      node-version: 18.x
+      node-version: 22.x
       lint-check-types: true
       npm-test-command: npm run build
-      node-version-matrix: '[18]'
+      node-version-matrix: '[22]'
       upload-coverage: false
       disable-test-package: true

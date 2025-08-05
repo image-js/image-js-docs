@@ -2,8 +2,8 @@ import { Image, readCanvas } from 'image-js';
 import React, { RefObject } from 'react';
 
 interface CameraSnapshotButtonProps {
-  videoRef: RefObject<HTMLVideoElement>;
-  canvasRef: RefObject<HTMLCanvasElement>;
+  videoRef: RefObject<HTMLVideoElement | null>;
+  canvasRef: RefObject<HTMLCanvasElement | null>;
   onSnapshot: (image: Image) => void;
   disabled?: boolean;
 }
@@ -11,8 +11,8 @@ interface CameraSnapshotButtonProps {
 export default function CameraSnapshotButton(props: CameraSnapshotButtonProps) {
   const { videoRef, onSnapshot, canvasRef, disabled } = props;
   function handleClick() {
-    if (videoRef.current) {
-      const canvasInput = canvasRef.current as HTMLCanvasElement;
+    if (videoRef.current && canvasRef.current) {
+      const canvasInput = canvasRef.current;
       const video = videoRef.current;
 
       canvasInput.height = video.videoHeight;
