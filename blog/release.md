@@ -8,9 +8,9 @@ We're excited to announce the release of a new major version of ImageJS. This ve
 
 <!-- truncate -->
 
-# API Changes
+# API changes
 
-## 🔷 TypeScript Support
+## 🔷 TypeScript support
 
 All APIs now have strict TypeScript definitions:
 
@@ -111,7 +111,7 @@ const mask = new Mask(10, 10);
 
 The new `Mask` class uses 1 byte per pixel (vs 8 pixels per byte), trading ~8x memory usage for significantly faster bit operations and simpler data manipulation.
 
-### Regions of Interest
+### Regions of interest
 
 API for handling of regions of interest has also been changed.
 ROI map creation methods like `fromMask()` and `fromWatershed()` are now standalone functions `fromMask()` and `watershed()`.
@@ -257,7 +257,7 @@ Several methods have been renamed for consistency:
 
 - Node.js: 18+ (previously 14+)
 
-### Removed Features
+### Removed features
 
 The following deprecated features have been removed:
 
@@ -291,7 +291,7 @@ The following deprecated features have been removed:
 - `mergeRoi()` and `mergeRois()` have been removed.
 - `minX`,`minY`,`meanX`,`meanY`,`maxX`,`maxY` have been removed. Use [ROI's `origin`, combined with its `width` and `height`](https://image-js.github.io/image-js/classes/index.Roi.html 'API link on ROI').
 
-## 🆕 New Features
+## 🆕 New features
 
 ### `transform()`
 
@@ -304,7 +304,7 @@ const warped = img.transform(matrix);
 
 For more details, [visit our tutorial](/docs/Tutorials/Applying%20transform%20function%20on%20images 'internal link on transform function tutorial') on how image transformations work how they can be used.
 
-### Bicubic Interpolation
+### Bicubic interpolation
 
 High-quality image scaling is now available with [bicubic interpolation](https://en.wikipedia.org/wiki/Bicubic_interpolation 'wikipedia link on bicubic interpolation'):
 
@@ -505,7 +505,7 @@ const clearedMask = mask.clearBorder();
 
 The Stack class has been significantly expanded with new methods for batch processing and statistical analysis of image collections.
 
-### Filtering and Transformations
+### Filtering and transformations
 
 A user can now filter images based on custom criteria using `filter()`:
 
@@ -532,7 +532,7 @@ const modifiedStack = stack.map((img) => {
 });
 ```
 
-### Stack Analysis Operations
+### Stack analysis operations
 
 It is now possible to generate a median image from the entire stack - useful for noise reduction and background subtraction:
 
@@ -548,7 +548,7 @@ const summedImage = stack.sum();
 
 **Use Cases**: Time-lapse analysis, scientific imaging.
 
-### Stack Pixel Value Access
+### Stack pixel value access
 
 Access specific pixel values from any image in the stack using two convenient methods:
 
