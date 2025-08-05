@@ -1,4 +1,5 @@
-import { decode, Image } from 'image-js';
+import type { Image } from 'image-js';
+import { decode } from 'image-js';
 import React, { useRef } from 'react';
 import { HiOutlineDocument } from 'react-icons/hi2';
 

@@ -1,11 +1,13 @@
-import { ComputeData } from '@site/src/types/IJS';
-import { Dispatch, useCallback } from 'react';
+import type { ComputeData } from '@site/src/types/IJS';
+import type { Dispatch } from 'react';
+import { useCallback } from 'react';
 
-import getJobManager, { JobManager } from '../../worker/jobManager';
-import { ImageDemoInputOption } from '../importImage/importImageContext';
+import type { JobManager } from '../../worker/jobManager';
+import getJobManager from '../../worker/jobManager';
+import type { ImageDemoInputOption } from '../importImage/importImageContext';
 
 import { useDemoDispatchContext, useDemoStateContext } from './demoContext';
-import { DemoAction } from './demoReducer';
+import type { DemoAction } from './demoReducer';
 
 export function runAndDispatch(
   demoDispatch: Dispatch<DemoAction>,
@@ -100,8 +102,8 @@ function run(
       });
       return 'success';
     })
-    .catch((err: Error) => {
-      if (err.message === 'Job canceled') {
+    .catch((err: unknown) => {
+      if ((err as Error)?.message === 'Job canceled') {
         demoDispatch({
           type: 'RUN_CANCEL',
         });

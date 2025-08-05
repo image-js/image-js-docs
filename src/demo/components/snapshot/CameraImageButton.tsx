@@ -3,7 +3,8 @@ import { HiOutlineCamera } from 'react-icons/hi2';
 
 import { useOnOff } from '../../../hooks/useOnOff';
 
-import CameraSnapshotModal, { Snapshot } from './CameraSnapshotModal';
+import type { Snapshot } from './CameraSnapshotModal';
+import CameraSnapshotModal from './CameraSnapshotModal';
 
 export default function CameraImageButton({
   onSnapshot,

@@ -1,11 +1,12 @@
 import React from 'react';
 
 import {
-  demoStateContext,
   demoDispatchContext,
+  demoStateContext,
 } from '../../contexts/demo/demoContext';
+import type {
+  DemoInitialConfig} from '../../contexts/demo/demoReducer';
 import {
-  DemoInitialConfig,
   useDemoReducer,
 } from '../../contexts/demo/demoReducer';
 

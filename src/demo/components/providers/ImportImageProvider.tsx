@@ -1,9 +1,11 @@
-import React, { ReactNode, useMemo, useReducer } from 'react';
+import type { ReactNode} from 'react';
+import React, { useMemo, useReducer } from 'react';
 
 import { defaultImages, defaultMasks } from '../../contexts/demo/defaultImages';
+import type {
+  ImageDemoInputOption} from '../../contexts/importImage/importImageContext';
 import {
-  imageContext,
-  ImageDemoInputOption,
+  imageContext
 } from '../../contexts/importImage/importImageContext';
 
 export function ImportImageProvider(props: { children: ReactNode }) {

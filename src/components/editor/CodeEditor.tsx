@@ -2,8 +2,10 @@
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import imageJSTypes from '!!raw-loader!../../../node_modules/image-js/dist-types/image-js.d.ts';
 import { useColorMode } from '@docusaurus/theme-common';
-import { Editor, Monaco, OnMount } from '@monaco-editor/react';
-import React, { Dispatch, SetStateAction, useEffect, useRef } from 'react';
+import type { Monaco, OnMount } from '@monaco-editor/react';
+import { Editor } from '@monaco-editor/react';
+import type { Dispatch, SetStateAction} from 'react';
+import React, { useEffect, useRef } from 'react';
 
 type EditorInstance = Parameters<OnMount>[0];
 
@@ -76,7 +78,7 @@ function MonacoEditor({
           '!editorHasMultipleSelections && !editorTabMovesFocus && ' +
           '!hasQuickSuggest',
       );
-      for (let command of commands?.(monaco) ?? []) {
+      for (const command of commands?.(monaco) ?? []) {
         editor.addCommand(command.keybinding, () => {
           const editorValue = monaco.editor.getEditors()[0].getValue();
           command.handler(editorValue);

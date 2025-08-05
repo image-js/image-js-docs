@@ -1,7 +1,8 @@
 import { useImportImageContext } from '@site/src/demo/contexts/importImage/importImageContext';
-import { createContext, Dispatch, useContext, useMemo } from 'react';
+import type { Dispatch} from 'react';
+import { createContext, useContext, useMemo } from 'react';
 
-import { DemoAction, DemoState } from './demoReducer';
+import type { DemoAction, DemoState } from './demoReducer';
 
 export const demoStateContext = createContext<DemoState | null>(null);
 export const demoDispatchContext = createContext<Dispatch<DemoAction> | null>(

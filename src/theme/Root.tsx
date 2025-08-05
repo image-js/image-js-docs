@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import { KbsProvider } from 'react-kbs';
 
 import { CameraProvider } from '../components/camera/CameraProvider';

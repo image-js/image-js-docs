@@ -1,5 +1,6 @@
 import { useFilteredDemoImages } from '@site/src/demo/contexts/demo/demoContext';
-import { Image } from 'image-js';
+import type { Image } from 'image-js';
+import { readCanvas } from 'image-js';
 import React, { useRef, useState } from 'react';
 import { useKbs } from 'react-kbs';
 
@@ -80,15 +81,25 @@ export default function CameraSnapshotModal(props: {
         />
         <CameraFeed videoRef={videoRef} />
         <CameraSnapshotButton
-          onSnapshot={(snapshot) => {
-            props.close();
-            props.onSnapshot({
-              image: snapshot,
-              name: snapshotName,
-            });
+          onSnapshot={() => {
+            if (videoRef.current && canvasRef.current) {
+              const canvasInput = canvasRef.current;
+              const video = videoRef.current;
+
+              canvasInput.height = video.videoHeight;
+              canvasInput.width = video.videoWidth;
+              const inputContext = canvasInput.getContext(
+                '2d',
+              ) as CanvasRenderingContext2D;
+              inputContext.drawImage(video, 0, 0);
+              const image = readCanvas(canvasInput);
+              props.close();
+              props.onSnapshot({
+                image,
+                name: snapshotName,
+              });
+            }
           }}
-          videoRef={videoRef}
-          canvasRef={canvasRef}
           disabled={!snapshotName}
         />
         <canvas ref={canvasRef} style={{ display: 'none' }} />
