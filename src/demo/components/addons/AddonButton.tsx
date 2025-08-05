@@ -1,11 +1,12 @@
 import { clsx } from 'clsx';
-import React, { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
+import React from 'react';
 
 import {
   useDemoDispatchContext,
   useDemoStateContext,
 } from '../../contexts/demo/demoContext';
-import { Addon } from '../../utils/types';
+import type { Addon } from '../../utils/types';
 
 export default function AddonButton(props: {
   addon: Addon;

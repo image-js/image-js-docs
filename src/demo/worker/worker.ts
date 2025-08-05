@@ -2,7 +2,11 @@
 // The global should be that of a dedicated worker.
 import { convertCodeToFunction } from '@site/src/demo/utils/convertCodeToFunction';
 import { imageToMask } from '@site/src/demo/utils/image';
-import { ComputeData, ProcessImage, WorkerResponse } from '@site/src/types/IJS';
+import type {
+  ComputeData,
+  ProcessImage,
+  WorkerResponse,
+} from '@site/src/types/IJS';
 import * as IJS from 'image-js';
 
 onmessage = (event: MessageEvent<ComputeData>) => {
@@ -75,9 +79,9 @@ onmessage = (event: MessageEvent<ComputeData>) => {
 
 function postResponse(response: WorkerResponse) {
   if (response.type === 'error') {
-    postMessage(response);
+    window.postMessage(response);
   } else {
     // @ts-expect-error - this is actually how it is supposed to be sent
-    postMessage(response, [response.data.data.buffer]);
+    window.postMessage(response, [response.data.data.buffer]);
   }
 }

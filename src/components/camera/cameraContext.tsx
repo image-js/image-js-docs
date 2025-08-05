@@ -1,7 +1,8 @@
+import type {
+  Dispatch,
+  RefObject} from 'react';
 import {
   createContext,
-  Dispatch,
-  RefObject,
   useContext,
   useEffect,
 } from 'react';

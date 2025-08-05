@@ -1,4 +1,4 @@
-import { ProcessImage } from '@site/src/types/IJS';
+import type { ProcessImage } from '@site/src/types/IJS';
 
 export function convertCodeToFunction(code: string, isMask: boolean) {
   const newCode = code
