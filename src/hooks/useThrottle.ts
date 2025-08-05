@@ -5,12 +5,15 @@ export default function useThrottle<T>(value: T, ms: number) {
   const lastRan = useRef(Date.now());
 
   useEffect(() => {
-    const handler = setTimeout(() => {
-      if (Date.now() - lastRan.current >= ms) {
-        setThrottledValue(value);
-        lastRan.current = Date.now();
-      }
-    }, ms - (Date.now() - lastRan.current));
+    const handler = setTimeout(
+      () => {
+        if (Date.now() - lastRan.current >= ms) {
+          setThrottledValue(value);
+          lastRan.current = Date.now();
+        }
+      },
+      ms - (Date.now() - lastRan.current),
+    );
 
     return () => {
       clearTimeout(handler);
