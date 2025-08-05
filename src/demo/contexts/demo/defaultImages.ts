@@ -1,4 +1,4 @@
-import { UrlOption } from '../importImage/importImageContext';
+import type { UrlOption } from '../importImage/importImageContext';
 
 const standardUrl = 'https://image-js.github.io/image-dataset-demo/standard';
 const standardMaskUrl =

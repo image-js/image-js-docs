@@ -1,8 +1,8 @@
-import { Image, Mask, writeCanvas } from 'image-js';
+import type { Image, Mask } from 'image-js';
+import { writeCanvas } from 'image-js';
+import type { Dispatch, SetStateAction } from 'react';
 import React, {
   createContext,
-  Dispatch,
-  SetStateAction,
   useCallback,
   useContext,
   useLayoutEffect,
@@ -13,7 +13,7 @@ import React, {
 } from 'react';
 import { useKbs } from 'react-kbs';
 
-import { RunStatus } from '../../contexts/demo/demoReducer';
+import type { RunStatus } from '../../contexts/demo/demoReducer';
 
 export type ImageSrc = Image | Mask | string | Error;
 

@@ -8,10 +8,8 @@ import { RxCodesandboxLogo } from 'react-icons/rx';
 
 import { useDemoStateContext } from '../../contexts/demo/demoContext';
 import { useSelectImage } from '../../contexts/demo/dispatchHelpers';
-import {
-  ImageDemoInputOption,
-  useImportImageContext,
-} from '../../contexts/importImage/importImageContext';
+import type { ImageDemoInputOption } from '../../contexts/importImage/importImageContext';
+import { useImportImageContext } from '../../contexts/importImage/importImageContext';
 import AddonButton from '../addons/AddonButton';
 import { ImageInputButton } from '../addons/ImageInputButton';
 import CameraImageButton from '../snapshot/CameraImageButton';
@@ -43,24 +41,22 @@ export default function ImageDemoToolbar() {
         {isMask ? null : <CameraStreamButton />}
         <ImageInputButton
           onImages={(images) => {
-            const newOptions: Array<ImageDemoInputOption> = images.map(
-              (image) => {
-                if (isMask) {
-                  const mask = imageToMask(image.image);
-                  return {
-                    type: 'mask',
-                    value: `${image.file.name} (mask)`,
-                    mask,
-                  };
-                } else {
-                  return {
-                    type: 'image',
-                    value: image.file.name,
-                    image: image.image,
-                  };
-                }
-              },
-            );
+            const newOptions: ImageDemoInputOption[] = images.map((image) => {
+              if (isMask) {
+                const mask = imageToMask(image.image);
+                return {
+                  type: 'mask',
+                  value: `${image.file.name} (mask)`,
+                  mask,
+                };
+              } else {
+                return {
+                  type: 'image',
+                  value: image.file.name,
+                  image: image.image,
+                };
+              }
+            });
             addOptions(newOptions);
             if (newOptions.length) {
               selectImage(newOptions[newOptions.length - 1]);

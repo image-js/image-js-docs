@@ -1,12 +1,13 @@
-import { Image, Mask } from 'image-js';
-import { createContext, DispatchWithoutAction, useContext } from 'react';
+import type { Image, Mask } from 'image-js';
+import type { DispatchWithoutAction } from 'react';
+import { createContext, useContext } from 'react';
 
-export type UrlOption = {
+export interface UrlOption {
   type: 'url';
   imageType: 'image' | 'mask';
   value: string;
   label: string;
-};
+}
 
 export interface ImageOption {
   type: 'image';

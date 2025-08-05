@@ -1,10 +1,11 @@
 import { assertUnreachable } from '@site/src/utils/assert';
-import { Image, Mask } from 'image-js';
-import { produce, WritableDraft } from 'immer';
+import type { Image, Mask } from 'image-js';
+import type { WritableDraft } from 'immer';
+import { produce } from 'immer';
 import { useReducer } from 'react';
 
-import { Addon } from '../../utils/types';
-import { ImageDemoInputOption } from '../importImage/importImageContext';
+import type { Addon } from '../../utils/types';
+import type { ImageDemoInputOption } from '../importImage/importImageContext';
 
 export type DemoAction =
   | {
@@ -41,7 +42,7 @@ export type DemoAction =
     }
   | {
       type: 'RUN_ERROR';
-      payload: Error;
+      payload: unknown;
     };
 
 interface ImageData {
@@ -58,13 +59,13 @@ interface ImageData {
 export interface RunState {
   status: RunStatus;
   time: number;
-  error: Error | null;
+  error: unknown | null;
   image: ImageData | null;
   startedCount: number;
   // Remember the state of the previous run in case the current run is canceled
   previous: {
     status: Exclude<RunStatus, 'running'>;
-    error: Error | null;
+    error: unknown | null;
     image: ImageData | null;
   } | null;
   runTimes: number[];

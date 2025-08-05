@@ -16,6 +16,7 @@
 .env.production.local
 .frontmatter
 .vscode
+.eslintcache
 frontmatter.json
 
 .vscode
