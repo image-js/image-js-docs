@@ -79,9 +79,9 @@ onmessage = (event: MessageEvent<ComputeData>) => {
 
 function postResponse(response: WorkerResponse) {
   if (response.type === 'error') {
-    window.postMessage(response);
+    globalThis.postMessage(response);
   } else {
     // @ts-expect-error - this is actually how it is supposed to be sent
-    window.postMessage(response, [response.data.data.buffer]);
+    globalThis.postMessage(response, [response.data.data.buffer]);
   }
 }
