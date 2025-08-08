@@ -8,7 +8,7 @@
     "deploy": "docusaurus deploy",
     "docusaurus": "docusaurus",
     "cspell": "cspell lint \"**/*.md\"",
-    "eslint": "eslint --cache ./src",
+    "eslint": "eslint --cache ./src ./docs",
     "eslint-fix": "npm run eslint -- --fix",
     "prettier": "prettier --check ./",
     "prettier-write": "prettier --write ./",

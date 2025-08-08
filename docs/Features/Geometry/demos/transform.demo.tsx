@@ -1,4 +1,4 @@
-import { Image } from 'image-js';
+import type { Image } from 'image-js';
 
 export default function transform(image: Image) {
   const imageMatrix = [
