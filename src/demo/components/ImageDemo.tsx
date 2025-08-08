@@ -34,7 +34,7 @@ export default function ImageDemo({
     >
       <div style={{ display: 'inline-flex', flexDirection: 'column', gap: 4 }}>
         <div
-          className="filter-demo alert--success"
+          className="filter-demo alert--info"
           style={{
             margin: 4,
             borderRadius: 4,

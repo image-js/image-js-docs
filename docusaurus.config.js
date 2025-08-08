@@ -44,7 +44,7 @@ async function createConfig() {
   return {
     title: 'ImageJS',
     tagline: 'Advanced image processing and manipulation in JavaScript.',
-    favicon: 'img/favicon.ico',
+    favicon: 'img/image-js-favicon.svg',
 
     // Set the production url of your site here
     url: 'https://image-js-docs.pages.dev/',
@@ -123,11 +123,12 @@ async function createConfig() {
       ({
         // Replace with your project's social card
         image: 'img/docusaurus-social-card.jpg',
+        colorMode: {},
         navbar: {
           title: 'ImageJS',
           logo: {
             alt: 'ImageJS',
-            src: 'img/logo.svg',
+            src: 'img/image-js-favicon.svg',
           },
           items: [
             {
