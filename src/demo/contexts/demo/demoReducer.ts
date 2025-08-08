@@ -1,11 +1,11 @@
-import { assertUnreachable } from '@site/src/utils/assert';
-import type { Image, Mask } from 'image-js';
-import type { WritableDraft } from 'immer';
-import { produce } from 'immer';
-import { useReducer } from 'react';
+import { assertUnreachable } from "@site/src/utils/assert";
+import type { Image, Mask } from "image-js";
+import type { WritableDraft } from "immer";
+import { produce } from "immer";
+import { useReducer } from "react";
 
-import type { Addon } from '../../utils/types';
-import type { ImageDemoInputOption } from '../importImage/importImageContext';
+import type { Addon } from "../../utils/types";
+import type { ImageDemoInputOption } from "../importImage/importImageContext";
 
 export type DemoAction =
   | {
@@ -88,7 +88,7 @@ function getInitialState(initial: DemoInitialConfig): DemoState {
   return {
     selectedImage: null,
     selectedDevice: null,
-    addon: null,
+    addon: 'code',
     code: initial.initialCode,
     noAutoRun: initial.noAutoRun || false,
     name: initial.name,
