@@ -1,4 +1,4 @@
-import { Mask } from 'image-js';
+import type { Mask } from 'image-js';
 
 export default function morphologicalGradient(mask: Mask) {
   return mask.morphologicalGradient();

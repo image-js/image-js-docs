@@ -1,4 +1,4 @@
-import { Mask } from 'image-js';
+import type { Mask } from 'image-js';
 
 export default function dilate(mask: Mask) {
   return mask.dilate();
