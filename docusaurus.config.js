@@ -195,6 +195,11 @@ async function createConfig() {
           theme: lightCodeTheme,
           darkTheme: darkCodeTheme,
         },
+        algolia: {
+          appId: '3SP7D0W5IO',
+          apiKey: 'b68edce995723ba044ae5792d5ccf61c',
+          indexName: 'ImageJS documentation',
+        },
       }),
   };
 }
