@@ -6,7 +6,7 @@ sidebar_position: 30
 
 _Calculates the euclidean distance of two points between two images._
 
-[🖼️ Image options and parameters of `hypotenuse` method](https://image-js.github.io/image-js-typescript/classes/Image.html#hypotenuse 'github.io link')
+[🖼️ Image options and parameters of `hypotenuse` method](https://api.image-js.org/classes/index.Image.html#hypotenuse)
 
 A "hypotenuse filter" is using two compatible images to change values of each pixel by calculating [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance 'wikipedia link on Euclidean distance') with the formula:
 
@@ -32,9 +32,9 @@ Where $$Value1$$ is a value of the pixel in the first image and $$Value2$$ is th
 
 #### Options
 
-| Property                                                                                                | Required | Default value |
-| ------------------------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`channels`](https://image-js.github.io/image-js-typescript/interfaces/HypotenuseOptions.html#channels) | no       | -             |
+| Property                                                                                | Required | Default value |
+| --------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`channels`](https://api.image-js.org/interfaces/index.HypotenuseOptions.html#channels) | no       | -             |
 
 :::caution
 Images must be compatible by size, bit depth, number of channels and number of alpha channels. However, for the resulting image user can choose the bit depth of the resulting image as well as channels which the algorithm will be applied to.

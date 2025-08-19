@@ -8,7 +8,7 @@ import GaussianBlurDemo from './demos/gaussianBlur.demo.tsx'
 
 _A blur filter that uses gaussian function for smoothing._
 
-[🖼️ Image options and parameters of `gaussianBlur` method](https://image-js.github.io/image-js-typescript/classes/Image.html#gaussianBlur 'link on github io')
+[🖼️ Image options and parameters of `gaussianBlur` method](https://api.image-js.org/classes/index.Image.html#gaussianBlur 'link on github io')
 
 [Gaussian blur](https://en.wikipedia.org/wiki/Gaussian_blur 'Wikipedia link on gaussian blur') is a widely used image processing technique that smooths an image by reducing high-frequency noise and fine details while preserving the overall structure and larger features. It's named after the [Gaussian function](https://en.wikipedia.org/wiki/Gaussian_function 'wikipedia link on gaussian function'), which is a mathematical function that represents a bell-shaped curve. Gaussian blur is often applied to images before other processing steps like edge detection to improve their quality and reliability.
 
@@ -34,23 +34,23 @@ With Gaussian blur there are two ways of passing options: through sigma and thro
 
 #### Sigma Variant:
 
-| Property                                                                                                           | Required | Default value                  |
-| ------------------------------------------------------------------------------------------------------------------ | -------- | ------------------------------ |
-| [`sigma`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#sigma)           | **yes**  | -                              |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#borderType) | no       | `reflect101`                   |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#out)               | no       | -                              |
-| [`size`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurSigmaOptions.html#size)             | no       | `2 * Math.ceil(2 * sigma) + 1` |
+| Property                                                                                           | Required | Default value                  |
+| -------------------------------------------------------------------------------------------------- | -------- | ------------------------------ |
+| [`sigma`](https://api.image-js.org/interfaces/index.GaussianBlurSigmaOptions.html#sigma)           | **yes**  | -                              |
+| [`borderType`](https://api.image-js.org/interfaces/index.GaussianBlurSigmaOptions.html#borderType) | no       | `reflect101`                   |
+| [`out`](https://api.image-js.org/interfaces/index.GaussianBlurSigmaOptions.html#out)               | no       | -                              |
+| [`size`](https://api.image-js.org/interfaces/index.GaussianBlurSigmaOptions.html#size)             | no       | `2 * Math.ceil(2 * sigma) + 1` |
 
 #### SigmaXY Variant
 
-| Property                                                                                                        | Required | Default value                   |
-| --------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------- |
-| [`sigmaX`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurXYOptions.html#sigmaX)         | **yes**  | -                               |
-| [`sigmaY`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurXYOptions.html#sigmaY)         | **yes**  | -                               |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurXYOptions.html#borderType) | no       | `reflect101`                    |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurXYOptions.html#out)               | no       | -                               |
-| [`sizeX`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurXYOptions.html#sizeX)           | no       | `2 * Math.ceil(2 * sigmaX) + 1` |
-| [`sizeY`](https://image-js.github.io/image-js-typescript/interfaces/GaussianBlurXYOptions.html#sizeY)           | no       | `2 * Math.ceil(2 * sigmaY) + 1` |
+| Property                                                                                        | Required | Default value                   |
+| ----------------------------------------------------------------------------------------------- | -------- | ------------------------------- |
+| [`sigmaX`](https://api.image-js.org/interfaces/index.GaussianBlurXYOptions.html#sigmaX)         | **yes**  | -                               |
+| [`sigmaY`](https://api.image-js.org/interfaces/index.GaussianBlurXYOptions.html#sigmaY)         | **yes**  | -                               |
+| [`borderType`](https://api.image-js.org/interfaces/index.GaussianBlurXYOptions.html#borderType) | no       | `reflect101`                    |
+| [`out`](https://api.image-js.org/interfaces/index.GaussianBlurXYOptions.html#out)               | no       | -                               |
+| [`sizeX`](https://api.image-js.org/interfaces/index.GaussianBlurXYOptions.html#sizeX)           | no       | `2 * Math.ceil(2 * sigmaX) + 1` |
+| [`sizeY`](https://api.image-js.org/interfaces/index.GaussianBlurXYOptions.html#sizeY)           | no       | `2 * Math.ceil(2 * sigmaY) + 1` |
 
 The size of the Gaussian kernel and the standard deviation parameter (which controls the spread of the Gaussian curve) influence the degree of smoothing. A larger kernel or a higher standard deviation will produce more pronounced smoothing, but might also result in a loss of fine details.
 

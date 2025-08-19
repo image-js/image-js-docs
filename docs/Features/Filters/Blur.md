@@ -8,7 +8,7 @@ import BlurDemo from './demos/blur.demo.tsx'
 
 _Reduces image details and sharpness by averaging or mixing neighboring pixel values._
 
-[🖼️ Image options and parameters of `blur` method](https://image-js.github.io/image-js-typescript/classes/Image.html#blur 'link on github io')
+[🖼️ Image options and parameters of `blur` method](https://api.image-js.org/classes/index.Image.html#blur 'link on github io')
 
 Blur, also known as average blur or box blur, is a simple image processing technique used to reduce noise and smooth out images. It involves replacing the color value of a pixel with the average color value of its neighboring pixels within a specified window or kernel. This process effectively blurs the image and reduces high-frequency noise.
 
@@ -31,13 +31,13 @@ More advanced blurring techniques, such as [Gaussian blur](./Gaussian%20Blur.md 
 
 #### Options
 
-| Property                                                                                                | Required | Default value |
-| ------------------------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`height`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#height)           | **yes**  | -             |
-| [`width`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#width)             | **yes**  | -             |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderType)   | no       | `reflect101`  |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#borderValue) | no       | `0`           |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/BlurOptions.html#out)                 | no       | -             |
+| Property                                                                                | Required | Default value |
+| --------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`height`](https://api.image-js.org/interfaces/index.BlurOptions.html#height)           | **yes**  | -             |
+| [`width`](https://api.image-js.org/interfaces/index.BlurOptions.html#width)             | **yes**  | -             |
+| [`borderType`](https://api.image-js.org/interfaces/index.BlurOptions.html#borderType)   | no       | `reflect101`  |
+| [`borderValue`](https://api.image-js.org/interfaces/index.BlurOptions.html#borderValue) | no       | `0`           |
+| [`out`](https://api.image-js.org/interfaces/index.BlurOptions.html#out)                 | no       | -             |
 
 <details>
 <summary>

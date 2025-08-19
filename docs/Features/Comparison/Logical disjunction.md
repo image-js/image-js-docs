@@ -6,7 +6,7 @@ sidebar_position: 110
 
 _Makes a logical disjunction between masks._
 
-[🎭 Mask options and parameters of `or` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#or 'github.io link')
+[🎭 Mask options and parameters of `or` method](https://api.image-js.org/classes/index.Mask.html#or)
 
 `or` method performs a [logical disjunction](https://en.wikipedia.org/wiki/Logical_disjunction 'wikipedia link on logical disjunction') between bits of two masks.
 
@@ -31,6 +31,6 @@ Masks must have the same size for compatibility reasons.
 
 #### Options
 
-| Property                                                                              | Required | Default value |
-| ------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/OrOptions.html#out) | no       | -             |
+| Property                                                              | Required | Default value |
+| --------------------------------------------------------------------- | -------- | ------------- |
+| [`out`](https://api.image-js.org/interfaces/index.OrOptions.html#out) | no       | -             |

@@ -47,7 +47,7 @@ async function createConfig() {
     favicon: 'img/image-js-favicon.svg',
 
     // Set the production url of your site here
-    url: 'https://image-js-docs.pages.dev/',
+    url: 'https://docs.image-js.org/',
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/',
@@ -139,7 +139,7 @@ async function createConfig() {
             },
             { to: '/blog', label: 'Blog', position: 'left' },
             {
-              href: 'https://image-js.github.io/image-js-typescript/',
+              href: 'https://api.image-js.org/',
               label: 'API reference',
               position: 'left',
             },
@@ -187,11 +187,11 @@ async function createConfig() {
               items: [
                 {
                   label: 'GitHub',
-                  href: 'https://github.com/image-js/image-js-typescript',
+                  href: 'https://github.com/image-js/image-js',
                 },
                 {
                   label: 'API reference',
-                  href: 'https://image-js.github.io/image-js-typescript/',
+                  href: 'https://api.image-js.org/',
                 },
                 {
                   label: 'Zakodium',

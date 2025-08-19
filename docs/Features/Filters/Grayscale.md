@@ -8,7 +8,7 @@ import GrayDemo from './demos/grayscale.demo.tsx'
 
 _Converts color image into shades of gray._
 
-[🖼️ Image options and parameters of `grayscale` method](https://image-js.github.io/image-js-typescript/classes/Image.html#grey 'github.io link')
+[🖼️ Image options and parameters of `grayscale` method](https://api.image-js.org/classes/index.Image.html#grey)
 
 [Grayscale filter](https://en.wikipedia.org/wiki/Grayscale 'Wikipedia link on grayscale filter'), often called a black-and-white filter, is an image processing technique used to convert a colored image into a grayscale version. In a grayscale image, each pixel is represented by a single intensity value, typically ranging from 0 (black) to 255 (white), with various shades of gray in between. This process removes color information and retains only the brightness information of the image.
 
@@ -30,12 +30,12 @@ The grayscale filter essentially eliminates the color information from the image
 
 #### Options
 
-| Property                                                                                              | Required | Default value |
-| ----------------------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`algorithm`](https://image-js.github.io/image-js-typescript/variables/GreyAlgorithm-1.html)          | no       | `luma709`     |
-| [`keepAlpha`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#keepAlpha)   | no       | `false`       |
-| [`mergeAlpha`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#mergeAlpha) | no       | `true`        |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/GreyOptions.html#out)               | no       | -             |
+| Property                                                                              | Required | Default value |
+| ------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`algorithm`](https://api.image-js.org/variables/index.GreyAlgorithm.html)            | no       | `luma709`     |
+| [`keepAlpha`](https://api.image-js.org/interfaces/index.GreyOptions.html#keepAlpha)   | no       | `false`       |
+| [`mergeAlpha`](https://api.image-js.org/interfaces/index.GreyOptions.html#mergeAlpha) | no       | `true`        |
+| [`out`](https://api.image-js.org/interfaces/index.GreyOptions.html#out)               | no       | -             |
 
 #### List of grayscale algorithms:
 

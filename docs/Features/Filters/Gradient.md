@@ -8,7 +8,7 @@ import GradientDemo from './demos/gradient.demo.tsx'
 
 _Highlights changes in color or intensity within an image by accentuating transitions and edges._
 
-[🖼️ Image options and parameters of `gradient` method](https://image-js.github.io/image-js-typescript/classes/Image.html#gradientFilter 'link on github.io')
+[🖼️ Image options and parameters of `gradient` method](https://api.image-js.org/classes/index.Image.html#gradientFilter)
 
 Gradient filter or specifically[ a gradient-based edge detection filter](https://en.wikipedia.org/wiki/Graduated_neutral-density_filter 'wikipedia link on gradient filter'), is an image processing technique used to highlight edges and boundaries within an image by emphasizing areas of rapid intensity change. The gradient filter operates by calculating the rate of change of pixel intensities across the image. When there's a rapid transition from one intensity level to another, [the convolution operation](../../Glossary.md#convolution 'glossary link on convolution') captures this change as a high gradient magnitude value, indicating the presence of an edge. It's a fundamental step in various computer vision and image analysis tasks, such as edge detection, object recognition, and image segmentation.
 
@@ -34,13 +34,13 @@ Keep in mind that gradient filters can be sensitive to noise and might result in
 
 #### Options
 
-| Property                                                                                                           | Required | Default value    |
-| ------------------------------------------------------------------------------------------------------------------ | -------- | ---------------- |
-| [`kernelX`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#kernelX)         | **\***   | -                |
-| [`kernelY`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterYOptions.html#kernelY)         | **\***   | -                |
-| [`bitDepth`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#bitDepth)       | no       | `image.bitDepth` |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#borderType)   | no       | `replicate`      |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/GradientFilterXOptions.html#borderValue) | no       | `0`              |
+| Property                                                                                           | Required | Default value    |
+| -------------------------------------------------------------------------------------------------- | -------- | ---------------- |
+| [`kernelX`](https://api.image-js.org/interfaces/index.GradientFilterXOptions.html#kernelX)         | **\***   | -                |
+| [`kernelY`](https://api.image-js.org/interfaces/index.GradientFilterYOptions.html#kernelY)         | **\***   | -                |
+| [`bitDepth`](https://api.image-js.org/interfaces/index.GradientFilterXOptions.html#bitDepth)       | no       | `image.bitDepth` |
+| [`borderType`](https://api.image-js.org/interfaces/index.GradientFilterXOptions.html#borderType)   | no       | `replicate`      |
+| [`borderValue`](https://api.image-js.org/interfaces/index.GradientFilterXOptions.html#borderValue) | no       | `0`              |
 
 **\*** - if applying filter is necessary in only one of directions, then a user can pass one kernel instead of two. However, if none were passed on, function will throw an error.
 

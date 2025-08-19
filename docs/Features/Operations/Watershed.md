@@ -6,7 +6,7 @@ sidebar_position: 40
 
 _Separates and identifies distinct regions or objects within an image through gradient information and marker-based segmentation._
 
-[🖼️ Image options and parameters of `waterShed` function](https://image-js.github.io/image-js-typescript/functions/waterShed.html 'github io link')
+[🖼️ Image options and parameters of `waterShed` function](https://api.image-js.org/functions/index.waterShed.html 'github io link')
 
 [Watershed filter](<https://en.wikipedia.org/wiki/Watershed_(image_processing)> 'wikipedia link on watershed') is a way of identifying objects by finding image's extreme points (minima or maxima) in terms of intensity and filling these spaces with color (label). The process reminds geological [watershed](https://en.wikipedia.org/wiki/Drainage_divide 'wikipedia link on drainage divide'), which is the origin of algorithm's name. In order for the "water" not to go overboard and stay within the limits of the region, these limits must be set.
 
@@ -38,8 +38,8 @@ If you look for bright-colored ROIs, then either look for maximum points or inve
 
 #### Options
 
-| Property                                                                                                 | Required | Default value                                                                                    |
-| -------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------ |
-| [`mask`](https://image-js.github.io/image-js-typescript/interfaces/WaterShedOptions.html#mask)           | no       | -                                                                                                |
-| [`points`](https://image-js.github.io/image-js-typescript/interfaces/WaterShedOptions.html#points)       | no       | minimum points from [`getExtrema()`](./Get%20extrema.md 'internal link on get extrema') function |
-| [`threshold`](https://image-js.github.io/image-js-typescript/interfaces/WaterShedOptions.html#threshold) | no       | `1`                                                                                              |
+| Property                                                                                 | Required | Default value                                                                                    |
+| ---------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------ |
+| [`mask`](https://api.image-js.org/interfaces/index.WaterShedOptions.html#mask)           | no       | -                                                                                                |
+| [`points`](https://api.image-js.org/interfaces/index.WaterShedOptions.html#points)       | no       | minimum points from [`getExtrema()`](./Get%20extrema.md 'internal link on get extrema') function |
+| [`threshold`](https://api.image-js.org/interfaces/index.WaterShedOptions.html#threshold) | no       | `1`                                                                                              |

@@ -1,12 +1,12 @@
 # image-js-docs
 
-This is the source code repository for the documentation of [image-js](https://github.com/image-js/image-js-typescript)
+This is the source code repository for the documentation of [image-js](https://github.com/image-js/image-js)
 
-The documentation is available on [https://image-js-docs.pages.dev/](https://image-js-docs.pages.dev/)
+The documentation is available on <https://docs.image-js.org/>.
 
 ## Create demos
 
-A demo is simply function which takes an image or mask as input and returns an image or mask as output. When imported in `md` files, it will be transformed into a demo component which allows to choose from various image or video sources to showcase the image transformation.
+A demo is simply a function which takes an image or mask as input and returns an image or mask as output. When imported in `md` files, it will be transformed into a demo component which allows choosing from various image or video sources to showcase the image transformation.
 
 ### Image example
 

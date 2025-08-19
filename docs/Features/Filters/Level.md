@@ -8,7 +8,7 @@ import LevelDemo from './demos/level.demo.tsx'
 
 _Redistributes pixel intensities to achieve a more uniform histogram distribution._
 
-[🖼️ Image options and parameters of `level` method](https://image-js.github.io/image-js-typescript/classes/Image.html#level 'github.io link')
+[🖼️ Image options and parameters of `level` method](https://api.image-js.org/classes/index.Image.html#level)
 
 Level method applies process called ["histogram equalization"](https://en.wikipedia.org/wiki/Histogram_equalization 'wikipedia link on histogram equalization').
 Histogram equalization is a technique used in image processing to enhance the contrast and visibility of details in an image by redistributing the pixel intensity values.
@@ -30,15 +30,15 @@ This process can make details in both dark and bright regions of the image more 
 
 #### Options
 
-| Property                                                                                             | Required | Default value    |
-| ---------------------------------------------------------------------------------------------------- | -------- | ---------------- |
-| [`channels`](https://image-js.github.io/image-js-typescript/interfaces/LevelOptions.html#channels)   | no       | -                |
-| [`gamma`](https://image-js.github.io/image-js-typescript/interfaces/LevelOptions.html#gamma)         | no       | `1`              |
-| [`inputMin`](https://image-js.github.io/image-js-typescript/interfaces/LevelOptions.html#inputMin)   | no       | `0`              |
-| [`inputMax`](https://image-js.github.io/image-js-typescript/interfaces/LevelOptions.html#inputMax)   | no       | `image.maxValue` |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/LevelOptions.html#out)             | no       | -                |
-| [`outputMin`](https://image-js.github.io/image-js-typescript/interfaces/LevelOptions.html#outputMin) | no       | `0`              |
-| [`outputMax`](https://image-js.github.io/image-js-typescript/interfaces/LevelOptions.html#outputMax) | no       | `image.maxValue` |
+| Property                                                                             | Required | Default value    |
+| ------------------------------------------------------------------------------------ | -------- | ---------------- |
+| [`channels`](https://api.image-js.org/interfaces/index.LevelOptions.html#channels)   | no       | -                |
+| [`gamma`](https://api.image-js.org/interfaces/index.LevelOptions.html#gamma)         | no       | `1`              |
+| [`inputMin`](https://api.image-js.org/interfaces/index.LevelOptions.html#inputMin)   | no       | `0`              |
+| [`inputMax`](https://api.image-js.org/interfaces/index.LevelOptions.html#inputMax)   | no       | `image.maxValue` |
+| [`out`](https://api.image-js.org/interfaces/index.LevelOptions.html#out)             | no       | -                |
+| [`outputMin`](https://api.image-js.org/interfaces/index.LevelOptions.html#outputMin) | no       | `0`              |
+| [`outputMax`](https://api.image-js.org/interfaces/index.LevelOptions.html#outputMax) | no       | `image.maxValue` |
 
 <details>
 <summary><b>Implementation</b></summary>

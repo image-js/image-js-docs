@@ -8,7 +8,7 @@ import PixelateDemo from './demos/pixelate.demo.tsx'
 
 _Reduces the level of detail in an image by replacing groups of pixels with a single representative pixel, creating a blocky or mosaic-like appearance._
 
-[🖼️ Image options and parameters of `pixelate` method](https://image-js.github.io/image-js-typescript/classes/Image.html#pixelate 'github.io link')
+[🖼️ Image options and parameters of `pixelate` method](https://api.image-js.org/classes/index.Image.html#pixelate)
 
 [Pixelate filter](https://en.wikipedia.org/wiki/Pixelization 'Wikipedia link on pixelization concept') is a digital image processing technique used to reduce the level of detail in an image by replacing groups of pixels with a single, average color value. This creates a mosaic-like effect where the image appears to be composed of larger, blocky elements rather than fine details.
 
@@ -28,11 +28,11 @@ _Reduces the level of detail in an image by replacing groups of pixels with a si
 
 #### Options
 
-| Property                                                                                                | Required | Default value |
-| ------------------------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`cellSize`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#cellSize)   | **yes**  | -             |
-| [`algorithm`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#algorithm) | no       | `center`      |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/PixelateOptions.html#out)             | no       | -             |
+| Property                                                                                | Required | Default value |
+| --------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`cellSize`](https://api.image-js.org/interfaces/index.PixelateOptions.html#cellSize)   | **yes**  | -             |
+| [`algorithm`](https://api.image-js.org/interfaces/index.PixelateOptions.html#algorithm) | no       | `center`      |
+| [`out`](https://api.image-js.org/interfaces/index.PixelateOptions.html#out)             | no       | -             |
 
 <details>
 <summary><b>Implementation</b></summary>
