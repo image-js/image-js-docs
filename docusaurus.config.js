@@ -57,17 +57,7 @@ async function createConfig() {
     organizationName: 'Zakodium', // Usually your GitHub org/user name.
     projectName: 'image-js', // Usually your repo name.
 
-    plugins: [
-      demoLoaderPlugin,
-      [
-        '@orama/plugin-docusaurus-v3',
-        {
-          searchbox: {
-            disableChat: true,
-          },
-        },
-      ],
-    ],
+    plugins: [demoLoaderPlugin],
 
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
