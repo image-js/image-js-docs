@@ -4,7 +4,8 @@ title: Release notes v1
 date: 2025-07-25
 ---
 
-We're excited to announce the release of a new major version of ImageJS. This version brings TypeScript support and a more intuitive API while maintaining the powerful image processing capabilities you love.
+We're excited to announce the release of a new major version of ImageJS.
+This version brings TypeScript support and a more intuitive API while maintaining the powerful image processing capabilities you love.
 
 <!-- truncate -->
 
@@ -22,7 +23,8 @@ const pixel = img.getPixel(x, y); // any[]
 const pixel = img.getPixel(x, y); // number[] with proper channel count
 ```
 
-This helps preventing runtime type errors and enables better IntelliSense, autocomplete, and refactoring support in your IDE. Developers can now catch bugs at compile time rather than discovering them in production.
+This helps prevent runtime type errors and enables better IntelliSense, autocomplete, and refactoring support in your IDE.
+Developers can now catch bugs at compile time rather than discovering them in production.
 
 ## ⚠️ Breaking changes
 
@@ -54,11 +56,11 @@ const img = readSync('cat.jpg');
 writeSync('newCat.jpg', img);
 ```
 
-Those changes separates I/O operations from image manipulation for a clearer API design.
+Those changes separate I/O operations from image manipulation for a clearer API design.
 
 #### Creating images
 
-When creating a new image, unlike before, image's width and height must be specified.
+When creating a new image, unlike before, the image's width and height must be specified.
 
 ```ts
 import { Image } from 'image-js';
@@ -78,8 +80,8 @@ Coordinates are now represented using `Point` objects instead of arrays. This ch
 ```ts
 // Before
 const croppedImage = img.crop({
-  x:10,
-  y:10
+  x: 10,
+  y: 10,
   width: 10,
   height: 10,
 });
@@ -91,7 +93,7 @@ const croppedImage = img.crop({
 });
 ```
 
-It is a more explicit and self-documenting code. It also eliminates confusion about array order (column vs row).
+It is a more explicit and self-documenting code. It also removes confusion about array order (column vs row).
 
 ### Masks
 
@@ -146,7 +148,7 @@ const whiteRegions = roiMap.whiteRois;
 
 The new `blackRois` and `whiteRois` properties provide more intuitive access to region data based on pixel values rather than geometric dimensions.
 
-For more information, please, visit these tutorials:
+For more information, please visit these tutorials:
 
 - [Image segmentation with `threshold()` and `fromMask()`](../docs/Tutorials/Image%20segmentation%20with%20threshold)
 - [Image segmentation with `watershed()`](../docs/Tutorials/Image%20segmentation%20with%20watershed)
@@ -263,21 +265,21 @@ The following deprecated features have been removed:
 
 #### Images
 
-- `countAlphaPixel()` - Use custom pixel counting with [`getPixel()`](https://image-js.github.io/image-js/classes/index.Image.html#getpixel 'API link on getPixel').
+- `countAlphaPixel()` - Use custom pixel counting with [`getPixel()`](https://api.image-js.org/classes/index.Image.html#getpixel 'API link on getPixel').
 - `paintLabels()` and `roi.paint()` - Features have been removed due to dependency issues. We plan to add it back in future updates.
 - `warpingFourPoints()` - Use [`getPerspectiveWarpMatrix()`](../docs/Features/Geometry/Get%20Perspective%20Warp%20Matrix 'internal link on getPerspectiveWarp') + [`transform()`](release.md#transform) instead.
 - 32-bit color depth support and `abs()` have been removed.
 - `CMYK` and `HSL` color models have been removed.
-- `paintMasks()` has been removed. Use [`paintMask()`](https://image-js.github.io/image-js/classes/index.Image.html#paintmask 'API link on paintMask')+ a `for` loop.
+- `paintMasks()` has been removed. Use [`paintMask()`](https://api.image-js.org/classes/index.Image.html#paintmask 'API link on paintMask')+ a `for` loop.
 - `clearBit()` and `toggleBit()` have been removed, due to changes in `Mask`
-  data representation (see ["Masks"](#masks)). Use [`setBit()`](https://image-js.github.io/image-js/classes/index.Mask.html#setbit 'API link on setBit') or [`setValue()`](https://image-js.github.io/image-js/classes/index.Image.html#setvalue 'API link on setValue') instead.
+  data representation (see ["Masks"](#masks)). Use [`setBit()`](https://api.image-js.org/classes/index.Mask.html#setbit 'API link on setBit') or [`setValue()`](https://api.image-js.org/classes/index.Image.html#setvalue 'API link on setValue') instead.
 - `combineChannels()` has been removed.
-- `rgba8()` and `rgba()` have been removed. Use a combination of [`convertColor()`](https://image-js.github.io/image-js/classes/index.Image.html#convertcolor 'API link on convertColor') and [`convertBitDepth()`](https://image-js.github.io/image-js/classes/index.Image.html#convertbitdepth 'API link on convertBitDepth') instead.
+- `rgba8()` and `rgba()` have been removed. Use a combination of [`convertColor()`](https://api.image-js.org/classes/index.Image.html#convertcolor 'API link on convertColor') and [`convertBitDepth()`](https://api.image-js.org/classes/index.Image.html#convertbitdepth 'API link on convertBitDepth') instead.
 - `histograms()` and `colorHistogram()` have been removed.
 - `getPixelGrid()` has been removed.
 - `getClosestCommonParent()` and `getRelativePosition()` have been removed.
 - `getSimilarity()` and `getIntersection()` have been removed.
-- `paintPolygons()` and `paintPolylines()`have been removed. Use [`drawPolygon()`](https://image-js.github.io/image-js/classes/index.Image.html#drawpolygon 'API link on drawPolygon')/ [`drawPolyline()`](https://image-js.github.io/image-js/classes/index.Image.html#drawpolyline 'API link on drawPolyline') + a `for` loop.
+- `paintPolygons()` and `paintPolylines()`have been removed. Use [`drawPolygon()`](https://api.image-js.org/classes/index.Image.html#drawpolygon 'API link on drawPolygon')/ [`drawPolyline()`](https://api.image-js.org/classes/index.Image.html#drawpolyline 'API link on drawPolyline') + a `for` loop.
 - `getMoment()` has been removed.
 
 #### ROIs and its management
@@ -289,7 +291,7 @@ The following deprecated features have been removed:
 - `findCorrespondingRoi()` has been removed.
 - `resetPainted()` has been removed.
 - `mergeRoi()` and `mergeRois()` have been removed.
-- `minX`,`minY`,`meanX`,`meanY`,`maxX`,`maxY` have been removed. Use [ROI's `origin`, combined with its `width` and `height`](https://image-js.github.io/image-js/classes/index.Roi.html 'API link on ROI').
+- `minX`,`minY`,`meanX`,`meanY`,`maxX`,`maxY` have been removed. Use [ROI's `origin`, combined with its `width` and `height`](https://api.image-js.org/classes/index.Roi.html 'API link on ROI').
 
 ## 🆕 New features
 
@@ -374,7 +376,7 @@ const corrected = image.correctColor(measured, reference);
 
 ### `variance()`
 
-A function that calculates image's [variance](https://en.wikipedia.org/wiki/Variance 'wikipedia link on variance') has been added.
+A function that calculates an image's [variance](https://en.wikipedia.org/wiki/Variance 'wikipedia link on variance') has been added.
 
 ```ts
 // Calculate variance for entire image
@@ -412,7 +414,7 @@ const pixelatedImage = image.pixelate({
 
 ### `cropRectangle()`
 
-While `crop()` and `cropRectangle()` might appear similar. However, they provide provide different approaches to extracting image regions.
+While `crop()` and `cropRectangle()` might appear similar. However, they provide different approaches to extracting image regions.
 
 `crop()` - Standard rectangular cropping that maintains the original image orientation:
 
@@ -585,14 +587,14 @@ Bugs in multiple functions have been fixed:
 
 ## 📚 Resources
 
-- [API Documentation](https://image-js.github.io/image-js-typescript/ 'link on API')
-- [Examples and Tutorials](https://image-js-docs.pages.dev/ 'link on image-js tutorials and tips')
+- [API Documentation](https://api.image-js.org/ 'link on API')
+- [Examples and Tutorials](https://docs.image-js.org/ 'link on image-js tutorials and tips')
 
 ## 🤝 Contributing
 
 We welcome contributions! The new TypeScript codebase makes it easier than ever to contribute.
 
-- [GitHub Repository](https://github.com/image-js/image-js-typescript 'link on github repository')
+- [GitHub Repository](https://github.com/image-js/image-js 'link on github repository')
 
 ## 🙏 Acknowledgments
 

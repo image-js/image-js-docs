@@ -8,8 +8,8 @@ import InvertDemo from './demos/invert.demo.tsx'
 
 _Reverses the colors of an image, transforming dark areas into light and vice versa._
 
-[🖼️ Image options and parameters of `invert` method](https://image-js.github.io/image-js-typescript/classes/Image.html#invert 'github.io link')  
-[🎭 Mask options and parameters of `invert` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#invert 'github.io link')
+[🖼️ Image options and parameters of `invert` method](https://api.image-js.org/classes/index.Image.html#invert)  
+[🎭 Mask options and parameters of `invert` method](https://api.image-js.org/classes/index.Mask.html#invert)
 
 [Invert filter](<https://en.wikipedia.org/wiki/Negative_(photography)> 'wikipedia link on negative filtering') is an image processing technique used to reverse the color values of an image, creating a negative or "inverted" version of the original. In this process, the darkest areas become the lightest, and the lightest areas become the darkest, while the midtones are adjusted accordingly. The invert filter is a simple but effective way to create visual contrast and produce interesting effects.
 
@@ -35,9 +35,9 @@ Parameters and options for Images and Masks are the same.
 
 #### Options
 
-| Property                                                                                  | Required | Default value |
-| ----------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/InvertOptions.html#out) | no       | -             |
+| Property                                                                  | Required | Default value |
+| ------------------------------------------------------------------------- | -------- | ------------- |
+| [`out`](https://api.image-js.org/interfaces/index.InvertOptions.html#out) | no       | -             |
 
 :::info
 The method is also available for Masks.

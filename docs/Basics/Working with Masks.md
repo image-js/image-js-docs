@@ -16,10 +16,10 @@ const mask = new Mask(500, 500); // Creates a simple mask filled with 0s of size
 
 #### Options
 
-| Property                                                                                      | Required | Default value          |
-| --------------------------------------------------------------------------------------------- | -------- | ---------------------- |
-| [`origin`](https://image-js.github.io/image-js-typescript/interfaces/MaskOptions.html#origin) | no       | `{row: 0, column: 0 }` |
-| [`data`](https://image-js.github.io/image-js-typescript/interfaces/MaskOptions.html#data)     | no       | -                      |
+| Property                                                                      | Required | Default value          |
+| ----------------------------------------------------------------------------- | -------- | ---------------------- |
+| [`origin`](https://api.image-js.org/interfaces/index.MaskOptions.html#origin) | no       | `{row: 0, column: 0 }` |
+| [`data`](https://api.image-js.org/interfaces/index.MaskOptions.html#data)     | no       | -                      |
 
 ### Use `threshold()` method
 

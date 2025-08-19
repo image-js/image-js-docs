@@ -6,7 +6,7 @@ sidebar_position: 70
 
 _Center of mass of the current ROI._
 
-[🔎 ROI options and parameters of `centroid` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#centroid 'github.io link')
+[🔎 ROI options and parameters of `centroid` accessor](https://api.image-js.org/classes/index.Roi.html#centroid)
 
 In image processing, centroid is the weighted average of all the coordinates that belong to the region of interest.
 

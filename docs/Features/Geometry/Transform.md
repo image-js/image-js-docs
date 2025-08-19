@@ -8,7 +8,7 @@ import TransformDemo from './demos/transform.demo.tsx'
 
 _Applies linear transformations to an image, such as scaling, rotation, skewing, or warping, altering its shape or orientation._
 
-[🖼️ Image options and parameters of `transform` method](https://image-js.github.io/image-js-typescript/classes/Image.html#transform 'github.io link')
+[🖼️ Image options and parameters of `transform` method](https://api.image-js.org/classes/index.Image.html#transform)
 
 `transform` method uses transformation matrix to rotate, translate, and/or scale the image.
 User needs to pass on the matrix that will be applied to the image. Matrix must have either 2 rows and 3 columns or 3 rows and 3 columns:
@@ -52,12 +52,12 @@ Matrix cannot be singular. Otherwise it cannot be inverted. Click [here](https:/
 
 #### Options
 
-| Property                                                                                                                 | Required | Default value |
-| ------------------------------------------------------------------------------------------------------------------------ | -------- | ------------- |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/TransformOptions.html#borderType)               | no       | `constant`    |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/TransformOptions.html#borderValue)             | no       | `0`           |
-| [`fullImage`](https://image-js.github.io/image-js-typescript/interfaces/TransformOptions.html#fullImage)                 | no       | -             |
-| [`height`](https://image-js.github.io/image-js-typescript/interfaces/TransformOptions.html#height)                       | no       | -             |
-| [`interpolationType`](https://image-js.github.io/image-js-typescript/interfaces/TransformOptions.html#interpolationType) | no       | `bilinear`    |
-| [`inverse`](https://image-js.github.io/image-js-typescript/interfaces/TransformOptions.html#inverse)                     | no       | -             |
-| [`width`](https://image-js.github.io/image-js-typescript/interfaces/TransformOptions.html#width)                         | no       | -             |
+| Property                                                                                                 | Required | Default value |
+| -------------------------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`borderType`](https://api.image-js.org/interfaces/index.TransformOptions.html#borderType)               | no       | `constant`    |
+| [`borderValue`](https://api.image-js.org/interfaces/index.TransformOptions.html#borderValue)             | no       | `0`           |
+| [`fullImage`](https://api.image-js.org/interfaces/index.TransformOptions.html#fullImage)                 | no       | -             |
+| [`height`](https://api.image-js.org/interfaces/index.TransformOptions.html#height)                       | no       | -             |
+| [`interpolationType`](https://api.image-js.org/interfaces/index.TransformOptions.html#interpolationType) | no       | `bilinear`    |
+| [`inverse`](https://api.image-js.org/interfaces/index.TransformOptions.html#inverse)                     | no       | -             |
+| [`width`](https://api.image-js.org/interfaces/index.TransformOptions.html#width)                         | no       | -             |

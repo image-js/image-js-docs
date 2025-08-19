@@ -1,10 +1,8 @@
 import type { UrlOption } from '../importImage/importImageContext';
 
-const standardUrl = 'https://image-js.github.io/image-dataset-demo/standard';
-const standardMaskUrl =
-  'https://image-js.github.io/image-dataset-demo/standard_mask';
-const morphologyMaskUrl =
-  'https://image-js.github.io/image-dataset-demo/morphology_mask';
+const standardUrl = 'https://demo-dataset.image-js.org/standard';
+const standardMaskUrl = 'https://demo-dataset.image-js.org/standard_mask';
+const morphologyMaskUrl = 'https://demo-dataset.image-js.org/morphology_mask';
 
 export const defaultImages: UrlOption[] = [
   {

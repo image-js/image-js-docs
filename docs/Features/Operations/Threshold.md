@@ -8,7 +8,7 @@ import ThresholdDemo from './demos/threshold.demo.tsx'
 
 _Grayscale image into a binary image by setting a specific threshold value or algorithm._
 
-[🖼️ Image options and parameters of `threshold` method](https://image-js.github.io/image-js-typescript/classes/Image.html#threshold 'github.io link')
+[🖼️ Image options and parameters of `threshold` method](https://api.image-js.org/classes/index.Image.html#threshold)
 
 Thresholding is a common image processing technique used to segment an image into regions based on pixel intensity values. The goal of thresholding is to separate objects or features of interest from the background or noise by setting a threshold value that divides the pixel values into two groups: those above the threshold and those below it. Thresholding is widely used for tasks like object detection, image segmentation, and feature extraction.
 
@@ -30,17 +30,17 @@ With threshold filter there are two ways of passing options: by passing threshol
 
 #### Threshold Variant:
 
-| Property                                                                                                          | Required | Default value |
-| ----------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`threshold`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsThreshold.html#threshold) | no       | -             |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsThreshold.html#out)             | no       | -             |
+| Property                                                                                          | Required | Default value |
+| ------------------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`threshold`](https://api.image-js.org/interfaces/index.ThresholdOptionsThreshold.html#threshold) | no       | -             |
+| [`out`](https://api.image-js.org/interfaces/index.ThresholdOptionsThreshold.html#out)             | no       | -             |
 
 #### Threshold Algorithm Variant
 
-| Property                                                                                                          | Required | Default value |
-| ----------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`algorithm`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsAlgorithm.html#algorithm) | no       | `otsu`        |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/ThresholdOptionsAlgorithm.html#out)             | no       | -             |
+| Property                                                                                          | Required | Default value |
+| ------------------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`algorithm`](https://api.image-js.org/interfaces/index.ThresholdOptionsAlgorithm.html#algorithm) | no       | `otsu`        |
+| [`out`](https://api.image-js.org/interfaces/index.ThresholdOptionsAlgorithm.html#out)             | no       | -             |
 
 #### List of threshold algorithms:
 

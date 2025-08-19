@@ -8,7 +8,7 @@ import ResizeDemo from './demos/resize.demo.tsx'
 
 _Changes the size of an image._
 
-[🖼️ Image options and parameters of `resize` method](https://image-js.github.io/image-js-typescript/classes/Image.html#resize 'github.io link')
+[🖼️ Image options and parameters of `resize` method](https://api.image-js.org/classes/index.Image.html#resize)
 
 Image resizing, also known as [image rescaling](https://en.wikipedia.org/wiki/Image_scaling 'wikipedia link on image rescaling'), is an image processing technique used to change the dimensions (size) of an image. Rescaling can involve both enlarging and reducing the image's size. The goal is to adapt an image to fit within specific dimensions, whether it's for display, printing, or other purposes.
 
@@ -28,13 +28,13 @@ Image resizing, also known as [image rescaling](https://en.wikipedia.org/wiki/Im
 
 #### Options
 
-| Property                                                                                                                  | Required | Default value |
-| ------------------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#borderType)                   | no       | `constant`    |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#borderValue)                 | no       | `0`           |
-| [`height`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#height)                           | no       | -             |
-| [`interpolationType`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#interpolationType)     | no       | `bilinear`    |
-| [`preserveAspectRatio`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#preserveAspectRatio) | no       | `true`        |
-| [`width`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#width)                             | no       | -             |
-| [`xFactor`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#xFactor)                         | no       | -             |
-| [`yFactor`](https://image-js.github.io/image-js-typescript/interfaces/ResizeOptions.html#yFactor)                         | no       | -             |
+| Property                                                                                                  | Required | Default value |
+| --------------------------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`borderType`](https://api.image-js.org/interfaces/index.ResizeOptions.html#borderType)                   | no       | `constant`    |
+| [`borderValue`](https://api.image-js.org/interfaces/index.ResizeOptions.html#borderValue)                 | no       | `0`           |
+| [`height`](https://api.image-js.org/interfaces/index.ResizeOptions.html#height)                           | no       | -             |
+| [`interpolationType`](https://api.image-js.org/interfaces/index.ResizeOptions.html#interpolationType)     | no       | `bilinear`    |
+| [`preserveAspectRatio`](https://api.image-js.org/interfaces/index.ResizeOptions.html#preserveAspectRatio) | no       | `true`        |
+| [`width`](https://api.image-js.org/interfaces/index.ResizeOptions.html#width)                             | no       | -             |
+| [`xFactor`](https://api.image-js.org/interfaces/index.ResizeOptions.html#xFactor)                         | no       | -             |
+| [`yFactor`](https://api.image-js.org/interfaces/index.ResizeOptions.html#yFactor)                         | no       | -             |

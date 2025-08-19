@@ -8,7 +8,7 @@ import DerivativeDemo from './demos//derivative.demo.tsx'
 
 _Gradient filter but using predefined kernels._
 
-[🖼️ Image options and parameters of `derivative` method](https://image-js.github.io/image-js-typescript/classes/Image.html#derivativeFilter 'link on github io')
+[🖼️ Image options and parameters of `derivative` method](https://api.image-js.org/classes/index.Image.html#derivativeFilter 'link on github io')
 
 Derivative filter is a special case of a gradient filter, therefore it uses gradient algorithm. However, the key difference are the kernels used in this very algorithm. In ImageJS there are three distinguished kernels: [Sobel](https://en.wikipedia.org/wiki/Sobel_operator 'wikipedia link on Sobel kernel'), [Scharr](https://en.wikipedia.org/wiki/Sobel_operator#Alternative_operators 'wikipedia link on Scharr operator') and [Prewitt](https://en.wikipedia.org/wiki/Prewitt_operator 'wikipedia link on Prewitt kernel').
 
@@ -28,12 +28,12 @@ Derivative filter is a special case of a gradient filter, therefore it uses grad
 
 #### Options
 
-| Property                                                                                                            | Required | Default value    |
-| ------------------------------------------------------------------------------------------------------------------- | -------- | ---------------- |
-| [`bitDepth`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#bitDepth)       | no       | `image.bitDepth` |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#borderType)   | no       | `replicate`      |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#borderValue) | no       | `0`              |
-| [`filter`](https://image-js.github.io/image-js-typescript/interfaces/DerivativeFilterOptions.html#filter)           | no       | `sobel`          |
+| Property                                                                                            | Required | Default value    |
+| --------------------------------------------------------------------------------------------------- | -------- | ---------------- |
+| [`bitDepth`](https://api.image-js.org/interfaces/index.DerivativeFilterOptions.html#bitDepth)       | no       | `image.bitDepth` |
+| [`borderType`](https://api.image-js.org/interfaces/index.DerivativeFilterOptions.html#borderType)   | no       | `replicate`      |
+| [`borderValue`](https://api.image-js.org/interfaces/index.DerivativeFilterOptions.html#borderValue) | no       | `0`              |
+| [`filter`](https://api.image-js.org/interfaces/index.DerivativeFilterOptions.html#filter)           | no       | `sobel`          |
 
 - ## Sobel kernel
 

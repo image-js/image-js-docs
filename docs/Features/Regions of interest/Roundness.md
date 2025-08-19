@@ -6,7 +6,7 @@ sidebar_position: 100
 
 _Quantifies the deviation of an object's shape from a perfect circle._
 
-[🔎 ROI options and parameters of `roundness` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#roundness 'github.io link')
+[🔎 ROI options and parameters of `roundness` accessor](https://api.image-js.org/classes/index.Roi.html#roundness)
 
 Roundness is the measure of how closely the shape of an object approaches that of a mathematically perfect circle.
 To compute it the formula is this:

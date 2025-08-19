@@ -8,7 +8,7 @@ import MedianDemo from './demos/median.demo.tsx'
 
 _Replaces each pixel's value with the median value of neighboring pixels, effectively reducing noise and preserving edge details._
 
-[🖼️ Image options and parameters of `median` method](https://image-js.github.io/image-js-typescript/classes/Image.html#medianFilter 'github.io link')
+[🖼️ Image options and parameters of `median` method](https://api.image-js.org/classes/index.Image.html#medianFilter)
 
 [Median filter](https://en.wikipedia.org/wiki/Median_filter 'wikipedia link on median filter') is a digital image processing technique used to reduce noise in an image by replacing each pixel's value with the median value of neighboring pixels. It's particularly effective at removing ["salt and pepper"](https://en.wikipedia.org/wiki/Salt-and-pepper_noise 'wikipedia link on salt and pepper effect') noise.
 
@@ -32,11 +32,11 @@ However, the median filter also has limitations. It can blur sharp edges and thi
 
 #### Options
 
-| Property                                                                                                        | Required | Default value |
-| --------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`cellSize`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#cellSize)       | **yes**  | `1`           |
-| [`borderType`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#borderType)   | no       | `reflect101`  |
-| [`borderValue`](https://image-js.github.io/image-js-typescript/interfaces/MedianFilterOptions.html#borderValue) | no       | `0`           |
+| Property                                                                                        | Required | Default value |
+| ----------------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`cellSize`](https://api.image-js.org/interfaces/index.MedianFilterOptions.html#cellSize)       | **yes**  | `1`           |
+| [`borderType`](https://api.image-js.org/interfaces/index.MedianFilterOptions.html#borderType)   | no       | `reflect101`  |
+| [`borderValue`](https://api.image-js.org/interfaces/index.MedianFilterOptions.html#borderValue) | no       | `0`           |
 
 <details>
 <summary><b>Implementation</b></summary>

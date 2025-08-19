@@ -6,8 +6,8 @@ sidebar_position: 0
 
 _Smallest convex polygon or polyhedron that contains region of interest._
 
-[🎭 Mask options and parameters `getConvexHull` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#getConvexHull 'github.io link')  
-[🔎 ROI options and parameters of `convexHull` accessor](https://image-js.github.io/image-js-typescript/classes/Roi.html#convexHull 'github.io link')
+[🎭 Mask options and parameters `getConvexHull` method](https://api.image-js.org/classes/index.Mask.html#getConvexHull)  
+[🔎 ROI options and parameters of `convexHull` accessor](https://api.image-js.org/classes/index.Roi.html#convexHull)
 
 [Convex Hull](https://en.wikipedia.org/wiki/Convex_hull 'wikipedia link on convex hull') is a way of characterizing the shape of an image by determining which pixels are adjacent to other pixels of the same intensity. This is a good way to find convex features in an image.
 
@@ -19,11 +19,11 @@ To understand what convex hull is, picture a rubber band wrapped around your obj
 
 In ImageJS convex hull is a ROI class accessor that returns a `ConvexHull` object.
 
-| Property name                                                                                      | Description                  | Property type |
-| -------------------------------------------------------------------------------------------------- | ---------------------------- | ------------- |
-| [`points`](https://image-js.github.io/image-js-typescript/interfaces/ConvexHull.html#points)       | points that form convex hull | `Point[]`     |
-| [`surface`](https://image-js.github.io/image-js-typescript/interfaces/ConvexHull.html#surface)     | convex hull's surface        | `number`      |
-| [`perimeter`](https://image-js.github.io/image-js-typescript/interfaces/ConvexHull.html#perimeter) | convex hull's perimeter      | `number`      |
+| Property name                                                                      | Description                  | Property type |
+| ---------------------------------------------------------------------------------- | ---------------------------- | ------------- |
+| [`points`](https://api.image-js.org/interfaces/index.ConvexHull.html#points)       | points that form convex hull | `Point[]`     |
+| [`surface`](https://api.image-js.org/interfaces/index.ConvexHull.html#surface)     | convex hull's surface        | `number`      |
+| [`perimeter`](https://api.image-js.org/interfaces/index.ConvexHull.html#perimeter) | convex hull's perimeter      | `number`      |
 
 ```ts
 const convexHull = roi.convexHull;

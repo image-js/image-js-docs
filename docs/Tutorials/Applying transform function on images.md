@@ -86,7 +86,7 @@ Each parameter controls specific aspects of the transformation:
 - `g`, `h`: Perspective distortion (horizontal and vertical)
 - `i`: Normalization factor (usually 1)
 
-For affine transformation 2x3 matrix will be used, because last row is not necessary for this kind of transformation.
+For affine transformation 2x3 matrix will be used because the last row is not necessary for this kind of transformation.
 
 ## Affine Transformations
 
@@ -122,7 +122,7 @@ const stretchedImage = image.transform(transformationMatrix);
 
 :::note
 ImageJS also has [`resize`](../Features/Geometry/Resize.md) function that allows to scale an image.
-Current tutorial just demonstrates the basic principle behind transformation of such kind.
+The current tutorial just demonstrates the basic principle behind transformation of such kind.
 :::
 
 #### Common Scaling Examples

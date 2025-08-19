@@ -6,7 +6,7 @@ sidebar_position: 10
 
 _Add two images together._
 
-[🖼️ Image options and parameters of `add` method](https://image-js.github.io/image-js-typescript/classes/Image.html#add 'github.io link')
+[🖼️ Image options and parameters of `add` method](https://api.image-js.org/classes/index.Image.html#add)
 
 `add` method, opposed to [subtraction](./Subtraction.md 'internal link on subtract'), takes another Image and makes an addition between each respective pixel value.
 It works like this:
@@ -36,4 +36,4 @@ Images must have the same size, channel number and bit depth for compatibility r
 
 ### Parameters and default values
 
-- [`otherImage`](https://image-js.github.io/image-js-typescript/classes/Mask.html#add 'github.io link')
+- [`otherImage`](https://api.image-js.org/classes/index.Mask.html#add)
