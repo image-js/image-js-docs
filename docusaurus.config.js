@@ -52,11 +52,6 @@ async function createConfig() {
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/',
 
-    // GitHub pages deployment config.
-    // If you aren't using GitHub pages, you don't need these.
-    organizationName: 'Zakodium', // Usually your GitHub org/user name.
-    projectName: 'image-js', // Usually your repo name.
-
     plugins: [demoLoaderPlugin],
 
     onBrokenLinks: 'throw',
@@ -114,6 +109,14 @@ async function createConfig() {
         // Replace with your project's social card
         image: 'img/docusaurus-social-card.jpg',
         colorMode: {},
+        announcementBar: {
+          id: 'release-1.0',
+          content:
+            'ImageJS 1.0 has been released! <a href="/blog/releases/1.0">Click here</a> to read our announcement post.',
+          textColor: '#fff',
+          backgroundColor: '#1c4ed8',
+          isCloseable: true,
+        },
         navbar: {
           title: 'ImageJS',
           logo: {
