@@ -8,7 +8,7 @@ import CannyEdgeDemo from './demos/cannyEdgeDetector.demo.tsx'
 
 _Identifies edges in an image by detecting areas of rapid intensity changes, highlighting object boundaries and edges with thin and accurate lines._
 
-[🖼️ Image options and parameters of `cannyEdgeDetector` method](https://image-js.github.io/image-js-typescript/classes/Image.html#cannyEdgeDetector 'github.io link')
+[🖼️ Image options and parameters of `cannyEdgeDetector` method](https://api.image-js.org/classes/index.Image.html#cannyEdgeDetector)
 
 The Canny edge detector is a popular and widely used image processing technique for detecting edges in images. It is widely used in computer vision, image processing, and various applications such as object recognition, image segmentation, and feature extraction due to its ability to accurately detect edges and suppress noise.
 
@@ -37,13 +37,13 @@ The Canny edge detector is known for its ability to:
 
 #### Options
 
-| Property                                                                                                                     | Required | Default value |
-| ---------------------------------------------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`gaussianBlurOptions`](https://image-js.github.io/image-js-typescript/interfaces/CannyEdgeOptions.html#gaussianBlurOptions) | no       | `1`           |
-| [`highThreshold`](https://image-js.github.io/image-js-typescript/interfaces/CannyEdgeOptions.html#highThreshold)             | no       | `0.1`         |
-| [`lowThreshold`](https://image-js.github.io/image-js-typescript/interfaces/CannyEdgeOptions.html#lowThreshold)               | no       | `0.04`        |
-| [`hysteresis`](https://image-js.github.io/image-js-typescript/interfaces/CannyEdgeOptions.html#hysteresis)                   | no       | `true`        |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/CannyEdgeOptions.html#out)                                 | no       | -             |
+| Property                                                                                                     | Required | Default value |
+| ------------------------------------------------------------------------------------------------------------ | -------- | ------------- |
+| [`gaussianBlurOptions`](https://api.image-js.org/interfaces/index.CannyEdgeOptions.html#gaussianBlurOptions) | no       | `1`           |
+| [`highThreshold`](https://api.image-js.org/interfaces/index.CannyEdgeOptions.html#highThreshold)             | no       | `0.1`         |
+| [`lowThreshold`](https://api.image-js.org/interfaces/index.CannyEdgeOptions.html#lowThreshold)               | no       | `0.04`        |
+| [`hysteresis`](https://api.image-js.org/interfaces/index.CannyEdgeOptions.html#hysteresis)                   | no       | `true`        |
+| [`out`](https://api.image-js.org/interfaces/index.CannyEdgeOptions.html#out)                                 | no       | -             |
 
 <details>
 <summary>

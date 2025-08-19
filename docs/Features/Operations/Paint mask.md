@@ -4,8 +4,8 @@ sidebar_position: 60
 
 _Paints mask on the image._
 
-[🖼️ Image options and parameters of `paintMask` method](https://image-js.github.io/image-js-typescript/classes/Image.html#paintMask 'github.io link')  
-[🎭 Mask options and parameters of `paintMask` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#paintMask 'github.io link')
+[🖼️ Image options and parameters of `paintMask` method](https://api.image-js.org/classes/index.Image.html#paintMask)  
+[🎭 Mask options and parameters of `paintMask` method](https://api.image-js.org/classes/index.Mask.html#paintMask)
 
 This method allows painting a mask on the image or on the mask. It can serve as a good visualization tool to highlight the regions in question. For instance, by painting a mask of each black ROI here, we can highlight all the particles present on the image.
 
@@ -43,17 +43,17 @@ for (const roi of rois) {
 
 **For image:**
 
-| Property                                                                                                  | Required | Default value      |
-| --------------------------------------------------------------------------------------------------------- | -------- | ------------------ |
-| [`blend`](https://image-js.github.io/image-js-typescript/interfaces/PaintMaskOnImageOptions.html#blend)   | no       | `true`             |
-| [`color`](https://image-js.github.io/image-js-typescript/interfaces/PaintMaskOnImageOptions.html#color)   | no       | black              |
-| [`origin`](https://image-js.github.io/image-js-typescript/interfaces/PaintMaskOnImageOptions.html#origin) | no       | `{column:0,row:0}` |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/PaintMaskOnImageOptions.html#out)       | no       | -                  |
+| Property                                                                                  | Required | Default value      |
+| ----------------------------------------------------------------------------------------- | -------- | ------------------ |
+| [`blend`](https://api.image-js.org/interfaces/index.PaintMaskOnImageOptions.html#blend)   | no       | `true`             |
+| [`color`](https://api.image-js.org/interfaces/index.PaintMaskOnImageOptions.html#color)   | no       | black              |
+| [`origin`](https://api.image-js.org/interfaces/index.PaintMaskOnImageOptions.html#origin) | no       | `{column:0,row:0}` |
+| [`out`](https://api.image-js.org/interfaces/index.PaintMaskOnImageOptions.html#out)       | no       | -                  |
 
 **For mask:**
 
-| Property                                                                                                 | Required | Default value      |
-| -------------------------------------------------------------------------------------------------------- | -------- | ------------------ |
-| [`value`](https://image-js.github.io/image-js-typescript/interfaces/PaintMaskOnMaskOptions.html#value)   | no       | `1`                |
-| [`origin`](https://image-js.github.io/image-js-typescript/interfaces/PaintMaskOnMaskOptions.html#origin) | no       | `{column:0,row:0}` |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/PaintMaskOnMaskOptions.html#out)       | no       | -                  |
+| Property                                                                                 | Required | Default value      |
+| ---------------------------------------------------------------------------------------- | -------- | ------------------ |
+| [`value`](https://api.image-js.org/interfaces/index.PaintMaskOnMaskOptions.html#value)   | no       | `1`                |
+| [`origin`](https://api.image-js.org/interfaces/index.PaintMaskOnMaskOptions.html#origin) | no       | `{column:0,row:0}` |
+| [`out`](https://api.image-js.org/interfaces/index.PaintMaskOnMaskOptions.html#out)       | no       | -                  |

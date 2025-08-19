@@ -6,7 +6,7 @@ sidebar_position: 100
 
 _Makes a logical conjunction between masks._
 
-[🎭 Mask options and parameters of `and` method](https://image-js.github.io/image-js-typescript/classes/Mask.html#and 'github.io link')
+[🎭 Mask options and parameters of `and` method](https://api.image-js.org/classes/index.Mask.html#and)
 
 `and` method performs a [logical conjunction](https://en.wikipedia.org/wiki/Logical_conjunction 'wikipedia link on logical conjunction') between bits of two masks.
 
@@ -31,6 +31,6 @@ Masks must have the same size for compatibility reasons.
 
 #### Options
 
-| Property                                                                               | Required | Default value |
-| -------------------------------------------------------------------------------------- | -------- | ------------- |
-| [`out`](https://image-js.github.io/image-js-typescript/interfaces/AndOptions.html#out) | no       | -             |
+| Property                                                               | Required | Default value |
+| ---------------------------------------------------------------------- | -------- | ------------- |
+| [`out`](https://api.image-js.org/interfaces/index.AndOptions.html#out) | no       | -             |

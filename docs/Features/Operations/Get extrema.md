@@ -4,7 +4,7 @@ sidebar_position: 20
 
 _Finds extreme pixel values in the image._
 
-[🖼️ Image options and parameters of `getExtrema` function](https://image-js.github.io/image-js-typescript/functions/getExtrema.html 'github.io link')
+[🖼️ Image options and parameters of `getExtrema` function](https://api.image-js.org/functions/index.getExtrema.html)
 
 `getExtrema`, as the name suggests, finds extreme intensity values of the image. If user looks for minimum values it finds the darkest points, when maximum - the brightest.
 
@@ -37,9 +37,9 @@ You can add a mask as an option to specify locations where to look for extrema.
 
 #### Options
 
-| Property                                                                                               | Required | Default value |
-| ------------------------------------------------------------------------------------------------------ | -------- | ------------- |
-| [`kind`](https://image-js.github.io/image-js-typescript/interfaces/ExtremaOptions.html#kind)           | no       | `'maximum'`   |
-| [`mask`](https://image-js.github.io/image-js-typescript/interfaces/ExtremaOptions.html#mask)           | no       | -             |
-| [`algorithm`](https://image-js.github.io/image-js-typescript/interfaces/ExtremaOptions.html#algorithm) | no       | `star`        |
-| [`maxEquals`](https://image-js.github.io/image-js-typescript/interfaces/ExtremaOptions.html#maxEquals) | no       | `2`           |
+| Property                                                                               | Required | Default value |
+| -------------------------------------------------------------------------------------- | -------- | ------------- |
+| [`kind`](https://api.image-js.org/interfaces/index.ExtremaOptions.html#kind)           | no       | `'maximum'`   |
+| [`mask`](https://api.image-js.org/interfaces/index.ExtremaOptions.html#mask)           | no       | -             |
+| [`algorithm`](https://api.image-js.org/interfaces/index.ExtremaOptions.html#algorithm) | no       | `star`        |
+| [`maxEquals`](https://api.image-js.org/interfaces/index.ExtremaOptions.html#maxEquals) | no       | `2`           |
