@@ -27,7 +27,7 @@
     "@mdx-js/react": "^3.1.0",
     "@monaco-editor/react": "^4.7.0",
     "clsx": "^2.1.1",
-    "image-js": "0.0.0-next-1a96bf38e6",
+    "image-js": "^1.0.0",
     "immer": "^10.1.1",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.1.1",
