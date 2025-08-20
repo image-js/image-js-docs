@@ -1,0 +1,108 @@
+---
+title: Getting started
+sidebar_position: 0
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Getting started
+
+ImageJS is a versatile and powerful library written in TypeScript for image processing and analysis. It gives a user a comprehensive set of tools and algorithms for manipulating, enhancing, and understanding images not only within Node.js but also across all popular browsers.
+
+## System requirements
+
+ImageJS is a modern library and does not actively support outdated runtimes.
+One of the following is required:
+
+- An officially supported version of [Node.js](https://nodejs.org/en/download).
+- A modern and up-to-date web browser.
+
+## Installation
+
+Installation of ImageJS is straight-forward. Use the terminal to install the package:
+
+<Tabs>
+<TabItem value="npm" label="npm" default>
+
+```
+npm install image-js
+```
+
+</TabItem>
+<TabItem value="yarn" label="yarn">
+
+```
+yarn add image-js
+```
+
+</TabItem>
+</Tabs>
+
+## Loading your first image
+
+There are two ways of loading an image to process it, depending on the way the user is operating:
+
+### Loading and saving an image from Node.js
+
+Local loading uses the `readSync` or `read` function with a filepath:
+
+```ts
+import { read, readSync } from 'image-js';
+
+const parsedImage = readSync('example.jpg');
+const parsedImageAsync = await read('example.jpg');
+```
+
+:::tip
+Node.js can also load an image via `fetchURL`. To get more information, take a look at the next section.
+:::
+
+Once the image is loaded, it returns an instance of the `Image` class, so its methods can be applied.
+
+```ts
+const invertedImage = parsedImage.invert();
+```
+
+To save an image use `writeSync` or `write` function:
+
+```ts
+import { writeSync, write } from 'image-js';
+
+writeSync('out.png', image);
+await write('out.png', image);
+```
+
+Image format is automatically identified based on the extension. In this case it's `'.png'` so the image is saved as a PNG file.
+
+So, in the end you should get a code like this:
+
+```ts
+import { readSync, writeSync } from 'image-js';
+
+const parsedImage = readSync('example.jpg');
+const image = parsedImage.invert();
+writeSync('example.png', image);
+```
+
+### Loading an image from a web browser
+
+To load an image via a browser, you may use the `fetchURL` function:
+
+```ts
+import { fetchURL } from 'image-js';
+
+let image = await fetchURL('https:://example.com/image.jpg');
+image = image.grey();
+```
+
+:::info
+To see more methods, visit the ["Features"](./Features/Features.md) category.
+:::
+
+## What's next?
+
+Now that you know how images are loaded and saved, you can deepen your understanding by going through the [Basics](./Basics) category and seeing how different basic elements of ImageJS work.
+You can also broaden your horizons by looking at available [Features](./Features).
+
+If you want to see how ImageJS works in practice, we suggest you visit the [Tutorials](./Tutorials) segment and see for yourself its practical applications.

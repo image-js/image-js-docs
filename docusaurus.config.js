@@ -126,7 +126,7 @@ async function createConfig() {
           items: [
             {
               type: 'doc',
-              docId: 'Getting started',
+              docId: 'getting-started',
               position: 'left',
               label: 'Docs',
             },
@@ -146,7 +146,7 @@ async function createConfig() {
               items: [
                 {
                   label: 'Getting started',
-                  to: '/docs/Getting started',
+                  to: '/docs/getting-started',
                 },
                 {
                   label: 'Basics',
