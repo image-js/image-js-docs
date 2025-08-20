@@ -6,7 +6,6 @@
     "build": "docusaurus build",
     "clear": "docusaurus clear",
     "deploy": "docusaurus deploy",
-    "docusaurus": "docusaurus",
     "cspell": "cspell lint \"**/*.md\"",
     "eslint": "eslint --cache ./src ./docs",
     "eslint-fix": "npm run eslint -- --fix",
