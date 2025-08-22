@@ -20,6 +20,7 @@
     "write-translations": "docusaurus write-translations"
   },
   "dependencies": {
+    "@dipakparmar/docusaurus-plugin-umami": "^2.3.0",
     "@docusaurus/core": "^3.8.1",
     "@docusaurus/preset-classic": "^3.8.1",
     "@docusaurus/theme-common": "^3.8.1",
