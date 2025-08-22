@@ -42,7 +42,7 @@ async function createConfig() {
   const remarkPlugins = [(await import('remark-math')).default];
   const rehypePlugins = [(await import('rehype-katex')).default];
   return {
-    title: 'ImageJS',
+    title: ' ',
     tagline: 'Advanced image processing and manipulation in JavaScript.',
     favicon: 'img/image-js-favicon.svg',
 
@@ -117,8 +117,7 @@ async function createConfig() {
     themeConfig:
       /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
-        // Replace with your project's social card
-        image: 'img/docusaurus-social-card.jpg',
+        image: 'img/social-card-test.svg',
         colorMode: {},
         announcementBar: {
           id: 'release-1.0',
