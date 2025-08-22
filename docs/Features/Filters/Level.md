@@ -4,7 +4,7 @@ sidebar_position: 80
 
 import LevelDemo from './demos/level.demo.tsx'
 
-# Invert
+# Level
 
 _Redistributes pixel intensities to achieve a more uniform histogram distribution._
 
