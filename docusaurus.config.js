@@ -52,7 +52,18 @@ async function createConfig() {
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/',
 
-    plugins: [demoLoaderPlugin],
+    plugins: [
+      demoLoaderPlugin,
+      [
+        '@dipakparmar/docusaurus-plugin-umami',
+        /** @type {import('@dipakparmar/docusaurus-plugin-umami').Options} */
+        ({
+          websiteID: '40a43007-421b-4e66-bd35-b333727a09d3',
+          analyticsDomain: 'umami.zakodium.com',
+          dataDomains: 'docs.image-js.org', // Comma-separated list of domains
+        }),
+      ],
+    ],
 
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
