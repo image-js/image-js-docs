@@ -42,7 +42,7 @@ async function createConfig() {
   const remarkPlugins = [(await import('remark-math')).default];
   const rehypePlugins = [(await import('rehype-katex')).default];
   return {
-    title: ' ',
+    title: 'ImageJS',
     tagline: 'Advanced image processing and manipulation in JavaScript.',
     favicon: 'img/image-js-favicon.svg',
 
@@ -117,7 +117,13 @@ async function createConfig() {
     themeConfig:
       /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
-        image: 'img/social-card-test.svg',
+        image: '/img/social-card.png',
+        metadata: [
+          { property: 'og:image:width', content: '1200' },
+          { property: 'og:image:height', content: '630' },
+          { name: 'twitter:image:width', content: '1200' },
+          { name: 'twitter:image:height', content: '630' },
+        ],
         colorMode: {},
         announcementBar: {
           id: 'release-1.0',
