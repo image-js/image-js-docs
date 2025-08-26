@@ -43,7 +43,7 @@ async function createConfig() {
   const rehypePlugins = [(await import('rehype-katex')).default];
   return {
     title: 'ImageJS',
-    tagline: 'Advanced image processing and manipulation in JavaScript.',
+    tagline: 'Advanced image processing in JavaScript.',
     favicon: 'img/image-js-favicon.svg',
 
     // Set the production url of your site here
@@ -117,8 +117,13 @@ async function createConfig() {
     themeConfig:
       /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
-        // Replace with your project's social card
-        image: 'img/docusaurus-social-card.jpg',
+        image: '/img/image-js-social-card.png',
+        metadata: [
+          { property: 'og:image:width', content: '1200' },
+          { property: 'og:image:height', content: '630' },
+          { name: 'twitter:image:width', content: '1200' },
+          { name: 'twitter:image:height', content: '630' },
+        ],
         colorMode: {},
         announcementBar: {
           id: 'release-1.0',
