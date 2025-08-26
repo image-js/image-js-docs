@@ -43,11 +43,11 @@ async function createConfig() {
   const rehypePlugins = [(await import('rehype-katex')).default];
   return {
     title: 'ImageJS',
-    tagline: 'Advanced image processing and manipulation in JavaScript.',
+    tagline: 'Advanced image processing in JavaScript.',
     favicon: 'img/image-js-favicon.svg',
 
     // Set the production url of your site here
-    url: 'https://146-change-open-graph-image.image-js-docs.pages.dev/',
+    url: 'https://docs.image-js.org/',
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/',
@@ -117,7 +117,7 @@ async function createConfig() {
     themeConfig:
       /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
-        image: '/img/social-card-test.png',
+        image: '/img/image-js-social-card.png',
         metadata: [
           { property: 'og:image:width', content: '1200' },
           { property: 'og:image:height', content: '630' },
