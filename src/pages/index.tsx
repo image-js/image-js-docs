@@ -1,3 +1,4 @@
+import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
@@ -8,6 +9,7 @@ import styles from './index.module.css';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
+
   return (
     <header
       id="frontPage"
@@ -43,12 +45,14 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-  const { siteConfig } = useDocusaurusContext();
+  const title = 'Welcome to ImageJS';
   return (
-    <Layout
-      title={`Welcome to ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
-    >
+    <Layout title={title}>
+      <Head>
+        <title>{title}</title>
+        <meta property="og:title" content={title} />
+        <meta name="twitter:title" content={title} />
+      </Head>
       <main className="main-wrapper">
         <HomepageHeader />
       </main>
