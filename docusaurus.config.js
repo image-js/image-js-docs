@@ -47,7 +47,7 @@ async function createConfig() {
     favicon: 'img/image-js-favicon.svg',
 
     // Set the production url of your site here
-    url: 'https://docs.image-js.org/',
+    url: 'https://146-change-open-graph-image.image-js-docs.pages.dev/',
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/',
@@ -117,7 +117,7 @@ async function createConfig() {
     themeConfig:
       /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
-        image: '/img/social-card.png',
+        image: '/img/social-card-test.png',
         metadata: [
           { property: 'og:image:width', content: '1200' },
           { property: 'og:image:height', content: '630' },
