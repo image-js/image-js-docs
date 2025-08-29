@@ -2,6 +2,8 @@
 sidebar_position: 100
 ---
 
+# Glossary
+
 ### Alpha channel
 
 [An alpha channel](https://en.wikipedia.org/wiki/Alpha_compositing 'wikipedia link on alpha channel') is a supplementary channel used to store and represent information about the transparency or opacity of each pixel. It is commonly associated with color images, and it allows for the creation of images with varying levels of transparency or translucency, which is essential for various graphic design, visual effects, and image composition tasks.
