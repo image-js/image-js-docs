@@ -1,5 +1,5 @@
 import DocCardList from '@theme/DocCardList';
 
-# Features
+# Useful tips
 
 <DocCardList />

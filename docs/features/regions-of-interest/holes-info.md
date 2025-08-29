@@ -2,7 +2,7 @@
 sidebar_position: 81
 ---
 
-# Holes' info
+# Holes info
 
 _Information about holes in the ROI._
 
