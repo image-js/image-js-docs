@@ -16,7 +16,7 @@ This measurement is commonly employed for the analysis of shapes and structures 
 Feret diameters can be defined by the points as if the object was measured by [calliper](https://en.wikipedia.org/wiki/Calipers 'wikipedia link on caliper'). Therefore its other name, calliper diameter.
 :::
 
-![Feret output](./img/feret.svg)
+![Feret output](./images/feret.svg)
 
 In ImageJS Feret diameters are a ROI class accessor that return a Feret object:
 

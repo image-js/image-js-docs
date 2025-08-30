@@ -11,7 +11,7 @@ _Smallest rectangle that fully encloses a region of interest, providing a boundi
 
 Minimum Bounding Rectangle(MBR) is the smallest rectangle which can fit the region of interest in question.
 
-![MBR output](./img/mbr.svg)
+![MBR output](./images/mbr.svg)
 
 MBR is relevant for such things as extracting features, detecting collisions or simply localizing objects.
 

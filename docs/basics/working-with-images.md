@@ -1,4 +1,4 @@
-import ImageDemo from './image.demo.tsx'
+import ImageDemo from './demos/image.demo.tsx'
 
 # Working with Images
 
@@ -27,7 +27,7 @@ In the context of digital technology and computing, images are represented as a 
 
 The origin point has coordinates (0,0) and is located in the top-left corner of an image.
 
-![Image coordinates](./workingWithImages/coordinatesImage.jpg)
+![Image coordinates](./images/workingWithImages/coordinatesImage.jpg)
 
 So, if we want to get a certain pixel on the image we will be counting the distance from image's top-left corner.
 

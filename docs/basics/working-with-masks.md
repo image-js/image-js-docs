@@ -1,5 +1,5 @@
-import ThresholdMaskDemo from './thresholdMask.demo.tsx'
-import CannyMaskDemo from './cannyEdgeMask.demo.tsx'
+import ThresholdMaskDemo from './demos/thresholdMask.demo.tsx'
+import CannyMaskDemo from './demos/cannyEdgeMask.demo.tsx'
 
 # Working with Masks
 

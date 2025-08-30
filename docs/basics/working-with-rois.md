@@ -34,7 +34,7 @@ Let's take a look at a real life example.
 Here you have an image of particles under electron microscopy magnified at 1px = 0.2727 nm. Let's say we want to sort the data by size and observe its distribution.
 It can be use in various fields, whether it is for quality control to see if all products have the same features and characteristics or for physical properties of material such as surface area and reactivity.
 
-![input image](./roiImages/inputImage.png)
+![input image](./images/roiImages/inputImage.png)
 
 It can be done with with following code:
 
@@ -76,6 +76,6 @@ for (let i = minSurface; i < maxSurface; i += interval) {
 
 This will give us a map with stored number of regions per each size interval. This may be a basic example but such analysis is widely used in biology and medicine. It can provide valuable information about predominant cell size or find abnormalities in cells ratio.
 
-![Combination of images](./roiImages/comboImage2.png)
+![Combination of images](./images/roiImages/comboImage2.png)
 
 To learn more about our analysis tools you can visit our ROI Analysis section.

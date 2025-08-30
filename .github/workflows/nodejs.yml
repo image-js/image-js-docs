@@ -16,3 +16,17 @@ jobs:
       node-version-matrix: '[24]'
       upload-coverage: false
       disable-test-package: true
+
+  check-kebab-case:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Run kebab-case check
+        run: node checkFilenames.mjs
