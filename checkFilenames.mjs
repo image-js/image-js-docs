@@ -1,15 +1,13 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = import.meta.dirname;
 
 function getAllFiles(dirPath) {
-  let nonKebabElements = [];
+  let incorrectFormatFiles = [];
   const entries = fs.readdirSync(dirPath, { withFileTypes: true });
 
-  const kebabCaseRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+  const filenameFormat = /^[a-z0-9]+(?:[-.][a-z0-9]+)*$/;
 
   for (const entry of entries) {
     // Skip certain files/folders
@@ -27,18 +25,18 @@ function getAllFiles(dirPath) {
       ? path.parse(entry.name).name
       : entry.name;
 
-    if (!kebabCaseRegex.test(nameToTest)) {
-      nonKebabElements.push(path.join(dirPath, entry.name));
+    if (!filenameFormat.test(nameToTest)) {
+      incorrectFormatFiles.push(path.join(dirPath, entry.name));
     }
 
     // Recursively check subdirectories
     if (entry.isDirectory()) {
       const subDirResults = getAllFiles(path.join(dirPath, entry.name));
-      nonKebabElements = nonKebabElements.concat(subDirResults);
+      incorrectFormatFiles = incorrectFormatFiles.concat(subDirResults);
     }
   }
 
-  return nonKebabElements;
+  return incorrectFormatFiles;
 }
 
 const folders = ['docs', 'blog'];
