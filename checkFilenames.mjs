@@ -43,9 +43,11 @@ const folders = ['docs', 'blog'];
 
 for (const folder of folders) {
   const folderPath = path.join(__dirname, folder);
-  const nonKebabFiles = getAllFiles(folderPath);
-  if (nonKebabFiles.length !== 0) {
-    throw new Error(`Non-kebab-case files found:\n${nonKebabFiles.join('\n')}`);
+  const incorrectFormatFiles = getAllFiles(folderPath);
+  if (incorrectFormatFiles.length !== 0) {
+    throw new Error(
+      `Files with incorrect filename format found:\n${incorrectFormatFiles.join('\n')}`,
+    );
   }
 }
 console.log('All files have passed the check.');

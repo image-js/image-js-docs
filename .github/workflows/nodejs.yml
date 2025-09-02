@@ -17,7 +17,7 @@ jobs:
       upload-coverage: false
       disable-test-package: true
 
-  check-kebab-case:
+  check-filenames:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -28,5 +28,5 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Run kebab-case check
+      - name: Run filenames check
         run: node checkFilenames.mjs
