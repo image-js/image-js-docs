@@ -1,5 +1,3 @@
-import ImageDemo from './demos/image.demo.tsx'
-
 # Working with Images
 
 <!-- TODO add analysis section once it is merged -->
@@ -7,8 +5,6 @@ import ImageDemo from './demos/image.demo.tsx'
 ### What is an Image?
 
 In the context of digital technology and computing, images are represented as a grid of pixels, with each pixel containing information about color and intensity.
-
-<ImageDemo />
 
 ### Types of images supported by ImagesJS
 
