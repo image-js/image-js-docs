@@ -166,11 +166,11 @@ async function createConfig() {
                 },
                 {
                   label: 'Basics',
-                  to: '/docs/Basics',
+                  to: '/docs/basics',
                 },
                 {
                   label: 'Features',
-                  to: '/docs/Features',
+                  to: '/docs/features',
                 },
               ],
             },
@@ -179,15 +179,15 @@ async function createConfig() {
               items: [
                 {
                   label: 'Tutorials',
-                  to: '/docs/Tutorials',
+                  to: '/docs/tutorials',
                 },
                 {
                   label: 'Useful tips',
-                  to: '/docs/Useful tips',
+                  to: '/docs/useful-tips',
                 },
                 {
                   label: 'Glossary',
-                  to: '/docs/Glossary',
+                  to: '/docs/glossary',
                 },
               ],
             },

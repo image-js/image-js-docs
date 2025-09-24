@@ -15,9 +15,10 @@
     "dev": "docusaurus start",
     "swizzle": "docusaurus swizzle",
     "check-types": "tsc",
-    "test": "npm run prettier && npm run eslint && npm run check-types",
+    "test": "npm run check-filenames && npm run prettier && npm run eslint && npm run check-types",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "write-translations": "docusaurus write-translations"
+    "write-translations": "docusaurus write-translations",
+    "check-filenames": "node checkFilenames.mjs"
   },
   "dependencies": {
     "@dipakparmar/docusaurus-plugin-umami": "^2.3.0",
