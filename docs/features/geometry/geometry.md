@@ -8,11 +8,11 @@ Geometric operations in image processing involve transforming the spatial coordi
 
 ### Methods
 
-| Can be applied on                                                                                                           | Images  | Masks    |
-| --------------------------------------------------------------------------------------------------------------------------- | ------- | -------- |
-| [Flip(`flip`)](./flip.md 'internal link on flip')                                                                           | &#9989; | &#10060; |
-| [Resize(`resize`)](./resize.md 'internal link on resize')                                                                   | &#9989; | &#10060; |
-| [Rotate(`rotate`)](./rotate.md 'internal link on rotate')                                                                   | &#9989; | &#10060; |
-| [Transform(`transform`)](./transform.md 'internal link on transform')                                                       | &#9989; | &#10060; |
-| [Transform and rotate(`transformRotate`)](./transform-and-rotate 'internal link on transformRotate')                        | &#9989; | &#10060; |
-| [Get perspective warp matrix(`getPerspectiveWarp`)](./get-perspective-warp-matrix.md 'internal link on getPerspectiveWarp') | -       | -        |
+| Can be applied on                                                                                                        | Images  | Masks    |
+| ------------------------------------------------------------------------------------------------------------------------ | ------- | -------- |
+| [Flip(`flip`)](./flip 'internal link on flip')                                                                           | &#9989; | &#10060; |
+| [Resize(`resize`)](./resize 'internal link on resize')                                                                   | &#9989; | &#10060; |
+| [Rotate(`rotate`)](./rotate 'internal link on rotate')                                                                   | &#9989; | &#10060; |
+| [Transform(`transform`)](./transform 'internal link on transform')                                                       | &#9989; | &#10060; |
+| [Transform and rotate(`transformRotate`)](./transform-and-rotate 'internal link on transformRotate')                     | &#9989; | &#10060; |
+| [Get perspective warp matrix(`getPerspectiveWarp`)](./get-perspective-warp-matrix 'internal link on getPerspectiveWarp') | -       | -        |

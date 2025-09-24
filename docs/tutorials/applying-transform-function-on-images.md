@@ -123,7 +123,7 @@ const stretchedImage = image.transform(transformationMatrix);
 ![Stretched image](./images/transformations/lennaStretched.png)
 
 :::note
-ImageJS also has [`resize`](../features/geometry/resize.md) function that allows to scale an image.
+ImageJS also has [`resize`](../features/geometry/resize) function that allows to scale an image.
 The current tutorial just demonstrates the basic principle behind transformation of such kind.
 :::
 
@@ -162,7 +162,7 @@ const flippedImage = image.transform(flipMatrix);
 
 ![Flipped image](./images/transformations/lennaFlipped.png)
 :::note
-ImageJS also has [`flip`](../features/geometry/flip.md) function that allows to flip an image.
+ImageJS also has [`flip`](../features/geometry/flip) function that allows to flip an image.
 Current tutorial just demonstrates the basic principle behind transformation of such kind.
 :::
 
@@ -302,7 +302,7 @@ const rotateAroundCenterImage = image.transform(
 ![Rotated by center image](./images/transformations/lennaRotatedCenter.png)
 
 :::note
-Image-js also has [`rotate()`](../features/geometry/rotate.md) and [`transformRotate()`](../features/geometry/transform-and-rotate.md) functions. `rotate()` function allows rotating an image by multiple of 90 degrees.
+Image-js also has [`rotate()`](../features/geometry/rotate) and [`transformRotate()`](../features/geometry/transform-and-rotate) functions. `rotate()` function allows rotating an image by multiple of 90 degrees.
 `transformRotate()` allows rotating an image by any degree. It also allows choosing the axe of rotation. So, for rotation, you have other functions that allow you to perform it.
 :::
 
