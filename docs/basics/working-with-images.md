@@ -19,9 +19,9 @@ In the context of digital technology and computing, images are represented as a 
 | **Lossy compression**            | can be either               | yes      | no                          | no                          |
 | **Color Model**                  | Binary[^1],RGB or grayscale | RGB      | Binary[^1],RGB or grayscale | Binary[^1],RGB or grayscale |
 
-[^1]: While binary images can be decoded, for technical reasons image is decoded as a greyscale image.
+[^1]: While binary images can be decoded, for technical reasons image is decoded as a grayscale image.
 
-- ImageJS can **decode** other PNG formats for, notably, [interlaced images](<https://en.wikipedia.org/wiki/Interlacing_(bitmaps)>) and [APNG images](https://en.wikipedia.org/wiki/APNG).
+- ImageJS can **decode** [APNG images](https://en.wikipedia.org/wiki/APNG).
 
 **ENCODING**
 
