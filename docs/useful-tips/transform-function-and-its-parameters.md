@@ -73,7 +73,7 @@ You can check out [this video](https://www.youtube.com/watch?v=AqscP7rc8_M) that
 
 To understand what `borderType` is, we need to get back to interpolation for a moment. When you transform an image (rotate, scale, skew, etc.), the new pixel positions often map to coordinates in the original image that don't exist - for example, negative coordinates or coordinates beyond the image edges. The `borderType` tells the algorithm how to handle these "out-of-bounds" pixels. There are several approaches:
 
-`constant` - Fill border areas with a constant color value (specified by [`borderValue`](./transform-function-and-its-parameters.md#border-value))
+`constant` - Fill border areas with a constant color value (specified by [`borderValue`](./transform-function-and-its-parameters.md#border-value)).The value by default is 0.
 
 `reflect` - Mirror edge pixels: [1,2,3,4] → [2,1,1,2,3,4,4,3]
 
