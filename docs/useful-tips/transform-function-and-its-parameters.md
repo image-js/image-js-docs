@@ -96,6 +96,8 @@ const result = image.transform(matrix, {
 });
 ```
 
+![Border types](./images/transform-parameters/borderValueTest.svg)
+
 #### Inverse
 
 We have briefly shown how this option is used in [our tutorial on image transformations](../tutorials/applying-transform-function-on-images.md). Let's take a deeper look at it.
@@ -130,7 +132,7 @@ const result2 = image.transform(rotationMatrix, {
 
 As you can see using the same matrix images the image seems to be turned into opposite directions. Basically, with `inverse` set to `true` you kind of "revert" an image back to the states that it was before the matrix transformed.
 
-![](./images/transform-parameters/inverseTest.svg)
+![inverse test](./images/transform-parameters/inverseTest.svg)
 
 #### Full Image
 
@@ -150,4 +152,4 @@ const result2 = image.transform(rotationMatrix, {
 
 This is particularly useful for rotations, where corners of the image may extend beyond the original boundaries.
 
-![](./images/transform-parameters/fullImageTest.svg)
+![fullImage test](./images/transform-parameters/fullImageTest.svg)
