@@ -136,7 +136,7 @@ As you can see using the same matrix images the image seems to be turned into op
 
 #### Full Image
 
-`fullImage` ensures that the output image is large enough to contain all transformed pixels from the source image, preventing any cropping. When true, the function automatically calculates the required output dimensions. When false, source image dimensions are taken.
+`fullImage` ensures that every pixel of the original image is included inside the transformed image, preventing any cropping. When true, the function automatically calculates the required output dimensions. When false, source image dimensions are taken.
 
 ```ts
 //Without fullImage - may crop transformed pixels
@@ -157,5 +157,5 @@ This is particularly useful for rotations, where corners of the image may extend
 ![fullImage test](./images/transform-parameters/fullImageTest.svg)
 
 :::warning
-If `fullImage` is defined together with `width` and `height`, the algorithm will use dimensions calculated for `fullImage`.
+If `fullImage` is set to `true`, the `width` and `height` parameters will be ignored.
 :::
