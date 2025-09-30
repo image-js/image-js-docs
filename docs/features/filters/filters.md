@@ -8,14 +8,14 @@ sidebar_position: 0
 
 ### Methods
 
-| Can be applied on                                                              | Images  | Masks    |
-| ------------------------------------------------------------------------------ | ------- | -------- |
-| [Invert(`invert`)](./invert.md 'internal link on invert')                      | &#9989; | &#9989;  |
-| [Grayscale(`grey`)](./grayscale.md 'internal link on grayscale')               | &#9989; | &#10060; |
-| [Gradient(`gradient`)](./gradient.md 'internal link on gradient')              | &#9989; | &#10060; |
-| [Derivative(`derivative`)](./derivative.md 'internal link on derivative')      | &#9989; | &#10060; |
-| [Median(`median`)](./median.md 'internal link on median')                      | &#9989; | &#10060; |
-| [Pixelate(`pixelate`)](./pixelate.md 'internal link on pixelate')              | &#9989; | &#10060; |
-| [Blur(`blur`)](./blur.md 'internal link on blur')                              | &#9989; | &#10060; |
-| [Gaussian(`gaussianBlur`)](./gaussian-blur.md 'internal link on gaussianBlur') | &#9989; | &#10060; |
-| [Level(`level`)](./level.md 'internal link on level')                          | &#9989; | &#10060; |
+| Can be applied on                                                               | Images  | Masks    |
+| ------------------------------------------------------------------------------- | ------- | -------- |
+| [Invert(`invert`)](./invert.mdx 'internal link on invert')                      | &#9989; | &#9989;  |
+| [Grayscale(`grey`)](./grayscale.mdx 'internal link on grayscale')               | &#9989; | &#10060; |
+| [Gradient(`gradient`)](./gradient.mdx 'internal link on gradient')              | &#9989; | &#10060; |
+| [Derivative(`derivative`)](./derivative.mdx 'internal link on derivative')      | &#9989; | &#10060; |
+| [Median(`median`)](./median.mdx 'internal link on median')                      | &#9989; | &#10060; |
+| [Pixelate(`pixelate`)](./pixelate.mdx 'internal link on pixelate')              | &#9989; | &#10060; |
+| [Blur(`blur`)](./blur.mdx 'internal link on blur')                              | &#9989; | &#10060; |
+| [Gaussian(`gaussianBlur`)](./gaussian-blur.mdx 'internal link on gaussianBlur') | &#9989; | &#10060; |
+| [Level(`level`)](./level.mdx 'internal link on level')                          | &#9989; | &#10060; |

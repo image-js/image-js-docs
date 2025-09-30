@@ -2,7 +2,7 @@
 sidebar_position: 40
 ---
 
-import CloseDemo from './demos/close.mask.demo.tsx'
+import CloseDemo from './demos/close.mask.demo.tsx';
 
 # Closing
 
@@ -11,7 +11,7 @@ _Combines a dilation filter followed by an erosion filter._
 [🖼️ Image options and parameters of `close` method](https://api.image-js.org/classes/index.Image.html#close)  
 [🎭 Mask options and parameters of `close` method](https://api.image-js.org/classes/index.Mask.html#close)
 
-Opposed to [opening](./opening.md 'internal link to open method'), [closing process](<https://en.wikipedia.org/wiki/Closing_(morphology)> 'wikipedia link on closing') first [erodes](./erosion.md 'internal link to erode method') an image and only then [dilates](./dilation.md 'internal link to dilate method') it.
+Opposed to [opening](./opening.mdx 'internal link to open method'), [closing process](<https://en.wikipedia.org/wiki/Closing_(morphology)> 'wikipedia link on closing') first [erodes](./erosion 'internal link to erode method') an image and only then [dilates](./dilation 'internal link to dilate method') it.
 It is a useful process for filling small holes in the image, while preserving the shape and size of large holes and objects.
 
 <CloseDemo />

@@ -10,9 +10,9 @@ Geometric operations in image processing involve transforming the spatial coordi
 
 | Can be applied on                                                                                                           | Images  | Masks    |
 | --------------------------------------------------------------------------------------------------------------------------- | ------- | -------- |
-| [Flip(`flip`)](./flip.md 'internal link on flip')                                                                           | &#9989; | &#10060; |
-| [Resize(`resize`)](./resize.md 'internal link on resize')                                                                   | &#9989; | &#10060; |
-| [Rotate(`rotate`)](./rotate.md 'internal link on rotate')                                                                   | &#9989; | &#10060; |
-| [Transform(`transform`)](./transform.md 'internal link on transform')                                                       | &#9989; | &#10060; |
-| [Transform and rotate(`transformRotate`)](./transform-and-rotate.md 'internal link on transformRotate')                     | &#9989; | &#10060; |
+| [Flip(`flip`)](./flip.mdx 'internal link on flip')                                                                          | &#9989; | &#10060; |
+| [Resize(`resize`)](./resize.mdx 'internal link on resize')                                                                  | &#9989; | &#10060; |
+| [Rotate(`rotate`)](./rotate.mdx 'internal link on rotate')                                                                  | &#9989; | &#10060; |
+| [Transform(`transform`)](./transform.mdx 'internal link on transform')                                                      | &#9989; | &#10060; |
+| [Transform and rotate(`transformRotate`)](./transform-and-rotate.mdx 'internal link on transformRotate')                    | &#9989; | &#10060; |
 | [Get perspective warp matrix(`getPerspectiveWarp`)](./get-perspective-warp-matrix.md 'internal link on getPerspectiveWarp') | -       | -        |

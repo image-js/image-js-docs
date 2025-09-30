@@ -23,7 +23,7 @@ The idea is that the closer you are to the pixel in check, the more weight it wi
 
 The main parameter of gaussian blur is called "sigma" and it is responsible for the width of the gaussian bell curve, therefore it controls the overall smoothness of the end result.
 
-Gaussian blur is a good preparatory tool for edge detection. Edge detection's algorithms are sensitive to noise and small details so blur smoothens them. For instance here is the example of a [Canny Edge detector](../features/morphology/canny-edge-detector.md 'internal link on canny edge detector') with and without gaussian blur:
+Gaussian blur is a good preparatory tool for edge detection. Edge detection's algorithms are sensitive to noise and small details so blur smoothens them. For instance here is the example of a [Canny Edge detector](../features/morphology/canny-edge-detector.mdx 'internal link on canny edge detector') with and without gaussian blur:
 
 ![Edge detection with gaussian](./images/blurring/edgesWithBlurs.png)
 

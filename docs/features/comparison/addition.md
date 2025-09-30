@@ -8,7 +8,7 @@ _Add two images together._
 
 [🖼️ Image options and parameters of `add` method](https://api.image-js.org/classes/index.Image.html#add)
 
-`add` method, opposed to [subtraction](./subtraction.md 'internal link on subtract'), takes another Image and makes an addition between each respective pixel value.
+`add` method, opposed to [subtraction](./subtraction 'internal link on subtract'), takes another Image and makes an addition between each respective pixel value.
 It works like this:
 
 ```ts
