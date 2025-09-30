@@ -92,7 +92,7 @@ To understand what `borderType` is, we need to get back to interpolation for a m
 ```ts
 const result = image.transform(matrix, {
   borderType: 'constant',
-  borderValue: 255, // White border
+  borderValue: 125, // Grey border
 });
 ```
 
@@ -130,17 +130,19 @@ const result2 = image.transform(rotationMatrix, {
 });
 ```
 
-As you can see using the same matrix images the image seems to be turned into opposite directions. Basically, with `inverse` set to `true` you kind of "revert" an image back to the states that it was before the matrix transformed.
+As you can see using the same matrix images the image seems to be turned into opposite directions.
 
 ![inverse test](./images/transform-parameters/inverseTest.svg)
 
 #### Full Image
 
-`fullImage` ensures that the output image is large enough to contain all transformed pixels from the source image, preventing any cropping. When true, the function automatically calculates the required output dimensions.
+`fullImage` ensures that the output image is large enough to contain all transformed pixels from the source image, preventing any cropping. When true, the function automatically calculates the required output dimensions. When false, source image dimensions are taken.
 
 ```ts
 //Without fullImage - may crop transformed pixels
 const result1 = image.transform(rotationMatrix, {
+  width: 8,
+  height: 10,
   fullImage: false,
 });
 
@@ -153,3 +155,7 @@ const result2 = image.transform(rotationMatrix, {
 This is particularly useful for rotations, where corners of the image may extend beyond the original boundaries.
 
 ![fullImage test](./images/transform-parameters/fullImageTest.svg)
+
+:::warning
+If `fullImage` is defined together with `width` and `height`, the algorithm will use dimensions calculated for `fullImage`.
+:::
