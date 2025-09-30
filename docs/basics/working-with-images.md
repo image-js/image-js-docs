@@ -26,7 +26,7 @@ In the context of digital technology and computing, images are represented as a 
 
 The origin point has coordinates (0,0) and is located in the top-left corner of an image.
 
-![Image coordinates](./images/workingWithImages/coordinatesImage.jpg)
+![Image coordinates](./images/workingWithImages/imageCoordOrigin.svg)
 
 So, if we want to get a certain pixel on the image we will be counting the distance from image's top-left corner.
 
