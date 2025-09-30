@@ -9,7 +9,7 @@ Watershed algorithm is an advanced image segmentation technique to identify obje
 
 ![Input image](./images/watershed/input.jpg)
 
-First you must have a grayscale image. If this is not the case, use [`grey()`](../features/filters/grayscale.md 'internal link on grayscale') method to grayscale it. Then blur the image. The choice of a blurring technique depends on what kind of image is to blur, but regular blur will do. Be careful while setting the kernel size. If it gets too big, objects' edges and minor details start to deteriorate.
+First you must have a grayscale image. If this is not the case, use [`grey()`](../features/filters/grayscale.mdx 'internal link on grayscale') method to grayscale it. Then blur the image. The choice of a blurring technique depends on what kind of image is to blur, but regular blur will do. Be careful while setting the kernel size. If it gets too big, objects' edges and minor details start to deteriorate.
 
 After that, a threshold needs to be defined. It can be defined as an arbitrary value, but we recommend to compute a threshold mask from the image of interest.
 Result can vary from one threshold algorithm to another so take a look at a few of them to see which one fits your needs.
@@ -48,7 +48,7 @@ Below you will find a detailed review of all the steps.
 
 ## Why is watershed necessary?
 
-[Threshold](../features/operations/threshold.md 'internal link on threshold') is a great segmentation tool for finding objects, but it works only if objects are clearly separated from each other.
+[Threshold](../features/operations/threshold.mdx 'internal link on threshold') is a great segmentation tool for finding objects, but it works only if objects are clearly separated from each other.
 
 Sometimes objects can be too close to each other and the binary image takes it as a giant region of interest, which is not the desired result.
 
@@ -95,7 +95,7 @@ Before starting, check the [color model](../glossary.md#color-model 'glossary li
 let image = image.grey();
 ```
 
-You can take a look at different types of grayscale algorithm on [grayscale page](../features/filters/grayscale.md 'internal link on grayscale') in our "Features" section, but a default grayscale should be enough, since the important aspect is for an image to have only one channel.
+You can take a look at different types of grayscale algorithm on [grayscale page](../features/filters/grayscale.mdx 'internal link on grayscale') in our "Features" section, but a default grayscale should be enough, since the important aspect is for an image to have only one channel.
 :::
 
 ## Blurring
@@ -104,11 +104,11 @@ First thing that you possibly need to do is to remove [image noise](https://en.w
 
 ImageJS has several kinds of blurring:
 
-- [blur filter](../features/filters/blur.md 'internal link on blur')
+- [blur filter](../features/filters/blur.mdx'internal link on blur')
 
-- [gaussian blur filter](../features/filters/gaussian-blur.md 'internal link on gaussian blur')
+- [gaussian blur filter](../features/filters/gaussian-blur.mdx 'internal link on gaussian blur')
 
-- [median filter](../features/filters/median.md 'internal link on median')
+- [median filter](../features/filters/median.mdx 'internal link on median')
 
 Each filter serves its own purpose, which we will briefly explain.
 
@@ -121,7 +121,7 @@ To use it you need to specify width and height of the kernel:
 let blurredImage = image.blur({ width: 3, height: 3 });
 ```
 
-To discover more options you can visit our ["Features"](../features/features.md 'internal link on features main page') section about [blur](../features/filters/blur.md 'internal link on blur').
+To discover more options you can visit our ["Features"](../features/features.mdx 'internal link on features main page') section about [blur](../features/filters/blur.mdx 'internal link on blur').
 
 #### Gaussian blur
 
@@ -132,7 +132,7 @@ To use it you need to specify the size of the kernel. This is one of the ways of
 let blurredImage = image.gaussianBlur({ sigma: 3 });
 ```
 
-To discover more options you can visit our ["Features"](../features/features.md 'internal link on features main page') section about [gaussian blur](../features/filters/gaussian-blur.md 'internal link on gaussian blur').
+To discover more options you can visit our ["Features"](../features/features.mdx 'internal link on features main page') section about [gaussian blur](../features/filters/gaussian-blur.mdx 'internal link on gaussian blur').
 
 #### Median
 
@@ -146,7 +146,7 @@ let blurredImage = image.medianFilter({
 });
 ```
 
-To discover more options you can visit our ["Features"](../features/features.md 'internal link on features main page') section about [median filter](../features/filters/median.md 'internal link on median').
+To discover more options you can visit our ["Features"](../features/features.mdx 'internal link on features main page') section about [median filter](../features/filters/median.mdx 'internal link on median').
 
 :::caution
 For each technique, kernel size must be an odd number in order for algorithm to find the center correctly!

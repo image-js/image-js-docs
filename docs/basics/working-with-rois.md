@@ -4,7 +4,7 @@ _A region of interest (ROI) represents an area of contiguous pixels within the d
 
 There are currently two ways ROIs can be generated in ImageJS:
 
-- From [masks](./working-with-masks.md 'internal link on working with mask') by identifying contiguous black or white pixels within it.
+- From [masks](./working-with-masks.mdx 'internal link on working with mask') by identifying contiguous black or white pixels within it.
 <!-- TODO: add links to the relevant sections once they exist -->
 - By identifying starting points of interest (for example by finding and filtering local extrema) and running the [watershed algorithm](../features/operations/watershed.md 'internal link on watershed') on them.
 - By identifying starting points of interest (for example by finding and filtering local extrema) and running the [watershed algorithm](../features/operations/watershed.md 'internal link on watershed') on them.

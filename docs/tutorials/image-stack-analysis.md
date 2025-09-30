@@ -61,7 +61,7 @@ const stack = decodeStack(buffer);
 ```
 
 :::warning
-`Stack` class works only with images that share same properties. Particularly, values for [bit depth](../glossary.md#bit-depth 'internal link on bit depth'), [color model](../glossary.md#color-model 'internal link on color model'), width and height must be the same.
+`Stack` class works only with images that share same properties. Particularly, values for [bit depth](../glossary#bit-depth 'internal link on bit depth'), [color model](../glossary#color-model 'internal link on color model'), width and height must be the same.
 :::
 
 ## Find the image with maximum values:

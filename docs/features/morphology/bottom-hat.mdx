@@ -2,7 +2,7 @@
 sidebar_position: 60
 ---
 
-import BottomHatDemo from './demos/bottomHat.mask.demo.tsx'
+import BottomHatDemo from './demos/bottomHat.mask.demo.tsx';
 
 # Bottom Hat
 
@@ -11,7 +11,7 @@ _Enhances the fine details or small objects within an image by subtracting an op
 [🖼️ Image options and parameters of `bottomHat` method](https://api.image-js.org/classes/index.Image.html#bottomHat)  
 [🎭 Mask options and parameters of `bottomHat` method](https://api.image-js.org/classes/index.Mask.html#bottomHat)
 
-Similarly to [top hat](./top-hat.md 'internal link to top hat'), [bottom hat](https://en.wikipedia.org/wiki/Top-hat_transform 'wikipedia link to top hat') operation computes the difference between two images. However, if top hat was using [opening method](./opening.md 'internal link on open method'), bottom hat is using [closing method](./closing.md 'internal link on close method').
+Similarly to [top hat](./top-hat 'internal link to top hat'), [bottom hat](https://en.wikipedia.org/wiki/Top-hat_transform 'wikipedia link to top hat') operation computes the difference between two images. However, if top hat was using [opening method](./opening 'internal link on open method'), bottom hat is using [closing method](./closing 'internal link on close method').
 The purpose of bottom hat(or, as it is also called, _black-hat_) is to enhance and extract **darker** regions of the image.
 
 <BottomHatDemo />
