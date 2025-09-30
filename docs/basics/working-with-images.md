@@ -8,7 +8,7 @@ In the context of digital technology and computing, images are represented as a 
 
 - Currently ImageJS supports images with these characteristics:
 
-|                                  | TIFF                        | JPEG     | PNG[^2]                     | BMP                         |
+|                                  | TIFF                        | JPEG     | PNG[^1]                     | BMP                         |
 | -------------------------------- | --------------------------- | -------- | --------------------------- | --------------------------- |
 | **Can be loaded in this format** | &#9989;                     | &#9989;  | &#9989;                     | &#9989;                     |
 | **Can be saved in this format**  | &#10060;                    | &#9989;  | &#9989;                     | &#9989;                     |
@@ -16,7 +16,7 @@ In the context of digital technology and computing, images are represented as a 
 | **Alpha channel**                | &#9989;                     | &#10060; | &#9989;                     | &#9989;                     |
 | **Palette images**               | &#9989;                     | &#10060; | &#9989;                     | &#10060;                    |
 | **Lossy compression**            | can be either               | &#9989;  | &#10060;                    | &#10060;                    |
-| **Color Model**                  | Binary[^1],RGB or grayscale | RGB      | Binary[^1],RGB or grayscale | Binary[^1],RGB or grayscale |
+| **Color Model**                  | Binary[^2],RGB or grayscale | RGB      | Binary[^2],RGB or grayscale | Binary[^2],RGB or grayscale |
 
 [^1]: ImageJS can also **decode** [APNG images](https://en.wikipedia.org/wiki/APNG).
 
