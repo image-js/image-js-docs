@@ -8,14 +8,19 @@ In the context of digital technology and computing, images are represented as a 
 
 - Currently ImageJS supports images with these characteristics:
 
-|                                  | TIFF             | JPEG    | PNG              | BMP      |
-| -------------------------------- | ---------------- | ------- | ---------------- | -------- |
-| **Bits per channel**             | 8 or 16 bits     | 8 bits  | 8 or 16 bits     | 1 bit    |
-| **Alpha channel**                | yes              | no      | yes              | no       |
-| **Lossy compression**            | can be either    | yes     | no               | no       |
-| **Color Model**                  | RGB or grayscale | RGB     | RGB or grayscale | N/A      |
-| **Can be loaded in this format** | &#9989;          | &#9989; | &#9989;          | &#10060; |
-| **Can be saved in this format**  | &#10060;         | &#9989; | &#9989;          | &#9989;  |
+|                                  | TIFF                        | JPEG     | PNG[^1]                     | BMP                         |
+| -------------------------------- | --------------------------- | -------- | --------------------------- | --------------------------- |
+| **Can be loaded in this format** | &#9989;                     | &#9989;  | &#9989;                     | &#9989;                     |
+| **Can be saved in this format**  | &#10060;                    | &#9989;  | &#9989;                     | &#9989;                     |
+| **Bits per channel**             | 1, 8 or 16 bits             | 8 bits   | 1, 2, 4, 8 or 16 bits       | 1 or 8 bits                 |
+| **Alpha channel**                | &#9989;                     | &#10060; | &#9989;                     | &#9989;                     |
+| **Palette images**               | &#9989;                     | &#10060; | &#9989;                     | &#10060;                    |
+| **Lossy compression**            | can be either               | &#9989;  | &#10060;                    | &#10060;                    |
+| **Color Model**                  | Binary[^2],RGB or grayscale | RGB      | Binary[^2],RGB or grayscale | Binary[^2],RGB or grayscale |
+
+[^1]: ImageJS can also **decode** [APNG images](https://en.wikipedia.org/wiki/APNG).
+
+[^2]: While binary images can be decoded, for technical reasons image is decoded as a grayscale image.
 
 ### Image coordinates
 
