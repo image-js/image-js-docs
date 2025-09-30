@@ -104,7 +104,7 @@ First thing that you possibly need to do is to remove [image noise](https://en.w
 
 ImageJS has several kinds of blurring:
 
-- [blur filter](../features/filters/blur.mdx'internal link on blur')
+- [blur filter](../features/filters/blur.mdx 'internal link on blur')
 
 - [gaussian blur filter](../features/filters/gaussian-blur.mdx 'internal link on gaussian blur')
 
