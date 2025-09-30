@@ -35,12 +35,6 @@ export const defaultImages: UrlOption[] = [
     label: 'House',
     imageType: 'image',
   },
-  {
-    type: 'url',
-    value: `${standardUrl}/lenna.png`,
-    label: 'Lenna',
-    imageType: 'image',
-  },
 ];
 
 export const defaultMasks: UrlOption[] = [
@@ -60,12 +54,6 @@ export const defaultMasks: UrlOption[] = [
     type: 'url',
     value: `${morphologyMaskUrl}/shapes.png`,
     label: 'Shapes',
-    imageType: 'mask',
-  },
-  {
-    type: 'url',
-    value: `${standardMaskUrl}/lenna.png`,
-    label: 'Lenna',
     imageType: 'mask',
   },
   {

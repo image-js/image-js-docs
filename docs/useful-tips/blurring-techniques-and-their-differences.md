@@ -11,7 +11,7 @@ To be precise blur is a general term that refers to a reduction in the sharpness
 The key advantage of box blur compared to other filters is its speed. It is slightly faster than Gaussian Blur, and it doesn't need to sort all values within the cells, like median.
 However, this also means that every pixel has the same weight to the algorithm regardless of its position. Therefore the blurring quality drops compared to the gaussian blur and the output gets relatively blocky.
 
-![Difference in quality](./images/blurring/MBvsGB.png)
+![Difference in quality](./images/blurring/blurVsGaussianBlur.png)
 
 ## Gaussian Blur
 
