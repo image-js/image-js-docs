@@ -8,31 +8,19 @@ In the context of digital technology and computing, images are represented as a 
 
 - Currently ImageJS supports images with these characteristics:
 
-  **DECODING**
-
-|                                  | TIFF                        | JPEG     | PNG                         | BMP                         |
+|                                  | TIFF                        | JPEG     | PNG[^2]                     | BMP                         |
 | -------------------------------- | --------------------------- | -------- | --------------------------- | --------------------------- |
 | **Can be loaded in this format** | &#9989;                     | &#9989;  | &#9989;                     | &#9989;                     |
-| **Bits per channel**             | 1,8 or 16 bits              | 8 bits   | 1,2,4,8 or 16 bits          | 1 or 8bits                  |
+| **Can be saved in this format**  | &#10060;                    | &#9989;  | &#9989;                     | &#9989;                     |
+| **Bits per channel**             | 1, 8 or 16 bits             | 8 bits   | 1, 2, 4, 8 or 16 bits       | 1 or 8 bits                 |
 | **Alpha channel**                | &#9989;                     | &#10060; | &#9989;                     | &#9989;                     |
 | **Palette images**               | &#9989;                     | &#10060; | &#9989;                     | &#10060;                    |
-| **Lossy compression**            | can be either               | yes      | no                          | no                          |
+| **Lossy compression**            | can be either               | &#9989;  | &#10060;                    | &#10060;                    |
 | **Color Model**                  | Binary[^1],RGB or grayscale | RGB      | Binary[^1],RGB or grayscale | Binary[^1],RGB or grayscale |
 
-[^1]: While binary images can be decoded, for technical reasons image is decoded as a grayscale image.
+[^1]: ImageJS can also **decode** [APNG images](https://en.wikipedia.org/wiki/APNG).
 
-- ImageJS can **decode** [APNG images](https://en.wikipedia.org/wiki/APNG).
-
-**ENCODING**
-
-|                                 | TIFF     | JPEG     | PNG                         | BMP                         |
-| ------------------------------- | -------- | -------- | --------------------------- | --------------------------- |
-| **Can be saved in this format** | &#10060; | &#9989;  | &#9989;                     | &#9989;                     |
-| **Bits per channel**            | N/A      | 8 bits   | 1,2,4,8 or 16 bits          | 1 or 8bits                  |
-| **Alpha channel**               | N/A      | &#10060; | &#9989;                     | &#9989;                     |
-| **Palette images**              | N/A      | &#10060; | &#9989;                     | &#10060;                    |
-| **Lossy compression**           | N/A      | &#9989;  | &#10060;                    | &#10060;                    |
-| **Color Model**                 | N/A      | RGB      | Binary[^1],RGB or grayscale | Binary[^1],RGB or grayscale |
+[^2]: While binary images can be decoded, for technical reasons image is decoded as a grayscale image.
 
 ### Image coordinates
 
