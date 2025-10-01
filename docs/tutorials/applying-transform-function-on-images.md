@@ -103,10 +103,10 @@ const transformationMatrix = [
   [0, 2, 0], // d=0, e=2 (vertical scale), f=0
 ];
 
-const scaledImage = image.transform(transformationMatrix);
+const scaledImage = image.transform(transformationMatrix, { fullImage: true });
 ```
 
-![Scaled image](./images/transformations/lennaScaled.png)
+![Scaled image](./images/transformations/barbaraScaleDemo.png)
 
 ### Non-uniform Scaling
 
@@ -116,11 +116,11 @@ const transformationMatrix = [
   [3, 0, 0], // Horizontal stretch
   [0, 0.5, 0], // Vertical compression
 ];
-
-const stretchedImage = image.transform(transformationMatrix);
+// Added trueImage to include all pixels into a destination image
+const stretchedImage = image.transform(transformationMatrix,, { fullImage: true });
 ```
 
-![Stretched image](./images/transformations/lennaStretched.png)
+![Stretched image](./images/transformations/barbaraStretchDemo.png)
 
 :::note
 ImageJS also has [`resize`](../features/geometry/resize.mdx) function that allows to scale an image.
@@ -135,10 +135,10 @@ const shrinkMatrix = [
   [0.5, 0, 0],
   [0, 0.5, 0],
 ];
-const shrunkImage = image.transform(shrinkMatrix);
+const shrunkImage = image.transform(shrinkMatrix, { fullImage: true });
 ```
 
-![Shrunk image](./images/transformations/lennaShrunk.png)
+![Shrunk image](./images/transformations/barbaraShrinkDemo.png)
 
 ```ts
 // Mirror horizontally (flip left-right)
@@ -146,10 +146,10 @@ const mirrorMatrix = [
   [-1, 0, 0],
   [0, 1, 0],
 ];
-const mirroredImage = image.transform(mirrorMatrix);
+const mirroredImage = image.transform(mirrorMatrix, { fullImage: true });
 ```
 
-![Mirrored image](./images/transformations/lennaMirrorred.png)
+![Mirrored image](./images/transformations/barbaraMirrorDemo.png)
 
 ```ts
 // Mirror vertically (flip up-down)
@@ -157,10 +157,10 @@ const flipMatrix = [
   [1, 0, 0],
   [0, -1, 0],
 ];
-const flippedImage = image.transform(flipMatrix);
+const flippedImage = image.transform(flipMatrix, { fullImage: true });
 ```
 
-![Flipped image](./images/transformations/lennaFlipped.png)
+![Flipped image](./images/transformations/barbaraFlipDemo.png)
 :::note
 ImageJS also has [`flip`](../features/geometry/flip.mdx) function that allows to flip an image.
 Current tutorial just demonstrates the basic principle behind transformation of such kind.
@@ -180,7 +180,7 @@ const translationMatrix = [
 const translatedImage = image.transform(translationMatrix);
 ```
 
-![Translated image](./images/transformations/lennaTranslated.png)
+![Translated image](./images/transformations/barbaraTranslateDemo.png)
 
 ### Rotation
 
@@ -204,7 +204,7 @@ const rotationMatrix = [
 const rotatedImage = image.transform(rotationMatrix);
 ```
 
-![Rotated image](./images/transformations/lennaRotated.png)
+![Rotated image](./images/transformations/barbaraRotateBy45Demo.png)
 
 ### Shearing
 
@@ -222,7 +222,7 @@ const horizontalShearMatrix = [
 const horizontalShearImage = image.transform(horizontalShearMatrix);
 ```
 
-![Horizontally sheared image](./images/transformations/lennaHorizontalShear.png)
+![Horizontally sheared image](./images/transformations/barbaraHorizontalShearDemo.png)
 
 #### Vertical shearing
 
@@ -236,7 +236,7 @@ const verticalShearMatrix = [
 const verticalShearImage = image.transform(verticalShearMatrix);
 ```
 
-![Vertically sheared image](./images/transformations/lennaVerticalShear.png)
+![Vertically sheared image](./images/transformations/barbaraVerticalShearDemo.png)
 
 #### Combined shearing
 
@@ -250,7 +250,7 @@ const combinedShearMatrix = [
 const combinedShearImage = image.transform(combinedShearMatrix);
 ```
 
-![Combined shearing](./images/transformations/lennaCombinedShear.png)
+![Combined shearing](./images/transformations/barbaraCombinedShearDemo.png)
 
 ### Complex Affine Transformations
 
@@ -299,7 +299,7 @@ const rotateAroundCenterImage = image.transform(
 );
 ```
 
-![Rotated by center image](./images/transformations/lennaRotatedCenter.png)
+![Rotated by center image](./images/transformations/barbaraRotateAroundCenterDemo.png)
 
 :::note
 Image-js also has [`rotate()`](../features/geometry/rotate.mdx) and [`transformRotate()`](../features/geometry/transform-and-rotate.mdx) functions. `rotate()` function allows rotating an image by multiple of 90 degrees.
