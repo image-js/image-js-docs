@@ -1,6 +1,7 @@
 const fs = require('fs');
 const imageJs = require('image-js');
 const { fetchURL } = require('image-js');
+require('ts-node/register');
 const {
   defaultImages,
   defaultMasks,
@@ -8,7 +9,6 @@ const {
 
 async function imageLoader(siteDir) {
   const imageData = [];
-  const path = './static/';
   for (let imageDataUrl of defaultImages) {
     const image = await fetchURL(imageDataUrl.value);
     const imageTitle = imageDataUrl.value.slice(
@@ -45,13 +45,11 @@ async function imageLoader(siteDir) {
   }
 
   // Use absolute path
-  const outputPath = siteDir.concat('static/imageData.json');
+  const outputPath = siteDir.concat('/static/imageData.json');
   fs.writeFileSync(outputPath, JSON.stringify(imageData, null, 2));
 
   console.log('Image data saved to:', outputPath);
   return imageData;
 }
-
-imageLoader('/Users/maxim/git/zakodium/image-js-docs/');
 
 module.exports = { imageLoader };
