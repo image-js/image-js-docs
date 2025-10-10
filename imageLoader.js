@@ -1,11 +1,8 @@
 const fs = require('fs');
 const imageJs = require('image-js');
 const { fetchURL } = require('image-js');
-require('ts-node/register');
-const {
-  defaultImages,
-  defaultMasks,
-} = require('./src/demo/contexts/demo/defaultImages');
+
+const { defaultImages, defaultMasks } = require('./imageDataset.js');
 
 async function imageLoader(siteDir) {
   const imageData = [];
