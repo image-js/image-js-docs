@@ -115,3 +115,7 @@ button {
   font-size: 0.75em;
   line-height: 1em;
 }
+
+.filter-demo-addon {
+  max-width: 512px;
+}
