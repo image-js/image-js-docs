@@ -1,52 +1,70 @@
-const fs = require('fs');
-const imageJs = require('image-js');
-const { fetchURL } = require('image-js');
+import fs from 'fs';
 
-const { defaultImages, defaultMasks } = require('./imageDataset.js');
+import { fetchURL, write } from 'image-js';
 
-async function imageLoader(siteDir) {
-  const imageData = [];
-  for (let imageDataUrl of defaultImages) {
-    const image = await fetchURL(imageDataUrl.value);
-    const imageTitle = imageDataUrl.value.slice(
-      imageDataUrl.value.lastIndexOf('/'),
+import { defaultImages, defaultMasks } from './imageDataset.js';
+
+export async function imageLoader() {
+  const staticDir = '/demoImages/';
+
+  const imageData = { masks: [], images: [] };
+  try {
+    // Create static directory if it doesn't exist
+    if (!fs.existsSync(`./static${staticDir}`)) {
+      fs.mkdirSync(`./static${staticDir}`, { recursive: true });
+    }
+
+    const images = await Promise.all(
+      defaultImages.map((imageDataUrl) => fetchURL(imageDataUrl.value)),
     );
-    imageJs.write(`./static/${imageTitle}`, image);
 
-    imageData.push({
-      type: 'image',
-      label: imageDataUrl.label,
-      width: image.width,
-      height: image.height,
-      path: path.concat(
-        imageDataUrl.value.slice(imageDataUrl.value.lastIndexOf('/')),
-      ),
-    });
-  }
+    for (let i = 0; i < images.length; i++) {
+      const image = images[i];
+      const imageDataUrl = defaultImages[i];
+      const imageTitle = imageDataUrl.value.slice(
+        imageDataUrl.value.lastIndexOf('/') + 1,
+      );
+      write(`./static${staticDir}images/${imageTitle}`, image, {
+        recursive: true,
+      });
 
-  for (const maskDataUrl of defaultMasks) {
-    const mask = await fetchURL(maskDataUrl.value);
-    const maskTitle = maskDataUrl.value.slice(
-      maskDataUrl.value.lastIndexOf('/'),
+      imageData.images.push({
+        type: 'url',
+        imageType: 'image',
+        label: `${imageDataUrl.label} (${image.width}x${image.height})`,
+        value: `${staticDir}images/${imageTitle}`,
+      });
+    }
+
+    // Fetch all masks in parallel
+    const masks = await Promise.all(
+      defaultMasks.map((maskDataUrl) => fetchURL(maskDataUrl.value)),
     );
-    imageJs.write(`./static/${maskTitle}`, mask);
-    imageData.push({
-      type: 'mask',
-      label: maskDataUrl.label,
-      width: mask.width,
-      height: mask.height,
-      path: path.concat(
-        maskDataUrl.value.slice(maskDataUrl.value.lastIndexOf('/')),
-      ),
-    });
+
+    for (let i = 0; i < masks.length; i++) {
+      const mask = masks[i];
+      const maskDataUrl = defaultMasks[i];
+      const maskTitle = maskDataUrl.value.slice(
+        maskDataUrl.value.lastIndexOf('/') + 1,
+      );
+      write(`./static${staticDir}masks/${maskTitle}`, mask, {
+        recursive: true,
+      });
+      imageData.masks.push({
+        type: 'url',
+        imageType: 'mask',
+        label: `${maskDataUrl.label} (${mask.width}x${mask.height})`,
+        value: `${staticDir}masks/${maskTitle}`,
+      });
+    }
+
+    const outputPath = `./static${staticDir}imageData.json`;
+
+    fs.writeFileSync(outputPath, JSON.stringify(imageData, null, 2));
+  } catch (error) {
+    throw new Error(`Error in imageLoader: ${error.message}`);
   }
+  // Fetch all images in parallel
 
-  // Use absolute path
-  const outputPath = siteDir.concat('/static/imageData.json');
-  fs.writeFileSync(outputPath, JSON.stringify(imageData, null, 2));
-
-  console.log('Image data saved to:', outputPath);
   return imageData;
 }
-
-module.exports = { imageLoader };

@@ -53,12 +53,12 @@ async function createConfig() {
     baseUrl: '/',
 
     plugins: [
-      function generateImagesPlugin(context) {
+      function generateImagesPlugin() {
         return {
           name: 'generate-images-plugin',
           async loadContent() {
             const { imageLoader } = await import('./imageLoader.js');
-            await imageLoader(context.siteDir);
+            await imageLoader();
           },
         };
       },
