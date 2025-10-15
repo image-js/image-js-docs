@@ -1,0 +1,120 @@
+{
+  "masks": [
+    {
+      "type": "url",
+      "imageType": "mask",
+      "label": "Circles (512x512)",
+      "value": "/demoImages/masks/circles.png"
+    },
+    {
+      "type": "url",
+      "imageType": "mask",
+      "label": "Shapes (512x512)",
+      "value": "/demoImages/masks/shapes.png"
+    },
+    {
+      "type": "url",
+      "imageType": "mask",
+      "label": "Star (512x512)",
+      "value": "/demoImages/masks/star.png"
+    },
+    {
+      "type": "url",
+      "imageType": "mask",
+      "label": "House (256x256)",
+      "value": "/demoImages/masks/house.png"
+    },
+    {
+      "type": "url",
+      "imageType": "mask",
+      "label": "Mandrill (512x512)",
+      "value": "/demoImages/masks/mandrill.png"
+    },
+    {
+      "type": "url",
+      "imageType": "mask",
+      "label": "Peppers (512x512)",
+      "value": "/demoImages/masks/peppers.png"
+    },
+    {
+      "type": "url",
+      "imageType": "mask",
+      "label": "Barbara (512x512)",
+      "value": "/demoImages/masks/barbara.png"
+    },
+    {
+      "type": "url",
+      "imageType": "mask",
+      "label": "Standard boat (512x512)",
+      "value": "/demoImages/masks/boat.png"
+    },
+    {
+      "type": "url",
+      "imageType": "mask",
+      "label": "Male (1024x1024)",
+      "value": "/demoImages/masks/male.png"
+    }
+  ],
+  "images": [
+    {
+      "type": "url",
+      "imageType": "image",
+      "label": "Jelly beans  (256x256)",
+      "value": "/demoImages/images/jellybeans.png"
+    },
+    {
+      "type": "url",
+      "imageType": "image",
+      "label": "Female (256x256)",
+      "value": "/demoImages/images/female.png"
+    },
+    {
+      "type": "url",
+      "imageType": "image",
+      "label": "Female from Bell Labs  (256x256)",
+      "value": "/demoImages/images/femaleBellLabs.png"
+    },
+    {
+      "type": "url",
+      "imageType": "image",
+      "label": "House (256x256)",
+      "value": "/demoImages/images/house.png"
+    },
+    {
+      "type": "url",
+      "imageType": "image",
+      "label": "Mandrill (512x512)",
+      "value": "/demoImages/images/mandrill.png"
+    },
+    {
+      "type": "url",
+      "imageType": "image",
+      "label": "Peppers (512x512)",
+      "value": "/demoImages/images/peppers.png"
+    },
+    {
+      "type": "url",
+      "imageType": "image",
+      "label": "Barbara (512x512)",
+      "value": "/demoImages/images/barbara.jpg"
+    },
+    {
+      "type": "url",
+      "imageType": "image",
+      "label": "Standard boat (512x512)",
+      "value": "/demoImages/images/boat.png"
+    },
+    {
+      "type": "url",
+      "imageType": "image",
+      "label": "Male (1024x1024)",
+      "value": "/demoImages/images/male.png"
+    },
+    {
+      "type": "url",
+      "imageType": "image",
+      "label": "Airport (1024x1024)",
+      "value": "/demoImages/images/airport.png"
+    }
+  ]
+}
