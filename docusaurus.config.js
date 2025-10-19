@@ -57,7 +57,7 @@ async function createConfig() {
         return {
           name: 'generate-images-plugin',
           async loadContent() {
-            const { imageLoader } = await import('./imageLoader.js');
+            const { imageLoader } = await import('./imageLoader.mjs');
             await imageLoader();
           },
         };
