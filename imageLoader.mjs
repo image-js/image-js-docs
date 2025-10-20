@@ -1,8 +1,13 @@
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import { fetchURL, write } from 'image-js';
 
 import { defaultImages, defaultMasks } from './imageDataset.mjs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export async function imageLoader() {
   const demoImagesDir = 'demoImages';
@@ -11,8 +16,10 @@ export async function imageLoader() {
   const imageData = { masks: [], images: [] };
   try {
     // Create static directory if it doesn't exist
-    if (!fs.existsSync(`./${staticDir}/${demoImagesDir}`)) {
-      fs.mkdirSync(`./${staticDir}/${demoImagesDir}`, { recursive: true });
+    const staticPath = path.join(__dirname, staticDir, demoImagesDir);
+
+    if (!fs.existsSync(staticPath)) {
+      fs.mkdirSync(staticPath, { recursive: true });
     }
 
     const images = await Promise.all(
@@ -23,9 +30,14 @@ export async function imageLoader() {
       const image = images[i];
       const imageDataUrl = defaultImages[i];
       const imageTitle = getFilename(imageDataUrl.value);
-      write(`./${staticDir}/${demoImagesDir}/images/${imageTitle}`, image, {
-        recursive: true,
-      });
+      const imagePath = path.join(
+        __dirname,
+        staticDir,
+        demoImagesDir,
+        'images',
+        imageTitle,
+      );
+      write(imagePath, image, { recursive: true });
       // Keeping object structure for compatibility
       imageData.images.push({
         type: 'url',
@@ -43,9 +55,14 @@ export async function imageLoader() {
       const mask = masks[i];
       const maskDataUrl = defaultMasks[i];
       const maskTitle = getFilename(maskDataUrl.value);
-      write(`./${staticDir}/${demoImagesDir}/masks/${maskTitle}`, mask, {
-        recursive: true,
-      });
+      const maskPath = path.join(
+        __dirname,
+        staticDir,
+        demoImagesDir,
+        'masks',
+        maskTitle,
+      );
+      write(maskPath, mask, { recursive: true });
       // Keeping object structure for compatibility
       imageData.masks.push({
         type: 'url',
@@ -55,7 +72,10 @@ export async function imageLoader() {
       });
     }
     // Write data about newly created files.
-    const outputPath = `./${staticDir}/${demoImagesDir}/imageData.json`;
+    const outputPath = path.join(
+      __dirname,
+      'src/demo/contexts/demo/imageData.json',
+    );
 
     fs.writeFileSync(outputPath, JSON.stringify(imageData, null, 2));
   } catch (error) {
@@ -68,3 +88,4 @@ export async function imageLoader() {
 function getFilename(filepath) {
   return filepath.replace(/^.*[\\/]/, '');
 }
+await imageLoader();

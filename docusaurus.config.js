@@ -53,15 +53,6 @@ async function createConfig() {
     baseUrl: '/',
 
     plugins: [
-      function generateImagesPlugin() {
-        return {
-          name: 'generate-images-plugin',
-          async loadContent() {
-            const { imageLoader } = await import('./imageLoader.mjs');
-            await imageLoader();
-          },
-        };
-      },
       demoLoaderPlugin,
       [
         '@dipakparmar/docusaurus-plugin-umami',

@@ -6,6 +6,7 @@
     "build": "docusaurus build",
     "clear": "docusaurus clear",
     "deploy": "docusaurus deploy",
+    "generate-images": "node imageLoader.mjs",
     "cspell": "cspell lint \"**/*.md\"",
     "eslint": "eslint --cache ./src ./docs",
     "eslint-fix": "npm run eslint -- --fix",
