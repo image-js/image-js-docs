@@ -1,13 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
 import { fetchURL, write } from 'image-js';
 
 import { defaultImages, defaultMasks } from './imageDataset.mjs';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = import.meta.dirname;
 
 export async function imageLoader() {
   const demoImagesDir = 'demoImages';
@@ -72,12 +70,14 @@ export async function imageLoader() {
       });
     }
     // Write data about newly created files.
-    const outputPath = path.join(
-      __dirname,
-      'src/demo/contexts/demo/imageData.json',
+    const outputPath = path.join(__dirname, 'src/demo/contexts/demo/generated');
+    if (!fs.existsSync(outputPath)) {
+      fs.mkdirSync(outputPath, { recursive: true });
+    }
+    fs.writeFileSync(
+      `${outputPath}/imageData.json`,
+      JSON.stringify(imageData, null, 2),
     );
-
-    fs.writeFileSync(outputPath, JSON.stringify(imageData, null, 2));
   } catch (error) {
     throw new Error(`Error in imageLoader: ${error.message}`);
   }
