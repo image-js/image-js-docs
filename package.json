@@ -6,6 +6,7 @@
     "build": "docusaurus build",
     "clear": "docusaurus clear",
     "deploy": "docusaurus deploy",
+    "generate-images": "node generateImages.mjs",
     "cspell": "cspell lint \"**/*.md\"",
     "eslint": "eslint --cache ./src ./docs",
     "eslint-fix": "npm run eslint -- --fix",
@@ -49,6 +50,7 @@
     "eslint-config-zakodium": "^16.0.0",
     "prettier": "^3.6.2",
     "raw-loader": "^4.0.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   },
   "browserslist": {

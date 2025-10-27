@@ -4,6 +4,20 @@ This is the source code repository for the documentation of [image-js](https://g
 
 The documentation is available on <https://docs.image-js.org/>.
 
+## Generating demo images
+
+To regenerate the demo images (only needed when adding/updating images):
+
+```bash
+npm run generate-images
+```
+
+This will:
+
+- Fetch images from the URLs defined in `defaultImageUrls.ts`
+- Save them to the `static/` folder
+- Generate `imageData.json` with metadata
+
 ## Create demos
 
 A demo is simply a function which takes an image or mask as input and returns an image or mask as output. When imported in `md` files, it will be transformed into a demo component which allows choosing from various image or video sources to showcase the image transformation.
