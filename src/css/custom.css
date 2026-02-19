@@ -119,3 +119,11 @@ button {
 .filter-demo-addon {
   max-width: 512px;
 }
+
+/* ===== Media queries ===== */
+
+@media (max-width: 768px) {
+  .frontPage__text {
+    max-width: 90%;
+  }
+}
